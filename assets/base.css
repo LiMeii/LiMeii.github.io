@@ -1444,7 +1444,7 @@ p {
     }
     .menu-item,
     .business {
-        width: 80%;
+        width: 100%;
         float: left;
         margin-right: 4.71698%;
         display: inline
@@ -2226,7 +2226,7 @@ screen and (min-width:64em) and (max-height:68.6875em) {
     }
     .menu-item,
     .business {
-        width: 31.7983%;
+        width: 100%;
         float: left;
         margin-right: 2.30256%;
         display: inline

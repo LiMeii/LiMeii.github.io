@@ -824,12 +824,12 @@ p {
     content: "";
     display: block;
     margin: 0 -5px;
-    padding-bottom: 2.57143em;
+    padding-bottom: 1em;
     position: relative
 }
 
 .menu-category:not(:only-of-type) {
-    padding-bottom: .92857em
+    padding-bottom: .1em
 }
 
 .menu-category.hide {

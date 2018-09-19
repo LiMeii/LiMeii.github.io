@@ -343,7 +343,7 @@ p {
     font-size: 1.57143em;
     line-height: 1.18182em;
     color: #2d3c48;
-    font-weight: 300;
+    font-weight: 400;
     position: relative;
     left: -1px
 }
@@ -1444,7 +1444,7 @@ p {
     }
     .menu-item,
     .business {
-        width: 47.64151%;
+        width: 80%;
         float: left;
         margin-right: 4.71698%;
         display: inline

@@ -141,140 +141,6 @@ summary {
     display: block
 }
 
-@font-face {
-    font-family: "SQMarket";
-    src: url("/fonts/sqmarket-bold.eot");
-    src: url("/fonts/sqmarket-bold.eot?#iefix") format("eot"), url("/fonts/sqmarket-bold.woff") format("woff"), url("/fonts/sqmarket-bold.ttf") format("truetype");
-    font-weight: 500;
-    font-style: normal
-}
-
-@font-face {
-    font-family: "SQMarket";
-    src: url("/fonts/sqmarket-bold.eot");
-    src: url("/fonts/sqmarket-bold.eot?#iefix") format("eot"), url("/fonts/sqmarket-bold.woff") format("woff"), url("/fonts/sqmarket-bold.ttf") format("truetype");
-    font-weight: bold;
-    font-style: normal
-}
-
-@font-face {
-    font-family: "SQMarket";
-    src: url("/fonts/sqmarket-bolditalic.eot");
-    src: url("/fonts/sqmarket-bolditalic.eot?#iefix") format("eot"), url("/fonts/sqmarket-bolditalic.woff") format("woff"), url("/fonts/sqmarket-bolditalic.ttf") format("truetype");
-    font-weight: 500;
-    font-style: italic
-}
-
-@font-face {
-    font-family: "SQMarket";
-    src: url("/fonts/sqmarket-bolditalic.eot");
-    src: url("/fonts/sqmarket-bolditalic.eot?#iefix") format("eot"), url("/fonts/sqmarket-bolditalic.woff") format("woff"), url("/fonts/sqmarket-bolditalic.ttf") format("truetype");
-    font-weight: bold;
-    font-style: italic
-}
-
-@font-face {
-    font-family: "SQMarket";
-    src: url("/fonts/sqmarket-light.eot");
-    src: url("/fonts/sqmarket-light.eot?#iefix") format("eot"), url("/fonts/sqmarket-light.woff") format("woff"), url("/fonts/sqmarket-light.ttf") format("truetype");
-    font-weight: 200;
-    font-style: normal
-}
-
-@font-face {
-    font-family: "SQMarket";
-    src: url("/fonts/sqmarket-lightitalic.eot");
-    src: url("/fonts/sqmarket-lightitalic.eot?#iefix") format("eot"), url("/fonts/sqmarket-lightitalic.woff") format("woff"), url("/fonts/sqmarket-lightitalic.ttf") format("truetype");
-    font-weight: 200;
-    font-style: italic
-}
-
-@font-face {
-    font-family: "SQMarket";
-    src: url("/fonts/sqmarket-medium.eot");
-    src: url("/fonts/sqmarket-medium.eot?#iefix") format("eot"), url("/fonts/sqmarket-medium.woff") format("woff"), url("/fonts/sqmarket-medium.ttf") format("truetype");
-    font-weight: 400;
-    font-style: normal
-}
-
-@font-face {
-    font-family: "SQMarket";
-    src: url("/fonts/sqmarket-mediumitalic.eot");
-    src: url("/fonts/sqmarket-mediumitalic.eot?#iefix") format("eot"), url("/fonts/sqmarket-mediumitalic.woff") format("woff"), url("/fonts/sqmarket-mediumitalic.ttf") format("truetype");
-    font-weight: 400;
-    font-style: italic
-}
-
-@font-face {
-    font-family: "SQMarket";
-    src: url("/fonts/sqmarket-regular.eot");
-    src: url("/fonts/sqmarket-regular.eot?#iefix") format("eot"), url("/fonts/sqmarket-regular.woff") format("woff"), url("/fonts/sqmarket-regular.ttf") format("truetype");
-    font-weight: 300;
-    font-style: normal
-}
-
-@font-face {
-    font-family: "SQMarket";
-    src: url("/fonts/sqmarket-regular.eot");
-    src: url("/fonts/sqmarket-regular.eot?#iefix") format("eot"), url("/fonts/sqmarket-regular.woff") format("woff"), url("/fonts/sqmarket-regular.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal
-}
-
-@font-face {
-    font-family: "SQMarket";
-    src: url("/fonts/sqmarket-regularitalic.eot");
-    src: url("/fonts/sqmarket-regularitalic.eot?#iefix") format("eot"), url("/fonts/sqmarket-regularitalic.woff") format("woff"), url("/fonts/sqmarket-regularitalic.ttf") format("truetype");
-    font-weight: 300;
-    font-style: italic
-}
-
-@font-face {
-    font-family: "SQMarket";
-    src: url("/fonts/sqmarket-regularitalic.eot");
-    src: url("/fonts/sqmarket-regularitalic.eot?#iefix") format("eot"), url("/fonts/sqmarket-regularitalic.woff") format("woff"), url("/fonts/sqmarket-regularitalic.ttf") format("truetype");
-    font-weight: normal;
-    font-style: italic
-}
-
-.directory-icons-sprite,
-.logo:after,
-.logo h1,
-.search-field:before,
-.focus .search-field:before,
-.half .search-location-button,
-.half .search-location-button:hover,
-.half .search-location-button:focus,
-.full .search-location-button,
-.full .search-location-button.location-expanded:hover,
-.full .search-location-button.location-expanded:focus,
-.full .search-location-button.location-on,
-.search-swap-button,
-.navigation-picture,
-.navigation-picture:hover,
-.navigation-picture:focus,
-.navigation-picture:active,
-.icon-square-footer,
-.icon-mobile-merchant,
-.icon-left-arrow,
-.icon-right-arrow {
-    background: url(/assets/sprites/directory-icons-sprite.png) no-repeat
-}
-
-.profile-icons-sprite,
-.icon-twitter,
-.icon-facebook,
-.reward-punch-card:before,
-.reward-cash:before,
-.reward-percent:before,
-.icon-image-previous,
-.icon-image-next,
-.profile-image-dot,
-.profile-image-dot:hover,
-.profile-image-dot:focus,
-.profile-image-dot.current {
-    background: url(/assets/sprites/profile-icons-sprite.png) no-repeat
-}
 
 * {
     -webkit-box-sizing: border-box;
@@ -556,7 +422,7 @@ p {
     height: 70px;
     text-decoration: none;
     vertical-align: middle;
-    width: 60px
+    width: 65px
 }
 
 .profile-logo [data-picture] {
@@ -589,7 +455,7 @@ p {
     display: box;
     font-weight: 300;
     min-height: 2.57143em;
-    margin-left: 98px;
+    margin-left: 80px;
     margin-top: .03571em
 }
 

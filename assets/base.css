@@ -532,7 +532,7 @@ p {
 
 .profile-logo {
     *zoom: 1;
-    min-height: 80px;
+    min-height: 70px;
     position: relative
 }
 
@@ -553,10 +553,10 @@ p {
     -o-border-radius: 5px;
     border-radius: 5px;
     display: inline-block;
-    height: 80px;
+    height: 70px;
     text-decoration: none;
     vertical-align: middle;
-    width: 80px
+    width: 60px
 }
 
 .profile-logo [data-picture] {
@@ -565,11 +565,11 @@ p {
 
 .profile-logo-image {
     float: left;
-    height: 80px;
+    height: 70px;
     margin-bottom: .5em;
     margin-left: auto;
     margin-right: auto;
-    width: 80px
+    width: 65px
 }
 
 .profile-name {

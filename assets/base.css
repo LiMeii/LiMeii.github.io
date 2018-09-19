@@ -797,11 +797,11 @@ p {
 }
 
 .menu-category:first-of-type:only-child:before {
-    padding-bottom: 2.5em
+    padding-bottom: 1em
 }
 
 .menu-category:first-of-type:not(:only-child) {
-    padding-top: 3em
+    padding-top: 0.8em
 }
 
 .menu-category:first-of-type:before {

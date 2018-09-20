@@ -2777,3 +2777,28 @@ screen and (min-resolution:144dpi) {
         width: 8px
     }
 }
+
+.post-title {
+
+    float: left;
+    font-size: 2em;
+    line-height: 2.57143em;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -ms-box-orient: vertical;
+    box-orient: vertical;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-box-pack: center;
+    box-pack: center;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-box;
+    display: box;
+    font-weight: 300;
+    min-height: 2.57143em;
+    margin-top: .03571em;
+    padding-top: 2.85714em;
+    padding-bottom: .92857em;
+    width: 100%;
+}

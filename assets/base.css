@@ -829,7 +829,7 @@ p {
 }
 
 .menu-category:not(:only-of-type) {
-    padding-bottom: .1em
+    padding-bottom: .92857em
 }
 
 .menu-category.hide {
@@ -871,7 +871,7 @@ p {
 }
 
 .menu-item {
-    margin-top: 0.75em;
+    margin-top: 1.75em;
     position: relative
 }
 

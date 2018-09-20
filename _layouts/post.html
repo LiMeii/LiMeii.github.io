@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>{{ page.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link href="../../assets/base.css" media="screen" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="../../assets/favicon.ico">
+</head>
+
+<body>
+
+    <h1>{{ page.title }}</h1>
+    <p>{{ page.date | date_to_string }}</p>
+
+    {{ content }}
+
+    <footer class="footer">
+        <nav class="footer-navigation">
+            <p class="copyright">© 2018 Li Mei. All rights reserved.</p>
+            <p>contact email: limei90s@foxmail.com</p>
+        </nav>
+    </footer>
+</body>
+
+</html>

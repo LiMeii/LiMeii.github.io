@@ -1,6 +1,6 @@
 ---
 title: first post
-layout: default
+layout: post
 ---
 
 #浏览器缓存问题

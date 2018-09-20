@@ -90,17 +90,14 @@ layout: default
                     <div id="Webpack" class="menu-category">
                         <h3 class="menu-category-name">Others</h3>
                         <ol class="menu-category-list">
+          
+                            {% for post in site.posts %}
                             <li class="menu-item">
                                 <div class="menu-item-info">
-                                    <h4 class="menu-item-name">issues</h4>
+                                    <h4 class="menu-item-name">{{ post.title }}</h4>
                                     <span class="menu-item-price"><a href="{{ post.url }}" target="_blank">more details
                                         </a></span>what issues I have met during my coding.</p>
                                 </div>
-                            </li>
-                            {% for post in site.posts %}
-                            <li>
-                              <h2><a href="{{ post.url }}">{{ post.title }}aaa</a></h2>
-                              <p>{{ post.excerpt }}</p>
                             </li>
                           {% endfor %}
                         </ol>

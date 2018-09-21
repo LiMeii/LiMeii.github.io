@@ -395,6 +395,11 @@ p {
     padding-bottom: .92857em;
     width: 100%
 }
+.profile-masthead-post {
+    float: left;
+    padding-top: 2.85714em;
+    width: 100%
+}
 
 .profile-logo {
     *zoom: 1;
@@ -1204,6 +1209,9 @@ p {
         padding-top: 1.42857em;
         padding-bottom: 1.14286em
     }
+    .profile-masthead-post {
+        padding-top: 1.42857em;
+    }
     .profile-logo-image {
         float: none;
         margin-top: .07143em;
@@ -1481,6 +1489,9 @@ p {
     .profile-masthead {
         padding-top: 1.42857em;
         padding-bottom: 1.14286em
+    }
+    .profile-masthead-post  {
+        padding-top: 1.42857em;
     }
     .profile-logo-image {
         float: none

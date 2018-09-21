@@ -818,6 +818,16 @@ p {
     position: relative;
     top: -15px
 }
+.post-content-container{
+
+    border-top: 1px solid #eff0f1;
+    margin: 0 -5px;
+    position: relative;
+    top: -15px;
+}
+.post-content {
+    margin-top: 30px;
+}
 
 .menu-category:only-child {
     margin-top: -0.5em;

@@ -4,7 +4,7 @@ layout: post
 ---
 
 # 浏览器缓存问题
-<div class="card-author"> <span>作者：limei</span> <br> <span>日期：2018-09-20</span></div>
+<div class="card-author"> <span>作者：Mei</span> <br> <span>日期：2018-09-20</span></div>
 
 浏览器有一个行为就是缓存已经下载过的资源，缓存静态资源，不需要每次从服务器下载文件，这在很大程度提高了性能。
 但同时也会有一个弊端，就是服务器资源更新以后，用户可能看不到最新页面。

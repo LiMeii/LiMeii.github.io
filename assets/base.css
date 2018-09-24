@@ -187,8 +187,9 @@ p {
 }
 
 .card-author {
-    line-height: 1.5em;
+    line-height: 1.7em;
     margin: -0.5em 0 2em 1em;
+    font-size: 1.1em
 }
 .footer-navigation {
     color: #b0b8c1;

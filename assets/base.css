@@ -186,20 +186,18 @@ p {
     width: 100%
 }
 
-.card-author {
-    line-height: 1.7em;
-    margin: -0.5em 0 2em 1em;
-    font-size: 1.1em
-}
 .title-meta {
-    font-size: 16px;
     color: rgba(38,41,58,.6);
-    line-height: 18px;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    margin-top: 20px;
+    line-height: 1.7em;
+    margin: -0.5em 0 2em 1em;
+    font-size: 1em
+}
+.title-bullet {
+    margin: 0 0.3em;
 }
 .footer-navigation {
     color: #b0b8c1;

@@ -8,9 +8,9 @@ layout: post
 <span>
 Sep 20, 2018
 </span>
-<span>•</span>
+<span class="title-bullet">•</span>
 <span>
-by <a target="_blank" href="">Mei</a>
+by <a target="_blank" href="https:github.com/meii">Mei</a>
 </span>
 </div>
 

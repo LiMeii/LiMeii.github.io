@@ -176,7 +176,10 @@ p {
     margin: 0 auto;
     min-height: 511px
 }
-
+.github-link {
+    color: #3e8cb7;
+    text-decoration: none;
+}
 .footer {
     background: #f4f5f6;
     border-top: 1px solid #eff0f1;

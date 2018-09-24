@@ -5,11 +5,11 @@ layout: post
 
 # 浏览器缓存问题
 
-浏览器有一个行为就是缓存已经下载过的资源，这个行为可以在缓存有效期内让页面加载更快。
+浏览器有一个行为就是缓存已经下载过的资源，缓存静态资源，不需要每次从服务器下载文件，这在很大程度提高了性能。
 但同时也会有一个弊端，就是服务器资源更新以后，用户可能看不到最新页面。
 
 
-本文会介绍cache的利与弊，以及怎么解决浏览器缓存问题。
+这篇文章就是介绍cache的利与弊，以及怎么解决浏览器缓存问题。
 
 #### 什么是浏览器缓存
 
@@ -30,7 +30,7 @@ layout: post
 chrome 浏览器要不是从memory cache或disk cache里拿文件，因为没有关浏览器而且时间比较短所示上图中还是从memory cache里拿得
 ```
 
-像静态文件，比如JS 图片 CSS文件可以被缓存起来，那么下次到同样的网页的时候，不需要从服务器上下载而是从缓存中拿，大大的提高了访问网页性能。
+像静态文件，比如JS/图片/CSS文件可以被缓存起来，那么下次到同样的网页的时候，不需要从服务器上下载而是从缓存中拿，大大的提高了访问网页性能。
 
 #### 那么浏览器怎么知道要缓存呢？
 
@@ -41,9 +41,13 @@ chrome 浏览器要不是从memory cache或disk cache里拿文件，因为没有
 - Last-Modified
 
 **ETag**
+
+
 ETag 通常是服务器生成的一段hash validation token，那么浏览器在后续的request中会把这个token带上，如果ETag一样就返回空的body，response code为304 (not modified)，这时候浏览器请求的response可以直接从cache中拿。
 
 **Cache-Control**
+
+
 Cache-Control本身有好几个属性可以用来设置cache行为
 
 ```html
@@ -77,6 +81,8 @@ Cache-Control: must-revalidate
 表示只有校验缓存里是最新文件才能用缓存里的版本
 
 **Expires**
+
+
 ```html
 Expires: Wed, 25 Sep 2018 21:00:00 GMT
 ```
@@ -84,6 +90,8 @@ Expires: Wed, 25 Sep 2018 21:00:00 GMT
 需要注意的是，如果header有max-age这个属性的时候，Expires这个属性会被忽略。
 
 **Last-Modified**
+
+
 ```
 Last-Modified: Mon, 12 Sep 2018 14:45:00 GMT
 ```
@@ -92,11 +100,15 @@ Last-Modified: Mon, 12 Sep 2018 14:45:00 GMT
 这就浏览器怎么知道哪些文件需要被缓存。
 
 #### 缓存的弊端
+
+
 从缓存里拿文件肯定是要比从服务器上拿性能要高，但是也会有弊端。
 比如一分钟前一个用户刚访问一个网站，这个时候浏览器缓存了一部分静态文件，这个时候这个网站发布了新版本包含一些新功能，那么在缓存不过期的情况下，这个用户永远都没法看到新版本新功能，除非这个用户强制清除他本地的缓存。
 新版本发布以后，每次都需要用户清缓存，显然不合理。
 
 **那么如何解决这个问题呢？**
+
+
 通常来讲，引用js或者其他静态文件是这样的：
 ```html
 <script src="../js/app.min.js">
@@ -118,4 +130,4 @@ Last-Modified: Mon, 12 Sep 2018 14:45:00 GMT
 ```
 但是第三种方案不推荐使用，在一些[proxy serve](https://gtmetrix.com/remove-query-strings-from-static-resources.html)有一些问题。
 
-通常能是用第二种方式来解决缓存问题，对于当前前后端分离的应用，前端打包一般会用webpack，我会在下一篇文章中介绍结合webpack解决浏览器缓存问题。
+通常是用第二种方式来解决缓存问题，对于当前前后端分离的应用，前端打包一般会用webpack，我会在下一篇文章中介绍结合webpack解决浏览器缓存问题。

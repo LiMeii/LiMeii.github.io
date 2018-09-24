@@ -1,5 +1,5 @@
 ---
-title: first post
+title: cache busting
 layout: post
 ---
 

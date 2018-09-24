@@ -26,7 +26,9 @@ layout: post
 ![刷新页面]( https://limeii.github.io/assets/images/posts/cache-refreshload.png){:height="70%" width="70%"}
 
 
-`chrome 浏览器要不是从memory cache或disk cache里拿文件，因为没有关浏览器而且时间比较短所示上图中还是从memory cache里拿得`
+```
+chrome 浏览器要不是从memory cache或disk cache里拿文件，因为没有关浏览器而且时间比较短所示上图中还是从memory cache里拿得
+```
 
 像静态文件，比如JS 图片 CSS文件可以被缓存起来，那么下次到同样的网页的时候，不需要从服务器上下载而是从缓存中拿，大大的提高了访问网页性能。
 
@@ -44,31 +46,47 @@ ETag 通常是服务器生成的一段hash validation token，那么浏览器在
 **Cache-Control**
 Cache-Control本身有好几个属性可以用来设置cache行为
 
-`Cache-Control: public`
+```
+Cache-Control: public
+```
 public 表示资源可以被缓存在任何可以被缓存的地方（CDN,浏览器等等）
 
-`Cache-Control: private`
+```
+Cache-Control: private
+```
 private 表示资源只可以被浏览器缓存
 
-`Cache-Control: no-store`
+```
+Cache-Control: no-store
+```
 no-store表示浏览器需要每次都从服务器拿资源
 
-`Cache-Control: no-cache`
+```
+Cache-Control: no-cache
+```
 no-cache并不是不缓存的意思，而是告诉浏览器要缓存文件，但是每次需要跟服务器确认是最新文件以后才能用，一般是看ETag跟服务器是否匹配。
 
-`Cache-Control: max-age=60`
+```
+Cache-Control: max-age=60
+```
 表示资源文件只能被缓存一分钟
 
-`Cache-Control: must-revalidate`
+```
+Cache-Control: must-revalidate
+```
 表示只有校验缓存里是最新文件才能用缓存里的版本
 
 **Expires**
-`Expires: Wed, 25 Sep 2018 21:00:00 GMT`
+```
+Expires: Wed, 25 Sep 2018 21:00:00 GMT
+```
 这个属性是http1.0里的，表示缓存里的文件在这个属性对应时间以后过期。
 需要注意的是，如果header有max-age这个属性的时候，Expires这个属性会被忽略。
 
 **Last-Modified**
-`Last-Modified: Mon, 12 Sep 2018 14:45:00 GMT`
+```
+Last-Modified: Mon, 12 Sep 2018 14:45:00 GMT
+```
 这个属性也是http1.0里的，表示当前资源最后更改的时间
 
 这就浏览器怎么知道哪些文件需要被缓存。
@@ -80,13 +98,21 @@ no-cache并不是不缓存的意思，而是告诉浏览器要缓存文件，但
 
 **那么如何解决这个问题呢？**
 通常来讲，引用js或者其他静态文件是这样的：
-`<script src="../js/app.min.js">`
+```
+<script src="../js/app.min.js">
+```
 第一种方案就是每次手动给这个文件加个版本号
-`<script src="../js/app-v2.min.js">`
+```
+<script src="../js/app-v2.min.js">
+```
 第二种方案就是每次对应静态文件里有内容改动的时候，自动加一段hash到静态文件名里
-`<script src="../js/app-ef1d8c670o00b204e9800998ecfere.min.js">`
+```
+<script src="../js/app-ef1d8c670o00b204e9800998ecfere.min.js">
+```
 第三种方案是在后面加一段query string
-`<script src="../js/app.min.js？cb=3424243234">`
+```
+<script src="../js/app.min.js？cb=3424243234">
+```
 但是第三种方案不推荐使用，在一些[proxy serve](https://gtmetrix.com/remove-query-strings-from-static-resources.html)有一些问题。
 
 通常能是用第二种方式来解决缓存问题，对于当前前后端分离的应用，前端打包一般会用webpack，我会在下一篇文章中介绍结合webpack解决浏览器缓存问题。

@@ -37,8 +37,10 @@ blockquote:after {
     content: none
 }
 
-a img {
-    border: 0
+img {
+    border: 0;
+    display: block;
+    margin: 0 auto;
 }
 
 article,
@@ -95,6 +97,7 @@ body.modal {
 }
 
 a {
+    border: 0;
     color: black;
 }
 

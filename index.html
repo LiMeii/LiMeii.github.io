@@ -3,41 +3,56 @@ title: Mei
 layout: default
 ---
 
-    <div class="wrapper">
-        <div class="profile">
-            <section class="profile-masthead" id="masthead">
-                <header class="profile-logo">
-                    <div class="profile-logo-image">
-                        <img src="/assets/images/meii.jpg" />
-                    </div>
-                    <div class="profile-name">
-                        <div>Li Mei</div>
-                        <div style="font-size: 70%;">Developer</div>
-                    </div>
-                </header>
-                <aside class="profile-summary">
-                    <div class="summary-location summary-module">
-                        <a class="github-link" href="http://github.com/limeii">github.com/meii</a>
-                    </div>
-                </aside>
-            </section>
+<div class="wrapper">
+    <div class="profile">
+        <section class="profile-masthead" id="masthead">
+            <header class="profile-logo">
+                <div class="profile-logo-image">
+                    <img src="/assets/images/meii.jpg" />
+                </div>
+                <div class="profile-name">
+                    <div>Li Mei</div>
+                    <div style="font-size: 70%;">Developer</div>
+                </div>
+            </header>
+            <aside class="profile-summary">
+                <div class="summary-location summary-module">
+                    <a class="github-link" href="http://github.com/limeii">github.com/meii</a>
+                </div>
+            </aside>
+        </section>
 
-            <section class="profile-content" id="content">
-                <article class="profile-menu" id="menu">
-                    <div id="Angular" class="menu-category">
-                        <h3 class="menu-category-name">Angular</h3>
-                        <ol class="menu-category-list">
-                            <li class="menu-item">
-                                <div class="menu-item-info">
-                                    <span class="menu-item-name">angular</span>
-                                    <span class="menu-item-price"><a style="text-decoration: none;"  href="https://github.com/meii" target="_blank">more
-                                            details
-                                        </a></span>
-                                    <p class="menu-item-description">The Angular Router enables navigation from one view
-                                        to the next as users perform application tasks.</p>
-                                </div>
-                            </li>
-                            <!-- <li class="menu-item">
+        <section class="profile-content" id="content">
+            <article class="profile-menu" id="menu">
+                <div id="Angular" class="menu-category">
+                    <h3 class="menu-category-name">Angular</h3>
+                    <ol class="menu-category-list has-images">
+                        <li class="menu-item">
+                            <div class="menu-item-info">
+                                <span class="menu-item-name">angular</span>
+                                <span class="menu-item-price"><a style="text-decoration: none;" href="https://github.com/meii"
+                                        target="_blank">更多...
+                                        details
+                                    </a></span>
+                                <p class="menu-item-description">所有关于angular的文章都在这</p>
+                            </div>
+                            <div class="menu-item-image has-meta-content">
+                                <img src="/assets/angular.png">
+                            </div>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-info">
+                                <span class="menu-item-name">Webpack</span>
+                                <span class="menu-item-price"><a style="text-decoration: none;" href="/2018/09/24/webpack-learning.html"
+                                        target="_blank">
+                                        更多...</a></span>
+                                <p class="menu-item-description">所有关于webpack理解的文章都在这</p>
+                            </div>
+                            <div class="menu-item-image has-meta-content">
+                                <img src="/assets/webpack.png">
+                            </div>
+                        </li>
+                        <!-- <li class="menu-item">
                                 <div class="menu-item-info">
                                     <span class="menu-item-name">Observables </span>
                                     <span class="menu-item-price"><a style="text-decoration: none;"  href="https://github.com/meii" target="_blank">more
@@ -57,9 +72,11 @@ layout: default
                                         client HTTP API for Angular applications.</p>
                                 </div>
                             </li> -->
-                        </ol>
-                    </div>
-                    <div id="Webpack" class="menu-category">
+                    </ol>
+
+
+                </div>
+                <!-- <div id="Webpack" class="menu-category">
                         <h3 class="menu-category-name">Webpack</h3>
                         <ol class="menu-category-list has-images">
                             <li class="menu-item">
@@ -73,7 +90,7 @@ layout: default
                                     <img src="/assets/webpack.png">
                                   </div>
                             </li>
-                            <!-- <li class="menu-item">
+                            <li class="menu-item">
                                 <div class="menu-item-info">
                                     <span class="menu-item-name">Caching</span>
                                     <span class="menu-item-price"><a style="text-decoration: none;"  href="https://github.com/meii" target="_blank">more
@@ -82,13 +99,13 @@ layout: default
                                     <p class="menu-item-description">needed to ensure files produced by webpack compilation
                                         can remain cached unless their contents has changed.</p>
                                 </div>
-                            </li> -->
+                            </li>
                         </ol>
-                    </div>
-                    <div id="Webpack" class="menu-category">
-                        <h3 class="menu-category-name">其他</h3>
-                        <ol class="menu-category-list">
-<!--           
+                    </div> -->
+                <div id="Others" class="menu-category">
+                    <h3 class="menu-category-name">其他</h3>
+                    <ol class="menu-category-list">
+                        <!--           
                             {% for post in site.posts %}
                             <li class="menu-item">
                                 <div class="menu-item-info">
@@ -98,17 +115,17 @@ layout: default
                                 </div>
                             </li>
                           {% endfor %} -->
-                          <li class="menu-item">
+                        <li class="menu-item">
                             <div class="menu-item-info">
                                 <span class="menu-item-name">coding遇到的问题</span>
-                                <span class="menu-item-price"><a style="text-decoration: none;" href="/2018/09/24/issues.html" target="_blank">更多...</a>
+                                <span class="menu-item-price"><a style="text-decoration: none;" href="/2018/09/24/issues.html"
+                                        target="_blank">更多...</a>
                                     <!-- </a></span>记录写代码过程中遇到过得问题</p> -->
                             </div>
                         </li>
-                        </ol>
-                    </div>
-                </article>
-            </section>
-        </div>
+                    </ol>
+                </div>
+            </article>
+        </section>
     </div>
-
+</div>

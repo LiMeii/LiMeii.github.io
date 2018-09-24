@@ -16,8 +16,9 @@ layout: post
 如果用户第一次访问某一个网站，所有的资源都是从服务端download下来的，不存在缓存。
 以chrome浏览器为例子，F12打开DevTools，可以看到如下图片所示：
 
-
-![第一次访问]( https://limeii.github.io/assets/images/posts/cache-firstload.png)
+<div align=center>
+![第一次访问]( https://limeii.github.io/assets/images/posts/cache-firstload.png){:height="100" width="100"}
+</div>
 
 
 

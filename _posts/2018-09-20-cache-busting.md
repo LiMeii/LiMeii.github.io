@@ -14,13 +14,16 @@ layout: post
 #### 什么是浏览器缓存
 
 如果用户第一次访问某一个网站，所有的资源都是从服务端download下来的，不存在缓存。
-以chrome浏览器为例子，F12打开DevTools，可以看到如下图片所示:
+以chrome浏览器为例子，F12打开DevTools，可以看到如下图片所示: 加载当前页面有4个requests一共526kb，全是从服务器上下载来。
 
 
-![第一次访问]( https://limeii.github.io/assets/images/posts/cache-firstload.png){:height="60%" width="60%"}
+![第一次访问]( https://limeii.github.io/assets/images/posts/cache-firstload.png){:height="70%" width="70%"}
 
 
+接着直接刷新页面，如下图所示，在chrome DevTools中可以看到，2requests，并且meii.jpg是从memory cache中拿到的。
 
+
+![刷新页面]( https://limeii.github.io/assets/images/posts/cache-refreshload.png){:height="70%" width="70%"}
 
 
                         

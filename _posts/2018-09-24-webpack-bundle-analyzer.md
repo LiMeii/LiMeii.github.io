@@ -58,20 +58,20 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 module.exports = {
   entry: {
-	  ......
+	  //
   },
   resolve: {
     extensions: ['.ts', '.js', '.json', '.css']
   },
   output: {
-	  ......
+	  //
   },
 
   module: {
-    ......
+      //
   },
   plugins: [
-     ......
+     //
      new BundleAnalyzerPlugin()
   ]
 };

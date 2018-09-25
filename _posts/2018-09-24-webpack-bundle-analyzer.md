@@ -46,12 +46,12 @@ gzip size：被压缩以后的文件大小
 
 #### 用法
 
-- 1. 先在项目里面安装这个plugin 
+ 先在项目里面安装这个plugin 
 ```js
 npm install --save-dev webpack-bundle-analyzer
 ```
 
-- 2. 然后在webpack config文件里面加上以下代码
+然后在webpack config文件里面加上以下代码
  ```js
  
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -77,7 +77,8 @@ module.exports = {
 };
  ```
 
- - 3. 最后run webpack build命令，比如 npm run build，在build结束以后，默认会直接在浏览器里把最终的动态treemap图片展示出来
+
+ 最后run webpack build命令，比如 npm run build，在build结束以后，默认会直接在浏览器里把最终的动态treemap图片展示出来
 
 
 

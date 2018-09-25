@@ -29,8 +29,8 @@ layout: post
 在这个树形图片里，会有包含下面的内容：
 
 
-- 每个打包以后的bundle文件里面，真正包含哪些内容，项目里的module/js/component/html/css/img最后都被放到哪个对应的bunlde文件里了。
-- 每个bundle文件里，列出了每一个的module/componet/js具体size，同时会列出 start size/ parsed size /gzip size这三种不同的形式下到底多大。
+1. 每个打包以后的bundle文件里面，真正包含哪些内容，项目里的module/js/component/html/css/img最后都被放到哪个对应的bunlde文件里了。
+2. 每个bundle文件里，列出了每一个的module/componet/js具体size，同时会列出 start size/ parsed size /gzip size这三种不同的形式下到底多大。
 
 
 ```html

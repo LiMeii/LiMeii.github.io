@@ -127,7 +127,8 @@ textarea {
 }
 
 p {
-    margin: 0.9em
+    margin: 0.9em;
+    line-height: 1.9em
 }
 
 .header {

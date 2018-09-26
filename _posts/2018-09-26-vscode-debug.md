@@ -65,11 +65,11 @@ layout: post
 
 
 常见的调试快捷键有：
-    - F5： 继续/停止
-    - F10： 下一步
-    - F11： 调试进某个function
-    - Shift + F11： 从某个调试function里出来
-    - Ctrl + Shift + F5：重启
-    - Shift + F5：结束
+- 1 F5： 继续/停止
+- 2 F10： 下一步
+- 3 F11： 调试进某个function
+- 4 Shift + F11： 从某个调试function里出来
+- 5 Ctrl + Shift + F5：重启
+- 6 Shift + F5：结束
 
 

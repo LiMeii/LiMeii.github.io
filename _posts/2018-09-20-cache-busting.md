@@ -26,13 +26,13 @@ layout: post
 以chrome浏览器为例子，F12打开DevTools到network，可以看到如下图片所示: 加载当前页面有4个requests一共526kb，全是从服务器上下载来。
 
 
-![第一次访问]( https://limeii.github.io/assets/images/posts/issues/cache-firstload.png){:height="100%" width="100%"}
+![第一次访问]( https://limeii.github.io/assets/images/posts/issues/cache-firstload.png){height="100%" width="100%"}
 
 
 接着直接刷新页面，如下图所示，在chrome DevTools中可以看到，2个requests，并且meii.jpg是从memory cache中拿到的。
 
 
-![刷新页面]( https://limeii.github.io/assets/images/posts/issues/cache-refreshload.png){:height="100%" width="100%"}
+![刷新页面]( https://limeii.github.io/assets/images/posts/issues/cache-refreshload.png){height="100%" width="100%"}
 
 
 ```html

@@ -26,7 +26,7 @@ layout: post
 
 
 
-![install chrome extension](https://limeii.github.io/assets/images/posts/tools/tools-debug-install.png){height="100%" width="100%"}
+![install chrome extension](https://limeii.github.io/assets/images/posts/tools/tools-debug-install.png){:height="100%" width="100%"}
 
 
 
@@ -38,7 +38,7 @@ layout: post
 #### 第二步在你的项目里设置lanuch configuration文件
 
 
-![setup launch config](https://limeii.github.io/assets/images/posts/tools/tools-debug-config.png){height="100%" width="100%"}
+![setup launch config](https://limeii.github.io/assets/images/posts/tools/tools-debug-config.png){:height="100%" width="100%"}
 
 
 
@@ -52,7 +52,7 @@ layout: post
 
 #### 第三步调试
 
-![debugging](https://limeii.github.io/assets/images/posts/tools/tools-debug-debuging.png){height="100%" width="100%"}
+![debugging](https://limeii.github.io/assets/images/posts/tools/tools-debug-debuging.png){:height="100%" width="100%"}
 
 
 

@@ -30,6 +30,10 @@ ul {
     list-style: none
 }
 
+li {
+    margin: 1em 0;
+}
+
 table {
     border-collapse: collapse;
     border-spacing: 0

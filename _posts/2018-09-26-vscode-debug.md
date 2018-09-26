@@ -31,8 +31,8 @@ layout: post
 
 
 
-1. 点击最左边工具栏中的 Extensions
-2. 在左上角搜索里输入 Debugger， 然后在搜索结果中找到 Debugger for Chrome 点击 install
+- 1 点击最左边工具栏中的 Extensions
+- 2 在左上角搜索里输入 Debugger， 然后在搜索结果中找到 Debugger for Chrome 点击 install
 
 
 #### 第二步在你的项目里设置lanuch configuration文件
@@ -43,10 +43,10 @@ layout: post
 
 
 
-1. 在VS Code中打开你的项目,点击最左边工具栏中 Debug
-2. 在最左上角选择 launch chrome against localhost
-3. 第二步以后会出现右边的luanch.json文件，这个文件会自动建在你的项目根目录下面：project root folder -> .vscode -> lanuch.json
-4. 按照你调试的需求配置文件中的属性参数
+- 1 在VS Code中打开你的项目,点击最左边工具栏中 Debug
+- 2 在最左上角选择 launch chrome against localhost
+- 3 第二步以后会出现右边的luanch.json文件，这个文件会自动建在你的项目根目录下面：project root folder -> .vscode -> lanuch.json
+- 4 按照你调试的需求配置文件中的属性参数
 
 
 
@@ -56,20 +56,20 @@ layout: post
 
 
 
-1. 点击最左边工具栏中 Debug
-2. 点击最上角绿色 Start Debugging 按钮
-3. 在你的项目中设置断点
-4. 也可以watch 你想要看的某个参数的值
-5. 在开始debugging以后 右上角有调试按钮
+- 1 点击最左边工具栏中 Debug
+- 2 点击最上角绿色 Start Debugging 按钮
+- 3 在你的项目中设置断点
+- 4 也可以watch 你想要看的某个参数的值
+- 5 在开始debugging以后 右上角有调试按钮
 
 
 
 常见的调试快捷键有：
-- F5： 继续/停止
-- F10： 下一步
-- F11： 调试进某个function
-- Shift + F11： 从某个调试function里出来
-- Ctrl + Shift + F5：重启
-- Shift + F5：结束
+    - F5： 继续/停止
+    - F10： 下一步
+    - F11： 调试进某个function
+    - Shift + F11： 从某个调试function里出来
+    - Ctrl + Shift + F5：重启
+    - Shift + F5：结束
 
 

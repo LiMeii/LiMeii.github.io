@@ -23,7 +23,7 @@ layout: post
 如下所示：
 
 
-![treemap img]( https://limeii.github.io/assets/images/posts/webpack-bundle-analyzer.gif){:height="100%" width="100%"}
+![treemap img]( https://limeii.github.io/assets/images/posts/webpack/webpack-bundle-analyzer.gif){:height="100%" width="100%"}
 
 
 在这个树形图片里，会有包含下面的内容：

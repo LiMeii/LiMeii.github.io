@@ -182,7 +182,7 @@ p {
     min-height: 511px
 }
 .github-link {
-    color: #3e8cb7;
+    color: mediumvioletred;
     text-decoration: none;
 }
 .footer {
@@ -199,7 +199,7 @@ p {
     display: flex;
     line-height: 1.7em;
     margin: -0.5em 0 2em 1em;
-    font-size: 1em
+    font-size: 1.09em
 }
 .title-bullet {
     margin: 0 0.3em;
@@ -300,7 +300,7 @@ p {
     font-size: 1.57143em;
     line-height: 1.18182em;
     color: #2d3c48;
-    font-weight: 400;
+    font-weight: 600;
     position: relative;
     left: -1px
 }
@@ -898,7 +898,7 @@ p {
 }
 
 .menu-item-name {
-    font-size: 1.14286em;
+    font-size: 1.4286em;
     line-height: 1.25em;
     margin-top: .07143em;
     margin-bottom: .07143em;

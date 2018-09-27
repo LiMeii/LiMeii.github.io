@@ -5,24 +5,26 @@ html {
 }
 
 pre {
-    margin-left: 1.5em;
     padding: 16px;
     overflow: auto;
     font-size: 100%;
     line-height: 2em;
     background-color: #c2ddef;
     border-radius: 3px;
+    font-family: monospace,monospace;
 }
 code {
     border-radius: 3px;
     display: inline;
     max-width: auto;
     padding: 0;
-    margin: 0;
     overflow: visible;
     line-height: inherit;
     word-wrap: normal;
     background-color: transparent;
+    background: #26293a;
+    font-family: roboto mono,-apple-system,BlinkMacSystemFont,segoe ui,Helvetica,Arial,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol;
+    margin: 3em 0;
 }
 
 ol,

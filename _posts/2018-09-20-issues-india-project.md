@@ -43,7 +43,7 @@ layout: post
 
 
 
-拿到这个源码的时候，动手改之前，跟公司的release team确认了下，整个部署流程现阶段不能改，那就是MVC框架需要保留, index.cshtml 文件也是需要保留。
+拿到这个源码的时候，动手改之前，跟公司的release team确认了下，整个部署流程现阶段不能改，那就是MVC框架需要保留, index.cshtml 文件也需要保留。
 能改的是：
 - 1) webpack 打包方式，需要解决浏览器缓存问题。
 - 2）解决每次build的时候，动态更新index.cshtml文件。

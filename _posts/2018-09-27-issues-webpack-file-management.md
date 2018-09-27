@@ -5,7 +5,7 @@ layout: post
 
 # 如何在webpack build结束后移动dist文件中的文件
 <div class="title-meta">
-    <span><a class="github-link" href="/2018/09/24/webpack.html">问题</a></span>
+    <span><a class="github-link" href="/2018/09/20/issues.html">问题</a></span>
     <span class="title-bullet">•</span>
     <span>Sep 27, 2018</span>
     <span class="title-bullet">•</span>
@@ -33,11 +33,11 @@ filemanager-webpack-plugin这个插件就允许你在build之前或者之后 mov
 #### 用法
 
 先安装插件：
-```js
+```javascript
 npm install filemanager-webpack-plugin --save-dev
 ```
 webpack config 文件里：
-```js
+```javascript
 const FileManagerPlugin = require('filemanager-webpack-plugin');
 
 module.exports = {
@@ -95,7 +95,7 @@ module.exports = {
 ```
 
 ###具体我项目里用到的copy功能：
-```js
+```javascript
   plugins: [
      new HtmlWebpackPlugin({
             template: './src/index.cshtml',

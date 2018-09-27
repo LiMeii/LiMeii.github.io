@@ -5,7 +5,7 @@ layout: post
 
 # 浏览器缓存问题
 <div class="title-meta">
-    <span><a class="github-link" href="/2018/09/24/issues.html">问题</a></span>
+    <span><a class="github-link" href="/2018/09/20/issues.html">问题</a></span>
     <span class="title-bullet">•</span>
     <span>Sep 21, 2018</span>
     <span class="title-bullet">•</span>

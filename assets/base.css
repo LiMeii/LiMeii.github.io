@@ -9,11 +9,11 @@ pre {
     font-size: 1em
 }
 code {
-    font-size: 16px;
+    font-size: 1em;
     color: #384454;
     background: #26293a;
     font-family: roboto mono, -apple-system, BlinkMacSystemFont, segoe ui, Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol;
-    margin: 60px 0;
+    margin: 2em 0;
     -webkit-border-radius: 5px;
     border-radius: 5px
 }
@@ -28,10 +28,9 @@ pre,
 }
 
 pre code {
-    padding: 50px;
+    padding: 1.9em;
     display: block;
     color: #fff;
-    overflow-y: scroll;
     -webkit-overflow-scrolling: touch
 }
 

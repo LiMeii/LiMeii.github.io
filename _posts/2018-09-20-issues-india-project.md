@@ -5,7 +5,7 @@ layout: post
 
 # 印度人的代码
 <div class="title-meta">
-    <span><a class="github-link" href="/2018/09/24/webpack.html">问题</a></span>
+    <span><a class="github-link" href="/2018/09/20/issues.html">问题</a></span>
     <span class="title-bullet">•</span>
     <span>Sep 20, 2018</span>
     <span class="title-bullet">•</span>

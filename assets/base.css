@@ -5,26 +5,34 @@ html {
 }
 
 pre {
-    padding: 16px;
-    overflow: auto;
-    font-size: 100%;
-    line-height: 2em;
-    background-color: #c2ddef;
-    border-radius: 3px;
-    font-family: monospace,monospace;
+    font-family: monospace, monospace;
+    font-size: 1em
 }
 code {
-    border-radius: 3px;
-    display: inline;
-    max-width: auto;
-    padding: 0;
-    overflow: visible;
-    line-height: inherit;
-    word-wrap: normal;
-    background-color: transparent;
+    font-size: 16px;
+    color: #384454;
     background: #26293a;
-    font-family: roboto mono,-apple-system,BlinkMacSystemFont,segoe ui,Helvetica,Arial,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol;
-    margin: 3em 0;
+    font-family: roboto mono, -apple-system, BlinkMacSystemFont, segoe ui, Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol;
+    margin: 60px 0;
+    -webkit-border-radius: 5px;
+    border-radius: 5px
+}
+
+.highlight pre,
+pre,
+.highlight .hll {
+    white-space: pre;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0
+}
+
+pre code {
+    padding: 50px;
+    display: block;
+    color: #fff;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch
 }
 
 ol,

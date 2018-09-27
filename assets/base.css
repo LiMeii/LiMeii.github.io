@@ -8,9 +8,9 @@ pre {
     margin-left: 1.5em;
     padding: 16px;
     overflow: auto;
-    font-size: 85%;
-    line-height: 1.45;
-    background-color: #b0b3b5;
+    font-size: 100%;
+    line-height: 2em;
+    background-color: #c2ddef;
     border-radius: 3px;
 }
 code {
@@ -132,7 +132,7 @@ textarea {
 
 p {
     margin: 0.9em;
-    line-height: 1.9em
+    line-height: 2.5em
 }
 
 .header {

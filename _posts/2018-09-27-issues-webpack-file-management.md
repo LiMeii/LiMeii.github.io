@@ -19,9 +19,9 @@ layout: post
 在现有的这个框架里，每次webpack打包生成的bunlde文件都是 app.bunlde.js / vendor.bundle.js / polyfills.bunlde.js,这个会有 [缓存问题](https://limeii.github.io/2018/09/21/issues-cache-busting.html)。
 
 为了解决缓存问题，每次如果对应的bundle文件里面有代码改动，利用webpack contenthash 会生成唯一的hashcode放在bundle文件名里，比如： app.7e90eca5a2a376746ee7.bundle.js.
-bundle文件名不一样，会强制浏览器去拿最新的代码，从而解决缓存问题。
+bundle，文件名不一样，会强制浏览器去拿最新的代码，从而解决缓存问题。
 
-那么在index.cshtml文件里，每次引用的bundle文件也会不一样，所有这个index文件不能像之前一样写死在MVX里面。需要在build结束之后，copy最新的index.cshtml文件去替换MVX框架里对应的文件。
+那么在index.cshtml文件里，每次引用的bundle文件也会不一样，所有这个index文件不能像之前一样写死在MVC里面。需要在build结束之后，copy最新的index.cshtml文件去替换MVC框架里对应的文件。
 
 filemanager-webpack-plugin这个插件就可以用来在build结束之后对文件进行处理。
 
@@ -92,7 +92,7 @@ module.exports = {
 }
 ```
 
-### 具体我项目里用到的copy功能：
+#### 具体我项目里用到的copy功能：
 ```javascript
   plugins: [
      new HtmlWebpackPlugin({

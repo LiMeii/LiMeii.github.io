@@ -12,11 +12,11 @@ layout: post
     <span>by <a class="github-link" href="http://github.com/limeii">Mei</a></span>
 </div>
 
-在[印度人代码](https://limeii.github.io/2018/09/21/issues-india-project.html)这篇文章中有提到需要在每次webpack build的时候需要每次都动态的去替换MVC中的index.cshtml文件。
+在 [印度人代码](https://limeii.github.io/2018/09/20/issues-india-project.html) 这篇文章中有提到需要在每次webpack build的时候需要每次都动态的去替换MVC中的index.cshtml文件。
 
 #### 为什么要替换index.html文件
 
-在现有的这个框架里，每次webpack打包生成的bunlde文件都是 app.bunlde.js / vendor.bundle.js / polyfills.bunlde.js,这个会有[缓存问题](https://limeii.github.io/2018/09/21/issues-cache-busting.html)。
+在现有的这个框架里，每次webpack打包生成的bunlde文件都是 app.bunlde.js / vendor.bundle.js / polyfills.bunlde.js,这个会有 [缓存问题](https://limeii.github.io/2018/09/21/issues-cache-busting.html)。
 
 为了解决缓存问题，每次如果对应的bundle文件里面有代码改动，利用webpack contenthash 会生成唯一的hashcode放在bundle文件名里，比如： app.7e90eca5a2a376746ee7.bundle.js.
 bundle文件名不一样，会强制浏览器去拿最新的代码，从而解决缓存问题。

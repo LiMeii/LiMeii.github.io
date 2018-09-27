@@ -10,7 +10,7 @@ pre {
     overflow: auto;
     font-size: 85%;
     line-height: 1.45;
-    background-color: #f6f8fa;
+    background-color: #b0b3b5;
     border-radius: 3px;
 }
 code {
@@ -184,6 +184,10 @@ p {
 .github-link {
     color: mediumvioletred;
     text-decoration: none;
+}
+.content-link {
+    color: mediumvioletred;
+    font-size: 1.15em;
 }
 .footer {
     background: #f4f5f6;

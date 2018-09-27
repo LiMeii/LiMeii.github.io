@@ -51,25 +51,11 @@ npm install --save-dev webpack-bundle-analyzer
 
 然后在webpack config文件里面加上以下代码
  ```javascript
- 
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-module.exports = {
-  entry: {
-	  //
-  },
-  resolve: {
-    extensions: ['.ts', '.js', '.json', '.css']
-  },
-  output: {
-	  //
-  },
-
-  module: {
-      //
-  },
+module.exports = { 
   plugins: [
-     //
+
      new BundleAnalyzerPlugin()
   ]
 };

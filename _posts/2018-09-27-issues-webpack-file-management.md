@@ -41,8 +41,6 @@ webpack config 文件里：
 const FileManagerPlugin = require('filemanager-webpack-plugin');
 
 module.exports = {
-  ...
-  ...
   plugins: [
     new FileManagerPlugin({
       onEnd: {
@@ -94,7 +92,7 @@ module.exports = {
 }
 ```
 
-###具体我项目里用到的copy功能：
+### 具体我项目里用到的copy功能：
 ```javascript
   plugins: [
      new HtmlWebpackPlugin({

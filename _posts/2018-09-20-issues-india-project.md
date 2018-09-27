@@ -16,7 +16,7 @@ layout: post
 
 做项目最痛苦的大概就是从印度人手里接手做到一半的项目了。
 
-看到项目源码的时候是非常懵的，为了我司angular的要求，印度人强行把angular的代码包在.NET MVC里面，先用webpack打包生成好bundle文件，然后通过.NET Nuget编译打包上线。
+看到项目源码的时候是非常懵的，为了满足我司angular的要求，印度人强行把angular的代码包在.NET MVC里面，先用webpack打包生成好bundle文件，然后通过.NET Nuget编译打包上线。
 
 #### 原来框架的大体结构是：
 
@@ -43,7 +43,7 @@ layout: post
 
 
 
-拿到这个源码的时候，动手改之前，跟公司的release team确认了下，整个部署流程现阶段不能改，那就是MVC框架需要保留, index.cshtml文件也是需要保留。
+拿到这个源码的时候，动手改之前，跟公司的release team确认了下，整个部署流程现阶段不能改，那就是MVC框架需要保留, index.cshtml 文件也是需要保留。
 能改的是：
 - 1) webpack 打包方式，需要解决浏览器缓存问题。
 - 2）解决每次build的时候，动态更新index.cshtml文件。

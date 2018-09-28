@@ -205,8 +205,13 @@ p {
     display: -ms-flexbox;
     display: flex;
     line-height: 1.7em;
-    margin: -0.5em 0 2em 1em;
+    margin: -0.5em 0 2em 0.3em;
     font-size: 1.09em
+}
+.title-category-img {
+    height: 1.1em;
+    margin-right: 0.8em;
+    margin-top: 0.3em;
 }
 .title-bullet {
     margin: 0 0.6em;

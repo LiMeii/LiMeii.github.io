@@ -5,6 +5,7 @@ layout: post
 
 # 如何在webpack build结束后移动dist文件中的文件
 <div class="title-meta">
+    <span><img class="itle-category-img" src="../../../assets/images/categories/bug.svg" alt="issue"></span>
     <span><a class="github-link" href="/2018/09/20/issues.html">问题</a></span>
     <span class="title-bullet">•</span>
     <span>Sep 27, 2018</span>

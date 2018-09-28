@@ -10,7 +10,7 @@ layout: post
     <span class="title-bullet">•</span>
     <span>Sep 20, 2018</span>
     <span class="title-bullet">•</span>
-    <span>by <a class="github-link" href="http://github.com/limeii">Mei</a></span>
+    <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
 </div>
 
 之前从印度外包公司把他们做到一半的一个angular的项目交接给我们做，这个项目是基于 angular4.2.4 和 webapck3.10.0做的。

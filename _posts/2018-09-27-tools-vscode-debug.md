@@ -11,7 +11,7 @@ layout: post
     <span class="title-bullet">•</span>
     <span>Sep 27, 2018</span>
     <span class="title-bullet">•</span>
-    <span>by <a class="github-link" href="http://github.com/limeii">Mei</a></span>
+    <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
 </div>
 
 最开始用Angular5的时候，开发工具用的是VS code，不知道要怎么用chrome调试typescript的代码，看了VS Code官方文档，才知道具体配置方案。

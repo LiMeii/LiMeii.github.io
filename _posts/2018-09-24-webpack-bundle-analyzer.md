@@ -10,7 +10,7 @@ layout: post
     <span class="title-bullet">•</span>
     <span>Sep 24, 2018</span>
     <span class="title-bullet">•</span>
-    <span>by <a class="github-link" href="http://github.com/limeii">Mei</a></span>
+    <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
 </div>
 
 

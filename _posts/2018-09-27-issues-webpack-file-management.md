@@ -10,7 +10,7 @@ layout: post
     <span class="title-bullet">•</span>
     <span>Sep 27, 2018</span>
     <span class="title-bullet">•</span>
-    <span>by <a class="github-link" href="http://github.com/limeii">Mei</a></span>
+    <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
 </div>
 
 在 [印度人代码](https://limeii.github.io/2018/09/20/issues-india-project.html) 这篇文章中有提到需要在每次webpack build的时候需要每次都动态的去替换MVC中的index.cshtml文件。

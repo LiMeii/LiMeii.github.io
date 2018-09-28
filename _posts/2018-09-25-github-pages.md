@@ -81,7 +81,7 @@ theme: minima
 - _posts 这个目录里放着所有的blog，都是用markdown写的，一定要按照 年-月-日-文章名 这个规则来命名。
 ![github pages](https://limeii.github.io/assets/images/posts/git/git-pages-post.png){:height="100%" width="100%"}
 
-- _includes 比如页面之间有共用的模块，比如 header footer 放在这个目录下，在其他页面可以通过{% include footer.html %} 直接引用。
+- _includes 比如页面之间有共用的模块，比如 header footer 放在这个目录下，在其他页面可以通过"{% include footer.html %}" 直接引用。
 
 #### 第五步，在首页里把所有的文章都列出来
 按一下的语法就把_posts下面所有的文title都列出来了，并且点击对应的title会跳转到对应文章。

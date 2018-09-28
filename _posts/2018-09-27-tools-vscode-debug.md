@@ -21,7 +21,7 @@ layout: post
 关于更多调试方法，比如attach DevTools到浏览器tab从而进行调试，你可以参考官方文档 [VS Code Debugging](https://code.visualstudio.com/docs/editor/debugging)
 
 
-#### 第一步在VS Code里装 Debugger for Chrom 小插件
+#### 第一步，在VS Code里装 Debugger for Chrom 小插件
 
 
 
@@ -34,7 +34,7 @@ layout: post
 - 2 在左上角搜索里输入 Debugger， 然后在搜索结果中找到 Debugger for Chrome 点击 install
 
 
-#### 第二步在你的项目里设置lanuch configuration文件
+#### 第二步，在你的项目里设置lanuch configuration文件
 
 
 ![setup launch config](https://limeii.github.io/assets/images/posts/tools/tools-debug-config.png){:height="100%" width="100%"}
@@ -49,7 +49,7 @@ layout: post
 
 
 
-#### 第三步调试
+#### 第三步，调试
 
 ![debugging](https://limeii.github.io/assets/images/posts/tools/tools-debug-debuging.png){:height="100%" width="100%"}
 

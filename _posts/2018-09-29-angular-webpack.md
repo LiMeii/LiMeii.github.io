@@ -1,5 +1,5 @@
 ---
-title: angular lazy loading
+title: angular webpack
 layout: post
 ---
 

@@ -1198,7 +1198,7 @@ p {
         margin-bottom: 1.21429em
     }
     .profile-name {
-        line-height: 0;
+        line-height: 1em;
         margin-left: 0;
         min-height: 0;
         text-align: center

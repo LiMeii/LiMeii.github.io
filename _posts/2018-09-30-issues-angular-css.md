@@ -45,7 +45,7 @@ google了下，在GitHub上发现angular的开发者是这么回复这个问题�
   styles:[require('./app.component.css').toString()]
 ```
 
-### 第三者方式， 在'style-loader', 'css-loader'的前面在加一个'to-string-loader'
+### 第三种方式， 在'style-loader', 'css-loader'的前面在加一个'to-string-loader'
 
 ```js
 { test: /\.css$/, use: ['to-string-loader', 'style-loader', 'css-loader'] }

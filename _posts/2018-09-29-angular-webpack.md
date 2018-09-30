@@ -46,7 +46,7 @@ layout: post
 
 用angular-cli内置的webpack打包方式，不会把内置webpack配置暴露给用户，不让用户改相关代码，也就是说不能加你想要用的plugin loader，也不能更改bunlde文件命名和优化bundle文件大小等等。
 
-就是没办法客户化，angular官方说明就是不会开放angular-cli的配置，但是如果客户化webpack，就提供了ng eject这个命令，把webpack.config文件暴露出来，一旦eject就不能再用angular-cli，编译打包就完全让用户自己控制。
+就是没办法客户化，angular官方不开放angular-cli的配置，如果需要客户化webpack，就提供了ng eject这个命令，把webpack.config文件暴露出来，一旦eject就不能再用angular-cli，编译打包就完全让用户自己控制。
 
 接下来就教你如何在angular中搭建你自己的webpack打包方式。
 
@@ -92,7 +92,7 @@ module.exports = function(env){
     "build:dev": "webpack --env=dev --progress --profile --colors"
   }
 ```
-然后在terminal里输入 'rum run start' 能在本地把真个项目run起来，每次改动 ts css文件会自动编译刷新页面，即时就能看到页面变化。
+然后在terminal里输入 'rum run start' 能在本地把整个项目run起来，每次改动 ts css html 文件会自动编译刷新页面，即时就能看到页面变化。
 相对于angularjs开发效率提高了很多，angularjs开发环境下是没办法即时自动编译，需要每次手动跑命令行。
 
 执行'npm run build:dev'这个命令行，会在根目录下生成build-dev文件目录，在这个目录下是最终开发环境下编译打包后的bundle文件。

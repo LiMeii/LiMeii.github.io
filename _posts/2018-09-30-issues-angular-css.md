@@ -19,19 +19,19 @@ layout: post
 
 ![css error]( https://limeii.github.io/assets/images/posts/issues/issues-angular-css-builderror.png){:height="100%" width="100%"}
 
-这个问题说是在webpack打包css的时候，'style-loader', 'css-loader'这些loader不能正常识别那些css文件是global引用的还是在compoent单独引用，导致这个问题。
+这个问题说的是在webpack打包css的时候，'style-loader' 'css-loader'这些loader不能正常识别哪些css文件是global引用的还是在compoent单独引用的，会导致这个问题。
 
 按照angular官方的best practice，项目的目录结构是如下：
 
 ![css error]( https://limeii.github.io/assets/images/posts/issues/issues-angular-project-structure.png){:height="100%" width="100%"}
 
-在componet里面通过styleUrls可以找到对应的css文件，用angular-cli的时候编译都问题，但是用自己配置的webpack打包的时候就会出现上面的问题。
+在componet里面通过styleUrls可以找到对应的css文件，用angular-cli的时候编译都没问题，但是用自己配置的webpack打包的时候就会出现上面的问题。
 
-在GitHub上发现angular的开发者是这么回复这个问题的：
+google了下，在GitHub上发现angular的开发者是这么回复这个问题的：
 
 ![css error feedback]( https://limeii.github.io/assets/images/posts/issues/issues-angular-csserror-feedback.png){:height="100%" width="100%"}
 
-也就是目前没办法修复这个问题，你们自己找黑魔法去修吧......
+回复是目前没办法修复这个问题，你们自己找黑魔法去修吧......
 
 也确实有好多方法可以修复这个问题：
 

@@ -17,7 +17,7 @@ layout: post
 ### angular-cli
 按照[Angular官方教程](https://angular.io/tutorial)搭建一个Angular项目，默认都是先安装angula-cli，再用命令行'ng new angular-project-name'会自动生成一个符合angular best practice的项目， 如下所示：
 
-![angular seed project]]( https://limeii.github.io/assets/images/posts/angular/angular-seed-project.png){:height="100%" width="100%"}
+![angular seed project]( https://limeii.github.io/assets/images/posts/angular/angular-seed-project.png){:height="100%" width="100%"}
 
 ```
 我现在用的angular-cli的版本是1.6.0，angular是5.0.0
@@ -30,7 +30,7 @@ layout: post
 
 首先在terminal里执行 'ng eject'
 
-![angular eject]]( https://limeii.github.io/assets/images/posts/angular/angular-seedproject-eject.png){:height="100%" width="100%"}
+![angular eject]( https://limeii.github.io/assets/images/posts/angular/angular-seedproject-eject.png){:height="100%" width="100%"}
 
 ```
 需要注意的是 Angular6 以上版本目前不支持ng eject，官方文档说是后续会再开放。
@@ -39,7 +39,7 @@ layout: post
 
 执行eject命令以后，会在根目录下新加 webpack.config.js 文件，这个是angular-cli默认的一个webpack配置，大致的内容如下：
 
-![angular default webpack]]( https://limeii.github.io/assets/images/posts/angular/angular-default-webpack.png){:height="100%" width="100%"}
+![angular default webpack]( https://limeii.github.io/assets/images/posts/angular/angular-default-webpack.png){:height="100%" width="100%"}
 
 用angular-cli内置的webpack打包方式，不会把内置webpack配置暴露给用户，不让用户改相关代码，也就是说不能加你想要用的plugin loader，也不能更改bunlde文件命名和优化bundle文件大小等等。
 

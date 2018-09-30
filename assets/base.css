@@ -1487,7 +1487,7 @@ p {
         text-align: center
     }
     .profile-name {
-        line-height: 0;
+        line-height: 1em;
         min-height: 0
     }
     .profile-name h1 {
@@ -1664,7 +1664,7 @@ p {
         display: inline;
         float: right;
         margin-right: 0;
-        #margin-left: -1em;
+        margin-left: -1em;
         display: inline
     }
     .twitter-columns .module-twitter {
@@ -1770,7 +1770,7 @@ p {
     .twitter-columns .profile-module:nth-child(n+2) {
         float: right;
         margin-right: 0;
-        #margin-left: -20px;
+        margin-left: -20px;
         display: inline
     }
     .profile-logo {
@@ -1786,7 +1786,7 @@ p {
         width: 48.25175%;
         float: right;
         margin-right: 0;
-        #margin-left: -20px;
+        margin-left: -20px;
         display: inline;
         -webkit-box-orient: vertical;
         -moz-box-orient: vertical;
@@ -2040,7 +2040,7 @@ p {
         width: 48.61111%;
         float: right;
         margin-right: 0;
-        #margin-left: -20px;
+        margin-left: -20px;
         display: inline;
         -webkit-box-orient: vertical;
         -moz-box-orient: vertical;
@@ -2301,7 +2301,7 @@ screen and (min-width:64em) and (max-height:68.6875em) {
         width: 48.84793%;
         float: right;
         margin-right: 0;
-        #margin-left: -20px;
+        margin-left: -20px;
         display: inline;
         -webkit-box-orient: vertical;
         -moz-box-orient: vertical;
@@ -2535,7 +2535,7 @@ screen and (min-width:64em) and (max-height:68.6875em) {
         width: 36.42612%;
         float: right;
         margin-right: 0;
-        #margin-left: -20px;
+        margin-left: -20px;
         display: inline;
         -webkit-box-orient: vertical;
         -moz-box-orient: vertical;

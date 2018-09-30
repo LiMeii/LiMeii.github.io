@@ -14,7 +14,7 @@ layout: post
     <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
 </div>
 
-我的GitHub Pages所有的文章都是markdown写的，本地不想在本地安装ruby把Jekyll在本地run起来preview最后page的效果图。
+我的GitHub Pages所有的文章都是markdown写的，不想在本地安装ruby把Jekyll run起来预览最后page的效果图。
 
 但是每次写完直接上传文件到GitHub上，有点小改动就得不停的提交代码，很麻烦。
 
@@ -24,4 +24,6 @@ layout: post
 
 ![markdown preview](https://limeii.github.io/assets/images/posts/tools/tools-markdown-preview.png){:height="100%" width="100%"}
 
-点击安装以后，快捷键 Ctrl+Shift+V就能预览啦。
+点击安装以后，预览的快捷键如下：
+
+![markdown](https://limeii.github.io/assets/images/posts/tools/tools-markdown-keys.png){:height="100%" width="100%"}

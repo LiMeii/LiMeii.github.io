@@ -44,9 +44,9 @@ layout: post
 
 ![angular default webpack]( https://limeii.github.io/assets/images/posts/angular/angular-default-webpack.png){:height="100%" width="100%"}
 
-用angular-cli内置的webpack打包方式，不会把内置webpack配置暴露给用户，不让用户改相关代码，也就是说不能加你想要用的plugin loader，也不能更改bunlde文件命名和优化bundle文件大小等等。
+用angular-cli内置的webpack打包方式，不让用户改webpack配置代码，也就是说不能加你想要用的plugin loader，也不能更改bunlde文件命名和优化bundle文件大小等等。
 
-就是没办法客户化，angular官方不开放angular-cli的配置，如果需要客户化webpack，就提供了ng eject这个命令，把webpack.config文件暴露出来，一旦eject就不能再用angular-cli，编译打包就完全让用户自己控制。
+也就是说没办法客户化，如果需要客户化webpack，提供了ng eject这个命令，把webpack.config文件暴露出来，一旦eject就不能再用angular-cli，编译打包就完全让用户自己控制。
 
 接下来就教你如何在angular中搭建你自己的webpack打包方式。
 

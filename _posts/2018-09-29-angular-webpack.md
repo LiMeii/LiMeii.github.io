@@ -17,7 +17,10 @@ layout: post
 ### angular-cli
 按照[Angular官方教程](https://angular.io/tutorial)搭建一个Angular项目，默认都是先安装angula-cli，再用命令行'ng new angular-project-name'会自动生成一个符合angular best practice的项目， 如下所示：
 
+
 ![angular seed project]( https://limeii.github.io/assets/images/posts/angular/angular-seed-project.png){:height="100%" width="100%"}
+
+源码可以在 [angular-seed-project](https://github.com/LiMeii/angular-seed-project) 查看。
 
 ```
 我现在用的angular-cli的版本是1.6.0，angular是5.0.0
@@ -79,6 +82,35 @@ module.exports = function(env){
 
 ### 第二步，创建本地开发用的打包方式，在根目录下新增一个webpack.dev.js文件
 
-```js
+关于webpack.dev完整代码可以查看 [webpack.dev.js](https://github.com/LiMeii/angular-seed-project/blob/master/webpack.dev.js)
 
+### 第三步，在package.json文件script节点里增加命令
+
+```js
+ "scripts": {
+    "start": "webpack-dev-server --env=dev --hot --inline --port 3000 --open\"",
+    "build:dev": "webpack --env=dev --progress --profile --colors"
+  }
 ```
+然后在terminal里输入 'rum run start' 能在本地把真个项目run起来，每次改动 ts css文件会自动编译刷新页面，即时就能看到页面变化。
+相对于angularjs开发效率提高了很多，angularjs开发环境下是没办法即时自动编译，需要每次手动跑命令行。
+
+执行'npm run build:dev'这个命令行，会在根目录下生成build-dev文件目录，在这个目录下是最终开发环境下编译打包后的bundle文件。
+
+![angular build dev]( https://limeii.github.io/assets/images/posts/angular/angular-build-dev-file.png){:height="100%" width="100%"}
+
+
+### 第四步，创建PRODUCTION的打包方式，在根目标下新增一个webpack.prod.js文件
+
+关于webpack.prod完整代码可以查看 [webpack.prod.js](https://github.com/LiMeii/angular-seed-project/blob/master/webpack.prod.js)
+
+需要在package.json文件script节点下加以下命令：
+
+```js
+ "build:prod": "webpack --env=prod --progress --profile --colors"
+```
+然后在terminal中执行'npm run build:prod'这个命令行，在根目录节点下生成dis文件目录，这个目录包含最终发布到PROD的bundle文件。
+
+![angular build prod]( https://limeii.github.io/assets/images/posts/angular/angular-build-prod-file.png){:height="100%" width="100%"}
+
+好啦，现在就把 Angular+Webpack 项目搭起来啦。

@@ -18,13 +18,13 @@ layout: post
 
 在打开浏览器访问某一个网站的时候，要从服务器下载 bundle/chunk 等文件。如果文件过大或过多，会导致网站响应过慢。
 
-lazy loading，翻译到中文就是懒加载，其实就是按需加载。
+**lazy loading**，翻译到中文就是懒加载，其实就是按需加载。
 
 最开始访问某一个网站index页面的时候，只下载跟index相关的 bundle/chunk 等文件。之后路由到新的页面，再按需下载新页面需要的文件，大大的提高了首页访问的性能，但是访问新页面的时候还是需要时间下载新文件。
 
 这样就防止在访问大型网站首页的时候，下载文件过大或过多，导致网站首页响应时间过长，降低用户体验。
 
-preloading，翻译到中文是预加载，这种方式的意思，一旦网站被访问，会去下载所有的文件。
+**preloading**，翻译到中文是预加载，这种方式的意思，一旦网站被访问，会去下载所有的文件。
 
 不同的是，用户访问网站的时候，最先加载网站所需要的初始化的文件，然后再后台下载其他JS文件。
 
@@ -36,7 +36,7 @@ preloading这种方式在用户切换模块也就是访问新页面之前就把�
 
 ### 如何保证核心bundle文件越小越好
 
-通过代码切割。
+**通过代码切割**
 
 
 什么是代码切割？在代码打包过程中，可以把最终bundle文件中，独立的或者公用的代码抽取出来，放在chunk文件中，这就是代码切割。有了抽取出来的chunk文件，就可以实现lazy loading了。
@@ -47,7 +47,7 @@ preloading这种方式在用户切换模块也就是访问新页面之前就把�
 ### 如何在angular中实现lazy loading
 在angular中，lazy loading是跟路由一起实现的。也就是在代码打包过程中，把每个路由对应的模块都打包成独立的chunk文件，最终就可以实现用户点击导航到新页面的时候按需加载对应的chunk文件。
 
-- 1 在webpack中配置代码切割
+#### 第一步，在webpack中配置代码切割
 为了实现按照路由切割代码，我们需要用到 [angular-router-loader](https://www.npmjs.com/package/angular-router-loader) 或者是 [ng-router-loader](https://www.npmjs.com/package/ng-router-loader)。 以 angular-router-loader 为例，需要在webpack config文件中加如下代码：
 
 ```js
@@ -70,7 +70,7 @@ preloading这种方式在用户切换模块也就是访问新页面之前就把�
 ```
 这种配置，chunk最后的名字会是 0.chunk.js 1.chunk.js 2.chunk.js ......
 
-- 2 配置路由
+#### 第二步，配置路由
 ```
 比如项目启动模块是 AppModule
 业务模块分别是：DashboardModule SettingsModule ReportsModule
@@ -120,7 +120,7 @@ preloading这种方式在用户切换模块也就是访问新页面之前就把�
     ];
 ```
 
-这样在build结束以后，除了bundle文件以后，会有三个chunk文件分别是 0.chunk.js，1.chunk.js，2.chunk.js。这样就实现了按需加载。
+这样在build结束以后，除了bundle文件以外，会有三个chunk文件分别是 0.chunk.js，1.chunk.js，2.chunk.js。这样就实现了按需加载。
 
 ```
 完整代码可以在 [angular-seed-project](https://github.com/LiMeii/angular-seed-project) 中查看。
@@ -172,7 +172,11 @@ angular中默认只有PreloadAllModules这个选择，如果需要预加载一�
 
     export const ROUTES: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
-    { path: 'dashboard', loadChildren: '../dashboard/dashboard.module#DashboardModule',data:{preload:true} },
+    { 
+        path: 'dashboard', 
+        loadChildren: '../dashboard/dashboard.module#DashboardModule',
+        data:{preload:true} 
+    },
     { path: 'settings', loadChildren: '../settings/settings.module#SettingsModule' },
     { path: 'reports', loadChildren: '../reports/reports.module#ReportsModule' }
     ];

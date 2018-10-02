@@ -122,9 +122,9 @@ preloading这种方式在用户切换模块也就是访问新页面之前就把�
 
 这样在build结束以后，除了bundle文件以外，会有三个chunk文件分别是 0.chunk.js，1.chunk.js，2.chunk.js。这样就实现了按需加载。
 
-```
+
 完整代码可以在 [angular-seed-project](https://github.com/LiMeii/angular-seed-project) 中查看。
-```
+
 ### 如何在angular中实现preloading
 在angular中，[PreloadAllModules](https://angular.io/api/router/PreloadAllModules)这个功能可以用来实现预加载所有的文件，一旦访问网页就会下载所有的文件。
 实现代码如下：

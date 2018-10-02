@@ -13,7 +13,7 @@ layout: post
     <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
 </div>
 
-之前从印度外包公司把他们做到一半的一个angular的项目交接给我们做，这个项目是基于 angular4.2.4 和 webapck3.10.0做的。
+之前公司把放在印度外包的一个做到一半的angular项目拿回来，这个项目是基于 angular4.2.4 和 webapck3.10.0做的。
 
 做项目最痛苦的大概就是从印度人手里接手做到一半的项目了。
 
@@ -21,14 +21,14 @@ layout: post
 
 #### 原来框架的大体结构是：
 
-- 1) 整个 angular 前端代码放在 .NET MVC project下面的一个folder里
-- 2) 项目 index 页面是 .NET 里的 index.cshtml
-- 3) 项目所有 html/CSS/translation json/imgs 文件放在angular root 文件夹之外的MVC project里
-- 4) 项目跑起来的一个流程是：
-    - a) webpack build，这个过程只打包compoent/service typescript文件，最后生成 app.bunlde.js / vendor.bundle.js / polyfills.bunlde.js 还有一些chunk文件
-    - b) 在MVC的.csproj文件里，把webpack没有打包的 html/CSS/JSON/imgs文件手动include到MVC project中。
-    - c) 在MVC的 index.cshtml文件里，手动引用 css/bundle文件。
-    - d) 最后是编译MVC Nuget，发布项目。
+1) 整个 angular 前端代码放在 .NET MVC project下面的一个folder里
+2) 项目 index 页面是 .NET 里的 index.cshtml
+3) 项目所有 html/CSS/translation json/imgs 文件放在angular root 文件夹之外的MVC project里
+4) 项目跑起来的一个流程是：
+- a) webpack build，这个过程只打包compoent/service typescript文件，最后生成 app.bunlde.js / vendor.bundle.js / polyfills.bunlde.js 还有一些chunk文件
+- b) 在MVC的.csproj文件里，把webpack没有打包的 html/CSS/JSON/imgs文件手动include到MVC project中。
+- c) 在MVC的 index.cshtml文件里，手动引用 css/bundle文件。
+- d) 最后是编译MVC Nuget，发布项目。
 
 
 

@@ -25,9 +25,9 @@ layout: post
 ```
 我现在用的angular-cli的版本是1.6.0，angular是5.0.0
 ```
-然后直接跑'ng serve'就把项目跑起来了，直接用angluar-cli是不是很方便直接，对初学者也很友好，这个过程中都不需要配置webpack。
+然后直接跑'ng serve'就把项目跑起来了，用angluar-cli是不是很方便直接，对初学者也很友好，这个过程中都不需要配置webpack。
 
-其实angular-cli打包这一块的代码，里面用的也是webpack，它把webpack包了一下，按照官方的说法是为了让初学者快速入门，因为有些初学者可能没用过webpack，再让他们一开始既要学习angular又要熟悉webpack，这增加了学习曲线。
+其实angular-cli打包这一块的代码，里面源码用的也是webpack，它把webpack包了一下，按照官方的说法是为了让初学者快速入门，因为有些初学者可能没用过webpack，再让他们一开始既要学习angular又要熟悉webpack，这增加了学习曲线。
 
 默认情况下，angular没有把webpack暴露给用户，为了查看angular内置的webpack配置文件，我们需要把angular-cli eject出去。
 
@@ -37,7 +37,7 @@ layout: post
 
 ```
 需要注意的是 Angular6 以上版本目前不支持ng eject，官方文档说是后续会再开放。
-把angular-cli eject 以后就不能直接在用ng的命令了，需要在package.json中的script配置你自己的命令。
+把angular-cli eject 以后就不能再用ng的命令了，需要在package.json中的script配置你自己的命令。
 ```
 
 执行eject命令以后，会在根目录下新加 webpack.config.js 文件，这个是angular-cli默认的一个webpack配置，大致的内容如下：
@@ -46,7 +46,7 @@ layout: post
 
 用angular-cli内置的webpack打包方式，不让用户改webpack配置代码，也就是说不能加你想要用的plugin loader，也不能更改bunlde文件命名和优化bundle文件大小等等。
 
-也就是说没办法客户化，如果需要客户化webpack，提供了ng eject这个命令，把webpack.config文件暴露出来，一旦eject就不能再用angular-cli，编译打包就完全让用户自己控制。
+如果需要写你自己的webpack，官方提供了ng eject这个命令，把webpack.config文件暴露出来，一旦eject就不能再用angular-cli，编译打包就完全让用户自己控制。
 
 接下来就教你如何在angular中搭建你自己的webpack打包方式。
 
@@ -54,7 +54,7 @@ layout: post
 
 #### 第一步，在src目录下新增一个vendor.ts文件，这个文件主要是用来引用第三方library，比如node_modules下面的library
 
-在vendor文件里improt第三方library默认是从node_modules目录下找，所以如果是node_modules里面的library，那么引用路径node_modules之前都可以省略
+在vendor文件里improt第三方library默认是从node_modules目录下找，所以如果是node_modules里面的library，那么node_modules之前的路径都可以省略
 
 ```ts
 //vendor.ts
@@ -100,7 +100,7 @@ module.exports = function(env){
 ![angular build dev]( https://limeii.github.io/assets/images/posts/angular/angular-build-dev-file.png){:height="100%" width="100%"}
 
 
-### 第五步，创建PRODUCTION的打包方式，在根目标下新增一个webpack.prod.js文件
+### 第五步，创建Production的打包方式，在根目标下新增一个webpack.prod.js文件
 
 关于webpack.prod完整代码可以查看 [webpack.prod.js](https://github.com/LiMeii/angular-seed-project/blob/master/webpack.prod.js)
 
@@ -109,7 +109,7 @@ module.exports = function(env){
 ```js
  "build:prod": "webpack --env=prod --progress --profile --colors"
 ```
-然后在terminal中执行'npm run build:prod'这个命令行，在根目录节点下生成dis文件目录，这个目录包含最终发布到PROD的bundle文件。
+然后在terminal中执行'npm run build:prod'这个命令行，在根目录节点下生成dist文件目录，这个目录包含最终发布到PROD的bundle文件。
 
 ![angular build prod]( https://limeii.github.io/assets/images/posts/angular/angular-build-prod-file.png){:height="100%" width="100%"}
 

@@ -16,7 +16,7 @@ layout: post
 在angular2以上的版本，提供了lazy loading / preloading 的功能，防止大型网站在加载首页时间过长，降低用户体验。
 
 
-在 [angular lazy loading 和 preloading]() 这篇文章解释了lazy loading 和 preloading原理和实现方式。
+在 [angular lazy loading 和 preloading](/2018/09/30/angular-lazy-loading.html) 这篇文章解释了lazy loading 和 preloading原理和实现方式。
 
 
 

@@ -23,19 +23,17 @@ layout: post
 但是在项目打包后，没有生成业务模块的chunk文件，没有chunk文件也就没办法实现lazy loading。源码：[angular-seed-project](https://github.com/LiMeii/angular-seed-project) 
 
 
-用[webpack bundle analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer)插件发现，所有的业务模块代码：DashboardModule/SettingModule/ReportsModule还是一起打包在
-
-app.bundle.js文件中，没有分别生成三个单独的chunk文件：0.chunk.js 1.chunk.js 2.chunk.js
+用[webpack bundle analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer)插件发现，所有的业务模块代码：DashboardModule/SettingModule/ReportsModule还是一起打包在app.bundle.js文件中，没有分别生成三个单独的chunk文件：0.chunk.js 1.chunk.js 2.chunk.js
 
 ```
 我是基于angular5.0 和 webpack3.10.0
 ```
 
-- 业务代码打包进app.bundle.js, 而不是生成独立的chunk文件，说明angular router设置不对？
+**业务代码打包进app.bundle.js, 而不是生成独立的chunk文件，说明angular router设置不对？**
 
 回头看了下路由文件，没发现什么问题，完全是按照官方best practice写的路由。
 
-- 为什么会打包进app.bundle.js, 而不其他的比如vendor.bundle.js?
+**为什么会打包进app.bundle.js, 而不其他的比如vendor.bundle.js？**
 
 回头看了下app.module.ts文件，找到问题了，我在这个文件里import了这三个业务模块。而且app-routing.module.ts又设置了lazy loading。
 
@@ -76,7 +74,7 @@ app.bundle.js文件中，没有分别生成三个单独的chunk文件：0.chunk.
     })
     export class AppRoutingModule { }
 ```
-angular在编译打包过程中，在root module中引用了业务模块，就会直接把业务模块一起打包进app.bundle.js, 直接把lazy loading的设置忽略，从而不会生成chunk文件。
+angular在编译打包过程中，在root module中引用了业务模块，就会直接把业务模块一起打包进app.bundle.js, 忽略lazy loading的设置，从而不会生成chunk文件。
 
 ### 解决方案
 把业务模块引用从root module文件中删掉就可以了。

@@ -1,5 +1,5 @@
 ---
-title: bundle analyzer
+title: webpack bundle analyzer
 layout: post
 ---
 

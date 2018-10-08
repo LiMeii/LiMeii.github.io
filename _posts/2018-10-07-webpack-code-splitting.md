@@ -13,7 +13,7 @@ layout: post
     <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
 </div>
 
-在上一篇文章 [webpack打包后的bundle文件里到底有什么](/2018/10/06/webpack-what-in-bundle.html)这篇文章解释了什么是bundle文件以及bundle文件里的具体内容。
+在上一篇文章 [webpack打包后的bundle文件里到底有什么](/2018/10/06/webpack-what-in-bundle.html) 这篇文章解释了什么是bundle文件以及bundle文件里的具体内容。
 
 
 也提到过单单只是有多少个入口文件，打包出多少个bundle文件这种方式，会导致代码冗余，同一模块代码会被重复打包到不同的bundle文件中。
@@ -55,7 +55,7 @@ a 和 c 都引用了b文件代码
     b.b();
 ```
 
-**new webpack.optimize.CommonsChunkPlugin({ name: 'commons' })**
+### 第一种方式，new webpack.optimize.CommonsChunkPlugin({ name: 'commons' })
 
 ```js
 //webpack.bundle.js
@@ -74,7 +74,7 @@ module.exports = {
     ]
 };
 ```
-最后生成三个bundle文件：a.bundle.js c.bundle.js commons.bundle.js
+最后生成三个bundle文件：a.bundle.js/ c.bundle.js/ commons.bundle.js
 
 ```js
     //a.bundle.js
@@ -136,10 +136,10 @@ module.exports = {
 CommonsChunkPlugin定义了公用代码需要放到commons.bundle.js文件中，在webpack打包过程中，发现没有commons这个bundle文件，会新创建这个文件，并且把入口文件a.js和c.j这个文件中共用代码（b.js）抽取出来放到commons.bundle.js文件中。a 和 c budnle文件中只保留自己的代码。
 
 
-**new webpack.optimize.CommonsChunkPlugin({ name: 'c' })**
+### 第二章方式，new webpack.optimize.CommonsChunkPlugin({ name: 'c' })
 
 
-我们把commons换成c，最后生成两个bundle文件 a.bunlde.js c.bundle.js
+我们把commons换成c，最后生成两个bundle文件 a.bunlde.js/ c.bundle.js
 
 ```js
     //a.bundle.js
@@ -191,3 +191,6 @@ CommonsChunkPlugin定义了公用代码需要放到commons.bundle.js文件中，
 
 
 CommonsChunkPlugin定义了公用代码需要放到c.bundle.js文件中，在webpack打包过程中，发现已经有c.bundle.js文件，会把入口文件a.js和c.j这个文件中共用代码（b.js）抽取出来放到c.bundle.js文件中。a.budnle文件中只保留自己的代码。
+
+
+关于CommonsChunkPlugin其他属性的应用可以参考 [webpack 代码切割官方文档](https://webpack.js.org/plugins/commons-chunk-plugin/)

@@ -187,7 +187,7 @@ CommonsChunkPlugin定义了公用代码需要放到commons.bundle.js文件中，
     /***/ })
     /******/ ]);
 ```
-从上面的bundle文件代码可以看出，公用代码模块（b.js）被放到 c.bundl 文件中了。
+从上面的bundle文件代码可以看出，公用代码模块（b.js）被放到 c.bundle 文件中了。
 
 
 CommonsChunkPlugin定义了公用代码需要放到c.bundle.js文件中，在webpack打包过程中，发现已经有c.bundle.js文件，会把入口文件a.js和c.j这个文件中共用代码（b.js）抽取出来放到c.bundle.js文件中。a.budnle文件中只保留自己的代码。

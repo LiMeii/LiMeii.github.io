@@ -101,7 +101,7 @@ preloading这种方式在用户切换模块也就是访问新页面之前就把�
     ];
 ```
 
-这就实现了当url为 /reports的时候，就会下载report这个模块的业务代码，需要注意的是ReportsModule中，path是‘      ’。
+这就实现了当url为 /reports的时候，就会下载report这个模块的业务代码，需要注意的是ReportsModule中，path是 ' '。
 
 
 其他模块也类似这样实现，最后AppModule的路由代码如下：
@@ -121,9 +121,10 @@ preloading这种方式在用户切换模块也就是访问新页面之前就把�
 ```
 
 这样在build结束以后，除了bundle文件以外，会有三个chunk文件分别是 0.chunk.js，1.chunk.js，2.chunk.js。这样就实现了按需加载。
+**需要注意的是，在app.module.ts文件中不要再import业务代码module，否则不会生成chunk文件**
 
 
-完整代码可以在 [angular-seed-project](https://github.com/LiMeii/angular-seed-project) 中查看。
+完整代码可以在 [angular-seed-project](https://github.com/LiMeii/angular-seed-project) 中查看，需要注意的是在源码中把路由代码单独提取到app-routing.module.ts文件中了。
 
 ### 如何在angular中实现preloading
 在angular中，[PreloadAllModules](https://angular.io/api/router/PreloadAllModules)这个功能可以用来实现预加载所有的文件，一旦访问网页就会下载所有的文件。

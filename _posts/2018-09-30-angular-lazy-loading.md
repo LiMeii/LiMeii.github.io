@@ -23,6 +23,7 @@ layout: post
 最开始访问某一个网站index页面的时候，只下载跟index/核心代码相关的 bundle/chunk 等文件。之后路由到新的页面，再按需下载新页面需要的文件，大大的提高了首页访问的性能，但是访问新页面的时候还是需要时间下载新文件。
 
 这样就防止在访问大型网站首页的时候，下载文件过大或过多，导致网站首页响应时间过长，降低用户体验。
+![angular lazy loading](https://limeii.github.io/assets/images/posts/angular/angular-lazy-loading.gif){:height="100%" width="100%"}
 
 **preloading**，翻译到中文是预加载，这种方式的意思，一旦网站被访问，会去下载所有的文件。
 

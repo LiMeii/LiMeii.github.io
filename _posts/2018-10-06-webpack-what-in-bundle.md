@@ -21,15 +21,13 @@ webpack把 ts js html css imgs等文件都统统打包成bundle.js文件，只�
 源码在这里：[angular-seed-project](https://github.com/LiMeii/angular-seed-project).
 
 ``` js
-    // this is use to analyse what's in bundle file
+    // a.js
+
     console.log('this is a.js file');
 ```
-webpack 配置代码:
-
-完整代码在这里： [webpack.bundle.js](https://github.com/LiMeii/angular-seed-project/blob/master/webpack/webpack.bundle.js)
-
 ```js
-    // this webpack config file is used to analyse what's in bundle file.
+    // webpack.bundle.js
+
     module.exports = {
         entry: {
             'a': './src/app/bundle/a.js',
@@ -44,8 +42,9 @@ webpack 配置代码:
     };
 ```
 
-webpack 打包以后的a.bundle.js文件如下：
 ```js
+//a.bundle.js
+
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -122,7 +121,7 @@ console.log('this is a.js file');
 /***/ })
 /******/ ]);
 ```
-- 1 从最后的bundle文件可以看出来，真个bundle文件是一个自执行表达式，传入参数是一个数组，数组里有一个funciton，这个function里面包含了a.js里面的内容。
+- 1 从最后的bundle文件可以看出来，整个bundle文件是一个自执行表达式，传入参数是一个数组，数组里有一个funciton，这个function里面包含了a.js里面的内容。
 
 
 - 2 webpack打包以后，每个模块都有一个独一无二的id，0 1 2 3......其实就是自执行表达式传入参数数组的索引。

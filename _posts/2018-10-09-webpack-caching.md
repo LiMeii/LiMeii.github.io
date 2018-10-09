@@ -35,7 +35,7 @@ webpack打包以后的文件一般都是：app.bundle.js/ vendor.bundle.js，每
 在webpack中，build生成bundle文件的时候，在bundle文件名中加上hashcode，一旦有改动，那么bundle文件名中的hashcode也不一样，这样就保证了每次发布，bundle文件名不一样。
 
 ```
-加上hashcode以后的bundle文件：
+加上hashcode以后的bundle文件如下：
 
 app.f68357fc8e99ece57afe.bundle.js
 
@@ -59,7 +59,9 @@ vendor.0d5cad4949ab26faaa39.bundle.js
 ![webpack-caching-chunkhash](https://limeii.github.io/assets/images/posts/webpack/webpack-caching-chunkhash.png){:height="100%" width="100%"}
 
 ```
-里面有 0.068716ea07094f619891.bundle.js/ 1.3392ab62515e716550b2.bundle.js/ 2.f69ff655a0890c6a5b91.bundle.js，
+里面有 0.068716ea07094f619891.bundle.js
+1.3392ab62515e716550b2.bundle.js
+2.f69ff655a0890c6a5b91.bundle.js
 是因为用到angular lazy loading所产生的chunk文件
 ```
 
@@ -107,7 +109,7 @@ vendor.0d5cad4949ab26faaa39.bundle.js
 app.c33736260b829570e8ba.bundle.js 
 polyfills.9d98b7f13680b7f15ee4.bundle.js 
 ```
-从最终bundle文件名可以看出，只有app.bundle文件的hashcode有改动，其他的都跟上一次contenthash编译一致。
+从最终bundle文件名可以看出，只有app.bundle文件的hashcode有改动，其他的都跟上一次contenthash方式编译结果一致。
 
 **hash与chunkhash的区别：**
 
@@ -115,10 +117,10 @@ polyfills.9d98b7f13680b7f15ee4.bundle.js
 hash生成的bundle文件名一样，任一文件的改动，会导致所有bundle文件名都改变，每次发布以后强制客户端下载所有文件。
 
 
-chunkhash生成的bundle文件名都不一样，文件改动，只会导致对应bundle文件名改变，发布以后，只会下载文件名改动的bundle文件，其他文件还是从缓存里拿。
+chunkhash生成的bundle文件名中的hashcode都不一样，文件改动，只会导致对应bundle文件名改变，发布以后，只会下载文件名改动的bundle文件，其他文件还是从缓存里拿。
 
 
-**需要注意的是：hash chunkhash最好只用在生产环境下，如果在开发环境下用，会导致编译变慢**
+**需要注意的是：hash 或 chunkhash最好只用在生产环境下，如果在开发环境下用，会导致编译变慢**
 
 
 ### 总结

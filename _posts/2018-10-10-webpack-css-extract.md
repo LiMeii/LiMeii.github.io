@@ -19,8 +19,8 @@ layout: post
 一般项目里面CSS的改动比较少，如果打包成 JS bundle 文件，再结合chunkhash，每次发布以后，虽然CSS文件没有改动，但是客户端还是需要重新下载这些文件。如果CSS文件过大的话，在一定程度上会影响性能。
 
 
-接下来就介绍，在打包过程不把CSS inline 到 JS bundle文件，而是直接提取生成单独的CSS文件，如果项目中CSS有更改，提出生成的CSS文件名也会带上不同的hashcode。
+接下来就介绍，如何在打包过程不把CSS inline 到 JS bundle文件，而是直接提取生成单独的CSS文件，如果项目中CSS有更改，提出生成的CSS文件名也会带上不同的hashcode。
 
-### extract-text-webpack-plugin
+
 
 

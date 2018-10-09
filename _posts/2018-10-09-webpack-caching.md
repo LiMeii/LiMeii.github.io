@@ -121,7 +121,7 @@ polyfills.9d98b7f13680b7f15ee4.bundle.js
 **hash与chunkhash的区别：**
 
 
-hash生成的bundle文件名一样，任一文件的改动，会导致所有bundle文件名都改变，每次发布以后强制客户端下载所有文件。
+hash生成的bundle文件名中的hashcode是一样的，任一文件的改动，会导致所有bundle文件名都改变，每次发布以后强制客户端下载所有文件。
 
 
 chunkhash生成的bundle文件名中的hashcode都不一样，文件改动，只会导致对应bundle文件名改变，发布以后，只会下载文件名改动的bundle文件，其他文件还是从缓存里拿。

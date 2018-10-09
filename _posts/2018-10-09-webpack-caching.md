@@ -143,4 +143,4 @@ chunkhash生成的bundle文件名中的hashcode都不一样，文件改动，只
 那么如何解决这个问题呢？
 
 
-在[如何在 webpack 中优化打包 CSS 文件](/2018/10/10/webpack-css-extract.html) 文章中会结合 ExtractTextPlugin 和 CSS 介绍更全面的解决缓存问题方案。
+在[如何利用 webpack 优化打包 CSS 文件](/2018/10/10/webpack-css-extract.html) 文章中会结合 ExtractTextPlugin 和 CSS 介绍更全面的解决缓存问题方案。

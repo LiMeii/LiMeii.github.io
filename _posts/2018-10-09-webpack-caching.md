@@ -18,6 +18,13 @@ layout: post
 
 接下来就介绍怎么在webpack中解决浏览器缓存问题。
 
+```
+这篇文章是基于 webpack3.10.0
+
+默认打包的时候是直接把CSS inline到bundle文件里面
+
+```
+
 ### 缓存
 webpack打包以后的文件一般都是：app.bundle.js/ vendor.bundle.js，每次发布以后，如果用户浏览器缓存没有过期，加上文件名字相同，浏览器不会从服务器下载最新文件，导致用户不能看到新发布的功能。
 
@@ -124,4 +131,16 @@ chunkhash生成的bundle文件名中的hashcode都不一样，文件改动，只
 
 
 ### 总结
-这篇文章主要是介绍了，hash 和 chunkhash的基本用法，在下一篇文章中会结合CSS更详细的介绍 hash chunkhash contenthash 用法和区别。
+这篇文章主要是介绍了，hash 和 chunkhash的基本用法，默认打包的时候是直接把CSS inline到bundle文件里面。
+
+
+我们知道CSS在项目里面改动的次数不多，每次都inline到bundle文件里，会有以下问题：
+
+- 如果本身CSS文件就很大，会导致bundle文件过大
+- 任何一次非CSS代码改动，发布以后客户端会重新下载文件，虽然CSS没有变化，但是需要每次跟budnle文件一起下载
+
+
+那么如何解决这个问题呢？
+
+
+在[如何在 webpack 中优化打包 CSS 文件](/2018/10/10/webpack-css-extract.html) 文章中会结合 ExtractTextPlugin 和 CSS 介绍更全面的解决缓存问题方案。

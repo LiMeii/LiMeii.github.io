@@ -41,7 +41,7 @@ webpack把 ts js html css imgs等文件都统统打包成bundle.js文件，只�
         ]
     };
 ```
-
+最终生成的 a.bundle.js 文件如下：
 ```js
 //a.bundle.js
 

@@ -138,4 +138,4 @@ Last-Modified: Mon, 12 Sep 2018 14:45:00 GMT
 ```
 但是第三种方案不推荐使用，在一些 [proxy serve](https://gtmetrix.com/remove-query-strings-from-static-resources.html) 有一些问题。
 
-通常是用第二种方式来解决缓存问题，对于当前前后端分离的应用，前端打包一般会用webpack，我会在下一篇文章中介绍结合webpack解决浏览器缓存问题。
+通常是用第二种方式来解决缓存问题，可以参考文章： [如何利用 webpack 解决浏览器缓存问题](/2018/10/09/webpack-caching.html)。

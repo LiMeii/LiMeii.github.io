@@ -173,7 +173,7 @@ webpack.bundle.js 文件如下：
 编译结果如下：
 ![webpack-css-extract-chunkhash.png](https://limeii.github.io/assets/images/posts/webpack/webpack-css-extract-chunkhash.png){:height="100%" width="100%"}
 
-从上面的截图我们可以看到，入口文件对应的 bundle 文件 hashcode是不一样的，这个好理解，应为用到了chunkhash。但是对应引用的css中的hashcode确跟bundle文件名一样。
+从上面的截图我们可以看到，入口文件对应的 bundle 文件 hashcode是不一样的，这个好理解，因为用到了chunkhash。但是对应引用的css中的hashcode也跟bundle文件名一样。
 
 
 总觉得不对劲，我们来尝试改下 a.css文件内容：

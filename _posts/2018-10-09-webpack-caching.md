@@ -121,10 +121,10 @@ polyfills.9d98b7f13680b7f15ee4.bundle.js
 **hash与chunkhash的区别：**
 
 
-hash生成的bundle文件名中的hashcode是一样的，任一文件的改动，会导致所有bundle文件名都改变，每次发布以后强制客户端下载所有文件。
+hash 是用来给本次build计算hashcode，所有的编译结果文件中的hashcode都会一样。
 
 
-chunkhash生成的bundle文件名中的hashcode都不一样，文件改动，只会导致对应bundle文件名改变，发布以后，只会下载文件名改动的bundle文件，其他文件还是从缓存里拿。
+chunkhash 是用来给每个entry file计算hashcode，每个编译结果文件中的hashcode都是独一无二的。而且entry file任一文件改动，对应的bundle文件hashcode也会改动，否则就保持不变。
 
 
 **需要注意的是：hash 或 chunkhash最好只用在生产环境下，如果在开发环境下用，会导致编译变慢**

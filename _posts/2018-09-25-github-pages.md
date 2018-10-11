@@ -7,7 +7,7 @@ layout: post
 
 <div class="title-meta">
     <span><img class="title-category-img" src="../../../assets/images/categories/github.svg" alt="GIT"></span>
-    <span><a class="github-link" href="/2018/09/26/tools.html">GIT</a></span>
+    <span><a class="github-link" href="/2018/09/19/tools.html">GIT</a></span>
     <span class="title-bullet">•</span>
     <span>Sep 21, 2018</span>
     <span class="title-bullet">•</span>

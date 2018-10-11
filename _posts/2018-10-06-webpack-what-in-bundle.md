@@ -6,7 +6,7 @@ layout: post
 # webpack打包后的bundle文件里到底有什么
 <div class="title-meta">
     <span><img class="title-category-img" src="../../../assets/images/categories/webpack.svg" alt="webpack"></span>
-    <span><a class="github-link" href="/2018/09/24/webpack.html">Webpack</a></span>
+    <span><a class="github-link" href="/2018/09/19/webpack.html">Webpack</a></span>
     <span class="title-bullet">•</span>
     <span>Oct 06, 2018</span>
     <span class="title-bullet">•</span>

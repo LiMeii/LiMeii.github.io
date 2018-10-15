@@ -221,7 +221,8 @@ p {
     margin: 0 auto;
     padding-top: 1.35714em;
     padding-bottom: 1.14286em;
-    text-align: center
+    text-align: center;
+    line-height: 2em;
 }
 
 .icon-square-footer {

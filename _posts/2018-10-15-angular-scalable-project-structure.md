@@ -20,7 +20,6 @@ layout: post
 这篇文章主要是用来总结，我自己在搭angular项目过程中对项目结构理解，希望能帮到有同样困扰的小伙伴。
 
 ### angular 项目结构
----
 
 用angular-cli快速建一个angular项目，基本结构如下：
 
@@ -34,7 +33,6 @@ layout: post
 ![angular-scalable-structure.png](https://limeii.github.io/assets/images/posts/angular/angular-scalable-structure.png){:height="100%" width="100%"}
 
 ### core 文件夹
----
 
 core文件夹展开以后如下：
 ![angular-structure-core.png](https://limeii.github.io/assets/images/posts/angular/angular-structure-core.png){:height="100%" width="100%"}
@@ -93,7 +91,6 @@ mocks文件夹是用来放前端开发的mock data。
 
 
 ### modules 文件夹
----
 
 这个文件用来放业务模块代码，结构如下：
 
@@ -112,7 +109,6 @@ mocks文件夹是用来放前端开发的mock data。
 
 
 ### shared 文件夹
----
 
 这个文件用来放一些公用的 pipes/filters/directive/components，结构如下：
 
@@ -129,7 +125,6 @@ mocks文件夹是用来放前端开发的mock data。
 
 
 ### assets 文件夹
----
 
 这个文件文件夹里就放css imgs
 

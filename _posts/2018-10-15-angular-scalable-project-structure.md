@@ -128,7 +128,7 @@ mocks文件夹是用来放前端开发的mock data。
 ```
 
 
-### assets
+### assets 文件夹
 ---
 
 这个文件文件夹里就放css imgs

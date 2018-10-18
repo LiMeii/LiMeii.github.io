@@ -141,7 +141,7 @@ CommonsChunkPlugin定义了公用代码需要放到commons.bundle.js文件中，
 
 
 
-**第二章方式，new webpack.optimize.CommonsChunkPlugin({ name: 'c' })**
+**第二种方式，new webpack.optimize.CommonsChunkPlugin({ name: 'c' })**
 
 
 

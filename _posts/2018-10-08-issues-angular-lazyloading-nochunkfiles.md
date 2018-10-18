@@ -13,6 +13,8 @@ layout: post
     <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
 </div>
 
+### 问题描述
+
 在angular2以上的版本，提供了lazy loading / preloading 的功能，防止大型网站在加载首页时间过长，降低用户体验。
 
 

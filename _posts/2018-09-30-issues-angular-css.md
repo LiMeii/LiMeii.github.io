@@ -13,6 +13,8 @@ layout: post
     <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
 </div>
 
+### 问题描述
+
 在搭建Angular项目的时候，直接用angular-cli初始化项目，然后执行 'ng serve' 运行项目，完全正常没有任何问题。
 之后ng eject angular-cli之后，自己配置webpack构建打包项目的时候，在浏览器console里面会有error，导致页面不会正常渲染。
 

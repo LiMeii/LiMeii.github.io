@@ -24,14 +24,15 @@ layout: post
 代码如下：
 
 ```html
+    <!-- angular html-->
     <div id="target" class="page-navigation__item js-page-navigation-item" *ngIf="isLogin">
-        <button id="lngddl" class="page-navigation__item-link js-page-navigation-item-link tnt tnt-nav-link3 text-transform-none">
+        <button id="lngddl" class="page-navigation__item-link js-page-navigation-item-link">
                 language
         </button>
         <div class="page-navigation__secondary js-page-navigation-secondary">
             <div class="page-navigation__secondary-inner js-page-navigation-secondary-inner">
-                    <a class="page-navigation__secondary-link tnt tnt-nav-sec-link5 showPointer text-transform-none">English</a>
-                    <a class="page-navigation__secondary-link tnt tnt-nav-sec-link5 showPointer text-transform-none">español</a>
+                    <a class="page-navigation__secondary-link tnt tnt-nav-sec-link5 showPointer">English</a>
+                    <a class="page-navigation__secondary-link tnt tnt-nav-sec-link5 showPointer">español</a>
                 </div>
             </div>
     </div>
@@ -47,7 +48,7 @@ layout: post
 
 ### 问题分析
 
-发现点击button没有期望的效果的时候，我在这个<button>上面直接加上 (click)="test()", 然后点击button发现test方法会被触发，说明html正常没有问题。
+发现点击button没有期望的效果的时候，我在这个button上面直接加上 (click)="test()", 然后点击button发现test方法会被触发，说明html正常没有问题。
 
 
 尝试把 *ngIf="isLogin" 去掉以后，这次点击button，这次jquery事件被触发了。
@@ -62,9 +63,7 @@ layout: post
 重新编译代码以后，点击 button，jquery click事件能被正常触发。
 
 
-到这一步的时候，隐约大概知道问题的 root cause 是什么了，我们开看下 ngIf 和 正常hidden一段的元素的区别：ngIf是动态的，也就是条件为true的时候，整个div都在显示在页面，如果
-
-为条件为false的时候，整个div节点根本不会存在。而disply: none不管元素显示还是不显示，整个节点都是存在的。
+到这一步的时候，隐约大概知道问题的 root cause 是什么了，我们来看下 ngIf 和 正常hidden一段的元素的区别：ngIf是动态的，也就是条件为true的时候，整个div都在显示在页面，如果条件为false的时候，整个div节点根本不会存在。而disply: none不管元素显示还是不显示，整个节点都是存在的。
 
 
 好了，到这里就知道问题原因了，在Jquery里, 直接绑定的事件对动态生成的元素不生效。
@@ -78,9 +77,7 @@ layout: post
 ```js
   $('.js-page-navigation-item-link').click(function(){});
 ```
-在代码执行的时候把事件直接绑定到有 js-page-navigation-item-link css的元素上，假如之后有动态加上新的元素也有js-page-navigation-item-link，这个元素的click事件不会被监听
-
-到，同理如果移除已有的包含js-page-navigation-item-link css的元素，这个被移除元素的事件还是会被监听。
+在代码执行的时候把事件直接绑定到有 js-page-navigation-item-link css的元素上，假如之后有动态加上新的元素也有js-page-navigation-item-link，这个元素的click事件不会被监听到，同理如果移除已有的包含js-page-navigation-item-link css的元素，这个被移除元素的事件还是会被监听。
 
 
 **事件delegated**

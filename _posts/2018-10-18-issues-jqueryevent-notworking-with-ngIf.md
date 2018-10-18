@@ -71,7 +71,9 @@ layout: post
 
 那什么是直接绑定事件？
 
-#### Jquery 直接绑定事件和事件delegated
+
+**Jquery 直接绑定事件和事件delegated**
+
 
 **直接绑定**
 ```js

@@ -6,7 +6,7 @@ layout: post
 # Angular *ngIf: 在<div *ngIf> 里所有的 Jquery click 事件都没有触发
 <div class="title-meta">
     <span><img class="title-category-img" src="../../../assets/images/categories/bug.svg" alt="issues"></span>
-    <span><a class="github-link" href="/2018/09/19/issues.html">问题</a></span>
+    <span><a class="github-link" href="/2018/09/19/issues-tools.html">问题</a></span>
     <span class="title-bullet">•</span>
     <span>Oct 18, 2018</span>
     <span class="title-bullet">•</span>

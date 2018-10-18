@@ -22,7 +22,8 @@ layout: post
 接下来就介绍，如何在打包过程不把CSS inline 到 JS bundle文件，而是直接提取生成单独的CSS文件，如果项目中CSS有更改，提出生成的CSS文件名也会带上不同的hashcode。
 
 
-### extract-text-webpack-plugin
+**extract-text-webpack-plugin**
+
 
 在webpack中，是用 [extract-text-webpack-plugin](https://github.com/webpack-contrib/extract-text-webpack-plugin) 这个plugin把样式提出成单独的css文件。
 
@@ -58,7 +59,9 @@ module.exports = {
 }
 ```
 
-### 第一种方式：ExtractTextPlugin 和 hash 结合使用
+**第一种方式：ExtractTextPlugin 和 hash 结合使用**
+
+
 
 示例代码：[angular-seed-project](https://github.com/LiMeii/angular-seed-project)
 
@@ -138,7 +141,9 @@ webpack.bundle.js 文件如下：
 
 我们可以看到，生成了四个文件。两个 .js bundle文件，两个 .css文件，我们可以看到文件名中的hashcode完全一样。这个会导致每次发布，不管文件改没改都会build成不一样的文件名，导致客户端重新下载所有文件，这个并不是我们想要的。
 
-### 第二种方式，ExtractTextPlugin 和 chunkhash 结合使用
+**第二种方式，ExtractTextPlugin 和 chunkhash 结合使用**
+
+
 
 在 [如何利用 webpack 解决浏览器缓存问题](/2018/10/09/webpack-caching.html) 文章中提到chunkhash可以根据源文件内容的改变，来决定最终bundle文件名是否需要更改，而且每个chunk文件中的hashcode都不一样。
 
@@ -196,7 +201,11 @@ html {
 
 **我们想要的编译结果是：**所有文件（.bundle.js/ .css）的hashcode都应该是独一无二的，并且不管是入口文件还是从他们提取的CSS文件有改动的话，那么对应的编译文件的hashcode也要跟着改变。
 
-### 第三种方式，ExtractTextPlugin，chunkhash 和 contenthash 结合使用
+
+
+**第三种方式，ExtractTextPlugin，chunkhash 和 contenthash 结合使用**
+
+
 
 contenthash 就可以用来解决上面css文件的hashcode不改变的问题。
 webpack.bundle.js 文件如下：
@@ -235,7 +244,10 @@ webpack.bundle.js 文件如下：
 这就完美解决了我们的缓存问题！
 
 
-### hash chunkhash contenthash 的区别
+
+**hash chunkhash contenthash 的区别**
+
+
 
 最后来总结一下 hash chunkhash contenthash 这三者之间的区别。
 

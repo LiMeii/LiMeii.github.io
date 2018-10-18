@@ -881,7 +881,7 @@ p {
 
 .menu-item-image img {
     max-width: 100%;
-    max-height: 80%;
+    max-height: 70%;
     position: absolute;
     top: 46px;
     -webkit-transition: opacity .3s ease;

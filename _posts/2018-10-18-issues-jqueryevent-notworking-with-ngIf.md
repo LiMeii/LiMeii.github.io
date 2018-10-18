@@ -31,8 +31,8 @@ layout: post
         </button>
         <div class="page-navigation__secondary js-page-navigation-secondary">
             <div class="page-navigation__secondary-inner js-page-navigation-secondary-inner">
-                    <a class="page-navigation__secondary-link tnt tnt-nav-sec-link5 showPointer">English</a>
-                    <a class="page-navigation__secondary-link tnt tnt-nav-sec-link5 showPointer">español</a>
+                    <a class="page-navigation__secondary-link tnt tnt-nav-sec-link5">English</a>
+                    <a class="page-navigation__secondary-link tnt tnt-nav-sec-link5">español</a>
                 </div>
             </div>
     </div>

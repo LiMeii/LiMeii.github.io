@@ -27,7 +27,11 @@ layout: post
 
 下面就来介绍如何在 **webpack3** 中进行代码切割。
 
-### CommonsChunkPlugin
+
+
+**CommonsChunkPlugin**
+
+
 
 在webpack3中是通过CommonsChunkPlugin实现公用代码切割，具体用法如下：
 
@@ -55,7 +59,7 @@ a 和 c 都引用了b文件代码
     b.b();
 ```
 
-### 第一种方式，new webpack.optimize.CommonsChunkPlugin({ name: 'commons' })
+**第一种方式，new webpack.optimize.CommonsChunkPlugin({ name: 'commons' })**
 
 ```js
 //webpack.bundle.js
@@ -136,7 +140,9 @@ module.exports = {
 CommonsChunkPlugin定义了公用代码需要放到commons.bundle.js文件中，在webpack打包过程中，发现没有commons这个bundle文件，会新创建这个文件，并且把入口文件a.js和c.j这个文件中共用代码（b.js）抽取出来放到commons.bundle.js文件中。a 和 c budnle文件中只保留自己的代码。
 
 
-### 第二章方式，new webpack.optimize.CommonsChunkPlugin({ name: 'c' })
+
+**第二章方式，new webpack.optimize.CommonsChunkPlugin({ name: 'c' })**
+
 
 
 我们把commons换成c，最后生成两个bundle文件 a.bunlde.js/ c.bundle.js

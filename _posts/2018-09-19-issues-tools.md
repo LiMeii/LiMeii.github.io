@@ -27,6 +27,4 @@ layout: post
 
 <li>2018-09-27: <a href="/2018/10/01/tools-markdown-preview.html">如何在 VS Code 里面预览 markdown</a></li>
 
-<li>2018-09-27: <a href="/2018/10/01/tools-mobile-browser-debug.html">如何调试移动端浏览器代码</a></li>
-
 <li>2018-10-11: <a href="/2018/10/11/tools-markdonw-syntax.html">markdown 常用语法</a></li>

@@ -207,6 +207,41 @@ export class LoginGuard implements CanActivate {
 }
 ```
 
+### 第六步，在app-routing.module.ts的路由上加上canActivate
+
+```ts
+const routes: Routes = [
+    {
+        path: '',
+        loadChildren: './modules/authentication/authentication.module#AuthenticationModule',
+        data: { preload: true }
+    },
+    {
+        path: 'dashboard',
+        loadChildren: './modules/dashboard/dashboard.module#DashboardModule',
+        data: { preload: true },
+        canActivate: [LoginGuard]
+    },
+    {
+        path: 'settings',
+        loadChildren: './modules/settings/settings.module#SettingsModule',
+        canActivate: [LoginGuard]
+    },
+    {
+        path: 'reports',
+        loadChildren: './modules/reports/reports.module#ReportsModule',
+        canActivate: [LoginGuard]
+    },
+    {
+        path: 'profile',
+        loadChildren: './modules/profile/profile.Module#ProfileModule',
+        canActivate: [LoginGuard]
+    }
+
+];
+
+```
+
 好了，npm run start把application跑起来以后，login之前，任何业务模块页面都没办法访问：
 
 ![angular](https://limeii.github.io/assets/images/posts/angular/angular-routing-permission-login.gif){:height="100%" width="100%"}

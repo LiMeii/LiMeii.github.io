@@ -40,16 +40,14 @@ ul {
     list-style: none
 }
 
-li {
-    margin: 0.5em 0;
-}
 p,
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+.profile {
     font-family: Georgia, "Times New Roman", "Microsoft YaHei", "微软雅黑", STXihei, "华文细黑", serif;
     letter-spacing: 0.0058em;
 }
@@ -360,7 +358,8 @@ p {
 }
 
 .profile li {
-    font-size: 1.17em;
+     font-size: 1.17em;
+     line-height: 1.6em;
 }
 .profile-content {
     *zoom: 1;

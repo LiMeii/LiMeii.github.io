@@ -25,6 +25,12 @@ code {
     word-break: normal;
     font-family: "SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace;
 }
+h1 {
+    font-size: 1.48em;
+}
+h3 {
+    font-size: 1.38em;
+}
 
 ol,
 ul {
@@ -133,7 +139,7 @@ textarea {
 
 p {
     line-height: 2.5em;
-    font-size: 1.09em;
+    font-size: 1.25em;
 }
 
 .header {

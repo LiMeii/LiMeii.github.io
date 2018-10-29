@@ -17,16 +17,16 @@ layout: post
 路由是整个application中非常重要的一个模块，可以用来加载某个特定的component，同时也可以传参，也可以用来控制某一模块访问权限等等。
 
 
-这篇文章主要是用来介绍angular中，如何控制页面的访问权限。
+这篇文章主要是用来介绍angular中，如何用CanActivate控制页面的访问权限。
 
 
 源码可以在 [angular-seed-project](https://github.com/LiMeii/angular-seed-project) 查看。
 
 
-在示例代码中，有五个个模块： AppModule，DashboardModule，ReportsModule，SettingsModule，ProfileModule。
+在示例代码中，有五个模块： AppModule，DashboardModule，ReportsModule，SettingsModule，ProfileModule。
 
 
-其中AppModule是root module，其他四个是业务模块。假设有两种角色登入系统，分别为 admin 和 user。admin可以看到settings页面，user可以看到dashboard页面。
+其中AppModule是root module，其他四个是业务模块。假设有两种角色登入系统，分别为 admin 和 user。admin可以看settings页面，user可以看dashboard页面。
 
 
 现在路由设置如下：

@@ -42,7 +42,6 @@ ul {
 
 li {
     margin: 0.5em 0;
-    font-size: 1.17em；
 }
 p,
 h1,
@@ -51,7 +50,8 @@ h3,
 h4,
 h5,
 h6 {
-    letter-spacing: 0.0458em
+    font-family: Georgia, "Times New Roman", "Microsoft YaHei", "微软雅黑", STXihei, "华文细黑", serif;
+    letter-spacing: 0.0058em;
 }
 table {
     border-collapse: collapse;
@@ -151,7 +151,7 @@ textarea {
 
 p {
     line-height: 2.5em;
-    font-size:  1.239em;
+    font-size:  1.3em;
 }
 
 .header {
@@ -359,6 +359,9 @@ p {
     line-height: 1.42857em
 }
 
+.profile li {
+    font-size: 1.17em;
+}
 .profile-content {
     *zoom: 1;
     clear: both;

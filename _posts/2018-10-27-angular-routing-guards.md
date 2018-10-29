@@ -108,7 +108,10 @@ export class ReportsRoutingModule { }
     },
 ```
 
-### 第二步，创建一个auth-guard.module。
+### 第二步，创建一个auth-guard.module，用来实现login guard。
+没有登入成功的用户除了login页面，其他模块都没办法访问。
+
+
 结构如下：
 
 ![angular](https://limeii.github.io/assets/images/posts/angular/angular-routing-permission-auth-guard.png){:height="100%" width="100%"}

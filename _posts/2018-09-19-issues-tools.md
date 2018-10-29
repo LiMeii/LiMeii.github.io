@@ -3,7 +3,7 @@ title: issues
 layout: post
 ---
 
-# 写代码时遇到的问题以及解决方案
+### 写代码时遇到的问题以及解决方案
 
 <li>2018-09-20: <a href="/2018/09/20/issues-india-project.html">印度人写的代码</a></li>
 
@@ -19,7 +19,7 @@ layout: post
 
 
 
-# 提高效率的小工具
+### 提高效率的小工具
 
 <li>2018-09-25: <a href="/2018/09/25/tools-github-pages">怎么搭建自己的 GitHub Pages</a></li>
 

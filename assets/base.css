@@ -44,7 +44,15 @@ li {
     margin: 0.5em 0;
     font-size: 1.17em；
 }
-
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    letter-spacing: 0.0458em
+}
 table {
     border-collapse: collapse;
     border-spacing: 0
@@ -143,7 +151,7 @@ textarea {
 
 p {
     line-height: 2.5em;
-    font-size: 1.25em;
+    font-size:  1.239em;
 }
 
 .header {

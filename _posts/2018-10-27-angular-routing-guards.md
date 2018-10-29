@@ -26,7 +26,7 @@ layout: post
 在示例代码中，有五个模块： AppModule，DashboardModule，ReportsModule，SettingsModule，ProfileModule。
 
 
-其中AppModule是root module，其他四个是业务模块。假设有两种角色登入系统，分别为 admin 和 user。admin可以看settings页面，user可以看dashboard页面。
+其中AppModule是root module，其他四个是业务模块。假设有两种角色登入系统，分别为 admin 和 user。admin可以看settings和reports页面，user可以看dashboard和profile页面。
 
 
 现在路由设置如下：
@@ -245,6 +245,134 @@ const routes: Routes = [
 
 ```
 
-好了，npm run start把application跑起来以后，login之前，任何业务模块页面都没办法访问：
+好了，到现在为止，login这块的权限都已经加好了，npm run start把application跑起来以后，login之前，任何业务模块页面都没办法访问：
 
 ![angular](https://limeii.github.io/assets/images/posts/angular/angular-routing-permission-login.gif){:height="100%" width="100%"}
+
+### 第七步，限制addmin只可以访问settings和reports页面，user只可以访问dashboard和profile页面。
+
+访问没有权限的页面会返回login页面
+
+
+**现在app-constants.ts文件中，加上permissionset和admin/user 访问权限**
+```ts
+//app-constants.ts
+export const permissionSets = {
+    APP_ManageSettings: ' APP_ManageSettings',
+    APP_ManageReports: 'APP_ManageReports',
+    APP_ManageDashboard: 'APP_ManageDashboard',
+    APP_ManageProfile: 'APP_ManageProfile'
+}
+
+export const userPermission = {
+    adminFeatures: {
+        privilege: [permissionSets.APP_ManageSettings, permissionSets.APP_ManageReports],
+        menus: [
+            {
+                title: 'settings',
+                routerLink: 'settings',
+                privilege: [permissionSets.APP_ManageSettings]
+            },
+            {
+                title: 'reports',
+                routerLink: 'reports',
+                privilege: [permissionSets.APP_ManageReports]
+            }
+        ]
+    },
+    userFeatures: {
+        privilege: [permissionSets.APP_ManageDashboard, permissionSets.APP_ManageProfile],
+        menus: [
+            {
+                title: 'dashboard',
+                routerLink: 'dashboard',
+                privilege: [permissionSets.APP_ManageDashboard]
+            },
+            {
+                title: 'profile',
+                routerLink: 'profile',
+                privilege: [permissionSets.APP_ManageProfile]
+            }
+        ]
+    }
+}
+```
+**新加admin-guard.ts 用来控制admin访问权限，并且import到auth-guard.module.ts**
+```ts
+// admin-guard.ts
+import { Injectable } from "@angular/core";
+import { Router, CanActivate, ActivatedRouteSnapshot } from '@angular/router';
+import { LocalStorageService } from "angular-2-local-storage/dist";
+
+import { role, userPermission, appStorage } from '../app-constants';
+
+
+@Injectable()
+
+export class AdminGuard implements CanActivate {
+    constructor(private router: Router,
+        private localStorageService: LocalStorageService) { }
+
+    canActivate(activatedRouteSnapshot: ActivatedRouteSnapshot): boolean {
+        let isLogin = this.localStorageService.get(appStorage.isLogin);
+        let roleType = this.localStorageService.get(appStorage.loginType);
+        let canRoute = false;
+        if (isLogin && roleType === role.admin) {
+            let privilegesToRoute = activatedRouteSnapshot.data.privileges;
+            if (privilegesToRoute) {
+                privilegesToRoute.forEach(element => {
+                    if (userPermission.adminFeatures.privilege.indexOf(element) !== -1) {
+                        canRoute = true;
+                    }
+                });
+            }
+        } else {
+            this.router.navigate(['login']);
+            canRoute = false;
+        }
+        return canRoute;
+    }
+}
+```
+**在setting-routing.module.ts中引入AdminGuard，并且在路由上加上可以访问的权限数据**
+```ts
+//setting-routing.module.ts
+import { permissionSets } from '../../core/app-constants';
+import { AdminGuard } from '../../core/guards/admin-guard';
+
+const settingsRoutes: Routes = [
+    {
+        path: '',
+        component: SettingsComponent,
+        data: { privileges: [permissionSets.APP_ManageSettings] },
+        canActivate: [AdminGuard]
+    }
+];
+```
+**在reports-routing.module.ts中引入AdminGuard，并且在路由上加上可以访问的权限数据**
+
+```ts
+//setting-routing.module.ts
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
+import { ReportsComponent } from './reports.component';
+import { AdminGuard } from '../../core/guards/admin-guard';
+import { permissionSets } from '../../core/app-constants';
+
+const ReportsRoutes: Routes = [
+    {
+        path: '',
+        component: ReportsComponent,
+        data: { privileges: [permissionSets.APP_ManageReports] },
+        canActivate: [AdminGuard]
+    }
+];
+
+```
+
+user用户的权限代码与admin权限代码类似，具体代码可以在 [angular-seed-project](https://github.com/LiMeii/angular-seed-project) 查看。
+
+好了，现在整个路由权限都加好了，效果如下：
+
+![angular](https://limeii.github.io/assets/images/posts/angular/angular-routing-permission-for-role.gif){:height="100%" width="100%"}

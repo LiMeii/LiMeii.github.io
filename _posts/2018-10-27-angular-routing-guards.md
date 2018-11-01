@@ -380,10 +380,6 @@ user用户的权限代码与admin权限代码类似，具体代码可以在 [ang
 **总结**
 
 
-这篇文章中主要是介绍了CanActivate对路由权限的控制，这个用法有一个缺陷：用户虽然没有权限访问某个module或是component，但是通过按钮或者url hit到对应的路由的时候，
+这篇文章中主要是介绍了CanActivate对路由权限的控制，这个用法有一个缺陷：用户虽然没有权限访问某个module或是component，但是通过按钮或者url hit到对应的路由的时候，module/component还是会被加载。
 
-module/component还是会被加载。
-
-接下来一篇文章介绍 [Angular Router guards：如何控制页面的访问权限 (Canload)](/2018/11/01/angular-routing-guard-canload.html) 会介绍canload对路由权限控制的用法，canload和canactive的一个主要区别就
-
-是canload在没有权限访问的时候不会去load module/component。
+接下来一篇文章介绍 [Angular Router guards：如何控制页面的访问权限 (Canload)](/2018/11/01/angular-routing-guard-canload.html) 会介绍canload对路由权限控制的用法，canload和canactive的一个主要区别就是canload在没有权限访问的时候不会去加载模块。

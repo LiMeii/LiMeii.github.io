@@ -6,3 +6,7 @@
 
 
 <li>2018-10-09: <a>如何利用 webpack 打包图片</a></li>
+
+<li>2018-10-09: <a> live-reload Hot Module Replacement</a></li>
+
+<li>2018-10-09: <a>chrome refresh whole page: event.preventDefault();</a></li>

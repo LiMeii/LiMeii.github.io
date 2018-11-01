@@ -1,5 +1,5 @@
 ---
-title: angular routing guards
+title: angular CanActivate
 layout: post
 ---
 

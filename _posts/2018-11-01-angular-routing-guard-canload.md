@@ -15,7 +15,7 @@ layout: post
 </div>
 
 
-在[Angular Router guards：如何控制页面的访问权限 (CanActivate)](/2018/11/01/angular-routing-guards.html.html)介绍了CanActivate对路由权限的控制。
+在[Angular Router guards：如何控制页面的访问权限 (CanActivate)](/2018/10/27/angular-routing-guards.html)介绍了CanActivate对路由权限的控制。
 
 在这篇文章中会介绍CanLoad对路由权限的控制和用法。
 

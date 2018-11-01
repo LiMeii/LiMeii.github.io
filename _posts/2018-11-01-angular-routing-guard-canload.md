@@ -3,7 +3,7 @@ title: angular routing guards
 layout: post
 ---
 
-# Angular Router guards：Canload
+# Angular Router guards：如何控制页面的访问权限 (Canload)
 
 <div class="title-meta">
     <span><img class="title-category-img" src="../../../assets/images/categories/angular.svg" alt="Angular"></span>
@@ -22,11 +22,11 @@ layout: post
 
 在开始介绍CanLoad的用法之前，先来讲下CanLoad和CanActivate的区别：
 
-- CanActivate可以用在component级别，也可以用在module级别；但是CanLoad只能和lazy loading一起用，也就是一定要和loadChildren一起用。
+- 1 CanActivate可以用在component级别，也可以用在module级别；CanLoad只能和lazy loading一起用，也就是一定要和loadChildren一起用。
 
-- 如有多层级路由中有CanActivate，是从上往下检查路由权限，也就是从顶层到最深的child route，一旦有返回值为false的，整个检查终止。
+- 2 如有多层级路由中有CanActivate，是从上往下检查路由权限，也就是从顶层到最深的child route，一旦有返回值为false的，整个检查终止。
 
-- CanLoad的路由检查在整个module load之前就进行了，并且优先级要比preloading要高，也就是如果用到了PreloadAllModules，有用CanLoad的module在项目启动的时候不会preloading。
+- 3 CanLoad的路由检查在整个module load之前就进行了，并且优先级要比preloading要高，也就是如果用到了PreloadAllModules，有用CanLoad的module在项目启动的时候不会preloading。
 
 
 好了接下来就开始介绍Canload的用法。
@@ -123,4 +123,4 @@ const routes: Routes = [
 url里输入profile/dashboard的时候，无权限访问对应页面，也不会加载对应的chunk文件。
 
 
-user登入以后也是类型的效果。
+user登入以后也是类似的效果。

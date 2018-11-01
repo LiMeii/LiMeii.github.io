@@ -384,6 +384,6 @@ user用户的权限代码与admin权限代码类似，具体代码可以在 [ang
 
 module/component还是会被加载。
 
-接下来一篇文章介绍 [angular guard: Canload](/2018/11/01/angular-routing-guard-canload.html) 会介绍canload对路由权限控制的用法，canload和canactive的一个主要区别就
+接下来一篇文章介绍 [Angular Router guards：如何控制页面的访问权限 (Canload)](/2018/11/01/angular-routing-guard-canload.html) 会介绍canload对路由权限控制的用法，canload和canactive的一个主要区别就
 
 是canload在没有权限访问的时候不会去load module/component。

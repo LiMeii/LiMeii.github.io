@@ -17,7 +17,7 @@ layout: post
 
 <li>2018-10-15: <a href="/2018/10/18/issues-jqueryevent-notworking-with-ngIf.html">Angular *ngIf: 在<div *ngIf> 里所有的 Jquery click 事件都没有触发</a></li>
 
-<li>2018-11-03: <a href="/2018/10/18/issues-jqueryevent-notworking-with-ngIf.html">Angular 路由到新的模块时候，整个页面都被刷新</a></li>
+<li>2018-11-02: <a href="/2018/11/02/issues-router-reload-page.">Angular 路由到新的模块时候，整个页面都被刷新</a></li>
 
 
 ### 提高效率的小工具

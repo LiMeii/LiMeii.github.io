@@ -29,7 +29,7 @@ layout: post
 - 3 CanLoad的路由检查在整个module load之前就进行了，并且优先级要比preloading要高，也就是如果用到了PreloadAllModules，有用CanLoad的module在项目启动的时候不会preloading。
 
 
-好了接下来就开始介绍Canload的用法。
+好了，接下来就开始介绍Canload的用法。
 
 ### 第一步，在admin-guard.ts和user-guards.ts实现CanLoad接口
 

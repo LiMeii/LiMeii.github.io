@@ -22,7 +22,7 @@ layout: post
 
 假设我们在一个注册网页上填写个人信息的时候，填到一半需要回到首页，不管是直接改变url或者是点击浏览器左上角的后退按钮，会直接去首页，填到一半的信息不会做任何处理，也不会保存。
 
-这种行为不是很友好，做得好一点会弹出一个对话框提示用户有未保存的数据，CanDeactivate就是用来处理用户离开某个页面时提示用户是否真正想要离开页面。
+这种行为不是很友好，做得好一点会弹出一个对话框提示用户有未保存的数据，CanDeactivate就是用来处理这种情况的。
 
 
 源码可以在 [angular-seed-project](https://github.com/LiMeii/angular-seed-project) 查看。
@@ -34,20 +34,20 @@ layout: post
 
 ### 第二步，在SettingsComponent中实现canDeactivate方法
 
-先按最简单的逻辑，只要离开settings页面就弹出一个对话框问用户是否要离开，confirm要离开就是返回值是true，否则就为false，代码逻辑如下：
+先按最简单的逻辑，只要离开settings页面就弹出一个对话框问用户是否要离开，confirm要离开返回值是true，否则就为false，代码逻辑如下：
 
-![angular](https://limeii.github.io/assets/images/posts/angular/angular-router-guard-candeactivate-1.png{:height="100%" width="100%"}
+![angular](https://limeii.github.io/assets/images/posts/angular/angular-router-guard-candeactivate-1.png){:height="100%" width="100%"}
 
 ### 第三步，在SettingsComponent对应的路由上加上canDeactivate guard
 
-![angular](https://limeii.github.io/assets/images/posts/angular/angular-router-guard-candeactivate-2.png{:height="100%" width="100%"}
+![angular](https://limeii.github.io/assets/images/posts/angular/angular-router-guard-candeactivate-2.png){:height="100%" width="100%"}
 
 
 npm run start 以后，到settings页面，然后尝试到其他页面的时候，会有一个对话框跳出来，点击cancel后SettingsComponent中的canDeactivate返回值为false会留在当前页面，
 
 点击confirm后SettingsComponent中的canDeactivate返回值为true会直接到reports页面，动图效果如下：
 
-![angular](https://limeii.github.io/assets/images/posts/angular/angular-routing-guard-candeactivate-3.gif{:height="100%" width="100%"}
+![angular](https://limeii.github.io/assets/images/posts/angular/angular-routing-guard-candeactivate-3.gif){:height="100%" width="100%"}
 
 
 如果你想要实现，当页面数据有改动时，尝试离开当前页面弹出对话框，那么就把SettingsComponent中的canDeactivate方法的逻辑改一改就可以了。

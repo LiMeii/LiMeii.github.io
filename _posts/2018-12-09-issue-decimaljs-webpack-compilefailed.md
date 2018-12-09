@@ -24,15 +24,19 @@ angular: 4.2.4
 
 ```
 
-在[JavaScript 浮点数运算精度问题](https://limeii.github.io/2018/12/09/issues-floatcalculate-Inaccurate.html)中解释了项目中遇到计算钱的时候浮点数精度问题，我是用[decimal.js](https://github.com/MikeMcl/decimal.js)来解决这个问题的。
+在 [JavaScript 浮点数运算精度问题](https://limeii.github.io/2018/12/09/issues-floatcalculate-Inaccurate.html) 这篇文章中讲到了浮点数精度问题，我是用[decimal.js](https://github.com/MikeMcl/decimal.js)来解决这个问题的。
 
 
 具体的操作步骤是：
 
 
-1. npm install decimal.js@7.1.2 --save-dev
-2. 在component里引入decimal.js: import * as Decimal from 'decimal.js';
-3. 代码里的具体用法，比如： new Decimal(2).minus(1.8)
+1. 1 npm install decimal.js@7.1.2 --save-dev
+
+
+2. 2 在component里引入decimal.js: import * as Decimal from 'decimal.js';
+
+
+3. 3 代码里的具体用法，比如： new Decimal(2).minus(1.8)
 
 
 在webpack打包的时候报错：**Cannot use 'new' with an expression whose type lacks a call or construct signature.**

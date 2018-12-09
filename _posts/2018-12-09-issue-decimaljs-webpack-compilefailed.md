@@ -39,7 +39,14 @@ angular: 4.2.4
 3. 3 代码里的具体用法，比如： new Decimal(2).minus(1.8)
 
 
-在webpack打包的时候报错：**Cannot use 'new' with an expression whose type lacks a call or construct signature.**
+但是在webpack打包的时候报错：
+
+
+```
+
+Cannot use 'new' with an expression whose type lacks a call or construct signature.
+
+```
 
 ### 问题分析
 

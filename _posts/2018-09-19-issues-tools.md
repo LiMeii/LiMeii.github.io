@@ -21,6 +21,7 @@ layout: post
 
 <li>2018-12-09: <a href="/2018/12/09/issues-floatcalculate-Inaccurate.html">JavaScript 浮点数运算精度问题</a></li>
 
+<li>2018-12-09: <a href="/2018/12/09/issue-decimaljs-webpack-compilefailed.html">decimal.js 在webapck打包的时候报错</a></li>
 
 ### 提高效率的小工具
 

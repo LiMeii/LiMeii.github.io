@@ -8,7 +8,7 @@ layout: post
     <span><img class="title-category-img" src="../../../assets/images/categories/bug.svg" alt="issues"></span>
     <span><a class="github-link" href="/2018/09/19/issues-tools.html">问题</a></span>
     <span class="title-bullet">•</span>
-    <span>Oct 08, 2018</span>
+    <span>Dec 09, 2018</span>
     <span class="title-bullet">•</span>
     <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
 </div>
@@ -17,11 +17,9 @@ layout: post
 ### 问题描述
 
 ```html
-
 decimal.js: 7.1.2
 webpack: 3.10.0
 angular: 4.2.4
-
 ```
 
 在 [JavaScript 浮点数运算精度问题](https://limeii.github.io/2018/12/09/issues-floatcalculate-Inaccurate.html) 这篇文章中讲到了浮点数精度问题，我是用[decimal.js](https://github.com/MikeMcl/decimal.js)来解决这个问题的。
@@ -29,21 +27,16 @@ angular: 4.2.4
 
 具体的操作步骤是：
 
+```
+1 npm install decimal.js@7.1.2 --save-dev
+2 在component里引入decimal.js: import * as Decimal from 'decimal.js';
+3 代码里的具体用法，比如： new Decimal(2).minus(1.8)
+```
 
-1. 1 npm install decimal.js@7.1.2 --save-dev
-
-
-2. 2 在component里引入decimal.js: import * as Decimal from 'decimal.js';
-
-
-3. 3 代码里的具体用法，比如： new Decimal(2).minus(1.8)
-
-
-但是在webpack打包的时候报错：
+但是这么用，在webpack打包的时候报错：
 
 
 ```
-
 Cannot use 'new' with an expression whose type lacks a call or construct signature.
 
 ```

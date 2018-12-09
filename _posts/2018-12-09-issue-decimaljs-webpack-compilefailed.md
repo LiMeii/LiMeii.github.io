@@ -28,9 +28,9 @@ angular: 4.2.4
 具体的操作步骤是：
 
 ```
-1 npm install decimal.js@7.1.2 --save-dev
-2 在component里引入decimal.js: import * as Decimal from 'decimal.js';
-3 代码里的具体用法，比如： new Decimal(2).minus(1.8)
+1. npm install decimal.js@7.1.2 --save-dev
+2. 在component里引入decimal.js: import * as Decimal from 'decimal.js';
+3. 代码里的具体用法，比如： new Decimal(2).minus(1.8)
 ```
 
 但是这么用，在webpack打包的时候报错：

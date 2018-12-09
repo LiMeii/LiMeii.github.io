@@ -38,7 +38,6 @@ angular: 4.2.4
 
 ```
 Cannot use 'new' with an expression whose type lacks a call or construct signature.
-
 ```
 
 ### 问题分析

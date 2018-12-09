@@ -19,6 +19,8 @@ layout: post
 
 <li>2018-11-02: <a href="/2018/11/02/issues-router-reload-page.html">Angular 路由到新的模块时候，整个页面都被刷新</a></li>
 
+<li>2018-12-09: <a href="/2018/12/09/issues-floatcalculate-Inaccurate.html">JavaScript 浮点数运算精度问题</a></li>
+
 
 ### 提高效率的小工具
 

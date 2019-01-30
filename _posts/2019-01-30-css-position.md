@@ -18,29 +18,30 @@ layout: post
 
 先直接把这五个的区别列出来：
 
-- static 默认值，没有定位，元素出现在正常的文档流中，但是会忽略 top right bottom right z-index的声明。
+```
+static 默认值，没有定位，元素出现在正常的文档流中，但是会忽略 top right bottom right z-index的声明。
 
 
-- fixed 生成绝对定位的元素，是相对于浏览器窗口进行定位，位置是通过 top right bottom right 进行定位。
+fixed 生成绝对定位的元素，是相对于浏览器窗口进行定位，位置是通过 top right bottom right 进行定位。
 
 
-- inherit 从父元素继承 position 属性的值。
+inherit 从父元素继承 position 属性的值。
 
 
-- relative 元素脱离正常的文档流，但是在文档流中的位置依然存在。
+relative 元素脱离正常的文档流，但是在文档流中的位置依然存在。
 
 
-- absolute 元素是脱离正常文档流，同时在文档流中的位置不存在。
+absolute 元素是脱离正常文档流，同时在文档流中的位置不存在。
 
 
-- 单独使用 relative absolute的时候，跟fixed区别不大，只不过fixed是相对于浏览器进行定位，relatve absolute是相对于文档根节点进行定位
+单独使用 relative absolute的时候，跟fixed区别不大，只不过fixed是相对于浏览器进行定位，relatve absolute是相对于文档根节点进行定位
 
 
-- relative和其他属性结合使用的时候，虽然它脱离了文档流，但是在文档流中的位置依然存在，会相对于离它最近的父元素进行定位，无论父元素是何种定位方式，找不到就直接相对文档根节点进行定位。
+relative和其他属性结合使用的时候，虽然它脱离了文档流，但是在文档流中的位置依然存在，会相对于离它最近的父元素进行定位，无论父元素是何种定位方式，找不到就直接相对文档根节点进行定位。
 
 
-- absolute和其他属性结合使用的时候，它脱离正常文档流，同时在文档流中的位置不存在，会相对于离他最近的父元素（父元素的定位方式是relative/absolute）进行定位，找不到就直接相对文档根节点进行定位。
-
+absolute和其他属性结合使用的时候，它脱离正常文档流，同时在文档流中的位置不存在，会相对于离他最近的父元素（父元素的定位方式是relative/absolute）进行定位，找不到就直接相对文档根节点进行定位。
+```
 
 接下来看看具体案例（黑色背景是页面的body）：
 

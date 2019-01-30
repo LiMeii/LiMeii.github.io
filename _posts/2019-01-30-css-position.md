@@ -46,7 +46,7 @@ absolute和其他属性结合使用的时候，它脱离正常文档流，同时
 
 接下来看看具体案例（黑色背景是页面的body）：
 
-## 1 position:static 和 position:fixed 
+## 1. position:static 和 position:fixed 
 
 先来看两个最简单的：
 
@@ -90,7 +90,7 @@ div-static 出现在正常文档流本来的位置，不管怎么更改 top righ
 
 
 
-## 2 position:relative
+## 2. position:relative
 生成相对定位的元素，通过top right bottom right 进行定位, 相对它正常文档流中的位置进行定位。
 
 ```html
@@ -112,7 +112,7 @@ div-static 出现在正常文档流本来的位置，不管怎么更改 top righ
 ![css position relative]( https://limeii.github.io/assets/images/posts/css/css-position-relative.png){:height="60%" width="60%"}
 
 
-## 3 postion：static + relative，两个平行div，一个是static, 一个是relative
+## 3. postion：static + relative，两个平行div，一个是static, 一个是relative
 
 代码如下：
 ```html
@@ -151,7 +151,7 @@ div-static在文档流的第一个位置，div-relative在它后面，然后通�
 
 
 
-## 4 postion：static + relative，两个Div，父元素是static, 子元素是relative**
+## 4. postion：static + relative，两个Div，父元素是static, 子元素是relative
 
 代码如下：
 
@@ -188,7 +188,7 @@ div-static在文档流的第一个位置，div-relative在它后面，然后通�
 效果如下：
 ![css position relative]( https://limeii.github.io/assets/images/posts/css/css-position-static-relative2.png){:height="60%" width="60%"}
 
-## 5 position:absolute
+## 5. position:absolute
 脱离文档流，生成相对定位的元素，同时在文档流中的位置不存在，通过top right bottom right 进行定位。
 
 ```html
@@ -210,7 +210,7 @@ div-static在文档流的第一个位置，div-relative在它后面，然后通�
 ![css position absolute]( https://limeii.github.io/assets/images/posts/css/css-position-absolute.png){:height="60%" width="60%"}
 
 
-## 6 postion：static + absolute，两个平行div，一个是static, 一个是absolute
+## 6. postion：static + absolute，两个平行div，一个是static, 一个是absolute
 
 ```html
 .div-static {
@@ -243,7 +243,7 @@ div-static在文档流的第一个位置，div-relative在它后面，然后通�
 效果如下：可以看出，在这种情况下div-absolute脱离文档流，没有父元素，相对于文档根节点进行定位，并且有一部分会悬浮覆盖在div-static 
 ![css position absolute]( https://limeii.github.io/assets/images/posts/css/css-position-static-absolute1.png){:height="60%" width="60%"}
 
-## 7 postion：static + absolute，两个div，父元素是static, 子元素是absolute
+## 7. postion：static + absolute，两个div，父元素是static, 子元素是absolute
 
 ```html
 .div-static {
@@ -274,7 +274,7 @@ div-static在文档流的第一个位置，div-relative在它后面，然后通�
 效果如下：效果跟上面那种case一样，div-absolute脱离文档流，虽然有父元素div-static，但是父元素的定位方式是static，在这种情况下一直往上寻找定位方式为absolute/releative的父元素，没有找到就根据文档根节点进行定位。
 ![css position absolute]( https://limeii.github.io/assets/images/posts/css/css-position-static-absolute1.png){:height="60%" width="60%"}
 
-## 8 postion：relative + absolute，两个平行div，一个是relative, 一个是absolute
+## 8. postion：relative + absolute，两个平行div，一个是relative, 一个是absolute
 
 
 ```html
@@ -308,7 +308,7 @@ div-static在文档流的第一个位置，div-relative在它后面，然后通�
 ![css position absolute]( https://limeii.github.io/assets/images/posts/css/css-position-relative-absolute1.png){:height="60%" width="60%"}
 
 
-## 9 postion：relative + absolute，两个div，父元素是relative, 子元素是absolute
+## 9. postion：relative + absolute，两个div，父元素是relative, 子元素是absolute
 
 ```html
 .div-relative {
@@ -339,7 +339,7 @@ div-static在文档流的第一个位置，div-relative在它后面，然后通�
 效果如下：div-relative 相对文档根节点定位，div-absolute相对于div-relative定位。
 ![css position absolute]( https://limeii.github.io/assets/images/posts/css/css-position-relative-absolute2.png){:height="60%" width="60%"}
 
-## 10 postion：relative + absolute，两个div，父元素是absolute, 子元素是relative
+## 10. postion：relative + absolute，两个div，父元素是absolute, 子元素是relative
 
 ```html
 .div-relative {
@@ -370,7 +370,7 @@ div-static在文档流的第一个位置，div-relative在它后面，然后通�
 ![css position absolute]( https://limeii.github.io/assets/images/posts/css/css-position-relative-absolute3.png){:height="60%" width="60%"}
 
 
-## 11 postion：static + relative + absolute，这三个div平行
+## 11. postion：static + relative + absolute，这三个div平行
 
 ```html
 
@@ -455,7 +455,7 @@ div-absolute 是 div-relative的子元素，div-relative是div-static的子元�
 div-relative 会相对于div-static进行定位，而div-absolute会相对于它的父元素div-relative进行定位。
 ![css position absolute]( https://limeii.github.io/assets/images/posts/css/css-position-static-relative-absolute3.png){:height="60%" width="60%"}
 
-## 12 postion：relative + relative + absolute，这三个Div层层嵌套
+## 12. postion：relative + relative + absolute，这三个Div层层嵌套
 
 ```html
 
@@ -495,6 +495,6 @@ div-relative 会相对于div-static进行定位，而div-absolute会相对于它
 
 ```
 
-效果如下：
+效果如下：div-relative相对div-relative1进行定位，div-absolute 相对于div-relative进行了定位，它们各自都找到自己的父元素从而进行定位。
 
 ![css position absolute]( https://limeii.github.io/assets/images/posts/css/css-position-relative-relative-absolute.png){:height="60%" width="60%"}

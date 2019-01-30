@@ -5,7 +5,7 @@ layout: post
 
 # CSS布局 absolute 和 relative的区别
 <div class="title-meta">
-    <span><img class="title-category-img" src="../../../assets/images/categories/bug.svg" alt="issues"></span>
+    <span><img class="title-category-img" src="../../../assets/images/categories/css3.svg" alt="issues"></span>
     <span><a class="github-link" href="/2018/09/19/CSS.html">CSS</a></span>
     <span class="title-bullet">•</span>
     <span>Jan 30, 2019</span>

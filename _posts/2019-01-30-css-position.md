@@ -181,7 +181,7 @@ div-static在文档流的第一个位置，div-relative在它后面，然后通�
 </div>
 ```
 
-div-static在文档流的第一个位置，div-relative在它后面，然后通过 top: 5px;left: 100px; 相对于离它最近的div-static的top和left进行了定位。
+div-static在文档流的第一个位置，div-relative在它后面，然后通过 top: 5px;left: 100px; 相对于父元素div-static的top和left进行了定位。
 
 
 效果如下：
@@ -365,7 +365,7 @@ div-static在文档流的第一个位置，div-relative在它后面，然后通�
     </div>
 </div>
 ```
-效果如下：div-absolute相对浏览器定位，div-relative相对于div-absolute定位
+效果如下：div-absolute相对根节点定位，div-relative相对于div-absolute定位
 ![css position absolute]( https://limeii.github.io/assets/images/posts/css/css-position-relative-absolute3.png){:height="60%" width="60%"}
 
 
@@ -454,7 +454,7 @@ div-absolute 是 div-relative的子元素，div-relative是div-static的子元�
 div-relative 会相对于div-static进行定位，而div-absolute会相对于它的父元素div-relative进行定位。
 ![css position absolute]( https://limeii.github.io/assets/images/posts/css/css-position-static-relative-absolute3.png){:height="60%" width="60%"}
 
-## 12 postion：relative + relative + absolute，这三个div平行
+## 12 postion：relative + relative + absolute，这三个Div层层嵌套
 
 ```html
 

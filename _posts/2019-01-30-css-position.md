@@ -13,7 +13,7 @@ layout: post
     <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
 </div>
 
-写CSS过程中，经常要用到position进行页面布局，positioin有五个值：static，fixed，inherit，absolute，relative。前面三个还很好理解，后面两个在使用过程中经常会混淆，这里主要是介绍后两者的区别。
+写CSS过程中，经常要用到position进行页面布局，positioin有五个值：static，fixed，inherit，absolute，relative。前面三个还很好理解，后面两个在使用过程中经常会混淆，每次用到这几个值的时候，都要google查下这几个值的区别，这次直接把这五个的区别整理一下，巩固下这个知识点也方便日后自己查看。
 
 
 先直接把这五个的区别列出来：

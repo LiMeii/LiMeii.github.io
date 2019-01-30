@@ -13,13 +13,38 @@ layout: post
     <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
 </div>
 
-写CSS过程中，经常要用到position进行页面布局，positioin有五个值：static，fixed，absolute，relative，inherit。对于 static fixed 和 inherit都很好理解，经常会混淆 absolute 和 relative的用法，absolute 和 relative最主要的区别是：relative的元素脱离正常的文档流，但是在文档流中的位置依然存在；absolute的元素是脱离正常文档流，同时在文档流中的位置不存在。
+写CSS过程中，经常要用到position进行页面布局，positioin有五个值：static，fixed，absolute，relative，inherit。
 
 
-单独使用的时候，relative 和 absolute 区别不大，这几个结合起来用的时候，经常会出问题。 接下来就来看看这几个属性单独或结合使用的效果和区别。
+先直接把这五个的区别列出来：
+
+1. static 默认值，没有定位，元素出现在正常的文档流中，但是会忽略 top right bottom right z-index的声明。
 
 
-## position:static 和 position:fixed 
+2. fixed 生成绝对定位的元素，是相对于浏览器窗口进行定位，位置是通过 top right bottom right 进行定位。
+
+
+3. inherit 从父元素继承 position 属性的值。
+
+
+4. relative 元素脱离正常的文档流，但是在文档流中的位置依然存在
+
+
+5. absolute 元素是脱离正常文档流，同时在文档流中的位置不存在。
+
+
+6. 单独使用 relative absolute的时候，跟fixed区别不大，只不过fixed是相对于浏览器进行定位，relatve absolute是相对于文档根元素进行定位
+
+
+7. relative和其他属性结合使用的时候，虽然它脱离了文档流，但是在文档流中的位置依然存在，会相对于离它最近的父元素进行定位，无论它们是何种定位方式，找不到就直接相对文档根节点进行定位。
+
+
+8. absolute和其他属性结合使用的时候，它脱离正常文档流，同时在文档流中的位置不存在，会相对于离他最近的父元素（父元素的定位方式是relative/absolute）进行定位，找不到就直接相对文档根节点进行定位。
+
+
+接下来看看具体案例（黑色背景是页面的body）：
+
+## 1 position:static 和 position:fixed 
 
 先来看两个最简单的：
 
@@ -63,11 +88,8 @@ div-static 出现在正常文档流本来的位置，不管怎么更改 top righ
 
 
 
-## position:relative
+## 2 position:relative
 生成相对定位的元素，通过top right bottom right 进行定位, 相对它正常文档流中的位置进行定位。
-
-
-如果是单独用relative属性，它跟fixed属性没有区别，都是相对浏览器窗口进行定位。
 
 ```html
 .div-relative {
@@ -88,12 +110,7 @@ div-static 出现在正常文档流本来的位置，不管怎么更改 top righ
 ![css position relative]( https://limeii.github.io/assets/images/posts/css/css-position-relative.png){:height="60%" width="60%"}
 
 
-## postion：static + fixed + relative
-当同时存在两个属性，看看定位会发生什么变化。
-
-
-**两个平行div，一个是static, 一个是relative**
-
+## 3 postion：static + relative，两个平行div，一个是static, 一个是relative
 
 代码如下：
 ```html
@@ -124,7 +141,7 @@ div-static 出现在正常文档流本来的位置，不管怎么更改 top righ
 </div>
 
 ```
-div-static在文档流的第一个位置，div-relative在它后面，然后通过 top: 5px;left: 100px; 相对于div-static的bottom和left进行了定位。
+div-static在文档流的第一个位置，div-relative在它后面，然后通过 top: 5px;left: 100px; 相对于离它最近的div-static的bottom和left进行了定位。
 
 
 效果如下：
@@ -132,11 +149,350 @@ div-static在文档流的第一个位置，div-relative在它后面，然后通�
 
 
 
-**两个Div，父元素是static, 子元素是relative**
+## 4 postion：static + relative，两个Div，父元素是static, 子元素是relative**
 
-div-static在文档流的第一个位置，div-relative在它后面，然后通过 top: 5px;left: 100px; 相对于div-static的top和left进行了定位。
+代码如下：
+
+
+```html
+.div-static {
+    width: 400px;
+    height: 200px;
+    background-color: gray;
+    position: static;
+    top: 100px;
+    left: 100px;
+}
+.div-relative {
+    width: 550px;
+    height: 400px;
+    background-color: burlywood;
+    position: relative;
+    top: 5px;
+    left: 100px;
+}
+
+<div class="div-static " id="div-static">
+    <p> div-static</p>
+    <div class="div-relative " id="div-relative">
+        <p> div-relative</p>
+    </div>
+</div>
+```
+
+div-static在文档流的第一个位置，div-relative在它后面，然后通过 top: 5px;left: 100px; 相对于离它最近的div-static的top和left进行了定位。
 
 
 效果如下：
 ![css position relative]( https://limeii.github.io/assets/images/posts/css/css-position-static-relative2.png){:height="60%" width="60%"}
 
+## 5 position:absolute
+脱离文档流，生成相对定位的元素，同时在文档流中的位置不存在，通过top right bottom right 进行定位。
+
+```html
+.div-absolute {
+    width: 450px;
+    height: 300px;
+    background-color: cornflowerblue;
+    position: absolute;
+    top: 5px;
+    left: 100px;
+}
+
+<div class="div-absolute " id="div-absolute">
+    <p> div-absolute</p>
+</div>
+```
+
+效果如下：
+![css position absolute]( https://limeii.github.io/assets/images/posts/css/css-position-absolute.png){:height="60%" width="60%"}
+
+
+## 6 postion：static + absolute，两个平行div，一个是static, 一个是absolute
+
+```html
+.div-static {
+    width: 400px;
+    height: 200px;
+    background-color: gray;
+    position: static;
+    top: 100px;
+    left: 100px;
+}
+.div-absolute {
+    width: 450px;
+    height: 300px;
+    background-color: cornflowerblue;
+    position: absolute;
+    top: 5px;
+    left: 100px;
+}
+
+
+<div class="div-static " id="div-static">
+    <p> div-static</p>
+</div>
+
+<div class="div-absolute " id="div-absolute">
+    <p> div-absolute</p>
+</div>
+```
+
+效果如下：可以看出，在这种情况下div-absolute脱离文档流，没有父元素，相对于文档根节点进行定位，并且有一部分会悬浮覆盖在div-static 
+![css position absolute]( https://limeii.github.io/assets/images/posts/css/css-position-static-absolute1.png){:height="60%" width="60%"}
+
+## 7 postion：static + absolute，两个div，父元素是static, 子元素是absolute
+
+```html
+.div-static {
+    width: 400px;
+    height: 200px;
+    background-color: gray;
+    position: static;
+    top: 100px;
+    left: 100px;
+}
+.div-absolute {
+    width: 450px;
+    height: 300px;
+    background-color: cornflowerblue;
+    position: absolute;
+    top: 5px;
+    left: 100px;
+}
+
+
+<div class="div-static " id="div-static">
+    <p> div-static</p>
+    <div class="div-absolute " id="div-absolute">
+        <p> div-absolute</p>
+    </div>
+</div>
+```
+效果如下：效果跟上面那种case一样，div-absolute脱离文档流，虽然有父元素div-static，但是父元素的定位方式是static，在这种情况下一直往上寻找定位方式为absolute/releative的父元素，没有找到就根据文档根节点进行定位。
+![css position absolute]( https://limeii.github.io/assets/images/posts/css/css-position-static-absolute1.png){:height="60%" width="60%"}
+
+## 8 postion：relative + absolute，两个平行div，一个是relative, 一个是absolute
+
+
+```html
+.div-relative {
+    width: 550px;
+    height: 400px;
+    background-color: burlywood;
+    position: relative;
+    top: 20px;
+    left: 10px;
+}
+.div-absolute {
+    width: 450px;
+    height: 300px;
+    background-color: cornflowerblue;
+    position: absolute;
+    top: 5px;
+    left: 100px;
+}
+
+
+<div class="div-relative " id="div-relative">
+    <p> div-relative</p>
+</div>
+
+<div class="div-absolute " id="div-absolute">
+    <p> div-absolute</p>
+</div>
+```
+效果如下：div-relative div-absolute都是根据文档根节点进行定位。
+![css position absolute]( https://limeii.github.io/assets/images/posts/css/css-position-relative-absolute1.png){:height="60%" width="60%"}
+
+
+## 9 postion：relative + absolute，两个div，父元素是relative, 子元素是absolute
+
+```html
+.div-relative {
+    width: 550px;
+    height: 400px;
+    background-color: burlywood;
+    position: relative;
+    top: 20px;
+    left: 10px;
+}
+.div-absolute {
+    width: 600px;
+    height: 200px;
+    background-color: cornflowerblue;
+    position: absolute;
+    top: 10px;
+    left: 100px;
+}
+
+
+<div class="div-relative " id="div-relative">
+    <p> div-relative</p>
+    <div class="div-absolute " id="div-absolute">
+        <p> div-absolute</p>
+    </div>
+</div>
+```
+效果如下：div-relative 相对文档根节点定位，div-absolute相对于div-relative定位。
+![css position absolute]( https://limeii.github.io/assets/images/posts/css/css-position-relative-absolute2.png){:height="60%" width="60%"}
+
+## 10 postion：relative + absolute，两个div，父元素是absolute, 子元素是relative
+
+```html
+.div-relative {
+    width: 550px;
+    height: 400px;
+    background-color: burlywood;
+    position: relative;
+    top: 20px;
+    left: 20px;
+}
+.div-absolute {
+    width: 600px;
+    height: 200px;
+    background-color: cornflowerblue;
+    position: absolute;
+    top: 10px;
+    left: 100px;
+}
+
+<div class="div-absolute " id="div-absolute">
+    <p> div-absolute</p>
+    <div class="div-relative " id="div-relative">
+        <p> div-relative</p>
+    </div>
+</div>
+```
+效果如下：div-absolute相对浏览器定位，div-relative相对于div-absolute定位
+![css position absolute]( https://limeii.github.io/assets/images/posts/css/css-position-relative-absolute3.png){:height="60%" width="60%"}
+
+
+## 11 postion：static + relative + absolute，这三个div平行
+
+```html
+
+.div-static {
+    width: 400px;
+    height: 200px;
+    background-color: gray;
+    position: static;
+    top: 100px;
+    left: 100px;
+}
+.div-relative {
+    width: 550px;
+    height: 400px;
+    background-color: burlywood;
+    position: relative;
+    top: 20px;
+    left: 20px;
+}
+.div-absolute {
+    width: 600px;
+    height: 200px;
+    background-color: cornflowerblue;
+    position: absolute;
+    top: 10px;
+    left: 100px;
+}
+
+<div class="div-static " id="div-static">
+    <p> div-static</p>
+</div>
+<div class="div-relative " id="div-relative">
+    <p> div-relative</p>
+</div>
+
+<div class="div-absolute " id="div-absolute">
+    <p> div-absolute</p>
+</div>
+```
+效果如下：div-static出现在文档流本身的位置，top left属性对div-static没有任何影响；div-relative 相对于div-static通过top left进行了定位；div-absolute还是相对于文档根节点进行了定位。为什么这里 div-relative没有相对于文档根节点定位，是因为div-relative还存在于文档流中，它在div-static后面，需要根据static进行定位。而div-absolute完全脱离文档流并且在文档流中没有实际位置了，所以依旧根据根节点进行定位。
+![css position absolute]( https://limeii.github.io/assets/images/posts/css/css-position-static-relative-absolute1.png){:height="60%" width="60%"}
+
+我们调整三个Div位置如下：
+
+```html
+<div class="div-static" id="div-static">
+    <p> div-static</p>
+    <div class="div-relative " id="div-relative">
+        <p> div-relative</p>
+    </div>
+
+    <div class="div-absolute " id="div-absolute">
+        <p> div-absolute</p>
+    </div>
+</div>
+
+```
+div-relative 和 div-absolute为平行元素，并且都是div-static的子元素。效果如下:
+
+
+div-relative 会相对于div-static进行定位，而div-absolute还是相对于根节点进行定位。
+![css position absolute]( https://limeii.github.io/assets/images/posts/css/css-position-static-relative-absolute2.png){:height="60%" width="60%"}
+
+
+我们再次调整三个Div位置如下：
+
+```html
+<div class="div-static" id="div-static">
+    <p> div-static</p>
+        <div class="div-relative " id="div-relative">
+             <p> div-relative</p>
+            <div class="div-absolute " id="div-absolute">
+                 <p> div-absolute</p>
+            </div>
+        </div>
+</div>
+
+```
+div-absolute 是 div-relative的子元素，div-relative是div-static的子元素。
+
+
+div-relative 会相对于div-static进行定位，而div-absolute会相对于它的父元素div-relative进行定位。
+![css position absolute]( https://limeii.github.io/assets/images/posts/css/css-position-static-relative-absolute3.png){:height="60%" width="60%"}
+
+## 12 postion：relative + relative + absolute，这三个div平行
+
+```html
+
+.div-relative1 {
+    width: 400px;
+    height: 100px;
+    background-color: gray;
+    position: relative;
+    top: 100px;
+    left: 10px;
+}
+.div-relative {
+    width: 550px;
+    height: 400px;
+    background-color: burlywood;
+    position: relative;
+    top: 50px;
+    left: 20px;
+}
+.div-absolute {
+    width: 600px;
+    height: 200px;
+    background-color: cornflowerblue;
+    position: absolute;
+    top: 10px;
+    left: 100px;
+}
+<div class="div-relative1 " id="div-relative1">
+    <p> div-relative1</p>
+    <div class="div-relative " id="div-relative">
+        <p> div-relative</p>
+        <div class="div-absolute " id="div-absolute">
+            <p> div-absolute</p>
+        </div>
+    </div>
+</div>
+
+```
+
+效果如下：
+
+![css position absolute]( https://limeii.github.io/assets/images/posts/css/css-position-relative-relative-absolute.png.png){:height="60%" width="60%"}

@@ -34,7 +34,8 @@ layout: post
 **absolute** 元素是脱离正常文档流，同时在文档流中的位置不存在。
 
 ```
-单独使用 relative absolute的时候，跟fixed区别不大，只不过fixed是相对于浏览器进行定位，relatve absolute是相对于文档根节点进行定位
+单独使用 relative absolute的时候，跟fixed区别不大。
+只不过fixed是相对于浏览器进行定位，relatve absolute是相对于文档根节点进行定位
 
 relative和其他属性结合使用的时候，虽然它脱离了文档流，但是在文档流中的位置依然存在，会相对于离它最近的父元素进行定位。
 无论父元素是何种定位方式，找不到就直接相对文档根节点进行定位。

@@ -45,9 +45,11 @@ layout: post
 
 ![css pseudo-classes-img]( https://limeii.github.io/assets/images/posts/css/css-pseudo-classes-img.png){:height="100%" width="100%"}
 
-
+具体各种伪类的用法可以参考MDN： [https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-classes](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-classes)
 
 ## 伪元素
 下图列出了所有伪元素，有时你会发现伪元素使用了两个冒号（::）而不是一个冒号（：），在CSS3之前的版本中伪元素是一个冒号，CSS3以后为了区分伪类和伪元素，伪元素改为两个冒号，大多数的浏览器是支持使用这两种方式表达伪元素。
 
-![css css-pseudo-elements-img]( https://limeii.github.io/assets/images/posts/css/css-pseudo-classes-img.png){:height="100%" width="100%"}
+![css css-pseudo-elements-img]( https://limeii.github.io/assets/images/posts/css/css-pseudo-elements-img.png){:height="100%" width="100%"}
+
+具体各种伪元素的用法可以参考MDN： [https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements)

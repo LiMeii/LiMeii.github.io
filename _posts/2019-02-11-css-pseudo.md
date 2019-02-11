@@ -13,7 +13,7 @@ layout: post
     <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
 </div>
 
-自己在写css过程中，经常用到 :before / :after / :hover，知道这是伪类和伪元素，但是除了这几个常见的，具体还有哪些伪类和伪元素，以及伪类和伪元素区别都不是很清楚。
+自己在写css过程中，经常用到 :before / :after / :hover 等伪类和伪元素，但是除了这几个常见的，具体还有哪些伪类和伪元素，以及伪类和伪元素区别都不是很清楚。
 
 
 今天就在这里总结伪类和伪元素的区别和具体用法。

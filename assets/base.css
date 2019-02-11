@@ -26,6 +26,9 @@ code {
     font-family: "SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace;
 }
 h1 {
+    font-size: 1.58em;
+}
+h2 {
     font-size: 1.48em;
 }
 h3 {

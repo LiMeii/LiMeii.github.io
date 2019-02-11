@@ -144,6 +144,11 @@ a {
     color: #0366d6;
 }
 
+.post-list {
+    border: 0;
+    color: black;
+}
+
 button,
 input,
 textarea {

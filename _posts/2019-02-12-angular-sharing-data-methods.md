@@ -17,23 +17,23 @@ layout: post
 在Angular组件之间共享数据，有以下四种方式：
 
 
-**父组件至子组件: 通过@Input共享数据**
+**1. 父组件至子组件: 通过@Input共享数据**
 
 
-**子组件至父组件: 通过@Output EventEmitter共享数据**
+**2. 子组件至父组件: 通过@Output EventEmitter共享数据**
 
 
-**子组件至父组件: 通过@ViewChild共享数据**
+**3. 子组件至父组件: 通过@ViewChild共享数据**
 
 
-**不相关组件： 通过service共享数据**
+**4. 不相关组件： 通过service共享数据**
 
 
 在介绍这几种方式之前，先来看下父子组件和不相关组件是什么，在下图中可以看出，左边是描述父子组件关系，左右两个是描述不相关组件关系。
-![css pseudo-classes-img]( https://limeii.github.io/assets/images/posts/angular/angular-sharingdata.png){:height="100%" width="100%"}
+![css pseudo-classes-img]( https://limeii.github.io/assets/images/posts/angular/angular-sharingdata.png){:height="50%" width="50%"}
 
 
-##第一种方式，父组件至子组件: 通过@Input共享数据
+## 第一种方式，父组件至子组件: 通过@Input共享数据
 这个例子是在子组件中直接列出出父组件中所有的颜色，具体代码如下：
 
 ```ts
@@ -72,7 +72,7 @@ export class ParentComponent implements OnInit {
 ```
 
 
-##第二种方式，子组件至父组件: 通过@Output EventEmitter共享数据
+## 第二种方式，子组件至父组件: 通过@Output EventEmitter共享数据
 这个例子是子组件提供两个按钮进行投票，而父组件中需要实时显示投票结果，具体代码如下：
 
 ```ts
@@ -119,7 +119,7 @@ export class VoteChildComponent {
 }
 ```
 
-##第三种方式，子组件至父组件: 通过@ViewChild共享数据
+## 第三种方式，子组件至父组件: 通过@ViewChild共享数据
 
 在第二种方式中，通过@Output EventEmitter共享数据，父组件只能访问子组件的某几个属性值，但是没办法去调用子组件中的方法。但是通过@ViewChild可是实现父组件同时可以访问子组件中的属性和方法。
 

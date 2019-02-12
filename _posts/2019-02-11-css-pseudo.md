@@ -1,5 +1,5 @@
 ---
-title: pseudo element or class
+title: css pseudo
 layout: post
 ---
 

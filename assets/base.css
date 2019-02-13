@@ -26,16 +26,19 @@ code {
     font-family: "SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace;
 }
 h1 {
-    font-size: 1.58em;
+    font-size: 1.55em;
 }
 h2 {
-    font-size: 1.48em;
+    font-size: 1.45em;
 }
 h3 {
-    font-size: 1.38em;
+    font-size: 1.35em;
 }
 h4 {
-    font-size: 1.2em;
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
 }
 
 ol,

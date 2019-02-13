@@ -36,9 +36,12 @@ layout: post
 ## 第一种方式，父组件至子组件: 通过@Input共享数据
 这个例子是在子组件中直接列出出父组件中所有的颜色，具体代码如下：
 
-![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data1.png){:height="100%" width="100%"}
+![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data1.png){:height="80%" width="80%"}
 
-![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data2.png){:height="100%" width="100%"}
+![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data2.png){:height="80%" width="80%"}
+
+效果如下：
+![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data7.png){:height="100%" width="100%"}
 
 ## 第二种方式，子组件至父组件: 通过@Output EventEmitter共享数据
 这个例子是子组件提供两个按钮进行投票，而父组件中需要实时显示投票结果，具体代码如下：
@@ -46,6 +49,9 @@ layout: post
 ![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data3.png){:height="100%" width="100%"}
 
 ![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data4.png){:height="100%" width="100%"}
+
+效果如下：
+![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data8.png){:height="100%" width="100%"}
 
 ## 第三种方式，子组件至父组件: 通过@ViewChild共享数据
 
@@ -55,9 +61,14 @@ layout: post
 这个例子是一个简单的计时器，所有的计时逻辑都在子组件中，父组件负责显示时间。这个方式需要注意以下两点：
 
 
-**子组件中方法或者变量为public的时候才能被父组件方法**
-**在父组件中，只有等它本是AfterViewInit之后timerChildComponent才存在**
+**1.子组件中方法或者变量为public的时候才能被父组件方法**
+
+
+**2.在父组件中，只有等它本是AfterViewInit之后timerChildComponent才存在**
 
 ![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data5.png){:height="100%" width="100%"}
 
 ![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data6.png){:height="100%" width="100%"}
+
+效果如下：
+![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data9.gif){:height="100%" width="100%"}

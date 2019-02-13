@@ -71,4 +71,5 @@ layout: post
 ![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data6.png){:height="100%" width="100%"}
 
 效果如下：
-![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data9.gif){:height="50%" width="50%"}
+![angular gif]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data9.gif){:height="50%" width="50%"}
+

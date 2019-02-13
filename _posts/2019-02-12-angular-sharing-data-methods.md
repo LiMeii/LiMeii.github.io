@@ -85,3 +85,6 @@ layout: post
 效果如下：
 
 ![angular gif]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data14.gif){:height="80%" width="80%"}
+
+
+示例代码可以在这查看：[angular-seed-project](https://github.com/LiMeii/angular-seed-project)

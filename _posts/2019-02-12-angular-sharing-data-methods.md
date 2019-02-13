@@ -72,7 +72,7 @@ layout: post
 
 ### 第四种方式，不相关组件： 通过service共享数据
 
-如果两个组件直接没有直接联系，那么就可以通过service来通信，代码如下：
+如果两个组件直接没有直接联系，那么就可以通过service来通信，在下面的例子中，两个不相关的组件：SiblingOneComponent 和 SiblingTwoComponent，在SiblingOneComponent写消息，实时在SiblingTwoComponent显示出来。代码如下：
 
 ![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data10.png){:height="100%" width="100%"}
 
@@ -84,4 +84,4 @@ layout: post
 
 效果如下：
 
-![angular gif]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data14.gif){:height="50%" width="50%"}
+![angular gif]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data14.gif){:height="80%" width="80%"}

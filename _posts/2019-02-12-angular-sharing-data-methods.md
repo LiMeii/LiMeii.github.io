@@ -36,12 +36,12 @@ layout: post
 ## 第一种方式，父组件至子组件: 通过@Input共享数据
 这个例子是在子组件中直接列出出父组件中所有的颜色，具体代码如下：
 
-![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data1.png){:height="80%" width="80%"}
+![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data1.png){:height="100%" width="100%"}
 
-![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data2.png){:height="80%" width="80%"}
+![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data2.png){:height="100%" width="100%"}
 
 效果如下：
-![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data7.png){:height="100%" width="100%"}
+![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data7.png){:height="50%" width="50%"}
 
 ## 第二种方式，子组件至父组件: 通过@Output EventEmitter共享数据
 这个例子是子组件提供两个按钮进行投票，而父组件中需要实时显示投票结果，具体代码如下：
@@ -51,7 +51,7 @@ layout: post
 ![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data4.png){:height="100%" width="100%"}
 
 效果如下：
-![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data8.png){:height="100%" width="100%"}
+![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data8.png){:height="50%" width="50%"}
 
 ## 第三种方式，子组件至父组件: 通过@ViewChild共享数据
 
@@ -71,4 +71,4 @@ layout: post
 ![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data6.png){:height="100%" width="100%"}
 
 效果如下：
-![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data9.gif){:height="100%" width="100%"}
+![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data9.gif){:height="50%" width="50%"}

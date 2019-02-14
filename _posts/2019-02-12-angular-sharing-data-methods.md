@@ -57,10 +57,10 @@ layout: post
 这个例子是一个简单的计时器，所有的计时逻辑都在子组件中，父组件负责显示时间。这个方式需要注意以下两点：
 
 
-**1.子组件中方法或者变量为public的时候才能被父组件方法**
+**1.子组件中方法或者变量为public的时候才能被父组件访问**
 
 
-**2.在父组件中，只有等它本是AfterViewInit之后timerChildComponent才存在**
+**2.在父组件中，只有等它AfterViewInit之后timerChildComponent才存在**
 
 ![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data5.png){:height="100%" width="100%"}
 

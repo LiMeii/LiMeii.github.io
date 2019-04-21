@@ -10,3 +10,5 @@
 <li>2018-10-09: <a> live-reload Hot Module Replacement</a></li>
 
 <li>2018-10-09: <a>chrome refresh whole page: event.preventDefault();</a></li>
+
+1. node express proxy

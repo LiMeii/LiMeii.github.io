@@ -6,7 +6,7 @@ layout: post
 # 用node代理解决前后端联调跨域问题
 <div class="title-meta">
     <span><img class="title-category-img" src="../../../assets/images/categories/js.svg" alt="js"></span>
-    <span><a class="github-link" href="/2018/09/19/js.html">CSS</a></span>
+    <span><a class="github-link" href="/2018/09/19/js.html">JS</a></span>
     <span class="title-bullet">•</span>
     <span>Apr 21, 2019</span>
     <span class="title-bullet">•</span>
@@ -35,7 +35,6 @@ layout: post
 1. cookie localstorage 和 indexdb 无法读取
 2. DOM 无法获得
 3. AJAX 请求不能发送
-
 ```
 
 基于浏览器这个同源策略，会导致前后端分离开发项目势必会存在跨域问题，比如前端本地开发的时候request url为：https://localhost:4200/useragents/requesttokens 后端开发写好这个API后发布到DEV-INT服务器上暴露出来的API是：https://expamle.com/useragents/requesttokens, 这样就是域名不一样，端口也不一样，就是非同源，如果在前端代码里直接调用https://expamle.com/api/useragents/requesttokens 我们来看一下会有什么问题:

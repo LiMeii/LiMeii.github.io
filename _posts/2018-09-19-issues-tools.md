@@ -25,6 +25,8 @@ layout: post
 
 <li>2019-04-27: <a class="post-list" href="/2019/04/27/issue-cssslowerthanjs.html">在生产环境里CSS渲染比JS慢导致的问题</a></li>
 
+<li>2019-05-30: <a class="post-list" href="/2019/05/30/issues-angular-ngonchanges-notfired.html">Angular ngOnChanges 事件没有被触发</a></li>
+
 ### 提高效率的小工具
 
 <li>2018-09-25: <a class="post-list" href="/2018/09/25/tools-github-pages">怎么搭建自己的 GitHub Pages</a></li>
@@ -34,3 +36,5 @@ layout: post
 <li>2018-09-27: <a class="post-list" href="/2018/10/01/tools-markdown-preview.html">如何在 VS Code 里面预览 markdown</a></li>
 
 <li>2018-10-11: <a class="post-list" href="/2018/10/11/tools-markdonw-syntax.html">markdown 常用语法</a></li>
+
+<li>2019-05-30: <a class="post-list" href="/2019/05/30/tools-commoncmd.html">常见的一些命令行</a></li>

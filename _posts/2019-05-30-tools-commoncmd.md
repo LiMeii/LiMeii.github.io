@@ -31,4 +31,8 @@ layout: post
 
 ###### 1. 克隆和下载项目： git clone  https://github.com/LiMeii/angular-seed-project.git
 ###### 2. 提交代码： git push -u origin master / git push
+###### 3. 设置用户名密码： git config --global user.name "Your Name"  git config --global user.email you@example.com
+###### 4. SSL Certificate problem: unable to get local issuer certificate： 解决方案 git config --global http.sslVerify false
+
+
 

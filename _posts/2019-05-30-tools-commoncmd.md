@@ -25,7 +25,9 @@ layout: post
 ##### 4. 查看当前目录下面所有的目录和文件： dir
 ##### 5. 创建新目录： mkdir 或者 md folder
 
+## Terminal
 
+##### 1. 删除文件夹：rm -rf folderName 或者 sudo rm -rf folderName
 
 ## GIT
 

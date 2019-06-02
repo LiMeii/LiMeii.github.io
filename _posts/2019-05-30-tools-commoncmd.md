@@ -28,6 +28,7 @@ layout: post
 ## Terminal
 
 ##### 1. 删除文件夹：rm -rf folderName 或者 sudo rm -rf folderName
+##### 2. 查看node装在哪里： ls -la $(which node)
 
 ## GIT
 

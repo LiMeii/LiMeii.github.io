@@ -21,4 +21,5 @@ layout: post
 
 现在需要做一个页面，用来专门用来收集这样的收费标准，以后可能需要增加新的收费标准或者修改现有的收费标准。
 
-一帮页面设计是这样的：
+这个页面可以设计成这样：
+![dynamic form]( https://limeii.github.io/assets/images/posts/angular/angular-dynamic-form.gif){:height="100%" width="100%"}

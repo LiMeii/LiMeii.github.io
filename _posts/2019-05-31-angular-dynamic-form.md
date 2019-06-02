@@ -22,4 +22,9 @@ layout: post
 现在需要做一个页面，用来专门用来收集这样的收费标准，以后可能需要增加新的收费标准或者修改现有的收费标准。
 
 这个页面可以设计成这样：
-![dynamic form]( https://limeii.github.io/assets/images/posts/angular/angular-dynamic-form.gif){:height="100%" width="100%"}
+![dynamic form](https://limeii.github.io/assets/images/posts/angular/angular-dynamic-form.gif){:height="100%" width="100%"}
+
+在angular用dynamic form可以很容易实现这种动态加载表单的效果，并且可以轻松实现对每一个field进行校验。接下来介绍如何在angular里实现上面的表单。
+
+#### 开发环境如下：
+![dynamic form](https://limeii.github.io/assets/images/posts/angular/dynamicform-env.png){:height="100%" width="100%"}

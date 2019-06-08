@@ -46,17 +46,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 ### 第二步，创建DynamicFeeComponent，这个是每次动态添加的form表单。
 
  详细代码： 
- - [angular-dynamic-form](https://github.com/LiMeii/angular-dynamic-form/blob/master/src/app/dynamic-fee/dynamic-fee.component.html)
- - [angular-dynamic-form](https://github.com/LiMeii/angular-dynamic-form/blob/master/src/app/dynamic-fee/dynamic-fee.component.ts)
+ - [angular-dynamic-form-dynamic-fee.component.html](https://github.com/LiMeii/angular-dynamic-form/blob/master/src/app/dynamic-fee/dynamic-fee.component.html)
+ - [angular-dynamic-form-dynamic-fee.component.ts](https://github.com/LiMeii/angular-dynamic-form/blob/master/src/app/dynamic-fee/dynamic-fee.component.ts)
 
 ### 第三步， 在app.component.ts中用FormArray动态添加 DynamicFeeComponent。
 
  详细代码：
- - [angular-dynamic-form](https://github.com/LiMeii/angular-dynamic-form/blob/master/src/app/app.component.html)
- - [angular-dynamic-form](https://github.com/LiMeii/angular-dynamic-form/blob/master/src/app/app.component.ts)
+ - [angular-dynamic-form-app.component.html](https://github.com/LiMeii/angular-dynamic-form/blob/master/src/app/app.component.html)
+ - [angular-dynamic-form-app.component.ts](https://github.com/LiMeii/angular-dynamic-form/blob/master/src/app/app.component.ts)
 
 需要注意的是，formarray中每一项都是一个独立的formgroup，本质上来说在app.componnet中就是有两层嵌套的form，只不过这里的被嵌套的是一个formarray.
-formarray是多个formgroup数组集合。在formarray formgroup的命名需要用数字表示：formGroupName="{{i}}"。
+formarray是多个formgroup数组集合。在formarray formgroup的命名需要用数字表示：
 
 ```html
     <div formArrayName="feeArray">

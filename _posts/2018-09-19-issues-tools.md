@@ -27,6 +27,9 @@ layout: post
 
 <li>2019-05-30: <a class="post-list" href="/2019/05/30/issues-angular-ngonchanges-notfired.html">Angular ngOnChanges 事件没有被触发</a></li>
 
+<li>2019-06-12: <a class="post-list" href="/2019/06/12/issues-angular-selectoption-abnormal-iesafari.html">Angular Dropdown option 在IE Safari浏览器显示问题</a></li>
+
+
 ### 提高效率的小工具
 
 <li>2018-09-25: <a class="post-list" href="/2018/09/25/tools-github-pages">怎么搭建自己的 GitHub Pages</a></li>
@@ -38,3 +41,4 @@ layout: post
 <li>2018-10-11: <a class="post-list" href="/2018/10/11/tools-markdonw-syntax.html">markdown 常用语法</a></li>
 
 <li>2019-05-30: <a class="post-list" href="/2019/05/30/tools-commoncmd.html">常见的一些命令行</a></li>
+

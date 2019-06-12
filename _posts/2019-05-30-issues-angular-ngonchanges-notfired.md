@@ -15,17 +15,13 @@ layout: post
 
 ### 问题描述
 
-```html
-开发环境
+##### 1. Angular version： 4.2.4
 
-node version： 8.9.3
-npm version： 5.6.0
-anguar version: 5.0.0
-webpack version: 3.10.0
-webpack-dev-server: 2.9.3
-chrome： 69.0.3497.100 
+##### 2. 代码如下：
+
+```ts
+
 ```
-
 
 
 
@@ -36,6 +32,6 @@ chrome： 69.0.3497.100
 
 
 ### 解决方案
-
+1. ngDoCheck() 
 
 ```

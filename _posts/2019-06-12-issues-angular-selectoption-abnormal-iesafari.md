@@ -45,7 +45,7 @@ bug地址：[https://github.com/angular/angular/issues/14505](https://github.com
 
 其中有人给出了如下的解释：
 
-![angular-selectoption-abnormal]( https://limeii.github.io/assets/images/posts/issues/issues-angular-selectoption-abnormal-iesafari5.png){:height="100%" width="100%"}
+![angular-selectoption-abnormal]( https://limeii.github.io/assets/images/posts/issues/issues-angular-selectoption-abnormal-iesafari6.png){:height="100%" width="100%"}
 
 
 也就是说当用ngFor和[value]/[ngValue]动态显示dropdown中option：

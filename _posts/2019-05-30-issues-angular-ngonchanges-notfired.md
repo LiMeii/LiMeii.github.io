@@ -99,7 +99,6 @@ Google了一下， 在github上找到了一个angular员工给出的一个答复
 用ngDoCheck()方法，任何变化都会触发这个方法。具体代码如下：
 
 ```ts
- // code for coloring
 @Component({
     template: '<h1>here is the child template</h1>',
     selector: 'child-component'

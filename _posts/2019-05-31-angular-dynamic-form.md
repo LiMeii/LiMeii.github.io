@@ -1,5 +1,5 @@
 ---
-title: Angular Dynamic Form：动态创建Form表单
+title: Angular：动态创建Form表单
 tags: Angular
 layout: post
 ---
@@ -7,8 +7,8 @@ layout: post
 
 在web应用里通常会有这样一种场景：比如支付宝信用卡还款，假设支付宝收费标准如下：
 
-##### 普通用户，2000元以内免费，2000-50000收费10元，50000元以上收费15元。
-##### 砖石会员，5000元以内免费，5000-50000收费5元，50000元以上收费10元。
+- 普通用户，2000元以内免费，2000-50000收费10元，50000元以上收费15元。
+- 砖石会员，5000元以内免费，5000-50000收费5元，50000元以上收费10元。
 
 现在需要做一个页面，用来专门用来收集这样的收费标准，以后可能需要增加新的收费标准或者修改现有的收费标准。
 
@@ -27,20 +27,21 @@ layout: post
 [angular-dynamic-form](https://github.com/LiMeii/angular-dynamic-form)
 
 
-### 第一步，需要在app.module.ts引入FormsModule和ReactiveFormsModule
+**第一步，需要在app.module.ts引入FormsModule和ReactiveFormsModule**
 
 ```ts
 //app.module.ts
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 ```
 
-### 第二步，创建DynamicFeeComponent，这个是每次动态添加的form表单。
+**第二步，创建DynamicFeeComponent，这个是每次动态添加的form表单**
 
  详细代码： 
  - [angular-dynamic-form-dynamic-fee.component.html](https://github.com/LiMeii/angular-dynamic-form/blob/master/src/app/dynamic-fee/dynamic-fee.component.html)
  - [angular-dynamic-form-dynamic-fee.component.ts](https://github.com/LiMeii/angular-dynamic-form/blob/master/src/app/dynamic-fee/dynamic-fee.component.ts)
 
-### 第三步，在app.component.ts中用FormArray动态添加DynamicFeeComponent。
+
+**第三步，在app.component.ts中用FormArray动态添加DynamicFeeComponent**
 
  详细代码：
  - [angular-dynamic-form-app.component.html](https://github.com/LiMeii/angular-dynamic-form/blob/master/src/app/app.component.html)
@@ -59,10 +60,11 @@ formarray是多个formgroup数组集合。在formarray formgroup的命名需要�
     </div>
 ```
 
-在DynamicFeeComponent里需要用到每一个formControl的时候，通过 [group]="feeForm.controls.feeArray.controls[i]" 把每个formgroup传给DynamicFeeComponent。
+在DynamicFeeComponent里需要用到每一个formControl的时候，通过‘[group]="feeForm.controls.feeArray.controls[i]" ’把每个formgroup传给DynamicFeeComponent。
 否则的话一直会报类似这样的错:cannot access formcontrol
 
-### 第四步，在DynamicFeeComponent里，为每一个字段添加require的校验，formarray中只要有一个字段校验不对，整个form.valid就为false。
+
+**第四步，在DynamicFeeComponent里，为每一个字段添加require的校验，formarray中只要有一个字段校验不对，整个form.valid就为false**
 
 在每添加一个feeItem的时候，给每个字段设置require校验：
 

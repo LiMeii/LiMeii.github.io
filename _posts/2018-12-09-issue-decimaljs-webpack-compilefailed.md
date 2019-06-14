@@ -7,6 +7,8 @@ layout: post
 
 ### 问题描述
 
+开发环境：
+
 ```html
 decimal.js: 7.1.2
 webpack: 3.10.0

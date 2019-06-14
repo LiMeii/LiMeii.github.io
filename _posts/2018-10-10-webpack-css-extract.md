@@ -243,8 +243,8 @@ webpack.bundle.js 文件如下：
 
 最后来总结一下 hash chunkhash contenthash 这三者之间的区别。
 
-- 1  hash 是用来给本次build计算hashcode，所有的编译结果文件中的hashcode都会一样。
+- 1：hash 是用来给本次build计算hashcode，所有的编译结果文件中的hashcode都会一样。
 
-- 2  chunkhash 是用来给每个entry file计算hashcode，每个编译结果文件中的hashcode都是独一无二的。而且entry file任一文件改动，对应的bundle文件hashcode也会改动，否则就保持不变。
+- 2：chunkhash 是用来给每个entry file计算hashcode，每个编译结果文件中的hashcode都是独一无二的。而且entry file任一文件改动，对应的bundle文件hashcode也会改动，否则就保持不变。
 
-- 3  contenthash 是用来给ExtractTextPlugin提取的文件内容计算hashcode，注意只是基于提取内容，而不是整个chunk文件。
+- 3：contenthash 是用来给ExtractTextPlugin提取的文件内容计算hashcode，注意只是基于提取内容，而不是整个chunk文件。

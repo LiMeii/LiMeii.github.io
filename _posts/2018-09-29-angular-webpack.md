@@ -43,7 +43,8 @@ layout: post
 
 ### 如何在angular中配置webpack
 
-#### 第一步，在src目录下新增一个vendor.ts文件，这个文件主要是用来引用第三方library，比如node_modules下面的library
+**第一步，在src目录下新增一个vendor.ts文件，这个文件主要是用来引用第三方library，比如node_modules下面的library**
+
 
 在vendor文件里improt第三方library默认是从node_modules目录下找，所以如果是node_modules里面的library，那么node_modules之前的路径都可以省略
 
@@ -62,7 +63,7 @@ import "@angular/forms";
 import "rxjs/Rx";
 ```
 
-#### 第二步，更改webpack.config.js
+**第二步，更改webpack.config.js**
 
 ```js
 module.exports = function(env){
@@ -71,11 +72,13 @@ module.exports = function(env){
 }
 ```
 
-#### 第三步，创建本地开发用的打包方式，在根目录下新增一个webpack.dev.js文件
+**第三步，创建本地开发用的打包方式，在根目录下新增一个webpack.dev.js文件**
+
 
 关于webpack.dev完整代码可以查看 [webpack.dev.js](https://github.com/LiMeii/angular-seed-project/blob/master/webpack/webpack.dev.js)
 
-#### 第四步，在package.json文件script节点里增加命令
+
+**第四步，在package.json文件script节点里增加命令**
 
 ```js
  "scripts": {
@@ -91,7 +94,8 @@ module.exports = function(env){
 ![angular build dev]( https://limeii.github.io/assets/images/posts/angular/angular-build-dev-file.png){:height="100%" width="100%"}
 
 
-#### 第五步，创建Production的打包方式，在根目标下新增一个webpack.prod.js文件
+**第五步，创建Production的打包方式，在根目标下新增一个webpack.prod.js文件**
+
 
 关于webpack.prod完整代码可以查看 [webpack.prod.js](https://github.com/LiMeii/angular-seed-project/blob/master/webpack/webpack.prod.js)
 

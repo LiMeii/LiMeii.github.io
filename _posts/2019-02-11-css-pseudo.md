@@ -9,7 +9,9 @@ layout: post
 
 今天就在这里总结伪类和伪元素的区别和具体用法。
 
-## 为什么要有伪类和伪元素
+
+**为什么要有伪类和伪元素**
+
 
 我们先来看看在[CSS 3 selector recommendation](https://www.w3.org/TR/2011/REC-css3-selectors-20110929/#pseudo-classes)对伪类和伪元素的定义：
 
@@ -31,14 +33,19 @@ layout: post
 
 **伪元素是用来创建不存在文档树中的元素**，并且为其添加对应的样式。比如说，我们可以通过:before来在一个元素前增加一些文本，并为这些文本添加样式，虽然用户可以看到这些文本，但是这些文本实际上不在文档树中。
 
-## 伪类
+
+**伪类**
+
+
 下图中列出了可以用的伪类，在一个选择器里可以按需连用多个伪类
 
 ![css pseudo-classes-img]( https://limeii.github.io/assets/images/posts/css/css-pseudo-classes-img.png){:height="100%" width="100%"}
 
 具体各种伪类的用法可以参考MDN： [https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-classes](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-classes)
 
-## 伪元素
+**伪元素**
+
+
 下图列出了所有伪元素，有时你会发现伪元素使用了两个冒号（::）而不是一个冒号（：），在CSS3之前的版本中伪元素是一个冒号，CSS3以后为了区分伪类和伪元素，伪元素改为两个冒号，大多数的浏览器是支持使用这两种方式表达伪元素。
 
 ![css css-pseudo-elements-img]( https://limeii.github.io/assets/images/posts/css/css-pseudo-elements-img.png){:height="100%" width="100%"}

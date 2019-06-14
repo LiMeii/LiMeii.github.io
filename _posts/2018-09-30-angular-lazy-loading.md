@@ -7,6 +7,7 @@ layout: post
 
 ### 什么是lazy loading 和 preloading
 
+
 在打开浏览器访问某一个网站的时候，要从服务器下载 bundle/chunk 等文件。如果文件过大或过多，会导致网站响应过慢。
 
 **lazy loading**，翻译到中文就是懒加载，其实就是按需加载。
@@ -47,7 +48,10 @@ preloading这种方式在用户切换模块也就是访问新页面之前就把�
 ### 如何在angular中实现lazy loading
 在angular中，lazy loading是跟路由一起实现的。也就是在代码打包过程中，把每个路由对应的模块都打包成独立的chunk文件，最终就可以实现用户点击导航到新页面的时候按需加载对应的chunk文件。
 
-#### 第一步，在webpack中配置代码切割
+
+**第一步，在webpack中配置代码切割**
+
+
 为了实现按照路由切割代码，我们需要用到 [angular-router-loader](https://www.npmjs.com/package/angular-router-loader) 或者是 [ng-router-loader](https://www.npmjs.com/package/ng-router-loader)。 以 angular-router-loader 为例，需要在webpack config文件中加如下代码：
 
 ```js
@@ -70,7 +74,7 @@ preloading这种方式在用户切换模块也就是访问新页面之前就把�
 ```
 这种配置，chunk最后的名字会是 0.chunk.js 1.chunk.js 2.chunk.js ......
 
-#### 第二步，配置路由
+**第二步，配置路由**
 ```
 比如项目启动模块是 AppModule
 业务模块分别是：DashboardModule SettingsModule ReportsModule
@@ -121,7 +125,7 @@ preloading这种方式在用户切换模块也就是访问新页面之前就把�
 ```
 
 这样在build结束以后，除了bundle文件以外，会有三个chunk文件分别是 0.chunk.js，1.chunk.js，2.chunk.js。这样就实现了按需加载。
-**需要注意的是，在app.module.ts文件中不要再import业务代码module，否则不会生成chunk文件**
+- 需要注意的是，在app.module.ts文件中不要再import业务代码module，否则不会生成chunk文件**
 
 
 完整代码可以在 [angular-seed-project](https://github.com/LiMeii/angular-seed-project) 中查看，需要注意的是在源码中把路由代码单独提取到app-routing.module.ts文件中了。

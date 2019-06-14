@@ -5,7 +5,7 @@ layout: post
 ---
 
 
-在 [如何利用 webpack 解决浏览器缓存问题](/2018/10/09/webpack-caching.html) 文章介绍了用chunkhash解决浏览器缓存问题，默认是把CSS文件一起打包进 JS bundle文件中。
+在 [如何利用 webpack 解决浏览器缓存问题](/2018/10/webpack-caching) 文章介绍了用chunkhash解决浏览器缓存问题，默认是把CSS文件一起打包进 JS bundle文件中。
 
 
 但在一般项目里面CSS的改动比较少，如果打包成 JS bundle 文件，再结合chunkhash，每次发布以后，虽然CSS文件没有改动，但是客户端还是需要重新下载这些样式文件。如果CSS文件过大的话，在一定程度上会影响性能。
@@ -137,7 +137,7 @@ webpack.bundle.js 文件如下：
 
 
 
-在 [如何利用 webpack 解决浏览器缓存问题](/2018/10/09/webpack-caching.html) 文章中提到chunkhash可以根据源文件内容的改变，来决定最终bundle文件名是否需要更改，而且每个chunk文件中的hashcode都不一样。
+在 [如何利用 webpack 解决浏览器缓存问题](/2018/10/webpack-caching) 文章中提到chunkhash可以根据源文件内容的改变，来决定最终bundle文件名是否需要更改，而且每个chunk文件中的hashcode都不一样。
 
 
 webpack.bundle.js 文件如下：

@@ -5,7 +5,7 @@ layout: post
 ---
 
 
-在上一篇文章 [webpack打包后的bundle文件里到底有什么](/2018/10/06/webpack-what-in-bundle.html) 这篇文章解释了什么是bundle文件以及bundle文件里的具体内容。
+在上一篇文章 [webpack打包后的bundle文件里到底有什么](/2018/10/webpack-what-in-bundle) 这篇文章解释了什么是bundle文件以及bundle文件里的具体内容。
 
 
 也提到过单单只是有多少个入口文件，打包出多少个bundle文件这种方式，会导致代码冗余，同一模块代码会被重复打包到不同的bundle文件中。

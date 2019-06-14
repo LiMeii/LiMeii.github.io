@@ -13,7 +13,7 @@ webpack: 3.10.0
 angular: 4.2.4
 ```
 
-在 [JavaScript 浮点数运算精度问题](https://limeii.github.io/2018/12/09/issues-floatcalculate-Inaccurate.html) 这篇文章中讲到了浮点数精度问题，我是用[decimal.js](https://github.com/MikeMcl/decimal.js)来解决这个问题的。
+在 [JavaScript 浮点数运算精度问题](https://limeii.github.io/2018/12/issues-floatcalculate-Inaccurate) 这篇文章中讲到了浮点数精度问题，我是用[decimal.js](https://github.com/MikeMcl/decimal.js)来解决这个问题的。
 
 
 具体的操作步骤是：

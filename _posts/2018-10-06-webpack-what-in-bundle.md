@@ -263,4 +263,4 @@ exports.b = function () {
 a b c 文件同时引用了d文件
 入口文件为 a b c, 那么d就会被重复打包到 a.bundle.js b.bundle.js c.bundle.js 
 ```
-下一篇文章 [webpack 代码切割](/2018/10/07/webpack-code-splitting.html) 就是教你如果解决这个问题。
+下一篇文章 [webpack 代码切割](/2018/10/webpack-code-splitting) 就是教你如果解决这个问题。

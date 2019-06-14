@@ -5,7 +5,7 @@ layout: post
 ---
 
 
-在文章 [浏览器缓存问题](/2018/09/21/issues-cache-busting.html) 有提到浏览器缓存的原理和利弊。
+在文章 [浏览器缓存问题](/2018/09/issues-cache-busting) 有提到浏览器缓存的原理和利弊。
 
 
 接下来就介绍怎么在webpack中解决浏览器缓存问题。
@@ -135,4 +135,4 @@ chunkhash 是用来给每个entry file计算hashcode，每个编译结果文件�
 那么如何解决这个问题呢？
 
 
-在[如何利用 webpack 优化打包 CSS 文件](/2018/10/10/webpack-css-extract.html) 文章中会结合 ExtractTextPlugin 和 CSS 介绍更全面的解决缓存问题方案。
+在[如何利用 webpack 优化打包 CSS 文件](/2018/10/webpack-css-extract) 文章中会结合 ExtractTextPlugin 和 CSS 介绍更全面的解决缓存问题方案。

@@ -42,7 +42,7 @@ layout: post
 1) MVC 在整个前端结构里到底有什么用？完全是多余的？完全get不到当时搭这个框架人的想法。
 
 
-2) webpack 打包只打包typescript代码而且最后的bundle名字永远是 app.bunlde.js / vendor.bundle.js / polyfills.bunlde.js，其他的CSS/JSON/img 都不打包，有浏览器缓存问题。关于浏览器缓存问题可以参考 [缓存问题](https://limeii.github.io/2018/09/21/issues-cache-busting.html)。
+2) webpack 打包只打包typescript代码而且最后的bundle名字永远是 app.bunlde.js / vendor.bundle.js / polyfills.bunlde.js，其他的CSS/JSON/img 都不打包，有浏览器缓存问题。关于浏览器缓存问题可以参考 [缓存问题](https://limeii.github.io/2018/09/issues-cache-busting)。
 
 
 3 index.cshtml文件是事先写好的并且是MVC框架里的，不是webpack build生成的，所以如果改成webpack contenthash打包文件的话，这个index.cthml有点麻烦。
@@ -62,8 +62,8 @@ layout: post
 解决以上两个问题的详细可以参考：
 
 
-[缓存问题](https://limeii.github.io/2018/09/21/issues-cache-busting.html)
+[缓存问题](https://limeii.github.io/2018/09/issues-cache-busting)
 
 
-[如何在webpack build结束后移动dist文件中的文件](https://limeii.github.io/2018/09/27/issues-webpack-file-management.html)
+[如何在webpack build结束后移动dist文件中的文件](https://limeii.github.io/2018/09/issues-webpack-file-management)
 

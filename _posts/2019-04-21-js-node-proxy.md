@@ -1,17 +1,9 @@
 ---
-title: why need node proxy for front-end Dev
+title: 用node代理解决前后端联调跨域问题
+tags: JS
 layout: post
 ---
 
-# 用node代理解决前后端联调跨域问题
-<div class="title-meta">
-    <span><img class="title-category-img" src="../../../assets/images/categories/js.svg" alt="js"></span>
-    <span><a class="github-link" href="/2018/09/19/js.html">JS</a></span>
-    <span class="title-bullet">•</span>
-    <span>Apr 21, 2019</span>
-    <span class="title-bullet">•</span>
-    <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
-</div>
 
 最近做的项目，后端API是用的.NET， 前端开发用的是Angular4, 是一个前后端分离的项目。在本地开发的时候，我用node express搭了一个proxy用来解决前后端跨域联调的问题。
 

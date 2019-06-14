@@ -1,18 +1,9 @@
 ---
-title: vscode markdown preview
+title: 如何在VS Code里面预览markdown
+tags: 工具
 layout: post
 ---
 
-# 如何在VS Code里面预览markdown
-
-<div class="title-meta">
-    <span><img class="title-category-img" src="../../../assets/images/categories/tools.svg" alt="tools"></span>
-    <span><a class="github-link" href="/2018/09/19/issues-tools.html">工具</a></span>
-    <span class="title-bullet">•</span>
-    <span>Oct 01, 2018</span>
-    <span class="title-bullet">•</span>
-    <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
-</div>
 
 我的GitHub Pages所有的文章都是markdown写的，不想在本地安装ruby把Jekyll run起来预览最后page的效果图。
 

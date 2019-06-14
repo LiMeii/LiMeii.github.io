@@ -1,33 +1,19 @@
-<!DOCTYPE html>
-<html>
+---
+layout: default
+---
 
-<head>
-    <meta charset="utf-8">
-    <title>{{ page.title }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-    <link href="../../../assets/base.css" media="screen" rel="stylesheet" type="text/css" />
-    <link rel="shortcut icon" href="../../../assets/favicon.ico">
-</head>
-
-<body>
-    <div class="wrapper">
-        <div class="profile">
-
-            {% include profile.html %}
-
-            <section class="profile-content">
-                <article class="profile-menu">
-                    <div class="post-content-container">
-                        <div class="post-content">
-                            {{ content }}
-                        </div>
-                    </div>
-                </article>
-            </section>
-        </div>
+<article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="{{page.date | date: date_to_xmlschema}}" itemprop="datePublished" class="post-meta__date date">{{page.date | date: "%F"}}</time> &#8226; <span class="post-meta__tags tags">{{page.tags | join:' '}}</span>
     </div>
+    <h1 class="post-title">{{ page.title }}</h1>
+  </header>
 
-    {% include footer.html %}
-</body>
+  <section class="post">
+    {{ content }}
+  </section>
+</article>
 
-</html>
+{% include read-more.html %}
+{% include comments.html %}

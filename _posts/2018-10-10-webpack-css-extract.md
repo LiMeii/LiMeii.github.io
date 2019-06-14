@@ -1,17 +1,9 @@
 ---
-title: webpack css extract
+title: 如何利用webpack优化打包CSS文件
+tags: Webpack
 layout: post
 ---
 
-# 如何利用 webpack 优化打包 CSS 文件
-<div class="title-meta">
-    <span><img class="title-category-img" src="../../../assets/images/categories/webpack.svg" alt="webpack"></span>
-    <span><a class="github-link" href="/2018/09/19/webpack.html">Webpack</a></span>
-    <span class="title-bullet">•</span>
-    <span>Oct 10, 2018</span>
-    <span class="title-bullet">•</span>
-    <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
-</div>
 
 在 [如何利用 webpack 解决浏览器缓存问题](/2018/10/09/webpack-caching.html) 文章介绍了用chunkhash解决浏览器缓存问题，默认是把CSS文件一起打包进 JS bundle文件中。
 

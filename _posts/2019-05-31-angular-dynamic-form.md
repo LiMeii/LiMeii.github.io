@@ -1,18 +1,9 @@
 ---
-title: angular dynamic form
+title: Angular Dynamic Form：动态创建Form表单
+tags: Angular
 layout: post
 ---
 
-# Angular Dynamic Form：动态创建Form表单
-
-<div class="title-meta">
-    <span><img class="title-category-img" src="../../../assets/images/categories/angular.svg" alt="Angular"></span>
-    <span><a class="github-link" href="/2018/09/19/angular.html">Angular</a></span>
-    <span class="title-bullet">•</span>
-    <span>May 31, 2019</span>
-    <span class="title-bullet">•</span>
-    <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
-</div>
 
 在web应用里通常会有这样一种场景：比如支付宝信用卡还款，假设支付宝收费标准如下：
 
@@ -36,7 +27,7 @@ layout: post
 [angular-dynamic-form](https://github.com/LiMeii/angular-dynamic-form)
 
 
-### 第一步，需要在app.module.ts引入 FormsModule 和 ReactiveFormsModule
+### 第一步，需要在app.module.ts引入FormsModule和ReactiveFormsModule
 
 ```ts
 //app.module.ts
@@ -49,7 +40,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
  - [angular-dynamic-form-dynamic-fee.component.html](https://github.com/LiMeii/angular-dynamic-form/blob/master/src/app/dynamic-fee/dynamic-fee.component.html)
  - [angular-dynamic-form-dynamic-fee.component.ts](https://github.com/LiMeii/angular-dynamic-form/blob/master/src/app/dynamic-fee/dynamic-fee.component.ts)
 
-### 第三步， 在app.component.ts中用FormArray动态添加 DynamicFeeComponent。
+### 第三步，在app.component.ts中用FormArray动态添加DynamicFeeComponent。
 
  详细代码：
  - [angular-dynamic-form-app.component.html](https://github.com/LiMeii/angular-dynamic-form/blob/master/src/app/app.component.html)

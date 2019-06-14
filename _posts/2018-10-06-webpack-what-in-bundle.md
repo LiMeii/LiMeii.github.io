@@ -1,17 +1,9 @@
 ---
-title: webpack bundle file
+title: webpack打包后的bundle文件里到底有什么
+tags: Webpack
 layout: post
 ---
 
-# webpack打包后的bundle文件里到底有什么
-<div class="title-meta">
-    <span><img class="title-category-img" src="../../../assets/images/categories/webpack.svg" alt="webpack"></span>
-    <span><a class="github-link" href="/2018/09/19/webpack.html">Webpack</a></span>
-    <span class="title-bullet">•</span>
-    <span>Oct 06, 2018</span>
-    <span class="title-bullet">•</span>
-    <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
-</div>
 
 webpack把 ts js html css imgs等文件都统统打包成bundle.js文件，只知道所有静态文件都在bundle文件里，但是具体bundle里面有什么呢？
 

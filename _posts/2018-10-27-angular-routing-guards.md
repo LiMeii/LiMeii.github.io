@@ -1,18 +1,9 @@
 ---
-title: angular CanActivate
+title: Angular Router guards：如何控制页面的访问权限 (CanActivate)
+tags: Angular
 layout: post
 ---
 
-# Angular Router guards：如何控制页面的访问权限 (CanActivate)
-
-<div class="title-meta">
-    <span><img class="title-category-img" src="../../../assets/images/categories/angular.svg" alt="Angular"></span>
-    <span><a class="github-link" href="/2018/09/19/angular.html">Angular</a></span>
-    <span class="title-bullet">•</span>
-    <span>Oct 27, 2018</span>
-    <span class="title-bullet">•</span>
-    <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
-</div>
 
 路由是整个application中非常重要的一个模块，可以用来加载某个特定的component，同时也可以传参，也可以用来控制某一模块访问权限等等。
 

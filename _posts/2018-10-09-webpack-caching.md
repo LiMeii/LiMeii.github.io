@@ -1,17 +1,9 @@
 ---
-title: webpack caching
+title: 如何利用webpack解决浏览器缓存问题
+tags: 问题
 layout: post
 ---
 
-# 如何利用 webpack 解决浏览器缓存问题
-<div class="title-meta">
-    <span><img class="title-category-img" src="../../../assets/images/categories/webpack.svg" alt="webpack"></span>
-    <span><a class="github-link" href="/2018/09/19/webpack.html">Webpack</a></span>
-    <span class="title-bullet">•</span>
-    <span>Oct 09, 2018</span>
-    <span class="title-bullet">•</span>
-    <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
-</div>
 
 在文章 [浏览器缓存问题](/2018/09/21/issues-cache-busting.html) 有提到浏览器缓存的原理和利弊。
 

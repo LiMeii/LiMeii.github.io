@@ -1,18 +1,9 @@
 ---
-title: vscode debug
+title: 如何配置chrome和VS Code调试前端代码
+tags: 工具
 layout: post
 ---
 
-# 如何配置chrome和VS Code调试前端代码
-
-<div class="title-meta">
-    <span><img class="title-category-img" src="../../../assets/images/categories/tools.svg" alt="tools"></span>
-    <span><a class="github-link" href="/2018/09/19/issues-tools.html">工具</a></span>
-    <span class="title-bullet">•</span>
-    <span>Sep 27, 2018</span>
-    <span class="title-bullet">•</span>
-    <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
-</div>
 
 最开始用Angular5的时候，开发工具用的是VS code，不知道要怎么用chrome调试typescript的代码，看了VS Code官方文档，才知道具体配置方案。
 

@@ -1,18 +1,9 @@
 ---
-title: markdown syntax
+title: markdown常用语法
+tags: 工具
 layout: post
 ---
 
-# markdown 常用语法
-
-<div class="title-meta">
-    <span><img class="title-category-img" src="../../../assets/images/categories/tools.svg" alt="tools"></span>
-    <span><a class="github-link" href="/2018/09/19/issues-tools.html">工具</a></span>
-    <span class="title-bullet">•</span>
-    <span>Oct 11, 2018</span>
-    <span class="title-bullet">•</span>
-    <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
-</div>
 
 这篇文章是介绍markdown 常用的一些语法。
 

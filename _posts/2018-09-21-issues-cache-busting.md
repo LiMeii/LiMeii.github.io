@@ -1,17 +1,9 @@
 ---
-title: cache busting
+title: 浏览器缓存问题
+tags: 问题
 layout: post
 ---
 
-# 浏览器缓存问题
-<div class="title-meta">
-    <span><img class="title-category-img" src="../../../assets/images/categories/bug.svg" alt="issues"></span>
-    <span><a class="github-link" href="/2018/09/19/issues-tools.html">问题</a></span>
-    <span class="title-bullet">•</span>
-    <span>Sep 21, 2018</span>
-    <span class="title-bullet">•</span>
-    <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
-</div>
 
 浏览器有一个行为就是缓存已经下载过的资源，缓存静态资源，不需要每次从服务器下载文件，这在很大程度提高了性能。
 但同时也会有一个弊端，就是服务器资源更新以后，用户可能看不到最新页面。

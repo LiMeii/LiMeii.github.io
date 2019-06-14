@@ -1,17 +1,9 @@
 ---
-title: india project
+title: 印度人的代码
+tags: 问题
 layout: post
 ---
 
-# 印度人的代码
-<div class="title-meta">
-    <span><img class="title-category-img" src="../../../assets/images/categories/bug.svg" alt="issues"></span>
-    <span><a class="github-link" href="/2018/09/19/issues-tools.html">问题</a></span>
-    <span class="title-bullet">•</span>
-    <span>Sep 20, 2018</span>
-    <span class="title-bullet">•</span>
-    <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
-</div>
 
 之前公司把放在印度外包的一个做到一半的angular项目拿回来，这个项目是基于 angular4.2.4 和 webapck3.10.0做的。
 

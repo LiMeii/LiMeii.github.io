@@ -1,18 +1,8 @@
 ---
-title: angular Canload
+title: Angular Router guards：如何控制页面的访问权限 (Canload)
+tags: Angular
 layout: post
 ---
-
-# Angular Router guards：如何控制页面的访问权限 (Canload)
-
-<div class="title-meta">
-    <span><img class="title-category-img" src="../../../assets/images/categories/angular.svg" alt="Angular"></span>
-    <span><a class="github-link" href="/2018/09/19/angular.html">Angular</a></span>
-    <span class="title-bullet">•</span>
-    <span>Nov 01, 2018</span>
-    <span class="title-bullet">•</span>
-    <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
-</div>
 
 
 在[Angular Router guards：如何控制页面的访问权限 (CanActivate)](/2018/10/27/angular-routing-guards.html)介绍了CanActivate对路由权限的控制。

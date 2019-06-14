@@ -1,17 +1,8 @@
 ---
-title: webpack bundle analyzer
+title: 如何分析和优化webpack bundle文件
+tags: Webpack
 layout: post
 ---
-
-# 如何分析和优化webpack bundle文件
-<div class="title-meta">
-    <span><img class="title-category-img" src="../../../assets/images/categories/webpack.svg" alt="webpack"></span>
-    <span><a class="github-link" href="/2018/09/19/webpack.html">Webpack</a></span>
-    <span class="title-bullet">•</span>
-    <span>Sep 24, 2018</span>
-    <span class="title-bullet">•</span>
-    <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
-</div>
 
 
 在用webpack打包的过程当中，曾经把webpack官方文档看了不下十遍，对于最终bundle文件里具体到底有什么或者某个特定的module到底被放到哪一个bundle文件里，始终都是一头雾水。

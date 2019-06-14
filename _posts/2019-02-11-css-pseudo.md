@@ -1,17 +1,8 @@
 ---
-title: css pseudo
+title: 伪类和伪元素
+tags: CSS
 layout: post
 ---
-
-# 伪类和伪元素
-<div class="title-meta">
-    <span><img class="title-category-img" style="margin-top: 0.2em;" src="../../../assets/images/categories/css3.svg" alt="css"></span>
-    <span><a class="github-link" href="/2018/09/19/CSS.html">CSS</a></span>
-    <span class="title-bullet">•</span>
-    <span>Feb 11, 2019</span>
-    <span class="title-bullet">•</span>
-    <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
-</div>
 
 自己在写css过程中，经常用到 :before / :after / :hover 等伪类和伪元素，但是除了这几个常见的，具体还有哪些伪类和伪元素，以及伪类和伪元素区别都不是很清楚。
 

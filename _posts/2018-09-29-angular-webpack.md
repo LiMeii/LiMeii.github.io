@@ -1,18 +1,9 @@
 ---
-title: angular webpack
+title: 怎么用Angular和Webpack搭建项目
+tags: Angular
 layout: post
 ---
 
-# 怎么用 Angular 和 Webpack 搭建项目
-
-<div class="title-meta">
-    <span><img class="title-category-img" src="../../../assets/images/categories/angular.svg" alt="Angular"></span>
-    <span><a class="github-link" href="/2018/09/19/angular.html">Angular</a></span>
-    <span class="title-bullet">•</span>
-    <span>Sep 29, 2018</span>
-    <span class="title-bullet">•</span>
-    <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
-</div>
 
 ### angular-cli
 按照[Angular官方教程](https://angular.io/tutorial)搭建一个Angular项目，默认都是先安装angula-cli，再用命令行'ng new angular-project-name'会自动生成一个符合angular best practice的项目， 如下所示：

@@ -1,17 +1,9 @@
 ---
-title: angular router reload page
+title: Angular路由到新的模块时候，整个页面都被刷新
+tags: 问题
 layout: post
 ---
 
-# Angular 路由到新的模块时候，整个页面都被刷新
-<div class="title-meta">
-    <span><img class="title-category-img" src="../../../assets/images/categories/bug.svg" alt="issues"></span>
-    <span><a class="github-link" href="/2018/09/19/issues-tools.html">问题</a></span>
-    <span class="title-bullet">•</span>
-    <span>Nov 02, 2018</span>
-    <span class="title-bullet">•</span>
-    <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
-</div>
 
 ### 问题描述
 

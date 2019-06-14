@@ -1,17 +1,8 @@
 ---
-title: absolute relative difference
+title: CSS布局absolute和relative的区别
+tags: CSS
 layout: post
 ---
-
-# CSS布局 absolute 和 relative的区别
-<div class="title-meta">
-    <span><img class="title-category-img" style="margin-top: 0.2em;" src="../../../assets/images/categories/css3.svg" alt="css"></span>
-    <span><a class="github-link" href="/2018/09/19/CSS.html">CSS</a></span>
-    <span class="title-bullet">•</span>
-    <span>Jan 30, 2019</span>
-    <span class="title-bullet">•</span>
-    <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
-</div>
 
 写CSS过程中，经常要用到position进行页面布局，positioin有五个值：static，fixed，inherit，absolute，relative。前面三个还很好理解，后面两个在使用过程中经常会混淆，每次用到这几个值的时候，都要google查下这几个值的区别，这次直接把这五个的区别整理一下，巩固下这个知识点也方便日后自己查看。
 

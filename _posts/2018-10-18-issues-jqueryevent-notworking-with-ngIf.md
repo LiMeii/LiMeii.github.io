@@ -1,17 +1,9 @@
 ---
-title: jquery click not working in ngIf
+title: Angular *ngIf- 在<div *ngIf> 里所有的Jquery click事件都没有触发
+tags: 问题
 layout: post
 ---
 
-# Angular *ngIf: 在<div *ngIf> 里所有的 Jquery click 事件都没有触发
-<div class="title-meta">
-    <span><img class="title-category-img" src="../../../assets/images/categories/bug.svg" alt="issues"></span>
-    <span><a class="github-link" href="/2018/09/19/issues-tools.html">问题</a></span>
-    <span class="title-bullet">•</span>
-    <span>Oct 18, 2018</span>
-    <span class="title-bullet">•</span>
-    <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
-</div>
 
 ### 问题描述
 

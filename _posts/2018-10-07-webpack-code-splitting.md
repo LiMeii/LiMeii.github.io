@@ -1,17 +1,9 @@
 ---
-title: webpack code splitting
+title: webpack代码切割
+tags: Webpack
 layout: post
 ---
 
-# webpack 代码切割
-<div class="title-meta">
-    <span><img class="title-category-img" src="../../../assets/images/categories/webpack.svg" alt="webpack"></span>
-    <span><a class="github-link" href="/2018/09/19/webpack.html">Webpack</a></span>
-    <span class="title-bullet">•</span>
-    <span>Oct 07, 2018</span>
-    <span class="title-bullet">•</span>
-    <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
-</div>
 
 在上一篇文章 [webpack打包后的bundle文件里到底有什么](/2018/10/06/webpack-what-in-bundle.html) 这篇文章解释了什么是bundle文件以及bundle文件里的具体内容。
 

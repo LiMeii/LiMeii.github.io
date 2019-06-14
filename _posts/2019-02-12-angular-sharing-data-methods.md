@@ -1,18 +1,9 @@
 ---
-title: angular sharing data
+title: Angular5：如何在多个组件之间通信
+tags: Angular
 layout: post
 ---
 
-# Angular5：如何在多个组件之间通信
-
-<div class="title-meta">
-    <span><img class="title-category-img" src="../../../assets/images/categories/angular.svg" alt="Angular"></span>
-    <span><a class="github-link" href="/2018/09/19/angular.html">Angular</a></span>
-    <span class="title-bullet">•</span>
-    <span>Feb 12, 2019</span>
-    <span class="title-bullet">•</span>
-    <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
-</div>
 
 在Angular组件之间共享数据，有以下四种方式：
 

@@ -1,153 +1,20 @@
 ---
-title: Mei
 layout: default
 ---
 
-<div class="wrapper">
-    <div class="profile">
+<div class="main-post-list hidden">
 
-        {% include profile.html %}
+  <ol class="post-list">
+    {% for post in paginator.posts %}
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="{{ post.url }}" title="访问 {{ post.title }}">{{ post.title }}</a></h2>
+      <p class="excerpt">{{ post.content | strip_html | strip_newlines | truncate: 250 }}&hellip;</p>
+      <div class="post-list__meta"><time datetime="{{post.date | date: date_to_xmlschema}}" class="post-list__meta--date date">{{ post.date | date: "%F"}}</time> &#8226; <span class="post-list__meta--tags tags">{{ post.tags | join:' ' }}</span><a class="btn-border-small" href={{ post.url }}>继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+    {% endfor %}
+  </ol>
 
-        <section class="profile-content" id="content">
-            <article class="profile-menu" id="menu">
-                <div id="Angular" class="menu-category">
-                    <!-- <h3 class="menu-category-name">技术</h3> -->
-                    <ol class="menu-category-list has-images">
-                        <li class="menu-item">
-                            <div class="menu-item-info">
-                                <h4 class="menu-item-name">Angular</h4>
-                                <span class="menu-item-price"><a style="text-decoration: none;" href="/2018/09/19/angular.html">更多文章......
-                                    </a></span>
-                                <p class="menu-item-description">主要是关于angular2+</p>
-                            </div>
-                            <div class="menu-item-image has-meta-content">
-                                <img src="/assets/images/angular.png">
-                            </div>
-                        </li>
-                        <li class="menu-item">
-                            <div class="menu-item-info">
-                                <h4 class="menu-item-name">Webpack</h4>
-                                <span class="menu-item-price"><a style="text-decoration: none;" href="/2018/09/19/webpack.html">
-                                        更多文章......</a></span>
-                                <p class="menu-item-description">关于webpack的理解和应用</p>
-                            </div>
-                            <div class="menu-item-image has-meta-content">
-                                <img src="/assets/images/webpack.jpg">
-                            </div>
-                        </li>
-                        <li class="menu-item">
-                            <div class="menu-item-info">
-                                <h4 class="menu-item-name">TS/ JS/ Node.js</h4>
-                                <span class="menu-item-price"><a style="text-decoration: none;" href="/2018/09/19/js.html">
-                                        更多文章......</a></span>
-                                <p class="menu-item-description">关于javascript typescript nodejs的理解与应用</p>
-                            </div>
-                            <div class="menu-item-image has-meta-content">
-                                <img src="/assets/images/javascript.png">
-                            </div>
-                        </li>
-                        <li class="menu-item">
-                            <div class="menu-item-info">
-                                <h4 class="menu-item-name">CSS</h4>
-                                <span class="menu-item-price"><a style="text-decoration: none;" href="/2018/09/19/CSS.html">
-                                        更多文章......</a></span>
-                                <p class="menu-item-description">关于H5 CSS3 DOM 协议的理解和用法</p>
-                            </div>
-                            <div class="menu-item-image has-meta-content">
-                                <img src="/assets/images/htmlcss.png">
-                            </div>
-                        </li>
-                        <li class="menu-item">
-                            <div class="menu-item-info">
-                                <h4 class="menu-item-name">Mobile Web</h4>
-                                <span class="menu-item-price"><a style="text-decoration: none;" href="/2018/09/19/mobileweb.html">
-                                        更多文章......</a></span>
-                                <p class="menu-item-description">Mobile Web</p>
-                            </div>
-                            <div class="menu-item-image has-meta-content">
-                                <img src="/assets/images/mobileweb.png">
-                            </div>
-                        </li>
-                        <!-- <li class="menu-item">
-                            <div class="menu-item-info">
-                                <h4 class="menu-item-name">工具</h4>
-                                <span class="menu-item-price"><a style="text-decoration: none;" href="/2018/09/19/tools.html"
-                                        >更多文章......
-                                    </a></span>
-                                <p class="menu-item-description">提高效率的各种小工具</p>
-                            </div>
-                            <div class="menu-item-image has-meta-content">
-                                <img src="/assets/images/tool.png">
-                            </div>
-                        </li> -->
-                        <li class="menu-item">
-                            <div class="menu-item-info">
-                                <h4 class="menu-item-name">问题/工具</h4>
-                                <span class="menu-item-price"><a style="text-decoration: none;" href="/2018/09/19/issues-tools.html">更多文章......
-                                    </a></span>
-                                <p class="menu-item-description">coding过程中遇到过的问题，以及提高效率的各种小工具</p>
-                            </div>
-                            <div class="menu-item-image has-meta-content">
-                                <img src="/assets/images/issues.png">
-                            </div>
-                        </li>
-                        <!-- <li class="menu-item">
-                            <div class="menu-item-info">
-                                <h4 class="menu-item-name">Node
-                                </h4>
-                                <span class="menu-item-price"><a style="text-decoration: none;" href="/2018/10/03/node.html"
-                                        >
-                                        更多文章......</a></span>
-                                <p class="menu-item-description">Node</p>
-                            </div>
-                            <div class="menu-item-image has-meta-content">
-                                <img src="/assets/images/nodejs.jpg">
-                            </div>
-                        </li> -->
-                    </ol>
-                </div>
-                <!-- <div id="others" class="menu-category">
-                    <h3 class="menu-category-name">其他</h3>
-                    <ol class="menu-category-list has-images">
-                        <li class="menu-item">
-                            <div class="menu-item-info">
-                                <h4 class="menu-item-name">问题</h4>
-                                <span class="menu-item-price"><a style="text-decoration: none;" href="/2018/09/19/issues.html"
-                                        >更多文章......
-                                    </a></span>
-                                <p class="menu-item-description">coding过程中遇到过的问题</p>
-                            </div>
-                            <div class="menu-item-image has-meta-content">
-                                <img src="/assets/images/issues.png">
-                            </div>
-                        </li>
-                        <li class="menu-item">
-                            <div class="menu-item-info">
-                                <h4 class="menu-item-name">GIT</h4>
-                                <span class="menu-item-price"><a style="text-decoration: none;" href="/2018/09/25/git.html"
-                                        >更多文章......
-                                    </a></span>
-                                <p class="menu-item-description">怎么建立自己的github pages 以及一切与git相关的东西</p>
-                            </div>
-                            <div class="menu-item-image has-meta-content">
-                                <img src="/assets/images/git.png">
-                            </div>
-                        </li>
-                        <li class="menu-item">
-                            <div class="menu-item-info">
-                                <h4 class="menu-item-name">工具</h4>
-                                <span class="menu-item-price"><a style="text-decoration: none;" href="/2018/09/19/tools.html"
-                                        >更多文章......
-                                    </a></span>
-                                <p class="menu-item-description">提高效率的各种小工具</p>
-                            </div>
-                            <div class="menu-item-image has-meta-content">
-                                <img src="/assets/images/tool.png">
-                            </div>
-                        </li>
-                    </ol>
-                </div> -->
-            </article>
-        </section>
-    </div>
+  {% include pagination.html %}
+
 </div>

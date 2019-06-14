@@ -1,18 +1,9 @@
 ---
-title: github pages
+title: 怎么搭建自己的GitHub Pages
+tags: GIT
 layout: post
 ---
 
-# 怎么搭建自己的 GitHub Pages
-
-<div class="title-meta">
-    <span><img class="title-category-img" src="../../../assets/images/categories/github.svg" alt="GIT"></span>
-    <span><a class="github-link" href="/2018/09/19/issues-tools.html">GIT</a></span>
-    <span class="title-bullet">•</span>
-    <span>Sep 21, 2018</span>
-    <span class="title-bullet">•</span>
-    <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
-</div>
 
 一直想要有一个自己的技术Blog，想过用现在流行的静态网站生成器（Jekyll,Hexo......）先把自己的blog网页通过这些静态网页生成器写出来以后，然后再在服务器上做部署。
 但是比较麻烦的是需要有自己的服务器做部署。

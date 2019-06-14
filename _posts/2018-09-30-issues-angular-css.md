@@ -1,17 +1,9 @@
 ---
-title: angular css build error
+title: Angular CSS编译问题:Expected 'styles' to be an array of strings
+tags: 问题
 layout: post
 ---
 
-# Angular CSS 编译问题：Expected 'styles' to be an array of strings
-<div class="title-meta">
-    <span><img class="title-category-img" src="../../../assets/images/categories/bug.svg" alt="issues"></span>
-    <span><a class="github-link" href="/2018/09/19/issues-tools.html">问题</a></span>
-    <span class="title-bullet">•</span>
-    <span>Sep 30, 2018</span>
-    <span class="title-bullet">•</span>
-    <span>by <a class="github-link" href="http://github.com/limeii" title="http://github.com/limeii">Mei</a></span>
-</div>
 
 ### 问题描述
 

@@ -51,7 +51,7 @@ ERROR:  You must add /DC=com/DC=nextestate/CN=GDCSUBCA01 to your local trusted s
 - 怎么找到当前用户根目录：在cmd中跑命令行 echo %USERPROFILE%
 
 
-- 在根目录里没有.gemrc这个文件，而且在Win10里根本没办自己创建.gemrc文件，在[https://gist.github.com/LiMeii/3d43bf4159b1ef870abbb44000c6003f](https://gist.github.com/LiMeii/3d43bf4159b1ef870abbb44000c6003f)这里直接把文件download下来放到当前跟目录下就可以了。、
+- 在根目录里没有.gemrc这个文件，而且在Win10里根本没办自己创建.gemrc文件，在[https://gist.github.com/LiMeii/.gemrc](https://gist.github.com/LiMeii/3d43bf4159b1ef870abbb44000c6003f) 直接把文件下载下来放到当前跟目录下就可以了。
 
 
 - 当环境都搭好了，需要把jekyll跑起来，在Windows下直接跑命令行：bundle exec jekyll serve

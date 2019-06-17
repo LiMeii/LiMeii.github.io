@@ -43,5 +43,5 @@ social:
 
 # Google Analytics
 ga:
-    # id: your_ga_id
-    # host: your_host
+     id: UA-142143336-1
+     host: auto

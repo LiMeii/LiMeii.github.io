@@ -20,7 +20,9 @@ layout: post
 ![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharingdata.png){:height="50%" width="50%"}
 
 
-### 第一种方式，父组件至子组件: 通过@Input共享数据
+**第一种方式，父组件至子组件: 通过@Input共享数据**
+
+
 这个例子是在子组件中直接列出出父组件中所有的颜色，具体代码如下：
 
 ![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data1.png){:height="100%" width="100%"}
@@ -30,7 +32,9 @@ layout: post
 效果如下：
 ![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data7.png){:height="50%" width="50%"}
 
-### 第二种方式，子组件至父组件: 通过@Output EventEmitter共享数据
+**第二种方式，子组件至父组件: 通过@Output EventEmitter共享数据**
+
+
 这个例子是子组件提供两个按钮进行投票，而父组件中需要实时显示投票结果，具体代码如下：
 
 ![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data3.png){:height="100%" width="100%"}
@@ -40,7 +44,8 @@ layout: post
 效果如下：
 ![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data8.png){:height="50%" width="50%"}
 
-### 第三种方式，子组件至父组件: 通过@ViewChild共享数据
+**第三种方式，子组件至父组件: 通过@ViewChild共享数据**
+
 
 在第二种方式中，通过@Output EventEmitter共享数据，父组件只能访问子组件的某几个属性值，但是没办法去调用子组件中的方法。但是通过@ViewChild可是实现父组件同时可以访问子组件中的属性和方法。
 
@@ -48,10 +53,10 @@ layout: post
 这个例子是一个简单的计时器，所有的计时逻辑都在子组件中，父组件负责显示时间。这个方式需要注意以下两点：
 
 
-**1.子组件中方法或者变量为public的时候才能被父组件访问**
+- **1.子组件中方法或者变量为public的时候才能被父组件访问**
 
 
-**2.在父组件中，只有等它AfterViewInit之后timerChildComponent才存在**
+- **2.在父组件中，只有等它AfterViewInit之后timerChildComponent才存在**
 
 ![angular sharing data]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data5.png){:height="100%" width="100%"}
 
@@ -61,7 +66,8 @@ layout: post
 ![angular gif]( https://limeii.github.io/assets/images/posts/angular/angular-sharing-data9.gif){:height="50%" width="50%"}
 
 
-### 第四种方式，不相关组件： 通过service共享数据
+**第四种方式，不相关组件： 通过service共享数据**
+
 
 如果两个组件直接没有直接联系，那么就可以通过service来通信，在下面的例子中，两个不相关的组件：SiblingOneComponent 和 SiblingTwoComponent，在SiblingOneComponent写消息，实时在SiblingTwoComponent显示出来。代码如下：
 

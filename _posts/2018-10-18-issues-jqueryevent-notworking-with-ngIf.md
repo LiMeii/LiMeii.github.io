@@ -1,5 +1,5 @@
 ---
-title: Angular *ngIf- 在<div *ngIf> 里所有的Jquery click事件都没有触发
+title: Angular ngIf里所有的Jquery click事件都没有触发
 tags: 问题
 layout: post
 ---
@@ -40,22 +40,22 @@ layout: post
 
 ### 问题分析
 
-发现点击button没有期望的效果的时候，我在这个button上面直接加上 (click)="test()", 然后点击button发现test方法会被触发，说明html正常没有问题。
+发现点击button没有期望的效果的时候，我在这个button上面直接加上(click)="test()", 然后点击button发现test方法会被触发，说明html正常没有问题。
 
 
-尝试把 *ngIf="isLogin" 去掉以后，这次点击button，这次jquery事件被触发了。
+尝试把*ngIf="isLogin"去掉以后，这次点击button，这次jquery事件被触发了。
 
 
-好了，问题就在ngIf，那我再尝试把ngIf换成有类似效果的 [ngClass]="{'item-hidde': !isLogin}",其中item-hidde是css，代码如下：
+好了，问题就在ngIf，那我再尝试把ngIf换成有类似效果的[ngClass]="{'item-hidde': !isLogin}",其中item-hidde是css，代码如下：
 ```css
 .item-hidde {
     display: none; 
 }
 ```
-重新编译代码以后，点击 button，jquery click事件能被正常触发。
+重新编译代码以后，点击button，jquery click事件能被正常触发。
 
 
-到这一步的时候，隐约大概知道问题的 root cause 是什么了，我们来看下 ngIf 和 正常hidden一段的元素的区别：ngIf是动态的，也就是条件为true的时候，整个div都在显示在页面，如果条件为false的时候，整个div节点根本不会存在。而disply: none不管元素显示还是不显示，整个节点都是存在的。
+到这一步的时候，隐约大概知道问题的root cause是什么了，我们来看下ngIf和s正常hidden一段的元素的区别：ngIf是动态的，也就是条件为true的时候，整个div都在显示在页面，如果条件为false的时候，整个div节点根本不会存在。而disply: none不管元素显示还是不显示，整个节点都是存在的。
 
 
 好了，到这里就知道问题原因了，在Jquery里, 直接绑定的事件对动态生成的元素不生效。
@@ -83,7 +83,7 @@ layout: post
 
 ### 解决方案
 
-**第一种方案：** 在html里，不用动态生成元素，也就是不用*ngIf，而是用 hidden 或者 [ngClass]类似根据条件显示/隐藏元素。
+**第一种方案：** 在html里，不用动态生成元素，也就是不用*ngIf，而是用hidden或者[ngClass]类似根据条件显示/隐藏元素。
 
 
 **第二种方案：** 在Jquery里，事件不直接绑定而是用delegated。

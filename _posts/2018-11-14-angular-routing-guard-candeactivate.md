@@ -19,17 +19,19 @@ layout: post
 源码可以在 [angular-seed-project](https://github.com/LiMeii/angular-seed-project) 查看。
 
 
-### 第一步，新加CanDeactivateGuard，并把它import到AuthGuardModule中，代码逻辑如下：
+**第一步，新加CanDeactivateGuard，并把它import到AuthGuardModule中，代码逻辑如下**
+
 
 ![angular](https://limeii.github.io/assets/images/posts/angular/angular-router-guard-candeactivate.png){:height="100%" width="100%"}
 
-### 第二步，在SettingsComponent中实现canDeactivate方法
+**第二步，在SettingsComponent中实现canDeactivate方法**
+
 
 先按最简单的逻辑，只要离开settings页面就弹出一个对话框问用户是否要离开，confirm要离开返回值是true，否则就为false，代码逻辑如下：
 
 ![angular](https://limeii.github.io/assets/images/posts/angular/angular-router-guard-candeactivate-1.png){:height="100%" width="100%"}
 
-### 第三步，在SettingsComponent对应的路由上加上canDeactivate guard
+**第三步，在SettingsComponent对应的路由上加上canDeactivate guard**
 
 ![angular](https://limeii.github.io/assets/images/posts/angular/angular-router-guard-candeactivate-2.png){:height="100%" width="100%"}
 
@@ -70,6 +72,7 @@ export class CanDeactivateGuard implements CanDeactivate<CrisisDetailComponent> 
 }
 ```
 
-### 总结
+**总结**
+
 
 假如项目中不同层级的router中包含 CanLoad CanActivate CanActivateChild CanDeactivate，那么router会从最里面的child router开始检查CanDeactivate 和 CanActivateChild，然后再从最外面的路由开始检查CanActivate，中间一旦有为返回值为false的，整个router校验就终止。如果有CanLoad，这个是在整个module load之前就校验了。

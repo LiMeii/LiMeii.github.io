@@ -14,10 +14,10 @@ layout: post
 源码可以在 [angular-seed-project](https://github.com/LiMeii/angular-seed-project) 查看。
 
 
-在示例代码中，有五个模块： AppModule，DashboardModule，ReportsModule，SettingsModule，ProfileModule。
+在示例代码中，有五个模块：AppModule，DashboardModule，ReportsModule，SettingsModule，ProfileModule。
 
 
-其中AppModule是root module，其他四个是业务模块。假设有两种角色登入系统，分别为 admin 和 user。admin可以看settings和reports页面，user可以看dashboard和profile页面。
+其中AppModule是root module，其他四个是业务模块。假设有两种角色登入系统，分别为admin和user。admin可以看settings和reports页面，user可以看dashboard和profile页面。
 
 
 现在路由设置如下：
@@ -84,7 +84,9 @@ export class ReportsRoutingModule { }
 在angular中，可以用Route guards canActivate来实现上面的case。
 
 
-### 第一步，在现有的模块里面加AuthenticationModule，用来实现login功能。
+**第一步，在现有的模块里面加AuthenticationModule，用来实现login功能**
+
+
 结构如下：
 
 ![angular](https://limeii.github.io/assets/images/posts/angular/angular-routing-permission-authModule.png){:height="100%" width="100%"}
@@ -99,7 +101,9 @@ export class ReportsRoutingModule { }
     },
 ```
 
-### 第二步，创建一个auth-guard.module，用来实现login guard。
+**第二步，创建一个auth-guard.module，用来实现login guard**
+
+
 没有登入成功的用户除了login页面，其他模块都没办法访问。
 
 
@@ -109,7 +113,10 @@ export class ReportsRoutingModule { }
 
 其中CanActivate就是用来控制路由是否有权限访问某个模块的。
 
-### 第三步，把AuthGuardModule import到AppModule
+
+**第三步，把AuthGuardModule import到AppModule**
+
+
 ```ts
 import { AuthGuardModule } from './core/guards/auth-guard.module';
 @NgModule({
@@ -133,7 +140,9 @@ export class AppModule { }
 
 ```
 
-### 第四步，在login成功以后，在local storage保存isLogin为true
+
+**第四步，在login成功以后，在local storage保存isLogin为true**
+
 
 在示例代码中用到了localstorage是第三方的library： angular-2-local-storage
 
@@ -172,7 +181,8 @@ export class LoginComponent {
 
 ```
 
-### 第五步，在LoginGuard添加login路由权限代码
+**第五步，在LoginGuard添加login路由权限代码**
+
 
 这段逻辑是在login之前，所有用户只能访问login页面，其他页面都没有权限访问。
 
@@ -201,7 +211,7 @@ export class LoginGuard implements CanActivate {
 }
 ```
 
-### 第六步，在app-routing.module.ts的路由上加上canActivate
+**第六步，在app-routing.module.ts的路由上加上canActivate**
 
 ```ts
 const routes: Routes = [
@@ -240,12 +250,14 @@ const routes: Routes = [
 
 ![angular](https://limeii.github.io/assets/images/posts/angular/angular-routing-permission-login.gif){:height="100%" width="100%"}
 
-### 第七步，限制addmin只可以访问settings和reports页面，user只可以访问dashboard和profile页面。
+**第七步，限制addmin只可以访问settings和reports页面，user只可以访问dashboard和profile页面**
+
 
 访问没有权限的页面会返回login页面
 
 
-**现在app-constants.ts文件中，加上permissionset和admin/user 访问权限**
+现在app-constants.ts文件中，加上permissionset和admin/user 访问权限
+
 ```ts
 //app-constants.ts
 export const permissionSets = {
@@ -288,7 +300,9 @@ export const userPermission = {
     }
 }
 ```
-**新加admin-guard.ts 用来控制admin访问权限，并且import到auth-guard.module.ts**
+
+新加admin-guard.ts 用来控制admin访问权限，并且import到auth-guard.module.ts
+
 ```ts
 // admin-guard.ts
 import { Injectable } from "@angular/core";
@@ -325,7 +339,9 @@ export class AdminGuard implements CanActivate {
     }
 }
 ```
-**在setting-routing.module.ts中引入AdminGuard，并且在路由上加上可以访问的权限数据**
+
+在setting-routing.module.ts中引入AdminGuard，并且在路由上加上可以访问的权限数据
+
 ```ts
 //setting-routing.module.ts
 import { permissionSets } from '../../core/app-constants';
@@ -340,7 +356,8 @@ const settingsRoutes: Routes = [
     }
 ];
 ```
-**在reports-routing.module.ts中引入AdminGuard，并且在路由上加上可以访问的权限数据**
+
+在reports-routing.module.ts中引入AdminGuard，并且在路由上加上可以访问的权限数据
 
 ```ts
 //setting-routing.module.ts

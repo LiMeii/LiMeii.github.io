@@ -7,9 +7,8 @@ layout: post
 
 ### 问题描述
 
-##### 1. Angular version： 4.2.4
-
-##### 2. AppComponent和ChildComponent，这两个Component是父子关系，在ChildComponent里定义了@Input() data，由AppComponent把data这个对象传给ChildComponent，当data是一个对象的时候，更改这个对象某个属性的值的时候，不会触发ChildComponent里的ngOnChanges()事件，代码如下：
+- 1：Angular version： 4.2.4
+- 2：AppComponent和ChildComponent，这两个Component是父子关系，在ChildComponent里定义了@Input() data，由AppComponent把data这个对象传给ChildComponent，当data是一个对象的时候，更改这个对象某个属性的值的时候，不会触发ChildComponent里的ngOnChanges()事件，代码如下：
 
 ```ts
 @Component({

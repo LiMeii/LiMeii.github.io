@@ -11,22 +11,6 @@ Angular中每个component/directive都有它自己的生命周期。包括创建
 生命周期有着几种：OnChanges，OnInit，DoCheck，AfterContentInit，AfterContentChecked，AfterViewInit，AfterViewChecked，OnDestroy。
 
 
-钩子函数就是在对应的生命周期前面加上前缀ng，比如OnInit，对应的钩子函数是ngOnInit()。
+钩子函数就是在对应的生命周期前面加上前缀ng，比如OnInit，对应的钩子函数是ngOnInit()，下图列出了constructor和钩子函数，以及它们的执行顺序：
 
-### 生命周期顺序
-
-##### ngOnChanges()
-
-##### ngOnInit()
-
-##### ngDoCheck()
-
-##### ngAfterContentInit()
-
-##### ngAfterContentChecked()
-
-##### ngAfterViewInit()
-
-##### ngAfterViewChecked()
-
-##### ngOnDestroy()
+![angular-lifecycle-hooks](https://limeii.github.io/assets/images/posts/angular/angular-lifecycle-hooks.png){:height="100%" width="100%"}

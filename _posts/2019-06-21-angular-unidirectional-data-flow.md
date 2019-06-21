@@ -6,7 +6,7 @@ layout: post
 
 在介绍angular单向数据流之前我们先来看下angular中component之间关系树状结构图：
 
-![angular component tree](https://limeii.github.io/assets/images/posts/angular/angular-component-tree.png){:height="100%" width="100%"}
+![angular component tree](https://limeii.github.io/assets/images/posts/angular/angular-components-tree.png){:height="100%" width="100%"}
 
 比如在child A component从http response拿到最新model的值，并且需要把变化后的值渲染到页面，这个过程会触发child A component的change detection。
 

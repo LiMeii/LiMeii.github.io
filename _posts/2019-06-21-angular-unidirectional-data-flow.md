@@ -49,7 +49,7 @@ layout: post
 
 **那为什么在ngAfterViewInit和ngAfterViewChecked会报错，而且其他几个钩子函数里不报错呢？**我们来调试一下他的core.js源代码，具体调试方法如下：
 
-![angular-unidirectional-data-flow](https://limeii.github.io/assets/images/posts/angular/angular-unidirectional-data-flow6.gif){:height="100%" width="100%"}
+![angular-unidirectional-data-flow](https://limeii.github.io/assets/images/posts/angular/angular-unidirectional-data-flow06.gif){:height="100%" width="100%"}
 
 把checkAndUpdateView方法简化一下：
 
@@ -80,7 +80,7 @@ function checkAndUpdateView(view, ...) {
 最后来总结一下，在angular中低层级的component向上一层级触发检测机制的时候具体流程：
 ![angular-unidirectional-data-flow](https://limeii.github.io/assets/images/posts/angular/angular-unidirectional-data-flow7.png){:height="100%" width="100%"}
 
-- 首先是更新child component的input bindings，然后会触发child component中OnInit、DoCheck、OnChanges函数，如果页面有ng-content，相应也会触发ngAfterContentInit和ngAfterContentChecked。
-- 然后angular会Rendering把当前component也就是parent component页面。
-- 之后会触发child component中的变化检测（change detection）。
-- 最后会触发child component中的AfterViewInit和theAfterViewChecked。
+- 1：更新child component的input bindings，然后会触发child component中OnInit、DoCheck、OnChanges函数，如果页面有ng-content，相应也会触发ngAfterContentInit和ngAfterContentChecked。
+- 2：angular会Rendering把当前component也就是parent component页面。
+- 3：触发child component中的变化检测（change detection）。
+- 4：触发child component中的AfterViewInit和theAfterViewChecked。

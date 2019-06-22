@@ -20,6 +20,7 @@ layout: post
 现在我们来看看，如果在GrandChild component的钩子函数里通过@Output去改child A component的值，会发生什么？
 
 **定义一个ChildAComponent，在这里会显示从GrandChildComponent发过来的message，代码如下：**
+
 ![angular-unidirectional-data-flow](https://limeii.github.io/assets/images/posts/angular/angular-unidirectional-data-flow.png){:height="100%" width="100%"}
 
 **定义一个GrandChildComponent，通过@Output向，ChildAComponent发送message，代码如下：**
@@ -78,9 +79,12 @@ function checkAndUpdateView(view, ...) {
 
 
 最后来总结一下，在angular中低层级的component向上一层级触发检测机制的时候具体流程：
+
 ![angular-unidirectional-data-flow](https://limeii.github.io/assets/images/posts/angular/angular-unidirectional-data-flow7.png){:height="100%" width="100%"}
 
 - 1：更新child component的input bindings，然后会触发child component中OnInit、DoCheck、OnChanges函数，如果页面有ng-content，相应也会触发ngAfterContentInit和ngAfterContentChecked。
 - 2：angular会Rendering把当前component也就是parent component页面。
 - 3：触发child component中的变化检测（change detection）。
 - 4：触发child component中的AfterViewInit和theAfterViewChecked。
+
+本文中用到得示例代码在这里：[angular-change-detection](https://github.com/LiMeii/angular-change-detection)

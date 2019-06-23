@@ -20,14 +20,14 @@ angular中的变化检测机制是当component状态有变化的时候，angular
 **component view到底是什么？**
 
 
-把data.name值改成limeii，会触发变化检测，同时angular会做数据脏检查，也就是对比当前值（limeii）和之前的值（meii）是否一样，如果发现两者不一致，会把当前的值（limeii）更新到页面上。
+把data.name值改成limeii，会触发变化检测，同时angular会做数据脏检查，也就是对比当前值（limeii）和之前的值（meii）是否一样，如果发现两者不一致，会把当前的值（limeii）更新到页面上。同时也会把当前的值保持为oldvalue。
 
 
-为了实现上述流程，angular需要component view保存每个DOM节点引用，同时也需要保存component数据引用、数据之前的值和取值表达式。如下所示：
+为了实现上述流程，angular需要component view保存每个DOM节点引用，同时也要保存component数据引用、数据之前的值和取值表达式。如下所示：
 
 ![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection02.png){:height="100%" width="100%"}
 
-当编译器编分析组件模板的时候，知道每次变化检测有可能需要更新页面上DOM元素属性的值，对于这些属性，编译器都会给它创建绑定，绑定里至少有这个属性名称和取值的表达式。
+当编译器分析组件模板的时候，知道每次变化检测有可能需要更新页面上DOM元素属性的值，对于这些属性，编译器都会给它创建绑定，绑定里至少有这个属性名称和取值的表达式。
 
 
 如上代码，属性data.name是component的值，textContent是对应页面span元素的属性，编译器会通过绑定把这两者关联起来。

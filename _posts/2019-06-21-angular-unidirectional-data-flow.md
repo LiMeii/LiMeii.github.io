@@ -17,6 +17,9 @@ layout: post
 **这个过程就是angular的单向数据流。**
 
 
+但是在GrandChild component里，有些钩子函数通过@Output去改变child A component的数据值，是允许的，而有些又不允许。
+
+
 现在我们来看看，如果在GrandChild component的钩子函数里通过@Output去改child A component的值，会发生什么？
 
 **定义一个ChildAComponent，在这里会显示从GrandChildComponent发过来的message，代码如下：**

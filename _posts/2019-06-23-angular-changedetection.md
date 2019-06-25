@@ -37,7 +37,7 @@ angular中的变化检测机制是当component状态有变化的时候，angular
 有了component view、绑定、脏数据检查，组件状态变化就可以触发变化检测从而更新页面DOM属性的值。
 
 
-**什么会触发组件数据的变化？**
+**什么会触发组件状态的变化？**
 
 
 最常见的一种方式，在页面按钮的click事件更新data.name的值，代码如下：
@@ -62,14 +62,35 @@ angular中会检测onMicrotaskEmpty，当onMicrotaskEmpty没有异步事件以�
 - Timers：setTimeout()、setInterval()
 
 
-**angular又怎么知道要做变化检测？**
+**angular又怎么通知各个组件做变化检测？**
 
 
-前面那三种方式会导致angular状态变化，那又是谁通知angular触发变化检测从而更新页面DOM呢？NgZone（zone.js）充当了这个角色。
+前面那三种方式会导致angular状态变化，那又是谁知道状态以及发生改变，需要通知angular触发变化检测从而更新页面DOM呢？NgZone（zone.js）充当了这个角色。
 
 
-NgZone的主要工作是处理angular中所有的异步操作（由前面三种方式触发的），每当有异步操作的时候，NgZone会触发变化检测。
+NgZone可以简单的理解为是一个异步事件拦截器，它能够hook到异步任务的执行上下文，然后就可以来处理一些操作，比如每个异步任务callback以后就会去通知angular做变化检测。
 
 
+angular源码中有一个ApplicationRef，可以监听NgZones onTurnDone事件，每当onTurnDone被触发后，它会立马执行tick()方法，tick()会从上到下沿着组件树触发变化检测。ApplicationRef简洁版代码如下：
 
-**未完待续**
+```ts
+// very simplified version of actual source
+class ApplicationRef {
+  changeDetectorRefs:ChangeDetectorRef[] = [];
+
+  constructor(private zone: NgZone) {
+    this.zone.onTurnDone
+      .subscribe(() => this.zone.run(() => this.tick());
+  }
+
+  tick() {
+    this.changeDetectorRefs
+      .forEach((ref) => ref.detectChanges());
+  }
+}
+```
+
+
+每个component都有自己的变化检测器，负责检查它们各自的绑定，结构如下：
+
+![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection05.png){:height="100%" width="100%"}

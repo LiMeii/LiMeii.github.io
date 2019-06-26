@@ -67,7 +67,7 @@ Chrome的行为是，没有默认值的时候，会把selectedIndex设置为-1�
 ```ts
 <form [formGroup]="form">
 	<select formControlName="select">
-		<option *ngIf="!form.value.select" [ngValue]="null" selected disabled></option>
+		<option *ngIf="!form.value.select" [ngValue]="null" selected></option>
 		<option *ngFor="let option of options" [ngValue]="option">{{option}}</option>
 	</select>
 </form>

@@ -37,7 +37,7 @@ angular中的变化检测机制是当component状态有变化的时候，angular
 有了component view、绑定、脏数据检查，组件状态变化就可以触发变化检测从而更新页面DOM属性的值。
 
 
-**什么会触发组件状态的变化？**
+**那什么会触发组件状态的变化？**
 
 
 最常见的一种方式，在页面按钮的click事件更新data.name的值，代码如下：
@@ -65,7 +65,7 @@ angular中会检测onMicrotaskEmpty，当onMicrotaskEmpty没有异步事件以�
 **angular又怎么通知各个组件做变化检测？**
 
 
-前面那三种方式会导致angular状态变化，那又是谁知道状态以及发生改变，需要通知angular触发变化检测从而更新页面DOM呢？NgZone（zone.js）充当了这个角色。
+前面那三种方式会导致angular状态变化，那又是谁知道状态已经发生改变，需要通知angular触发变化检测从而更新页面DOM呢？**NgZone（zone.js）**充当了这个角色。
 
 
 NgZone可以简单的理解为是一个异步事件拦截器，它能够hook到异步任务的执行上下文，然后就可以来处理一些操作，比如每个异步任务callback以后就会去通知angular做变化检测。

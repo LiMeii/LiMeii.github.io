@@ -40,6 +40,24 @@
 
   }
 
+  .post-list__post-title-read-more {
+    margin-top: 0;
+    margin-bottom: .2em;
+    font-size: 1em;
+    line-height: 1em;
+
+    a {
+      color: $gray-darkest;
+
+      &:hover {
+        color: $hover-color;
+      }
+
+    }
+
+  }
+
+
   .post-list__meta {
     display: block;
     margin: .7em 0 0 0;

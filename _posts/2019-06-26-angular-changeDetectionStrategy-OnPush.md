@@ -28,16 +28,21 @@ angular默认的变化检测机制是**ChangeDetectionStrategy.Default**：异�
 
 在CDChildComponent加了一行代码：**changeDetection: ChangeDetectionStrategy.OnPush**，我们点击Change Info按钮，不会触发CDChildComponent中的变化检测，页面email也不会有变化。
 
-**Immutables and Observables**
+
+在CDChildComponent加了OnPush表示，在发生异步事件以后触发变化检测，angular会跳过这个组件，不会触发这个组件的变化检测。如果OnPush是加在某个父组件上，那么这个父组件和它下面所有的子组件都不会触发变化检测。
 
 
-- Input reference of the component changes
+但是在实际应用里，我们并不希望把整个组件的变化检测都禁掉，而是希望部分操作还是可以触发它的变化检测，比如从后端API返回新的数据，虽然加了OnPush，这些数据还是能够更新在页面上。angular也考虑这种情况，在组件里加了OnPush，以下四种情况还是可以触发该组件的变化检测：
 
-- DOM Event within a component has been dispatched (ex. click)
+- 组件的@Inputs()发生改变，同时@Inputs的引用也发生改变。
 
-- Emission of an observable event subscribed with Async pipe
+- 组件的DOM事件，包括它的子组件的DOM事件，比如click、submit、mouse down触发。
 
-- change detection is manually run ：ChangeDetectorRef.detectChanges()/ ChangeDetectorRef.markForCheck()/ApplicationRef.tick()
+- observable事件，并且设置了Async pipe
+
+- 手动用ChangeDetectorRef.detectChanges()、ChangeDetectorRef.markForCheck()、ApplicationRef.tick()方式触发变化检测
+
+
 
 
 **未完待续**

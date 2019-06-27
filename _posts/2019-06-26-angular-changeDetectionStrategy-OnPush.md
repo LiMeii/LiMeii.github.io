@@ -64,7 +64,7 @@ angular默认的变化检测机制是**ChangeDetectionStrategy.Default**：异�
     }
 
 ```
-data是一个对象，在changeInfo方法里通过如上方式改变email的值。在CDChildComponent设置了OnPush，虽然@Input() data的属性eamil发生变化了但是data对象的引用并没有发生变化，并不会触发CDChildComponent中的变化检测，页面的eamil也不会发生变化。
+data是一个对象，在changeInfo方法里通过如上方式改变email的值。在CDChildComponent设置了OnPush，虽然@Input() data的属性eamil发生变化但是data对象的引用并没有发生变化，并不会触发CDChildComponent中的变化检测，页面的eamil也不会发生变化。
 
 
 如果把CDParentComponent中的changeInfo方法改成下面这样：
@@ -121,10 +121,7 @@ data是一个对象，在changeInfo方法里通过如上方式改变email的值�
 
 **3. Observable事件订阅，并且设置了Async pipe**
 
-在CDChildComponent有Observable事件订阅，并且设置了Async pipe，在OnPush策略下，会触发变化检测。
-
-
-在CDChildComponent页面加一个Observable：count$，每隔一秒加一，并在页面上设置了count$ | async，代码如下：
+在CDChildComponent有Observable事件订阅，并在模板里设置了Async pipe，在OnPush策略下，会触发变化检测，代码如下：
 
 
 ![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy09.png){:height="100%" width="100%"}
@@ -138,7 +135,7 @@ data是一个对象，在changeInfo方法里通过如上方式改变email的值�
 
 ChangeDetectorRef.detectChanges()、ChangeDetectorRef.markForCheck()、ApplicationRef.tick()，在OnPush策略下，手动调用这三种方式会触发变化检测。
 
-- ***ChangeDetectorRef.detectChanges()**代码如下：
+- **ChangeDetectorRef.detectChanges()**代码如下：
 
 ![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy11.png){:height="100%" width="100%"}
 
@@ -146,13 +143,13 @@ ChangeDetectorRef.detectChanges()、ChangeDetectorRef.markForCheck()、Applicati
 
 ![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy12.gif){:height="100%" width="100%"}
 
-- ***ChangeDetectorRef.markForCheck()**代码如下：
+- **ChangeDetectorRef.markForCheck()**代码如下：
 
-![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy13.gif){:height="100%" width="100%"}
+![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy13.png){:height="100%" width="100%"}
 
 效果跟detectChanges是一样的，只不过detectChanges会立马触发当前组件和它子组件变化检测。markForCheck并不会立马触发变化检测，而是标记需要被变化检测，在当前或下一轮的变化检测中被触发。
 
-- ***ApplicationRef.tick()**代码如下：
+- **ApplicationRef.tick()**代码如下：
 
 ![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy14.png){:height="100%" width="100%"}
 
@@ -168,3 +165,6 @@ ApplicationRef.tick()触发整个应用的组件树从上到下执行变化检�
 - 尽量多用结合使用OnPush和async pipe
 
 - 尽量多使用state management library，比如RxJS
+
+
+本文中用到到的示例代码在这里：[angular-change-detection](https://github.com/LiMeii/angular-change-detection)

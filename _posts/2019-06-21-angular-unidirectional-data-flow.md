@@ -86,8 +86,14 @@ function checkAndUpdateView(view, ...) {
 ![angular-unidirectional-data-flow](https://limeii.github.io/assets/images/posts/angular/angular-unidirectional-data-flow7.png){:height="100%" width="100%"}
 
 - 1：更新child component的input bindings，然后会触发child component中OnInit、DoCheck、OnChanges函数，如果页面有ng-content，相应也会触发ngAfterContentInit和ngAfterContentChecked。
+
 - 2：angular会继续渲染当前component也就是parent component页面。
+
 - 3：触发child component中的变化检测（change detection）。
+
 - 4：触发child component中的AfterViewInit和theAfterViewChecked。
 
-本文中用到得示例代码在这里：[angular-change-detection](https://github.com/LiMeii/angular-change-detection)
+
+在[Angular Change Detection:变化检测机制](https://limeii.github.io/2019/06/angular-changedetection/)这篇文章里介绍了变化检测机制。
+
+本文中用到的示例代码在这里：[angular-change-detection](https://github.com/LiMeii/angular-change-detection)

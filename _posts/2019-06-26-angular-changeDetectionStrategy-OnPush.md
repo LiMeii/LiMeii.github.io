@@ -45,7 +45,7 @@ angular默认的变化检测机制是**ChangeDetectionStrategy.Default**：异�
 
 **1. 组件的@Input()引用发生变化**
 
-必须是@Input的引用发生改变才会触发变化检测，并且仅限于@Input的变化检测，在OnPush策略下，会触发组件的变化检测。在这里先解释一下JS中的数据类型，在JS中有七种数据类型，其中包括6中原始类型（primitive values）和Object。
+必须是@Input的引用发生改变才会触发变化检测，并且仅限于@Input的变化检测，在OnPush策略下，会触发组件的变化检测。在这里先解释一下JS中的数据类型，在JS中有七种数据类型，其中包括六中原始类型（primitive values）和Object。
 
 
 六种原始类型分别为：Boolean、Null、Undefined、Number、String、Symbol (ECMAScript 6 新定义)。

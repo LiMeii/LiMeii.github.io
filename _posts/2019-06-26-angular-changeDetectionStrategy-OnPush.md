@@ -11,7 +11,7 @@ angular默认的变化检测机制是**ChangeDetectionStrategy.Default**：异�
 
 ![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy01.png){:height="100%" width="100%"}
 
-但是在实际应用里，并不是每个异步操作需要变化检测，某些组件也可以完全不用做变化检测，过多的变化检测实际上也影响了整个应用的性能。angular除了默认的变化检测机制，也提供了**ChangeDetectionStrategy.OnPush**，OnPush可以跳过某个component或者某个父组件以及它下面所有子组件的变化检测，如下所示：
+但是在实际应用里，并不是每个异步操作需要变化检测，某些组件也可以完全不用做变化检测，过多的变化检测实际上也影响了整个应用的性能。angular除了默认的变化检测机制，也提供了**ChangeDetectionStrategy.OnPush**，用OnPush可以跳过某个component或者某个父组件以及它下面所有子组件的变化检测，如下所示：
 
 ![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy02.png){:height="100%" width="100%"}
 
@@ -26,7 +26,7 @@ angular默认的变化检测机制是**ChangeDetectionStrategy.Default**：异�
 
 ![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy04.png){:height="100%" width="100%"}
 
-在CDChildComponent加了一行代码：**changeDetection: ChangeDetectionStrategy.OnPush**，我们点击Change Info按钮，不会触发CDChildComponent中的变化检测，所以email也不会有变化。
+在CDChildComponent加了一行代码：**changeDetection: ChangeDetectionStrategy.OnPush**，我们点击Change Info按钮，不会触发CDChildComponent中的变化检测，页面email也不会有变化。
 
 **Immutables and Observables**
 

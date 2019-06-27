@@ -11,7 +11,7 @@ angular中的变化检测机制是当component状态有变化的时候，angular
 
 ![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection01.png){:height="100%" width="100%"}
 
-当把cdParentComponent中data.name的值改成limeii，页面会直接把meii更新成limeii，看似很简单的一个改动，其实在angular内部涉及到很多复杂的操作，包括变化检测、脏数据检查、数据绑定、单向数据流、更新DOM、NgZone等等。
+当把cdParentComponent中```data.name```的值改成limeii，页面会直接把meii更新成limeii，看似很简单的一个改动，其实在angular内部涉及到很多复杂的操作，包括变化检测、脏数据检查、数据绑定、单向数据流、更新DOM、NgZone等等。
 
 
 单向数据流在这篇[Angular：单向数据流](https://limeii.github.io/2019/06/angular-unidirectional-data-flow/)文章有详细介绍，也提到angular 应用其实就是组件树，变化检测都是沿着组件树从root component开始至上而下执行的。我们都知道在angular里，每个component都有一个html 模板，在angular内部，编译器在component和模板之间会生成一个component view。数据绑定、脏数据检查和更新DOM都是由这个component view实现的。变化检测机制也可以说就是沿着component view的树状结构从上到下执行的。
@@ -20,7 +20,7 @@ angular中的变化检测机制是当component状态有变化的时候，angular
 **component view到底是什么？**
 
 
-把data.name值改成limeii，会触发变化检测，同时angular会做数据脏检查，也就是对比当前值（limeii）和之前的值（oldvalue：meii）是否一样，如果发现两者不一致，会把当前的值（limeii）更新到页面上。同时也会把当前的值保持为oldvalue。
+把```data.name```值改成limeii，会触发变化检测，同时angular会做数据脏检查，也就是对比当前值（limeii）和之前的值（oldvalue：meii）是否一样，如果发现两者不一致，会把当前的值（limeii）更新到页面上。同时也会把当前的值保持为oldvalue。
 
 
 为了实现上述流程，angular需要component view保存每个DOM节点引用，同时也要保存component数据引用、数据之前的值和取值表达式。如下所示：
@@ -30,7 +30,7 @@ angular中的变化检测机制是当component状态有变化的时候，angular
 当编译器分析组件模板的时候，知道每次变化检测有可能需要更新页面上DOM元素属性的值，对于这些属性，编译器都会给它创建绑定，绑定里至少有这个属性名称和取值的表达式。
 
 
-如上代码，属性data.name是component的值，textContent是对应页面span元素的属性，编译器会通过绑定把这两者关联起来。
+如上代码，属性```data.name```是component的值，```textContent```是对应页面span元素的属性，编译器会通过绑定把这两者关联起来。
 
 ![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection03.png){:height="100%" width="100%"}
 
@@ -40,7 +40,7 @@ angular中的变化检测机制是当component状态有变化的时候，angular
 **那什么会触发组件状态的变化？**
 
 
-最常见的一种方式，在页面按钮的click事件更新data.name的值，代码如下：
+最常见的一种方式，在页面按钮的```click```事件更新```data.name```的值，代码如下：
 
 ![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection04.png){:height="100%" width="100%"}
 
@@ -55,11 +55,11 @@ angular中的变化检测机制是当component状态有变化的时候，angular
 
 ```
 
-angular中会检测onMicrotaskEmpty，当onMicrotaskEmpty没有异步事件以后，就不会触发变化检测。也就是通常有如下三种方式会导致组件数据变化：
+angular中会检测```onMicrotaskEmpty```，当```onMicrotaskEmpty```没有异步事件以后，就不会触发变化检测。也就是通常有如下三种方式会导致组件数据变化：
 
-- 事件：页面 click、submit、mouse down......
+- 事件：页面 ```click```、```submit```、```mouse down```......
 - XHR：从后端服务器拿到数据
-- Timers：setTimeout()、setInterval()
+- Timers：```setTimeout()```、```setInterval()```
 
 
 **angular又怎么通知各个组件做变化检测？**
@@ -71,7 +71,7 @@ angular中会检测onMicrotaskEmpty，当onMicrotaskEmpty没有异步事件以�
 NgZone可以简单的理解为是一个异步事件拦截器，它能够hook到异步任务的执行上下文，然后就可以来处理一些操作，比如每个异步任务callback以后就会去通知angular做变化检测。
 
 
-angular源码中有一个ApplicationRef，可以监听NgZones onTurnDone事件，每当onTurnDone被触发后，它会立马执行tick()方法，tick()会从上到下沿着组件树触发变化检测。ApplicationRef简洁版代码如下：
+angular源码中有一个```ApplicationRef```，可以监听NgZones ```onTurnDone```事件，每当```onTurnDone```被触发后，它会立马执行```tick()```方法，```tick()```会从上到下沿着组件树触发变化检测。```ApplicationRef```简洁版代码如下：
 
 ```ts
 // very simplified version of actual source

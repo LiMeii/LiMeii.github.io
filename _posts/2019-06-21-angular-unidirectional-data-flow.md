@@ -17,10 +17,10 @@ layout: post
 **这个过程就是angular的单向数据流。**
 
 
-但是在GrandChild component里，有些钩子函数通过@Output去改变child A component的数据值，是允许的，而有些又不允许。
+但是在GrandChild component里，有些钩子函数通过```@Output```去改变child A component的数据值，是允许的，而有些又不允许。
 
 
-现在我们来看看，如果在GrandChild component的钩子函数里通过@Output去改child A component的值，会发生什么？
+现在我们来看看，如果在GrandChild component的钩子函数里通过```@Output```去改child A component的值，会发生什么？
 
 **定义一个ChildAComponent，在这里会显示从GrandChildComponent发过来的message，代码如下：**
 
@@ -36,7 +36,7 @@ layout: post
 效果如下：message能正常显示也没有error：
 ![angular-unidirectional-data-flow](https://limeii.github.io/assets/images/posts/angular/angular-unidirectional-data-flow3.png){:height="100%" width="100%"}
 
-把ngOnInit换成ngDoCheck、ngAfterContentInit、ngAfterContentChecked、ngOnChanges，效果是一样的，在ChildAComponent中message都能正常显示也不会报错
+把```ngOnInit```换成```ngDoCheck```、```ngAfterContentInit```、```ngAfterContentChecked```、```ngOnChanges```，效果是一样的，在ChildAComponent中message都能正常显示也不会报错
 
 **2. 在GrandChild component中，在ngAfterViewInit中去改child A component的msgFromGrandChild属性的值** 
 
@@ -44,18 +44,18 @@ layout: post
 代码如下：
 ![angular-unidirectional-data-flow](https://limeii.github.io/assets/images/posts/angular/angular-unidirectional-data-flow4.png){:height="100%" width="100%"}
 
-这个时候会发现在console里会有ExpressionChangedAfterItHasBeenCheckedError，具体如下：
+这个时候会发现在console里会有```ExpressionChangedAfterItHasBeenCheckedError```，具体如下：
 ![angular-unidirectional-data-flow](https://limeii.github.io/assets/images/posts/angular/angular-unidirectional-data-flow5.png){:height="100%" width="100%"}
 
-如果把ngAfterViewInit换成ngAfterViewChecked，效果也是一样的，会有同样的错误
+如果把```ngAfterViewInit```换成```ngAfterViewChecked```，效果也是一样的，会有同样的错误
 
-**出现这种错误的原因是：**在angular中强制了单向数据流，当有变化的时候，变化检测机制是沿着component关系树结构从上到下执行，直到最后一个child component变化检测完成，这个完整的变化检测才算结束。在这个过程中，parent component的变化检测完成以后，任何更低一层级去改上一层级的属性，都不允许。如果是在生产环境里，也就是启用了enableProdMode() 会直接忽略这样的操作，页面也不会显示变化以后的值，也不会报错。但是在开发模式下，在每一次变换检测（change detection）以后，angular会从上到下再多跑一个变化检测，确保每次改动之后所有的状态是stable的，这个时候发现有低层级改动上一层级的值，就会出现上面那个错误。
+**出现这种错误的原因是：**在angular中强制了单向数据流，当有变化的时候，变化检测机制是沿着component关系树结构从上到下执行，直到最后一个child component变化检测完成，这个完整的变化检测才算结束。在这个过程中，parent component的变化检测完成以后，任何更低一层级去改上一层级的属性，都不允许。如果是在生产环境里，也就是启用了```enableProdMode()```会直接忽略这样的操作，页面也不会显示变化以后的值，也不会报错。但是在开发模式下，在每一次变换检测（change detection）以后，angular会从上到下再多跑一个变化检测，确保每次改动之后所有的状态是stable的，这个时候发现有低层级改动上一层级的值，就会出现上面那个错误。
 
 **那为什么在ngAfterViewInit和ngAfterViewChecked会报错，而且其他几个钩子函数里不报错呢？**我们来调试一下他的core.js源代码，具体调试方法如下：
 
 ![angular-unidirectional-data-flow](https://limeii.github.io/assets/images/posts/angular/angular-unidirectional-data-flow06.gif){:height="100%" width="100%"}
 
-把checkAndUpdateView方法简化一下：
+把```checkAndUpdateView```方法简化一下：
 
 ```js
 function checkAndUpdateView(view, ...) {
@@ -75,7 +75,7 @@ function checkAndUpdateView(view, ...) {
     ...
 }
 ```
-从上面的代码可以看出来，在GrandChild component中，AfterViewChecked和AfterViewInit是在它自己的变化检测（change detetion）之后再执行的，也就是它状态stable之后再执行的，这时候在去触发它上一层级属性的改动，被认为是违反angular的单向数据流。
+从上面的代码可以看出来，在GrandChild component中，```AfterViewChecked```和```AfterViewInit```是在它自己的变化检测（change detetion）之后再执行的，也就是它状态stable之后再执行的，这时候在去触发它上一层级属性的改动，被认为是违反angular的单向数据流。
 
 
 从上面的分析可以看到：angular在变化检测（change detection）过程中也会去触发生命周期钩子函数。比较有意思的是，有些钩子函数是在DOM Rending/change detection之前触发，有些是在之后触发。

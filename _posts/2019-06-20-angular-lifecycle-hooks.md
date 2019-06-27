@@ -35,7 +35,7 @@ Angular中每个component/directive都有它自己的生命周期。包括创建
 
 - **constructor vs ngOnInit：**在constructor里并不是所有数据都已经存在，比如@ContentChildren/@ContentChild/@ViewChildren/@ViewChild/@Input在执行constructor的时候并不存在，相关代码最好都放在ngOnInit。
 
-- **ngOnChanges vs ngDoCheck：**ngOnChanges是在@Input的值发生变化时触发；而ngDoCheck在每次change detection的时候都会触发或者是在状态发生变化，angular自己又不能捕获时被触发。在用ngDoCheck的时候要非常小心，ngDoCheck被触发的频率非常高，代码尽量精简，避免导致页面性能问题。
+- **ngOnChanges vs ngDoCheck：**ngOnChanges是在@Input的值发生变化时触发；而ngDoCheck在每次change detection的时候都会触发或者是在状态发生变化angular自己又不能捕获时被触发。在用ngDoCheck的时候要非常小心，ngDoCheck被触发的频率非常高，代码尽量精简，避免导致页面性能问题。
 
 - **ngAfterContentInit vs ngAfterViewInit：**跟ng-content相关的就用ngAfterContentInit，当前component或者它的child componet相关的就用ngAfterViewInit。
 

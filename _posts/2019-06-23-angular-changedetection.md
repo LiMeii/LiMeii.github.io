@@ -99,4 +99,4 @@ class ApplicationRef {
 有了NgZone上述三种异步事件都会导致整个angular项目的发生变化检测，虽然angular变化检测本身性能已经很好了，在毫秒内可以做成百上千次变化检测。但是随着项目越来越大，其实很多不必要的变化检测还是会在一定程度上影响性能。
 
 
-这这篇文章[Angular Change Detection:变化检测策略](https://limeii.github.io/2019/06/angular-changeDetectionStrategy-OnPush/)介绍了如何通过OnPush来跳过一些不必要的变化检测，从而优化整个应用的性能。
+在这篇文章[Angular Change Detection:变化检测策略](https://limeii.github.io/2019/06/angular-changeDetectionStrategy-OnPush/)介绍了如何通过OnPush来跳过一些不必要的变化检测，从而优化整个应用的性能。

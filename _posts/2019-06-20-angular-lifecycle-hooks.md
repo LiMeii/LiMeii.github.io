@@ -1,5 +1,5 @@
 ---
-title: Angular生命周期和钩子函数
+title: Angular：生命周期和钩子函数
 tags: Angular
 layout: post
 ---

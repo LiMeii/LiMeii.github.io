@@ -1,5 +1,5 @@
 ---
-title: Angular Change Detection:变化检测策略
+title: Angular Change Detection：变化检测策略
 tags: Angular
 layout: post
 ---

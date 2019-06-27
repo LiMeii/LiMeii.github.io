@@ -1,5 +1,5 @@
 ---
-title: Angular:ngDoCheck执行时机
+title: Angular：ngDoCheck执行时机
 tags: Angular
 layout: post
 ---

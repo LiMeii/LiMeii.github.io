@@ -19,7 +19,7 @@ Angular中每个component/directive都有它自己的生命周期。包括创建
 
 - **ngOnInit：**在第一个ngOnChanges之后触发，只执行一次。这个函数用来初始化页面内容。
 
-- **ngDoCheck：**只要有任何change detection（比如click handlers, http requests, route changes...）都会触发这个函数，在用这个函数的时候要特别小心，里面的代码也尽量的精简，一般建议在开发debug的时候用这个函数。
+- **ngDoCheck：**第一种情况是：只要有任何change detection（比如click handlers, http requests, route changes...）都会执行ngDoCheck；第二种情况是：ngDoCheck会在状态发生变化，angular自己又不能捕获时被触发。在用这个函数的时候要特别小心，里面的代码也尽量的精简，一般建议在开发debug的时候用这个函数。关于ngDoCheck触发时机详细讲解可以参考这篇文章[Angular:ngDoCheck执行时机](https://limeii.github.io/2019/06/angular-ngdocheck-onpush-strategy/)
 
 - **ngAfterContentInit：**页面有用ng-content进行组件内容投射，在初始化的时候会执行一次这个函数。
 
@@ -35,7 +35,7 @@ Angular中每个component/directive都有它自己的生命周期。包括创建
 
 - **constructor vs ngOnInit：**在constructor里并不是所有数据都已经存在，比如@ContentChildren/@ContentChild/@ViewChildren/@ViewChild/@Input在执行constructor的时候并不存在，相关代码最好都放在ngOnInit。
 
-- **ngOnChanges vs ngDoCheck：**ngOnChanges是在@Input的值发生变化时触发，ngDoCheck在每次change detection的时候都会触发。在用ngDoCheck的时候要非常小心，ngDoCheck被触发的频率非常高，代码尽量精简，避免导致页面性能问题。
+- **ngOnChanges vs ngDoCheck：**ngOnChanges是在@Input的值发生变化时触发；而ngDoCheck在每次change detection的时候都会触发或者是在状态发生变化，angular自己又不能捕获时被触发。在用ngDoCheck的时候要非常小心，ngDoCheck被触发的频率非常高，代码尽量精简，避免导致页面性能问题。
 
 - **ngAfterContentInit vs ngAfterViewInit：**跟ng-content相关的就用ngAfterContentInit，当前component或者它的child componet相关的就用ngAfterViewInit。
 

@@ -162,7 +162,7 @@ ApplicationRef.tick()触发整个应用的组件树从上到下执行变化检�
 
 - 尽量使用OnPush策略从叶节点组件开始来优化整个应用的性能
 
-- 尽量多用结合使用OnPush和async pipe
+- 尽量多结合使用OnPush和async pipe
 
 - 尽量多使用state management library，比如RxJS
 

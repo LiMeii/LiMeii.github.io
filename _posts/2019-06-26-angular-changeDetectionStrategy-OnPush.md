@@ -113,11 +113,7 @@ data是一个对象，在changeInfo方法里通过如上方式改变email的值�
 
 ![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy08.gif){:height="100%" width="100%"}
 
-```
-
-这两个示例代码都是在@Input() data引用没有发生变化的前提下运行的！
-
-```
+<blockquote>注意：这两个示例代码都是在@Input() data引用没有发生变化的前提下运行的！</blockquote>
 
 **3. Observable事件订阅，并且设置了Async pipe**
 

@@ -20,9 +20,13 @@ blog_button:
     title: 博客
     description: 访问博客
 
+tag_button:
+    title: 标签
+    description: 技术文章分类
+    url: 'https://limeii.github.io/tag/'  
+
 # Navigation buttons in the front page.
 nav:
-    - {title: 标签, description: 技术文章分类, url: 'https://limeii.github.io/tag/'}
     - {title: 简历, description: 我的简历, url: 'https://github.com/limeii'}
     - {title: 项目, description: 个人代码, url: 'https://github.com/limeii'}
     # - {title: Another Button, description: A button, url: 'http://example.com'}

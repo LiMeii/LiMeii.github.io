@@ -2,13 +2,17 @@
 
 
 - multiple https will be canceled in angular4
-- ExpressionChangedAfterItHasBeenCheckedError error [done]
-- change detection [done]
-- unidirectional data flow [done]
-- lefe cycle and hooks [done]
 
-- angular observable onpush immutable
+# change detection series:
+- change detection [done]
+- change detection: unidirectional data flow && ExpressionChangedAfterItHasBeenCheckedError error  [done]
+- lefe cycle and hooks [done]
+- change detection: ngdocheck execute timing [done]
+- angular change detection strategy: observable onpush immutable [done]
+- how to mare your angular app fast: onpush strategy / simple ngFor / ChangeDetectorRef.detach() / NgZone.runOutsideAngular()
+
 - ngzone
 - rxjs
 - ngrx
-
+- angular material
+- router

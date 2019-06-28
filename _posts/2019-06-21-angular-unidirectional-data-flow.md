@@ -49,7 +49,13 @@ layout: post
 
 如果把```ngAfterViewInit```换成```ngAfterViewChecked```，效果也是一样的，会有同样的错误
 
-**出现这种错误的原因是：**在angular中强制了单向数据流，当有变化的时候，变化检测机制是沿着component关系树结构从上到下执行，直到最后一个child component变化检测完成，这个完整的变化检测才算结束。在这个过程中，parent component的变化检测完成以后，任何更低一层级去改上一层级的属性，都不允许。如果是在生产环境里，也就是启用了```enableProdMode()```会直接忽略这样的操作，页面也不会显示变化以后的值，也不会报错。但是在开发模式下，在每一次变换检测（change detection）以后，angular会从上到下再多跑一个变化检测，确保每次改动之后所有的状态是stable的，这个时候发现有低层级改动上一层级的值，就会出现上面那个错误。
+**出现这种错误的原因是：**
+
+<blockquote>
+<p>
+在angular中强制了单向数据流，当有变化的时候，变化检测机制是沿着component关系树结构从上到下执行，直到最后一个child component变化检测完成，这个完整的变化检测才算结束。在这个过程中，parent component的变化检测完成以后，任何更低一层级去改上一层级的属性，都不允许。如果是在生产环境里，也就是启用了```enableProdMode()```会直接忽略这样的操作，页面也不会显示变化以后的值，也不会报错。但是在开发模式下，在每一次变换检测（change detection）以后，angular会从上到下再多跑一个变化检测，确保每次改动之后所有的状态是stable的，这个时候发现有低层级改动上一层级的值，就会出现上面那个错误。
+</p>
+</blockquote>
 
 **那为什么在ngAfterViewInit和ngAfterViewChecked会报错，而且其他几个钩子函数里不报错呢？**我们来调试一下他的core.js源代码，具体调试方法如下：
 
@@ -85,13 +91,13 @@ function checkAndUpdateView(view, ...) {
 
 ![angular-unidirectional-data-flow](https://limeii.github.io/assets/images/posts/angular/angular-unidirectional-data-flow7.png){:height="100%" width="100%"}
 
-- 1：更新child component的input bindings，然后会触发child component中OnInit、DoCheck、OnChanges函数，如果页面有ng-content，相应也会触发ngAfterContentInit和ngAfterContentChecked。
+1. 更新child component的input bindings，然后会触发child component中OnInit、DoCheck、OnChanges函数，如果页面有ng-content，相应也会触发ngAfterContentInit和ngAfterContentChecked。
 
-- 2：angular会继续渲染当前component也就是parent component页面。
+2. angular会继续渲染当前component也就是parent component页面。
 
-- 3：触发child component中的变化检测（change detection）。
+3. 触发child component中的变化检测（change detection）。
 
-- 4：触发child component中的AfterViewInit和theAfterViewChecked。
+4. 触发child component中的AfterViewInit和theAfterViewChecked。
 
 
 在[Angular Change Detection:变化检测机制](https://limeii.github.io/2019/06/angular-changedetection/)这篇文章里介绍了变化检测机制。

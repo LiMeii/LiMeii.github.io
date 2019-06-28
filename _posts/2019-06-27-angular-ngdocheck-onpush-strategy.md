@@ -13,21 +13,21 @@ layout: post
 
 直译过来就是：
 
- - 1：在状态发生变化，angular自己本身不能捕获这个变化时会触发```NgDoCheck```。
+ 1. 在状态发生变化，angular自己本身不能捕获这个变化时会触发```NgDoCheck```。
 
- - 2：每次变化检测以后，都会触发```ngDoCheck```钩子函数，紧跟在```ngOnChanges```和```ngOnInit```之后运行。
+ 2. 每次变化检测以后，都会触发```ngDoCheck```钩子函数，紧跟在```ngOnChanges```和```ngOnInit```之后运行。
 
 第二点很好理解，第一点到底是什么意思呢？
 
 在[Angular Change Detection:变化检测策略](https://limeii.github.io/2019/06/angular-changeDetectionStrategy-OnPush/)这篇文章中解释过：某一个组件中设置angular变化检测策略为OnPush，如果没有以下四种情况，angular是不会为这个组件或者它的子组件执行变化检测。
 
-- 组件的```@Input()```引用发生变化。
+1. 组件的```@Input()```引用发生变化。
 
-- 组件的DOM事件，包括它子组件的DOM事件，比如```click```、```submit```、```mouse down```等事件。
+2. 组件的DOM事件，包括它子组件的DOM事件，比如```click```、```submit```、```mouse down```等事件。
 
-- ```Observable```订阅事件，并且设置了```Async pipe```。
+3.  ```Observable```订阅事件，同时设置```Async pipe```。
 
-- ```ChangeDetectorRef.detectChanges()```、```ChangeDetectorRef.markForCheck()```、```ApplicationRef.tick()```，手动调用这三种方式触发变化检测。
+4.  ```ChangeDetectorRef.detectChanges()```、```ChangeDetectorRef.markForCheck()```、```ApplicationRef.tick()```，手动调用这三种方式触发变化检测。
 
 
 我们来看一个例子，有一个组件树结构如下：

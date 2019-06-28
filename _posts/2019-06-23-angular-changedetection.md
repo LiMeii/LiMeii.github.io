@@ -60,9 +60,9 @@ angular中的变化检测机制是当component状态有变化的时候，angular
 
 angular中会检测```onMicrotaskEmpty```，当```onMicrotaskEmpty```没有异步事件以后，就不会触发变化检测。也就是通常有如下三种方式会导致组件数据变化：
 
-- 事件：页面 ```click```、```submit```、```mouse down```......
-- XHR：从后端服务器拿到数据
-- Timers：```setTimeout()```、```setInterval()```
+1. 事件：页面 ```click```、```submit```、```mouse down```......
+2. XHR：从后端服务器拿到数据
+3. Timers：```setTimeout()```、```setInterval()```
 
 
 ## angular又怎么通知各个组件做变化检测？

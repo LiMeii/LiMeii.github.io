@@ -11,9 +11,8 @@ layout: post
 - 砖石会员，5000元以内免费，5000-50000收费5元，50000元以上收费10元。
 
 现在需要做一个页面，用来专门用来收集这样的收费标准，以后可能需要增加新的收费标准或者修改现有的收费标准。
-
 这个页面可以设计成这样：
-![dynamic form](https://limeii.github.io/assets/images/posts/angular/angular-dynamic-form.gif){:height="100%" width="100%"}
+![dynamic form](https://limeii.github.io/assets/images/posts/angular/angular-dynamic-form.gif){:height="70%" width="70%"}
 
 在angular用dynamic form可以很容易实现这种动态加载表单的效果，并且可以轻松实现对每一个field进行校验。接下来介绍如何在angular里实现上面的表单。
 
@@ -22,10 +21,6 @@ layout: post
 
 #### 项目结构如下：
 ![dynamic form](https://limeii.github.io/assets/images/posts/angular/angular-dynamic-form-structure.png){:height="100%" width="100%"}
-
-#### 项目代码：
-[angular-dynamic-form](https://github.com/LiMeii/angular-dynamic-form)
-
 
 **第一步，需要在app.module.ts引入FormsModule和ReactiveFormsModule**
 
@@ -53,14 +48,14 @@ formarray是多个formgroup数组集合。在formarray formgroup的命名需要�
 ```html
     <div formArrayName="feeArray">
       <div *ngFor="let arrayItem of feeArray.controls;let i=index">
-        <div formGroupName="{{i}}">
+        <div formGroupName=" { { i } } ">
           <dynamic-fee (deleteFeeItem)="removeFeeItem()" [group]="feeForm.controls.feeArray.controls[i]"></dynamic-fee>
         </div>
       </div>
     </div>
 ```
 
-在DynamicFeeComponent里需要用到每一个formControl的时候，通过‘[group]="feeForm.controls.feeArray.controls[i]" ’把每个formgroup传给DynamicFeeComponent。
+在DynamicFeeComponent里需要用到每一个formControl的时候，通过```[group]="feeForm.controls.feeArray.controls[i]" ```把每个formgroup传给DynamicFeeComponent。
 否则的话一直会报类似这样的错:cannot access formcontrol
 
 

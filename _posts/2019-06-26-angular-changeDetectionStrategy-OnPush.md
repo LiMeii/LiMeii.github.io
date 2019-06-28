@@ -89,7 +89,7 @@ export class CDChildComponent implements OnChanges {
 
 ## 1. 组件的@Input引用发生变化
 
-必须是```@Input```的引用发生改变才会触发变化检测，并且仅限于```@Input```的变化检测，在OnPush策略下，会触发组件的变化检测。在这里先解释一下JS中的数据类型，在JS中有七种数据类型，其中包括六中原始类型（primitive values）和Object。
+必须是@Input的引用发生改变才会触发变化检测，并且仅限于@Input的变化检测，在OnPush策略下，会触发组件的变化检测。在这里先解释一下JS中的数据类型，在JS中有七种数据类型，其中包括六中原始类型（primitive values）和Object。
 
 
 六种原始类型分别为：Boolean、Null、Undefined、Number、String、Symbol (ECMAScript 6 新定义)。
@@ -127,7 +127,7 @@ data是一个对象，在```changeInfo```方法里通过如上方式改变email�
 
 这时候点击Change Info按钮，触发了变化检测，页面的email被更新了：
 
-![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy05.gif){:height="100%" width="100%"}
+![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy05.gif){:height="70%" width="70%"}
 
 <blockquote>
 <p>
@@ -137,9 +137,9 @@ data是一个对象，在```changeInfo```方法里通过如上方式改变email�
 
 ## 2. 组件DOM事件触发
 
-组件的DOM事件，包括它子组件的DOM事件，比如```click```、```submit```、```mouse down```等事件，在OnPush策略下，会触发组件的变化检测。
+组件的DOM事件，包括它子组件的DOM事件，比如click、submit、mouse down等事件，在OnPush策略下，会触发组件的变化检测。
 
-在CDChildComponent加一个counter，并把它显示在页面里，在```ngOnInit```里把设置了```setInterval```，每过一秒就让```counter+1```，代码如下：
+在CDChildComponent加一个counter，并把它显示在页面里，在ngOnInit里把设置了setInterval，每过一秒就让```counter+1```，代码如下：
 
 ```ts
 @Component({
@@ -202,7 +202,7 @@ export class CDChildComponent implements OnChanges {
 </blockquote>
 效果如下：
 
-![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy08.gif){:height="100%" width="100%"}
+![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy08.gif){:height="70%" width="70%"}
 
 <blockquote> <p> 
 <font color="#BF1827">注意：这两个示例代码都是在@Input data引用没有发生变化的前提下运行的！</font>
@@ -244,7 +244,7 @@ export class CDChildComponent implements OnInit, OnChanges {
 
 这时候页面的会每隔一秒更新一次：
 
-![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy10.gif){:height="100%" width="100%"}
+![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy10.gif){:height="70%" width="70%"}
 
 
 ## 4. 手动触发
@@ -287,7 +287,7 @@ export class CDChildComponent implements OnInit, OnChanges {
 
 每隔一秒，counter自动加五，在OnPush策略下，组件会触发策略检测，页面每隔一秒会自动更新：
 
-![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy12.gif){:height="100%" width="100%"}
+![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy12.gif){:height="70%" width="70%"}
 
 
 ### 4.2：ChangeDetectorRef.markForCheck()

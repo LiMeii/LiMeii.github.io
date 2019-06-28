@@ -4,11 +4,10 @@ tags: 问题
 layout: post
 ---
 
+## 问题描述
 
-### 问题描述
-
-- 1：Angular version： 4.2.4
-- 2：AppComponent和ChildComponent，这两个Component是父子关系，在ChildComponent里定义了@Input() data，由AppComponent把data这个对象传给ChildComponent，当data是一个对象的时候，更改这个对象某个属性的值的时候，不会触发ChildComponent里的ngOnChanges()事件，代码如下：
+1. Angular version： 4.2.4
+2. AppComponent和ChildComponent，这两个Component是父子关系，在ChildComponent里定义了@Input() data，由AppComponent把data这个对象传给ChildComponent，当data是一个对象的时候，更改这个对象某个属性的值的时候，不会触发ChildComponent里的ngOnChanges()事件，代码如下：
 
 ```ts
 @Component({
@@ -42,9 +41,7 @@ export class ChildComponent implements OnChanges,DoCheck {
     }
 }
 ```
-
-
-### 问题分析
+## 问题分析
 
 把data改成一个string类型, 这次是正常的，用户点击submit按钮，把data从ShangHai改为China，ChildComponent里的ngOnChanges事件会被触发， 代码如下：
 

@@ -27,7 +27,7 @@ tag_button:
 
 # Navigation buttons in the front page.
 nav:
-    - {title: 简历, description: 我的简历, url: 'https://github.com/limeii'}
+    #- {title: 简历, description: 我的简历, url: 'https://github.com/limeii'}
     - {title: 项目, description: 个人代码, url: 'https://github.com/limeii'}
     # - {title: Another Button, description: A button, url: 'http://example.com'}
 

@@ -120,9 +120,11 @@ module.exports = {
 
 从上面代码可以看出，common.bundle.js里面包含了b.js的代码并且module id 为0，a.bunlde.js c.bundle.js文件分别通过module id对b文件实现了加载。
 
-
+<blockquote>
+<p>
 CommonsChunkPlugin定义了公用代码需要放到commons.bundle.js文件中，在webpack打包过程中，发现没有commons这个bundle文件，会新创建这个文件，并且把入口文件a.js和c.j这个文件中共用代码（b.js）抽取出来放到commons.bundle.js文件中。a 和 c budnle文件中只保留自己的代码。
-
+</p>
+</blockquote>
 ### 第二种方式，new webpack.optimize.CommonsChunkPlugin({ name: 'c' })
 
 我们把commons换成c，最后生成两个bundle文件 a.bunlde.js、c.bundle.js

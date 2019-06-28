@@ -182,7 +182,7 @@ Checking A component:
 
 ## 总结
 
-ngDoCheck不只是在变化检测后触发，angular本身不能捕获的变化，会在```NgDoCheck```里被捕获。
+ngDoCheck不只是在变化检测后触发，在组件里设置OnPush策略，ngDoCheck依旧可以被触发。
 
 
 本文中用到到的示例代码在这里：[angular-change-detection](https://github.com/LiMeii/angular-change-detection)

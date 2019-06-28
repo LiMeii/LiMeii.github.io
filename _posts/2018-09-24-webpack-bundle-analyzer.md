@@ -1,5 +1,5 @@
 ---
-title: 如何分析和优化webpack bundle文件
+title: webpack：分析和优化webpack bundle文件
 tags: Webpack
 layout: post
 ---

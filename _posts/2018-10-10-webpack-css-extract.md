@@ -1,5 +1,5 @@
 ---
-title: 如何利用webpack优化打包CSS文件
+title: webpack：优化打包CSS文件
 tags: Webpack
 layout: post
 ---

@@ -1,5 +1,5 @@
 ---
-title: 如何利用webpack解决浏览器缓存问题
+title: webpack：如何解决浏览器缓存问题
 tags: 问题
 layout: post
 ---

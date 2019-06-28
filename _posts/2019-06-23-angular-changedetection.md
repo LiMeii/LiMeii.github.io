@@ -4,20 +4,23 @@ tags: Angular
 layout: post
 ---
 
+<blockquote>
+<p>
 angular中的变化检测机制是当component状态有变化的时候，angular都能检测到这些变化，并且能够将这些变化反应到页面上。
-
+</p>
+</blockquote>
 
 比如有这样一个component，代码如下：
 
 ![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection01.png){:height="100%" width="100%"}
 
-当把cdParentComponent中```data.name```的值改成limeii，页面会直接把meii更新成limeii，看似很简单的一个改动，其实在angular内部涉及到很多复杂的操作，包括变化检测、脏数据检查、数据绑定、单向数据流、更新DOM、NgZone等等。
+当把cdParentComponent中```data.name```的值改成limeii，页面会直接把meii更新成limeii，看似很简单的一个改动，其实在angular内部涉及到很多复杂的操作，包括```变化检测```、```脏数据检查```、```数据绑定```、```单向数据流```、```更新DOM```、```NgZone```等等。
 
 
-单向数据流在这篇[Angular：单向数据流](https://limeii.github.io/2019/06/angular-unidirectional-data-flow/)文章有详细介绍，也提到angular 应用其实就是组件树，变化检测都是沿着组件树从root component开始至上而下执行的。我们都知道在angular里，每个component都有一个html 模板，在angular内部，编译器在component和模板之间会生成一个component view。数据绑定、脏数据检查和更新DOM都是由这个component view实现的。变化检测机制也可以说就是沿着component view的树状结构从上到下执行的。
+单向数据流在这篇[Angular：单向数据流](https://limeii.github.io/2019/06/angular-unidirectional-data-flow/)文章有详细介绍，也提到angular 应用其实就是组件树，变化检测都是沿着组件树从root component开始至上而下执行的。我们都知道在angular里，每个component都有一个html模板，在angular内部，编译器在component和模板之间会生成一个component view。数据绑定、脏数据检查和更新DOM都是由这个component view实现的。变化检测机制也可以说就是沿着component view的树状结构从上到下执行的。
 
 
-**component view到底是什么？**
+## component view到底是什么？
 
 
 把```data.name```值改成limeii，会触发变化检测，同时angular会做数据脏检查，也就是对比当前值（limeii）和之前的值（oldvalue：meii）是否一样，如果发现两者不一致，会把当前的值（limeii）更新到页面上。同时也会把当前的值保持为oldvalue。
@@ -37,7 +40,7 @@ angular中的变化检测机制是当component状态有变化的时候，angular
 有了component view、绑定、脏数据检查，组件状态变化就可以触发变化检测从而更新页面DOM属性的值。
 
 
-**那什么会触发组件状态的变化？**
+## 那什么会触发组件状态的变化？
 
 
 最常见的一种方式，在页面按钮的```click```事件更新```data.name```的值，代码如下：
@@ -62,10 +65,10 @@ angular中会检测```onMicrotaskEmpty```，当```onMicrotaskEmpty```没有异�
 - Timers：```setTimeout()```、```setInterval()```
 
 
-**angular又怎么通知各个组件做变化检测？**
+## angular又怎么通知各个组件做变化检测？
 
 
-前面那三种方式会导致angular状态变化，那又是谁知道状态已经发生改变，需要通知angular触发变化检测从而更新页面DOM呢？**NgZone（zone.js）**充当了这个角色。
+前面那三种方式会导致angular状态变化，那又是谁知道状态已经发生改变，需要通知angular触发变化检测从而更新页面DOM呢？```NgZone（zone.js）```充当了这个角色。
 
 
 NgZone可以简单的理解为是一个异步事件拦截器，它能够hook到异步任务的执行上下文，然后就可以来处理一些操作，比如每个异步任务callback以后就会去通知angular做变化检测。
@@ -96,7 +99,7 @@ class ApplicationRef {
 ![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection05.png){:height="100%" width="100%"}
 
 
-有了NgZone上述三种异步事件都会导致整个angular项目的发生变化检测，虽然angular变化检测本身性能已经很好了，在毫秒内可以做成百上千次变化检测。但是随着项目越来越大，其实很多不必要的变化检测还是会在一定程度上影响性能。
+有了NgZone上述三种异步事件都会导致整个angular应用发生变化检测，虽然angular变化检测本身性能已经很好了，在毫秒内可以做成百上千次变化检测。但是随着项目越来越大，其实很多不必要的变化检测还是会在一定程度上影响性能。
 
 
 在这篇文章[Angular Change Detection:变化检测策略](https://limeii.github.io/2019/06/angular-changeDetectionStrategy-OnPush/)介绍了如何通过OnPush来跳过一些不必要的变化检测，从而优化整个应用的性能。

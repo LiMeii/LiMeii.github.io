@@ -12,7 +12,7 @@ layout: post
 关于更多调试方法，比如attach DevTools到浏览器tab从而进行调试，你可以参考官方文档 [VS Code Debugging](https://code.visualstudio.com/docs/editor/debugging)
 
 
-**第一步，在VS Code里装 Debugger for Chrom 小插件**
+### 第一步，在VS Code里装 Debugger for Chrom 小插件
 
 
 ![install chrome extension](https://limeii.github.io/assets/images/posts/tools/tools-debug-install.png){:height="100%" width="100%"}
@@ -24,34 +24,25 @@ layout: post
 - 在左上角搜索里输入 Debugger， 然后在搜索结果中找到 Debugger for Chrome 点击 install
 
 
-**第二步，在你的项目里设置lanuch configuration文件**
+### 第二步，在你的项目里设置lanuch configuration文件
 
 
 ![setup launch config](https://limeii.github.io/assets/images/posts/tools/tools-debug-config.png){:height="100%" width="100%"}
 
+1. 在VS Code中打开你的项目,点击最左边工具栏中 Debug
+2. 在最左上角选择 launch chrome against localhost
+3.  第二步以后会出现右边的luanch.json文件，这个文件会自动建在你的项目根目录下面：project root folder -> .vscode -> lanuch.json
+4. 按照你调试的需求配置文件中的属性参数
 
-
-
-- 在VS Code中打开你的项目,点击最左边工具栏中 Debug
-- 在最左上角选择 launch chrome against localhost
-- 第二步以后会出现右边的luanch.json文件，这个文件会自动建在你的项目根目录下面：project root folder -> .vscode -> lanuch.json
-- 按照你调试的需求配置文件中的属性参数
-
-
-
-**第三步，调试**
+### 第三步，调试
 
 ![debugging](https://limeii.github.io/assets/images/posts/tools/tools-debug-debuging.png){:height="100%" width="100%"}
 
-
-
-- 点击最左边工具栏中 Debug
-- 点击最上角绿色 Start Debugging 按钮
-- 在你的项目中设置断点
-- 也可以watch 你想要看的某个参数的值
-- 在开始debugging以后 右上角有调试按钮
-
-
+1. 点击最左边工具栏中 Debug
+2. 点击最上角绿色 Start Debugging 按钮
+3. 在你的项目中设置断点
+4. 也可以watch 你想要看的某个参数的值
+5. 在开始debugging以后 右上角有调试按钮
 
 常见的调试快捷键有：
 - F5： 继续/停止

@@ -12,7 +12,14 @@ angular中的变化检测机制是当component状态有变化的时候，angular
 
 比如有这样一个component，代码如下：
 
-![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection01.png){:height="100%" width="100%"}
+```ts
+@Component({
+  template:`<h1>I am <span [textContent]="data.name"></span><h1>`
+})
+export class CDParentComponent {
+  data : any = { name:'meii', address: 'ShangHai'};
+}
+```
 
 当把cdParentComponent中```data.name```的值改成limeii，页面会直接把meii更新成limeii，看似很简单的一个改动，其实在angular内部涉及到很多复杂的操作，包括```变化检测```、```脏数据检查```、```数据绑定```、```单向数据流```、```更新DOM```、```NgZone```等等。
 
@@ -45,7 +52,18 @@ angular中的变化检测机制是当component状态有变化的时候，angular
 
 最常见的一种方式，在页面按钮的```click```事件更新```data.name```的值，代码如下：
 
-![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection04.png){:height="100%" width="100%"}
+```ts
+@Component({
+  template:`<h1>I am <span [textContent]="data.name"></span><h1>
+            <button (click)="changeName()">Change Name</button>`
+})
+export class CDParentComponent {
+  data : any = { name:'meii', address: 'ShangHai'};
+  changeName(){
+    this.data.name = "limeii";
+  }
+}
+```
 
 还有一种常见的方式是，通过http request拿到data的值，如下：
 
@@ -58,11 +76,11 @@ angular中的变化检测机制是当component状态有变化的时候，angular
 
 ```
 
-angular中会检测```onMicrotaskEmpty```，当```onMicrotaskEmpty```没有异步事件以后，就不会触发变化检测。也就是通常有如下三种方式会导致组件数据变化：
+**<font color="#BF1827">angular通常有如下三种方式会导致组件数据变化：</font>**
 
-1. 事件：页面 ```click```、```submit```、```mouse down```......
+1. 事件：页面 click、submit、mouse down......
 2. XHR：从后端服务器拿到数据
-3. Timers：```setTimeout()```、```setInterval()```
+3. Timers：setTimeout()、setInterval()
 
 
 ## angular又怎么通知各个组件做变化检测？

@@ -5,7 +5,7 @@ layout: post
 ---
 
 
-在[Angular Change Detection:变化检测机制](https://limeii.github.io/2019/06/angular-changedetection/)这篇文章里介绍了angular的变化检测机制，也提到了页面操作（```click```，```submit```...）、```XHR```、```Timers```（```setTimeout```，```setInterval```）这些异步事件都会触发整个angular应用的变化检测。
+在[Angular Change Detection:变化检测机制](https://limeii.github.io/2019/06/angular-changedetection/)这篇文章里介绍了angular的变化检测机制，也提到了异步事件都会触发整个angular应用的变化检测。
 
 
 angular默认的变化检测机制是```ChangeDetectionStrategy.Default```：异步事件callback结束后，NgZone会触发整个组件树至上而下做变化检测，如下所示：
@@ -18,41 +18,78 @@ angular默认的变化检测机制是```ChangeDetectionStrategy.Default```：异
 
 我们来看下OnPush具体是怎么用的：
 
-
 定义一个CDParentComponent如下：
 
-![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy03.png){:height="100%" width="100%"}
+```ts
+@Component({
+    template: `<h1>I am { { data.name } } and I live in { { data.address } } </h1>
+
+               <cd-child [data]="data"></cd-child>
+   
+               <button (click)="changeInfo()">Change Info</button>`
+})
+export class CDParentComponent {
+    data: any = {
+        name: 'meii',
+        address: 'ShangHai',
+        contact: {
+            email: 'XXX@gmail.com',
+            phone: '1234567890'
+        }
+    };
+    changeInfo() {
+        this.data.contact.email = 'update@gmail.com';
+        this.data.contact.phone = '00000000';
+        this.data.name = 'limeii';
+    }
+
+}
+```
 
 定义一个CDChildComponent如下：
 
-![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy04.png){:height="100%" width="100%"}
+```ts
+@Component({
+    selector: "cd-child",
+    template: `<h3>here is email in the child: { { data.contact.email } } </h3>`,
+    changeDetection: ChangeDetectionStrategy.OnPush
+})
+
+export class CDChildComponent implements OnChanges {
+    @Input() data: any;
+
+    ngOnChanges() {
+        console.log('data has been changed: ' + this.data.name + ' ' + this.data.address);
+    }
+}
+```
 
 在CDChildComponent加了一行代码：```changeDetection: ChangeDetectionStrategy.OnPush```，我们点击Change Info按钮，不会触发CDChildComponent中的变化检测，页面email也不会有变化。
 
-
-在CDChildComponent加了OnPush表示，在发生异步事件以后触发变化检测，angular会跳过这个组件，不会触发这个组件的变化检测。如果OnPush是加在某个父组件上，那么这个父组件和它下面所有的子组件都不会触发变化检测。
-
 <blockquote>
 <p>
-但是在实际应用里，我们并不希望把整个组件的变化检测都禁掉，而是希望部分操作还是可以触发它的变化检测，比如从后端API返回新的数据，虽然加了OnPush，这些数据还是能够更新在页面上。
+在CDChildComponent加了OnPush表示，在发生异步事件以后触发变化检测，angular会跳过这个组件，不会触发这个组件的变化检测。如果OnPush是加在某个父组件上，那么这个父组件和它下面所有的子组件都不会触发变化检测。
 </p>
 </blockquote>
 
-**angular也涵盖了上述需求，在组件里加了OnPush策略，以下四种情况还是可以触发该组件的变化检测：**
+但是在实际应用里，我们并不希望把整个组件的变化检测都禁掉，而是希望部分操作还是可以触发它的变化检测，比如从后端API返回新的数据，虽然加了OnPush，这些数据还是能够更新在页面上。
 
 
-- 组件的```@Input```引用发生变化。
+**<font color="#BF1827">angular也涵盖了上述需求，在组件里加了OnPush策略，以下四种情况还是可以触发该组件的变化检测：</font>**
 
-- 组件的DOM事件，包括它子组件的DOM事件，比如```click```、```submit```、```mouse down```。
 
-- ```Observable```订阅事件，同时设置```Async pipe```。
+1. 组件的@Input引用发生变化。
 
-- ```ChangeDetectorRef.detectChanges()```、```ChangeDetectorRef.markForCheck()```、```ApplicationRef.tick()```，手动调用这三种方式触发变化检测。
+2. 组件的DOM事件，包括它子组件的DOM事件，比如click、submit、mouse down。
+
+3. Observable订阅事件，同时设置Async pipe。
+
+4. ChangeDetectorRef.detectChanges()、ChangeDetectorRef.markForCheck()、ApplicationRef.tick()，手动调用这三种方式触发变化检测。
 
 
 ## 1. 组件的@Input引用发生变化
 
-必须是```@Input```的引用发生改变才会触发变化检测，并且仅限于```@Input```的变化检测，在OnPush策略下，会触发组件的变化检测。在这里先解释一下JS中的数据类型，在JS中有七种数据类型，其中包括六中原始类型（primitive values）和Object。
+必须是@Input的引用发生改变才会触发变化检测，并且仅限于@Input的变化检测，在OnPush策略下，会触发组件的变化检测。在这里先解释一下JS中的数据类型，在JS中有七种数据类型，其中包括六中原始类型（primitive values）和Object。
 
 
 六种原始类型分别为：Boolean、Null、Undefined、Number、String、Symbol (ECMAScript 6 新定义)。
@@ -78,46 +115,86 @@ data是一个对象，在```changeInfo```方法里通过如上方式改变email�
 
 ```ts
     changeInfo() {
-        // this.data.contact.email = 'update@gmail.com';
-        // this.data.contact.phone = '00000000';
-        // this.data.name = 'limeii';
-
         this.data = {
-            name: 'meii', address: 'ShangHai'
-            ,
+            name: 'meii', address: 'ShangHai',
             contact: {
                 email: 'update@gmail.com',
                 phone: '1234567890'
             }
         };
     }
-
 ```
 
 这时候点击Change Info按钮，触发了变化检测，页面的email被更新了：
 
-![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy05.gif){:height="100%" width="100%"}
-
-这种方式在改变data对象email值同时也改变了对象的引用。这时组件的```@Input```引用发生变化，虽然加了OnPush但```@Input```的变化检测还是会被触发。
-
-
-## 2. 组件DOM事件触发
-
-组件的DOM事件，包括它子组件的DOM事件，比如```click```、```submit```、```mouse down```等事件，在OnPush策略下，会触发组件的变化检测。
-
-在CDChildComponent加一个counter，并把它显示在页面里，在```ngOnInit```里把设置了```setInterval```，每过一秒就让```counter+1```，代码如下：
-
-![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy06.png){:height="100%" width="100%"}
+![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy05.gif){:height="70%" width="70%"}
 
 <blockquote>
 <p>
-如果是默认的变化检测策略，setInterval会触发组件变化检测，页面的counter会每过一秒就自动更新一次。在CDChildComponent设置了OnPush，setInterval不会触发变化检测，页面上的counter不会有任何变化。
+这种方式在改变data对象email值同时也改变了对象的引用。这时组件的@Input引用发生变化，虽然加了OnPush但@Input的变化检测还是会被触发。
+</p>
+</blockquote>
+
+## 2. 组件DOM事件触发
+
+组件的DOM事件，包括它子组件的DOM事件，比如click、submit、mouse down等事件，在OnPush策略下，会触发组件的变化检测。
+
+在CDChildComponent加一个counter，并把它显示在页面里，在ngOnInit里把设置了setInterval，每过一秒就让```counter+1```，代码如下：
+
+```ts
+@Component({
+    selector: "cd-child",
+    template: `<h3>here is email in the child: { {data.contact.email } }</h3>
+                <h3>here is counter in the child: { { counter } }</h3>
+                `,
+    changeDetection: ChangeDetectionStrategy.OnPush
+})
+
+export class CDChildComponent implements OnInit, OnChanges {
+    @Input() data: any;
+    counter: number = 1;
+
+    ngOnInit() {
+        setInterval(() => this.counter++, 1000);
+    }
+
+    ngOnChanges() {
+        console.log('data has been changed: ' + this.data.name + ' ' + this.data.address);
+    }
+
+}
+```
+<blockquote>
+<p>
+如果是默认的变化检测策略，setInterval会触发组件变化检测，页面的counter会每过一秒就自动更新一次。现在CDChildComponent设置了OnPush，setInterval不会触发变化检测，页面上的counter不会有任何变化。
 </p>
 </blockquote>
 
 在CDChildComponent页面加一个按钮，在这个按钮的点击事件里，设置每点击一次按钮让```counter+1```，具体代码如下：
+```ts
+@Component({
+    selector: "cd-child",
+    template: `<h3>here is email in the child: { { data.contact.email } } </h3>
+               <h3>here is counter in the child: { { counter } } </h3>
+               <div style="margin-bottom:10px;">
+                    <button (click)="changeCounter()">change child counter</button>
+                </div>`,
+    changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class CDChildComponent implements OnChanges {
+    @Input() data: any;
+    counter: number = 1;
 
-![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy07.png){:height="100%" width="100%"}
+    changeCounter() {
+        this.counter++;
+    }
+
+    ngOnChanges() {
+        console.log('data has been changed: ' + this.data.name + ' ' + this.data.address);
+    }
+
+}
+```
 <blockquote>
 <p>
 按钮点击事件是属于DOM事件，虽然在CDChildComponent设置了OnPush，组件的DOM事件（或者它的子组件DOM事件）还是会触发这个组件的变化检测，页面的counter会更新
@@ -125,43 +202,127 @@ data是一个对象，在```changeInfo```方法里通过如上方式改变email�
 </blockquote>
 效果如下：
 
-![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy08.gif){:height="100%" width="100%"}
+![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy08.gif){:height="70%" width="70%"}
 
-<blockquote> <p>注意：这两个示例代码都是在@Input data引用没有发生变化的前提下运行的！</p></blockquote>
+<blockquote> <p> 
+<font color="#BF1827">注意：这两个示例代码都是在@Input data引用没有发生变化的前提下运行的！</font>
+</p></blockquote>
 
 ## 3. Observable事件订阅，同时设置Async pipe
 
 在CDChildComponent有```Observable```事件订阅，并在模板里设置```Async pipe```，在OnPush策略下，会触发变化检测，代码如下：
+```ts
+@Component({
+    selector: "cd-child",
+    template: `<h3>here is email in the child: { { data.contact.email } } </h3>
+                <h3>here is counter in the child: { { count$ | async } } </h3>
+               <div style="margin-bottom:10px;">
+                    <button (click)="changeCounter()">change child counter</button>
+                </div>`,
+    changeDetection: ChangeDetectionStrategy.OnPush
+})
 
+export class CDChildComponent implements OnInit, OnChanges {
+    @Input() data: any;
+    counter: number = 1;
+    count$: Observable<number>;
 
-![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy09.png){:height="100%" width="100%"}
+    ngOnInit() {
+        this.count$ = interval(1000)
+            .pipe(
+                map((count: number) => ++count)
+            );
+    }
+    changeCounter() {
+        this.counter++;
+    }
+    ngOnChanges() {
+        console.log('data has been changed: ' + this.data.name + ' ' + this.data.address);
+    }
+}
+```
 
 这时候页面的会每隔一秒更新一次：
 
-![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy10.gif){:height="100%" width="100%"}
+![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy10.gif){:height="70%" width="70%"}
 
 
 ## 4. 手动触发
 
-```ChangeDetectorRef.detectChanges()```、```ChangeDetectorRef.markForCheck()```、```ApplicationRef.tick()```，在OnPush策略下，手动调用这三种方式会触发变化检测。
+ChangeDetectorRef.detectChanges()、ChangeDetectorRef.markForCheck()、ApplicationRef.tick()，在OnPush策略下，手动调用这三种方式会触发变化检测。
 
-
-### 4.1：ChangeDetectorRef.detectChanges()
+### 4.1 ChangeDetectorRef.detectChanges()
 
 代码如下：
+```ts
+@Component({
+    selector: "cd-child",
+    template: `<h3>here is email in the child: { { data.contact.email } } </h3>
+                <h3>here is the counter triggered manually in the child: { { counter } } </h3> 
+               <div style="margin-bottom:10px;">
+                    <button (click)="changeCounter()">change child counter</button>
+                </div>`,
+    changeDetection: ChangeDetectionStrategy.OnPush
+})
 
-![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy11.png){:height="100%" width="100%"}
+export class CDChildComponent implements OnInit, OnChanges {
+    @Input() data: any;
+    counter: number = 1;
+    count$: Observable<number>;
+
+    constructor(private cd: ChangeDetectorRef) { }
+
+    ngOnInit() {
+        setInterval(() => {
+            this.counter = this.counter + 5;
+            this.cd.detectChanges();
+        }, 1000);
+    }
+    ngOnChanges() {
+        console.log('data has been changed: ' + this.data.name + ' ' + this.data.address);
+    }
+
+}
+```
 
 每隔一秒，counter自动加五，在OnPush策略下，组件会触发策略检测，页面每隔一秒会自动更新：
 
-![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy12.gif){:height="100%" width="100%"}
+![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy12.gif){:height="70%" width="70%"}
 
 
 ### 4.2：ChangeDetectorRef.markForCheck()
 
 代码如下：
+```ts
+@Component({
+    selector: "cd-child",
+    template: `<h3>here is email in the child: { { data.contact.email } } </h3>
+                <h3>here is the counter triggered manually in the child: { { counter } } </h3> 
+               <div style="margin-bottom:10px;">
+                    <button (click)="changeCounter()">change child counter</button>
+                </div>`,
+    changeDetection: ChangeDetectionStrategy.OnPush
+})
 
-![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy13.png){:height="100%" width="100%"}
+export class CDChildComponent implements OnInit, OnChanges {
+    @Input() data: any;
+    counter: number = 1;
+    count$: Observable<number>;
+
+    constructor(private cd: ChangeDetectorRef) { }
+
+    ngOnInit() {
+        setInterval(() => {
+            this.counter = this.counter + 10;
+            this.cd.markForCheck();
+        }, 1000);
+    }
+    ngOnChanges() {
+        console.log('data has been changed: ' + this.data.name + ' ' + this.data.address);
+    }
+
+}
+```
 
 <blockquote>
 <p>
@@ -174,7 +335,36 @@ data是一个对象，在```changeInfo```方法里通过如上方式改变email�
 
 代码如下：
 
-![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy14.png){:height="100%" width="100%"}
+```ts
+@Component({
+    selector: "cd-child",
+    template: `<h3>here is email in the child: { { data.contact.email } } </h3>
+                <h3>here is the counter triggered manually in the child: { { counter } } </h3> 
+               <div style="margin-bottom:10px;">
+                    <button (click)="changeCounter()">change child counter</button>
+                </div>`,
+    changeDetection: ChangeDetectionStrategy.OnPush
+})
+
+export class CDChildComponent implements OnInit, OnChanges {
+    @Input() data: any;
+    counter: number = 1;
+    count$: Observable<number>;
+
+    constructor(private applicationRef: ApplicationRef)) { }
+
+    ngOnInit() {
+        setInterval(() => {
+            this.counter = this.counter + 20;
+             this.applicationRef.tick();
+        }, 1000);
+    }
+    ngOnChanges() {
+        console.log('data has been changed: ' + this.data.name + ' ' + this.data.address);
+    }
+
+}
+```
 
 <blockquote>
 <p>

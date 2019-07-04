@@ -10,11 +10,13 @@ layout: post
 
 比如在child A component从http response拿到最新model的值，并且需要把变化后的值渲染到页面，这个过程会触发child A component的变化检测（change detection）。
 
-
+<blockquote>
+<p>
 这个变化检测不仅仅会在child A component中执行，它会从root component开始沿着component关系树结构从上到下执行，直到最后一个child component完成变化检测达到稳定状态。也就是说在GrandChild component中也会触发执行变化检测，如果GrandChild component中还有它自己的child component，会继续触发它的child component的变化检测。在这个从上到下的变化检测流中，一旦child A component中的变化检测已经完成了，任何在GrandChild component或者更低层级的component都不允许去改变child A component中的属性。
+</p>
+</blockquote>
 
-
-**这个过程就是angular的单向数据流。**
+**<font color="#BF1827">这个过程就是angular的单向数据流。</font>**
 
 
 但是在GrandChild component里，有些钩子函数通过```@Output```去改变child A component的数据值，是允许的，而有些又不允许。
@@ -24,42 +26,84 @@ layout: post
 
 **定义一个ChildAComponent，在这里会显示从GrandChildComponent发过来的message，代码如下：**
 
-![angular-unidirectional-data-flow](https://limeii.github.io/assets/images/posts/angular/angular-unidirectional-data-flow.png){:height="100%" width="100%"}
+```ts
+@Component({
+    template:`<h3 style="color: black">this is child A page</h3>
+            <h4 style="color: black">message from grand child: { { msgFromGrandChild } } </h4>
+            <app-grand-child (sendMsgToParent)="getMsgFromGrandChild($event)">
+                <span style="color: coral">here is the content projection</span>            
+            </app-grand-child>`
+})
+
+export class ChildAComponent {
+    msgFromGrandChild: any = '';
+    getMsgFromGrandChild(value: any) {
+        this.msgFromGrandChild = value;
+    }
+}
+```
 
 **定义一个GrandChildComponent，通过@Output向ChildAComponent发送message，代码如下：**
 
-![angular-unidirectional-data-flow](https://limeii.github.io/assets/images/posts/angular/angular-unidirectional-data-flow2.png){:height="100%" width="100%"}
+```ts
+@Component({
+    selector: "app-grand-child",
+    template: `<h5 style="color: crimson">this is grand child</h5>
+                <ng-content></ng-content>`
+})
 
-**1. 在GrandChild component中，在ngOnInit函数中改变了ChildAComponent的msgFromGrandChild属性的值**
+export class GrandChildComponent implements  OnInit {
+    @Output() sendMsgToParent: EventEmitter<any> = new EventEmitter<any>();
+    msg = "hello, change this to parent component"
+    ngOnInit() {
+        this.sendMsgToParent.emit(this.msg);
+    }
+}
+```
 
+**1. GrandChild组件，在ngOnInit函数中改变了ChildAComponent的msgFromGrandChild属性的值**
 
 效果如下：message能正常显示也没有error：
-![angular-unidirectional-data-flow](https://limeii.github.io/assets/images/posts/angular/angular-unidirectional-data-flow3.png){:height="100%" width="100%"}
-
-把```ngOnInit```换成```ngDoCheck```、```ngAfterContentInit```、```ngAfterContentChecked```、```ngOnChanges```，效果是一样的，在ChildAComponent中message都能正常显示也不会报错
-
-**2. 在GrandChild component中，在ngAfterViewInit中去改child A component的msgFromGrandChild属性的值** 
-
-
-代码如下：
-![angular-unidirectional-data-flow](https://limeii.github.io/assets/images/posts/angular/angular-unidirectional-data-flow4.png){:height="100%" width="100%"}
-
-这个时候会发现在console里会有```ExpressionChangedAfterItHasBeenCheckedError```，具体如下：
-![angular-unidirectional-data-flow](https://limeii.github.io/assets/images/posts/angular/angular-unidirectional-data-flow5.png){:height="100%" width="100%"}
-
-如果把```ngAfterViewInit```换成```ngAfterViewChecked```，效果也是一样的，会有同样的错误
-
-**出现这种错误的原因是：**
+![angular-unidirectional-data-flow](https://limeii.github.io/assets/images/posts/angular/angular-unidirectional-data-flow3.png){:height="70%" width="70%"}
 
 <blockquote>
 <p>
-在angular中强制了单向数据流，当有变化的时候，变化检测机制是沿着component关系树结构从上到下执行，直到最后一个child component变化检测完成，这个完整的变化检测才算结束。在这个过程中，parent component的变化检测完成以后，任何更低一层级去改上一层级的属性，都不允许。如果是在生产环境里，也就是启用了```enableProdMode()```会直接忽略这样的操作，页面也不会显示变化以后的值，也不会报错。但是在开发模式下，在每一次变换检测（change detection）以后，angular会从上到下再多跑一个变化检测，确保每次改动之后所有的状态是stable的，这个时候发现有低层级改动上一层级的值，就会出现上面那个错误。
+把ngOnInit换成ngDoCheck、ngAfterContentInit、ngAfterContentChecked、ngOnChanges，效果是一样的，在ChildAComponent中message都能正常显示也不会报错。
 </p>
 </blockquote>
 
-**那为什么在ngAfterViewInit和ngAfterViewChecked会报错，而且其他几个钩子函数里不报错呢？**我们来调试一下他的core.js源代码，具体调试方法如下：
+**2. GrandChild组件，在ngAfterViewInit中去改childA组件msgFromGrandChild属性的值** 
 
-![angular-unidirectional-data-flow](https://limeii.github.io/assets/images/posts/angular/angular-unidirectional-data-flow06.gif){:height="100%" width="100%"}
+代码如下：
+
+```ts
+export class GrandChildComponent implements AfterViewInit {
+    @Output() sendMsgToParent: EventEmitter<any> = new EventEmitter<any>();
+    msg = "hello, change this to parent component"
+    ngAfterViewInit() {
+        this.sendMsgToParent.emit(this.msg);
+    }
+}
+```
+
+这个时候会发现在console里会有```ExpressionChangedAfterItHasBeenCheckedError```，具体如下：
+
+![angular-unidirectional-data-flow](https://limeii.github.io/assets/images/posts/angular/angular-unidirectional-data-flow5.png){:height="70%" width="70%"}
+
+<blockquote>
+<p>
+如果把ngAfterViewInit换成ngAfterViewChecked，效果也是一样的，会有同样的错误。
+</p>
+</blockquote>
+
+**出现这种错误的原因是：**
+在angular中强制了单向数据流，当有变化的时候，变化检测机制是沿着component关系树结构从上到下执行，直到最后一个child component变化检测完成，这个完整的变化检测才算结束。在这个过程中，parent component的变化检测完成以后，任何更低一层级去改上一层级的属性，都不允许。如果是在生产环境里，也就是启用了enableProdMode()会直接忽略这样的操作，页面也不会显示变化以后的值，也不会报错。但是在开发模式下，在每一次变换检测（change detection）以后，angular会从上到下再多跑一个变化检测，确保每次改动之后所有的状态是stable的，这个时候发现有低层级改动上一层级的值，就会出现上面那个错误。
+
+**那为什么在ngAfterViewInit和ngAfterViewChecked会报错，而且其他几个钩子函数里不报错呢？**
+
+我们来调试一下他的core.js源代码，具体调试方法如下：
+
+![angular-unidirectional-data-flow](https://limeii.github.io/assets/images/posts/angular/angular-unidirectional-data-flow06.gif){:height="70%" width="70%"}
 
 把```checkAndUpdateView```方法简化一下：
 
@@ -89,7 +133,7 @@ function checkAndUpdateView(view, ...) {
 
 最后来总结一下，在angular整个页面渲染的过程：
 
-![angular-unidirectional-data-flow](https://limeii.github.io/assets/images/posts/angular/angular-unidirectional-data-flow7.png){:height="100%" width="100%"}
+![angular-unidirectional-data-flow](https://limeii.github.io/assets/images/posts/angular/angular-unidirectional-data-flow7.png){:height="70%" width="70%"}
 
 1. 更新child component的input bindings，然后会触发child component中OnInit、DoCheck、OnChanges函数，如果页面有ng-content，相应也会触发ngAfterContentInit和ngAfterContentChecked。
 

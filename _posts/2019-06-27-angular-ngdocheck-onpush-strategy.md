@@ -21,18 +21,18 @@ layout: post
 
 在[Angular Change Detection:变化检测策略](https://limeii.github.io/2019/06/angular-changeDetectionStrategy-OnPush/)这篇文章中解释过：某一个组件中设置angular变化检测策略为OnPush，如果没有以下四种情况，angular是不会为这个组件或者它的子组件执行变化检测。
 
-1. 组件的```@Input()```引用发生变化。
+1. 组件的@Input()引用发生变化。
 
-2. 组件的DOM事件，包括它子组件的DOM事件，比如```click```、```submit```、```mouse down```等事件。
+2. 组件的DOM事件，包括它子组件的DOM事件，比如click、submit、mouse down等事件。
 
-3.  ```Observable```订阅事件，同时设置```Async pipe```。
+3. Observable订阅事件，同时设置Async pipe。
 
-4.  ```ChangeDetectorRef.detectChanges()```、```ChangeDetectorRef.markForCheck()```、```ApplicationRef.tick()```，手动调用这三种方式触发变化检测。
+4. ChangeDetectorRef.detectChanges()、ChangeDetectorRef.markForCheck()、ApplicationRef.tick()，手动调用这三种方式触发变化检测。
 
 
 我们来看一个例子，有一个组件树结构如下：
 
-![angular-onpush-ngdocheck](https://limeii.github.io/assets/images/posts/angular/angular-ngdocheck-onpush-strategy01.png){:height="100%" width="100%"}
+![angular-onpush-ngdocheck](https://limeii.github.io/assets/images/posts/angular/angular-ngdocheck-onpush-strategy01.png){:height="70%" width="70%"}
 
 这三个组件代码如下：
 
@@ -90,7 +90,7 @@ export class CComponent implements OnChanges, DoCheck {
 
 没有```@Input```绑定、没有DOM事件、没有```Observable```、没有手动触发变化检测，页面运行起来以后，效果如下：
 
-![angular-onpush-ngdocheck](https://limeii.github.io/assets/images/posts/angular/angular-ngdocheck-onpush-strategy02.png){:height="100%" width="100%"}
+![angular-onpush-ngdocheck](https://limeii.github.io/assets/images/posts/angular/angular-ngdocheck-onpush-strategy02.png){:height="70%" width="70%"}
 
 在这种情况下没有```@Input```绑定，所以```ngOnChanges```不会被触发，那为什么组件B和C的```ngDoCheck```分别执行了两遍？
 
@@ -142,7 +142,7 @@ export class BComponent implements OnChanges, DoCheck {
 
 页面运行起来后效果如下：
 
-![angular-onpush-ngdocheck](https://limeii.github.io/assets/images/posts/angular/angular-ngdocheck-onpush-strategy03.png){:height="100%" width="100%"}
+![angular-onpush-ngdocheck](https://limeii.github.io/assets/images/posts/angular/angular-ngdocheck-onpush-strategy03.png){:height="70%" width="70%"}
 
 很奇怪对不对！！本来说好的组件B和C不会执行变化检测，怎么```NgDoCheck```还是触发了？组件B中的```ngDoCheck```执行了两遍！！
 

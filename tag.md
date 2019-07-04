@@ -1,6 +1,6 @@
 ---
 title: 技术文章分类
-tags: blog
+tags: blog • category
 layout: post
 ---
 
@@ -18,4 +18,3 @@ layout: post
 - [webpack：优化打包CSS文件](https://limeii.github.io/2018/10/webpack-css-extract/)
 - [webpack：分析和优化webpack bundle文件](https://limeii.github.io/2018/09/webpack-bundle-analyzer/)
 - [如何在webpack build结束后移动dist里的文件](https://limeii.github.io/2018/09/issues-webpack-file-management/)
-- []()

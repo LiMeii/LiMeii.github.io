@@ -18,6 +18,7 @@
 - RxJS code vs hot
 - RxJS Subject BehaviorSubject ReplaySubject AsyncSubject
 - RxJS angular && http 
+- RxJS VS Promise VS Generator
 - RxJS marble diagrams
 - RxJS common operator
 - RxJS error handle

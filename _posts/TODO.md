@@ -12,7 +12,21 @@
 - how to mare your angular app fast: onpush strategy / simple ngFor / ChangeDetectorRef.detach() / NgZone.runOutsideAngular()
 
 - ngzone
-- rxjs
+
+
+- RxJS primer
+- RxJS code vs hot
+- RxJS Subject BehaviorSubject ReplaySubject AsyncSubject
+- RxJS marble diagrams
+- RxJS common operator
+- RxJS error handle
+- RxJS ConnectableObservable connect refCount
+- RxJS scheduler
+
 - ngrx
+
 - angular material
+
 - router
+
+- ng-bootstrap [code-done]

@@ -34,8 +34,7 @@ RxJS提供了各种API来创建数据流：
 - zip，取各来源数据流最后一个值合并为对象
 - combineLatest，取各来源数据流最后一个值合并为数组
 
-
-我们来看下，在响应式编程里，事件流是什么样子的：
+## 异步事件流
 
 ![rxjs-data-stream](https://limeii.github.io/assets/images/posts/rxjs/rxjs-stream.png){:height="70%" width="70%"}
 
@@ -46,8 +45,24 @@ RxJS提供了各种API来创建数据流：
 - 事件流结束
 - 时间轴
 
-点击一个按钮事件，随着时间推移，这个点击事件会产生三个不同的结果：值，发生错误，事件完成。我们可以定义一个方法用来：捕获值，捕获错误，捕获点击事件结束。 Observers就是捕获值/错误/事件结束的方法（其实就是回调函数），点击事件流就是Observable（或者subject），Observable（点击事件流）产生的值都需要通过一个‘监听’把值传给Observers，这个‘监听’就是Subscription。
+点击一个按钮事件，随着时间推移，这个点击事件会产生三个不同的结果：值，发生错误，事件完成。我们可以定义方法用来：捕获值，捕获错误，捕获点击事件结束。在这个过程中，涉及到以下几个RxJS的基本概念：
+<blockquote>
+<p>
+<strong>Observable(可观察对象)</strong>：就是点击事件流。
+</p>
 
+<p>
+<strong>Observers(观察者)</strong>：就是捕获值/错误/事件结束的方法（其实就是回调函数集合)。
+</p>
+
+<p>
+<strong>Subscription(订阅)</strong>：Observable产生的值都需要通过一个‘监听’把值传给Observers，这个‘监听’就是Subscription。
+</p>
+
+<p>
+ <strong>生产者 (Producer)</strong>：就是点击事件，是事件的生产者。
+</p>
+</blockquote>
 
 我们也可以用ASCII来描述这个事件流：
 
@@ -140,4 +155,4 @@ doubleClickStream$.subscribe(data => {
 });
 ```
 
-从上面这个简单的例子，我们可以看到RxJS提供大量的操作符，处理不同的业务需求，短短几行代码可以涵盖很复杂的代码逻辑，在前端交互非常复杂的系统中，客户端都是基于事件编程的，对事件处理非常多，用RxJS比较有优势。当然响应式编程不仅仅是在JS里存在，它还支持各种语言，比如：RxJava、Rx.NET、RxPY、RxGo等等
+从上面这个简单的例子，我们可以看到RxJS提供大量的操作符，处理不同的业务需求，短短几行代码可以涵盖很复杂的代码逻辑，在前端交互非常复杂的系统中，客户端都是基于事件编程的，对事件处理非常多，用RxJS比较有优势。当然响应式编程不仅仅是在JS里存在，它还支持各种语言，比如：RxJava、Rx.NET、RxPY、RxGo等等。

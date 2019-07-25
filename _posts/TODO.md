@@ -22,7 +22,7 @@
   - .share() [done]
   - .publishReplay(1).refCount() [done]
   - shareReplay() [done]
-- RxJS Subject BehaviorSubject ReplaySubject AsyncSubject
+- RxJS Subject BehaviorSubject ReplaySubject AsyncSubject [done]
 - RxJS angular && http 
 - RxJS VS Promise VS Generator
 - RxJS marble diagrams

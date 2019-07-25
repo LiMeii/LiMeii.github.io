@@ -14,6 +14,7 @@
 - ngzone
 
 
+# RxJS series
 - RxJS intorduce [done]
 - RxJS code vs hot: 
   - .publish().refCount() 

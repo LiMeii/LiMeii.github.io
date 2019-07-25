@@ -173,3 +173,85 @@ setTimeout(() => {
 
 
 它不是Hot Observables也不是Cold Observables，因为它是从有第一个订阅者的时候才开始发送值，没有订阅者的时候会自动取消订阅，而且之后的订阅者共享第一个订阅者的Observables实例。它是基于Hot Observables与Cold Observables之间的Observables，可以理解为Warm Observables。
+
+## share
+
+publish和refCount可以生成一个Warm Observables，实际单独使用share操作符可以达到同样的效果，share实际就是publish().refCount()的简写，这次把第二个订阅比第一个订阅晚五秒再开始订阅，具体代码如下：
+```ts
+let obs$ = interval(1000).pipe(
+    share()
+)
+
+setTimeout(() => {
+    obs$.subscribe(data => { console.log("1st subscriber:" + data) });
+    setTimeout(() => {
+        obs$.subscribe(data => { console.log("2st subscriber:" + data) });
+
+    }, 5100);
+
+}, 2000);
+```
+输出结果：
+```
+1st subscriber:0
+1st subscriber:1
+1st subscriber:2
+1st subscriber:3
+1st subscriber:4
+1st subscriber:5
+2st subscriber:5
+1st subscriber:6
+2st subscriber:6
+1st subscriber:7
+2st subscriber:7
+
+......
+```
+和使用publish().refCount()效果完全一样。
+
+## shareReplay
+在用share()的时候，第二个或者更后面的订阅者开始订阅的时候，都是共享第一订阅者的Observables，比如在上面的例子中，第二个订阅比第一个订阅晚五秒再开始订阅，那么第二个订阅者从5开始接收值。但是实际情况中，如果我想让第二个订阅者也能拿到前面的值，那怎么办呢？用shareReplay()可以实现。具体代码如下：
+
+```ts
+let obs$ = interval(1000).pipe(
+    shareReplay(1)
+)
+
+setTimeout(() => {
+    obs$.subscribe(data => { console.log("1st subscriber:" + data) });
+    setTimeout(() => {
+        obs$.subscribe(data => { console.log("2st subscriber:" + data) });
+
+    }, 5100);
+
+}, 2000);
+```
+
+输出结果：
+```
+1st subscriber:0
+1st subscriber:1
+1st subscriber:2
+1st subscriber:3
+1st subscriber:4
+2st subscriber:4
+1st subscriber:5
+2st subscriber:5
+1st subscriber:6
+2st subscriber:6
+1st subscriber:7
+2st subscriber:7
+
+......
+```
+ shareReplay(1)中的1表示拿到错过的前一个值，在我们的例子就是第二个订阅从4开始接受值。如果改成shareReplay(2)就表示从错过的前两个值开始接受值，也就是第二个订阅会从3开始接受值。
+
+
+ shareReplay(1)其实也是publishReplay(1).refCount()的简写，用publishReplay(1).refCount()有同样的效果。
+
+## 总结
+
+ 在这篇文章中，我们介绍了：
+ - 什么是Cold Observables和Hot Observables，以及两者的区别
+ - 怎么创建Hot Observables
+ - 什么是Warm Observables，以及怎么用shareReplay()去拿到订阅者错过的值

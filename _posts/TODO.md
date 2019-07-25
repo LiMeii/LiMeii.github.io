@@ -17,11 +17,11 @@
 # RxJS series
 - RxJS intorduce [done]
 - RxJS code vs hot: 
-  - .publish().refCount() 
-  - .publish() connect
-  - .share()
-  - .publishReplay(1).refCount()
-  - shareReplay()
+  - .publish().refCount() [done]
+  - .publish() connect [done]
+  - .share() [done]
+  - .publishReplay(1).refCount() [done]
+  - shareReplay() [done]
 - RxJS Subject BehaviorSubject ReplaySubject AsyncSubject
 - RxJS angular && http 
 - RxJS VS Promise VS Generator

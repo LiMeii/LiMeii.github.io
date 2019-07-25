@@ -28,7 +28,7 @@
 - RxJS marble diagrams
 - RxJS common operator
 - RxJS error handle
-- RxJS ConnectableObservable connect refCount
+- RxJS ConnectableObservable connect refCount [done]
 - RxJS scheduler
 
 - ngrx

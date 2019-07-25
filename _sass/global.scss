@@ -188,7 +188,7 @@ table {
   border-spacing: 0;
   border: 2px solid darken($primary-color, 10%);
   width: 90%;
-  margin: 50px auto;
+  //margin: 50px auto;
 }
 
 thead tr:first-child {
@@ -197,6 +197,7 @@ thead tr:first-child {
   border: none;
 }
 
+td {padding: 0px 8px;}
 th {font-weight: bold;}
 th:first-child, td:first-child {padding: 0 15px 0 20px;}
 

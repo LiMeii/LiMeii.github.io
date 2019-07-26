@@ -1,5 +1,5 @@
 ---
-title: RxJS：Subject
+title: RxJS：四种Subject的用法和区别
 tags: RxJS
 layout: post
 ---

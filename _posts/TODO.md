@@ -30,6 +30,8 @@
 - RxJS error handle
 - RxJS ConnectableObservable connect refCount [done]
 - RxJS scheduler
+- RxJS Subscription
+- why need unsubsrible
 
 - ngrx
 

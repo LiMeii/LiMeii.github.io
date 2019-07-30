@@ -31,6 +31,9 @@
   - catchError / catchError chain
   - throwError
   - Finalize / finalize chain
+  - retry
+  - retryWhen
+  - delayed retry
   - 
 - RxJS ConnectableObservable connect refCount [done]
 - RxJS scheduler

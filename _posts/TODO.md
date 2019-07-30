@@ -28,6 +28,10 @@
 - RxJS marble diagrams
 - RxJS common operator
 - RxJS error handle
+  - catchError / catchError chain
+  - throwError
+  - Finalize / finalize chain
+  - 
 - RxJS ConnectableObservable connect refCount [done]
 - RxJS scheduler
 - RxJS Subscription

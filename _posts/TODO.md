@@ -40,3 +40,9 @@
 - router
 
 - ng-bootstrap [code-done]
+
+- nodejs
+
+- react/vue
+
+- 微信小程序开发

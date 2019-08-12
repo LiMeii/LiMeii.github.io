@@ -40,7 +40,11 @@
 - RxJS Subscription
 - why need unsubsrible
 
+- https://github.com/mgechev/angular-performance-checklist#lazy-loading-of-resources
+
 - ngrx
+
+- AOT (ahead-of-time compilation)
 
 - angular material
 

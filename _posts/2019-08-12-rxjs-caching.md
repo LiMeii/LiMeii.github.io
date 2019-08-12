@@ -8,7 +8,7 @@ layout: post
 
 - Angular中通过HttpClient执行Http Request返回的Observables是Cold Observable。
 
-- HttpClient Observable每次都需要调用http request，对于公用的API返回同样的值，重复调用会浪费http资源降低性能。
+- HttpClient Observable每次被订阅都需要调用http request，对于公用的API返回同样的值，重复调用会浪费http资源降低性能。
 
 - 如何通过ReplaySubject实现缓存效果，提高性能。
 

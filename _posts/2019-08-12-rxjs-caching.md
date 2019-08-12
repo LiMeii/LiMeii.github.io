@@ -8,7 +8,7 @@ layout: post
 
 - Angular中通过HttpClient执行Http Request返回的Observables是Cold Observable。
 
-- HttpClient Observable每次都需要调用http request，对于公用的API返回同样的值，重复调用会浪费了http资源降低性能。
+- HttpClient Observable每次都需要调用http request，对于公用的API返回同样的值，重复调用会浪费http资源降低性能。
 
 - 如何通过ReplaySubject实现缓存效果，提高性能。
 
@@ -143,7 +143,7 @@ rxjs-cache.component.html代码如下：
 
 F12打开浏览器的DevTools，当前页面会调用两次GET API（https://api.github.com/users?since=1），并且两个user list列出的30位用户信息一模一样：
 
-![rxjs-cache](https://limeii.github.io/assets/images/posts/rxjs/rxjs-cache01.png){:height="70%" width="70%"}
+![rxjs-cache](https://limeii.github.io/assets/images/posts/rxjs/rxjs-cache01.png){:height="100%" width="100%"}
 
 两个用户list订阅users$，生成了两个Observable实例并且都是订阅开始之后才开始发送值，也就是说**Angular中通过HttpClient执行Http Request返回的Observabl是Cold Observable**。
 

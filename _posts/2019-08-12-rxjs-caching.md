@@ -4,7 +4,7 @@ tags: RxJS
 layout: post
 ---
 
-在这篇文章中会介绍一下内容：
+在这篇文章中会介绍以下内容：
 
 - Angular中通过HttpClient执行Http Request返回的Observables是Cold Observable。
 

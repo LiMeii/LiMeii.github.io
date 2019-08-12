@@ -31,4 +31,5 @@ layout: post
 **RxJS系列：**
 - [RxJS入门和概览](https://limeii.github.io/2019/07/rxjs-introduce/)
 - [RxJS：Cold vs Hot Observables](https://limeii.github.io/2019/07/rxjs-coldhot-observable/)
-- [ RxJS：四种Subject的用法和区别](https://limeii.github.io/2019/07/rxjs-subject/)
+- [RxJS：四种Subject的用法和区别](https://limeii.github.io/2019/07/rxjs-subject/)
+- [RxJS：通过RxJS实现缓存](https://limeii.github.io/2019/08/rxjs-caching/)

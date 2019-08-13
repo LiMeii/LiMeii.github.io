@@ -158,6 +158,10 @@ F12打开浏览器的DevTools，当前页面会调用两次GET API（https://api
 
 在文章[RxJS：四种Subject的用法和区别](https://limeii.github.io/2019/07/rxjs-subject/)中详细介绍了ReplaySubject，用ReplaySubject(size)可以发送之前的旧值给新的订阅者，size是定义发送具体多少个旧值给新的订阅者。那么在示例代码中可以用ReplaySubject实现缓存效果。
 
+
+shareReplay这个操作符会自动创建一个ReplaySubject，一旦http request执行一次以后，就会在后续的订阅和源头Observable之间建立一个ReplaySubject，ReplaySubject是一个多播的Hot Observable，后续订阅都是从这个中间ReplaySubject拿到最后一个值，从而达到缓存效果。
+
+
 我们把service：RxjsCacheService改成如下：
 
 ```ts
@@ -201,7 +205,7 @@ export class RxjsCacheService {
     }
 }
 ```
-运行以上代码发现，页面里两个user list都是列出了相同的30位Github用户信息，但是只调用了一次GET API（https://api.github.com/users?since=1），也就是说第二订阅不是从通过后端API拿到用户信息，而是从shareReplay中拿到的。
+运行以上代码发现，页面里两个user list都是列出了相同的30位Github用户信息，但是只调用了一次GET API（https://api.github.com/users?since=1），也就是说第二订阅不是从通过后端API拿到用户信息，而是从ReplaySubject中拿到的。
 
 整个流程如下：
 

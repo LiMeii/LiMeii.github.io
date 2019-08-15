@@ -23,7 +23,9 @@
   - .publishReplay(1).refCount() [done]
   - shareReplay() [done]
 - RxJS Subject BehaviorSubject ReplaySubject AsyncSubject [done]
-- RxJS angular && http 
+- RxJS angular && http [done]
+- RxJS cache [done]
+- RxJS notification 
 - RxJS VS Promise VS Generator
 - RxJS marble diagrams
 - RxJS common operator

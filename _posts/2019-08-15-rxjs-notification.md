@@ -83,8 +83,8 @@ rxjs-notification.component.html代码如下：
     <div class="row justify-content-md-center">
         <div style="margin: 10px;" class="card w-100" *ngFor="let user of users$ |async">
             <div class="card-body">
-                <h5 class="card-title"><strong>User Name:</strong> {{user.login}}</h5>
-                <p class="card-text"><strong>GitHub URL:</strong> {{user.url}}</p>
+                <h5 class="card-title"><strong>User Name:</strong>  { { user.login } } </h5>
+                <p class="card-text"><strong>GitHub URL:</strong>  { { user.url } } </p>
             </div>
         </div>
     </div>
@@ -148,8 +148,8 @@ rxjs-notification.component.html代码如下：
     <div class="row justify-content-md-center">
         <div style="margin: 10px;" class="card w-100" *ngFor="let user of users$ |async">
             <div class="card-body">
-                <h5 class="card-title"><strong>User Name:</strong> {{user.login}}</h5>
-                <p class="card-text"><strong>GitHub URL:</strong> {{user.url}}</p>
+                <h5 class="card-title"><strong>User Name:</strong>  { { user.login } } </h5>
+                <p class="card-text"><strong>GitHub URL:</strong>  { { user.url } } </p>
             </div>
         </div>
     </div>
@@ -221,8 +221,8 @@ html完整代码如下：
     <div class="row justify-content-md-center">
         <div style="margin: 10px;" class="card w-100" *ngFor="let user of users$ |async">
             <div class="card-body">
-                <h5 class="card-title"><strong>User Name:</strong> {{user.login}}</h5>
-                <p class="card-text"><strong>GitHub URL:</strong> {{user.url}}</p>
+                <h5 class="card-title"><strong>User Name:</strong>  { { user.login } } </h5>
+                <p class="card-text"><strong>GitHub URL:</strong>  { { user.url } } </p>
             </div>
         </div>
     </div>

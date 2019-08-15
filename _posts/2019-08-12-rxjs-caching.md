@@ -115,8 +115,8 @@ rxjs-cache.component.html代码如下：
 
 <div *ngFor="let user of users$ |async">
     <div style=" display: flex;flex-direction: row;">
-        <div style="font-size: 0.9em;margin:10px;width: 10%"><strong>User Name:</strong> {{user.login}}</div>
-        <div style="font-size: 0.9em;margin:10px;width: 50%"><strong>GitHub URL:</strong>{{user.url}}</div>
+        <div style="font-size: 0.9em;margin:10px;width: 10%"><strong>User Name:</strong>  { { user.login } } </div>
+        <div style="font-size: 0.9em;margin:10px;width: 50%"><strong>GitHub URL:</strong> { { user.url } } </div>
     </div>
 </div>
 ```
@@ -127,16 +127,16 @@ rxjs-cache.component.html代码如下：
 <h3>here is the github user lists:</h3>
 <div *ngFor="let user of users$ |async">
     <div style=" display: flex;flex-direction: row;">
-        <div style="font-size: 0.9em;margin:10px;width: 10%"><strong>User Name:</strong> {{user.login}}</div>
-        <div style="font-size: 0.9em;margin:10px;width: 50%"><strong>GitHub URL:</strong>{{user.url}}</div>
+        <div style="font-size: 0.9em;margin:10px;width: 10%"><strong>User Name:</strong>  { { user.login } } </div>
+        <div style="font-size: 0.9em;margin:10px;width: 50%"><strong>GitHub URL:</strong> { { user.url } } </div>
     </div>
 </div>
 
 <h3>here is the github user lists2:</h3>
 <div *ngFor="let user of users$ |async">
     <div style=" display: flex;flex-direction: row;">
-        <div style="font-size: 0.9em;margin:10px;width: 10%"><strong>User Name:</strong> {{user.login}}</div>
-        <div style="font-size: 0.9em;margin:10px;width: 50%"><strong>GitHub URL:</strong>{{user.url}}</div>
+        <div style="font-size: 0.9em;margin:10px;width: 10%"><strong>User Name:</strong>  { { user.login } } </div>
+        <div style="font-size: 0.9em;margin:10px;width: 50%"><strong>GitHub URL:</strong> { { user.url } } </div>
     </div>
 </div>
 ```

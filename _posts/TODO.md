@@ -25,7 +25,7 @@
 - RxJS Subject BehaviorSubject ReplaySubject AsyncSubject [done]
 - RxJS angular && http [done]
 - RxJS cache [done]
-- RxJS notification 
+- RxJS notification [done]
 - RxJS VS Promise VS Generator
 - RxJS marble diagrams
 - RxJS common operator
@@ -39,8 +39,12 @@
   - 
 - RxJS ConnectableObservable connect refCount [done]
 - RxJS scheduler
-- RxJS Subscription
-- why need unsubsrible
+- RxJS Subscription [done]
+- why need unsubsrible, httpclient need unsubscribe? takeuntil first ect operator will unsubscribe ?
+  - - https://medium.com/@benlesh/rxjs-dont-unsubscribe-6753ed4fda87
+  - - https://stackoverflow.com/questions/35042929/is-it-necessary-to-unsubscribe-from-observables-created-by-http-methods
+  - - https://stackoverflow.com/questions/38008334/angular-rxjs-when-should-i-unsubscribe-from-subscription
+  - - 
 
 - https://github.com/mgechev/angular-performance-checklist#lazy-loading-of-resources
 

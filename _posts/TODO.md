@@ -8,8 +8,11 @@
 
 # Angular series:
 - ngzone
+- Ivy renderer 
 - https://github.com/mgechev/angular-performance-checklist#lazy-loading-of-resources
 - AOT (ahead-of-time compilation)
+  - https://blog.mgechev.com/2016/08/14/ahead-of-time-compilation-angular-offline-precompilation/
+  - https://blog.jiayihu.net/angular-aot-compilation-with-webpack/
 - how to make your angular app fast: onpush strategy / simple ngFor / ChangeDetectorRef.detach() / NgZone.runOutsideAngular()
 - ngrx
 - angular material
@@ -50,6 +53,8 @@
 - how to debug RxJS
   - https://staltz.com/how-to-debug-rxjs-code.html 
 
+# JS
+- https://mrale.ph/blog/2012/06/03/explaining-js-vms-in-js-inline-caches.html
 
 # nodejs
 

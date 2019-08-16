@@ -1,5 +1,5 @@
 ---
-title: 常见的一些命令行
+title: 常用的一些命令行
 tags: 工具
 layout: post
 ---

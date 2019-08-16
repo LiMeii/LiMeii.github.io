@@ -4,15 +4,6 @@ tags: blog • category
 layout: post
 ---
 
-**Angular系列：**
-- [怎么用Angular和Webpack搭建项目](https://limeii.github.io/2018/09/angular-webpack/)
-- [Angular lazy loading和preloading](https://limeii.github.io/2018/09/angular-lazy-loading/)
-- [如何定义一个可扩展的Angular项目结构](https://limeii.github.io/2018/10/angular-scalable-project-structure/)
-- [Angular Router guards：如何控制页面的访问权限 (CanActivate)](https://limeii.github.io/2018/10/angular-routing-guards/)
-- [Angular Router guards：如何控制页面的访问权限 (Canload)](https://limeii.github.io/2018/11/angular-routing-guard-canload/)
-- [Angular Router guards：如何控制页面的访问权限 (CanActivateChild)](https://limeii.github.io/2018/11/angular-routing-guard-CanActivateChild)
-- [Angular Router guards：如何提醒用户离开页面时保存数据 (CanDeactivate)](https://limeii.github.io/2018/11/angular-routing-guard-candeactivate)
-
 **Angular变化检测（change detection）系列：**
 - [Angular：生命周期和钩子函数](https://limeii.github.io/2019/06/angular-lifecycle-hooks/)
 - [Angular：单向数据流](https://limeii.github.io/2019/06/angular-unidirectional-data-flow/)
@@ -35,3 +26,12 @@ layout: post
 - [RxJS：如何通过RxJS实现缓存](https://limeii.github.io/2019/08/rxjs-caching/)
 - [RxJS：如何通过RxJS实现简单的消息通知机制](https://limeii.github.io/2019/08/rxjs-notification/)
 - [RxJS：所有订阅都需要调用unsubscribe取消订阅？](https://limeii.github.io/2019/08/rxjs-unsubscribe/)
+
+
+**Angular系列：**
+- [Angular lazy loading和preloading](https://limeii.github.io/2018/09/angular-lazy-loading/)
+
+
+**其他**
+- [在Win10里安装Ruby和Jekyll遇到的问题](https://limeii.github.io/2019/06/issues-setup-rubyjekyll-windows/)
+- [常用的一些命令行](https://limeii.github.io/2019/03/tools-commoncmd/)

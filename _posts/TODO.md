@@ -46,7 +46,7 @@
 - RxJS ConnectableObservable connect refCount [done]
 - RxJS scheduler
 - RxJS Subscription [done]
-- why need unsubsrible, httpclient need unsubscribe? takeuntil first ect operator will unsubscribe ?
+- why need unsubsrible, httpclient need unsubscribe? takeuntil first ect operator will unsubscribe ? [done]
   - https://medium.com/@benlesh/rxjs-dont-unsubscribe-6753ed4fda87
   - https://stackoverflow.com/questions/35042929/is-it-necessary-to-unsubscribe-from-observables-created-by-http-methods
   - https://stackoverflow.com/questions/38008334/angular-rxjs-when-should-i-unsubscribe-from-subscription

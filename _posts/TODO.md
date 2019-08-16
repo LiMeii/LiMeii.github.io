@@ -1,24 +1,21 @@
 
-
-
-- multiple https will be canceled in angular4
-
-# change detection series:
+# Angular change detection series:
 - change detection [done]
 - change detection: unidirectional data flow && ExpressionChangedAfterItHasBeenCheckedError error  [done]
 - lefe cycle and hooks [done]
 - change detection: ngdocheck execute timing [done]
 - angular change detection strategy: observable onpush immutable [done]
 
-# Angular
+# Angular series:
 - ngzone
 - https://github.com/mgechev/angular-performance-checklist#lazy-loading-of-resources
 - AOT (ahead-of-time compilation)
-- how to mare your angular app fast: onpush strategy / simple ngFor / ChangeDetectorRef.detach() / NgZone.runOutsideAngular()
+- how to make your angular app fast: onpush strategy / simple ngFor / ChangeDetectorRef.detach() / NgZone.runOutsideAngular()
 - ngrx
 - angular material
 - router
 - ng-bootstrap [code-done]
+- multiple https will be canceled in angular4
 
 # RxJS series
 - RxJS intorduce [done]
@@ -50,6 +47,8 @@
   - https://medium.com/@benlesh/rxjs-dont-unsubscribe-6753ed4fda87
   - https://stackoverflow.com/questions/35042929/is-it-necessary-to-unsubscribe-from-observables-created-by-http-methods
   - https://stackoverflow.com/questions/38008334/angular-rxjs-when-should-i-unsubscribe-from-subscription
+- how to debug RxJS
+  - https://staltz.com/how-to-debug-rxjs-code.html 
 
 
 # nodejs
@@ -57,3 +56,11 @@
 # react/vue
 
 # 微信小程序开发
+
+
+# userful tech blog
+- https://www.zhangxinxu.com/wordpress/2019/01/ [css]
+- https://staltz.com/ [rxjs]
+- https://medium.com/@benlesh [rxjs]
+- https://blog.thoughtram.io/ [angular]
+- https://blog.angularindepth.com/@maxim.koretskyi [angular]

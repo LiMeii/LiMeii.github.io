@@ -9,10 +9,16 @@
 - lefe cycle and hooks [done]
 - change detection: ngdocheck execute timing [done]
 - angular change detection strategy: observable onpush immutable [done]
-- how to mare your angular app fast: onpush strategy / simple ngFor / ChangeDetectorRef.detach() / NgZone.runOutsideAngular()
 
+# Angular
 - ngzone
-
+- https://github.com/mgechev/angular-performance-checklist#lazy-loading-of-resources
+- AOT (ahead-of-time compilation)
+- how to mare your angular app fast: onpush strategy / simple ngFor / ChangeDetectorRef.detach() / NgZone.runOutsideAngular()
+- ngrx
+- angular material
+- router
+- ng-bootstrap [code-done]
 
 # RxJS series
 - RxJS intorduce [done]
@@ -41,25 +47,13 @@
 - RxJS scheduler
 - RxJS Subscription [done]
 - why need unsubsrible, httpclient need unsubscribe? takeuntil first ect operator will unsubscribe ?
-  - - https://medium.com/@benlesh/rxjs-dont-unsubscribe-6753ed4fda87
-  - - https://stackoverflow.com/questions/35042929/is-it-necessary-to-unsubscribe-from-observables-created-by-http-methods
-  - - https://stackoverflow.com/questions/38008334/angular-rxjs-when-should-i-unsubscribe-from-subscription
-  - - 
+  - https://medium.com/@benlesh/rxjs-dont-unsubscribe-6753ed4fda87
+  - https://stackoverflow.com/questions/35042929/is-it-necessary-to-unsubscribe-from-observables-created-by-http-methods
+  - https://stackoverflow.com/questions/38008334/angular-rxjs-when-should-i-unsubscribe-from-subscription
 
-- https://github.com/mgechev/angular-performance-checklist#lazy-loading-of-resources
 
-- ngrx
+# nodejs
 
-- AOT (ahead-of-time compilation)
+# react/vue
 
-- angular material
-
-- router
-
-- ng-bootstrap [code-done]
-
-- nodejs
-
-- react/vue
-
-- 微信小程序开发
+# 微信小程序开发

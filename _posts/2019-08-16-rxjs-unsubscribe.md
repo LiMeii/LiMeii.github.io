@@ -26,7 +26,7 @@ What is a Subscription? A Subscription is an object that represents a disposable
 **那么显然在代码中，并不是所有的Observable都需要手动调用unsubscribe()取消订阅。**
 
 
-在Angular项目中，常用到的订阅以及是否需要调用unsubscribe()取消订阅：
+在Angular项目中，常用到的订阅以及是否需要调用unsubscribe()取消订阅，有以下几种：
 
 - Angular中通过HttpClient执行Http Request返回的Observables，订阅这些Observables拿到API返回的数据，不需要调用unsubscribe()取消订阅。
 
@@ -38,9 +38,9 @@ What is a Subscription? A Subscription is an object that represents a disposable
 
 接下来，详细解释下以上几种订阅以及为什么有的需要手动调用unsubscribe()取消订阅，而有些不需要。
 
-## Angular中通过HttpClient执行Http Request返回的Observables，不需要调用unsubscribe()取消订阅
+## Angular中通过HttpClient执行Http Request返回的Observables
 
-原因有以下两点：
+不需要调用unsubscribe()取消订阅的原因有以下两点：
 
 - Angular HttpClient源码中，在Http Response结束时，如果Request成功会调用responseObserver.complete()方法结束当前的HttpResponse Observable，如果Request失败会调用responseObserver.error(response)结束当前的HttpResponse Observable。
 
@@ -165,7 +165,7 @@ export class RxjsUnsubscribeComponent implements OnInit {
 
 在console里会有：getuser http request has been complete! 表明Http Response Observable会执行onComplete方法，结束当前的Observable。
 
-## Angular AsyncPipe，不需要调用unsubscribe()取消订阅
+## Angular AsyncPipe
 
 在Angular官方文档里，关于[AsyncPipe](https://angular.io/api/common/AsyncPipe)介绍的章节里，明确写了在离开页面销毁component的时候，会自动销毁AsyncPipe订阅的Observables。
 
@@ -195,7 +195,7 @@ export class AsyncPipe implements OnDestroy, PipeTransform {
 ```
 在ngOnDestroy方法中，会执行```this._dispose()```把AsyncPipe的订阅销毁。
 
-## 通过Subject，BehaviorSubject，AsyncSubject，ReplaySubject在各个Component之间通信，需要调用unsubscribe()取消订阅
+## 通过四种Subject在各个Component之间通信
 
 在component之间通信，我们会用到Subject，BehaviorSubject，AsyncSubject，ReplaySubject这四种subject，它们都是Hot Observable，Hot Observable不管有没有被订阅都会源源不断的发送值。如果订阅者要主动取消订阅，就必须手动调用unsubscribe()取消订阅。在Angular component有个钩子函数：ngOnDestroy，在commponet被销毁之前执行，所以一般都是把Subscription的unsubscribe放在这个函数里执行，代码如下：
 
@@ -205,6 +205,6 @@ export class AsyncPipe implements OnDestroy, PipeTransform {
     }
 ```
 
-## RxJS自带的一些操作符：take，takeWhile，first等等，不需要调用unsubscribe()取消订阅
+## RxJS自带的一些操作符：take，takeWhile，first
 
 在用这些操作符，比如take(1)，拿到Observable发送的第一个值之后，RxJs会主动的停止当前的Observable，也就是销毁当前Observable，并不需要手动再调用unsubscribe()取消订阅。

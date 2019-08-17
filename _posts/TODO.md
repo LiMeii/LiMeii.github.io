@@ -53,8 +53,7 @@
 - how to debug RxJS
   - https://staltz.com/how-to-debug-rxjs-code.html 
 
-# JS
-- https://mrale.ph/blog/2012/06/03/explaining-js-vms-in-js-inline-caches.html
+
 
 # nodejs
 
@@ -62,10 +61,3 @@
 
 # 微信小程序开发
 
-
-# userful tech blog
-- https://www.zhangxinxu.com/wordpress/2019/01/ [css]
-- https://staltz.com/ [rxjs]
-- https://medium.com/@benlesh [rxjs]
-- https://blog.thoughtram.io/ [angular]
-- https://blog.angularindepth.com/@maxim.koretskyi [angular]

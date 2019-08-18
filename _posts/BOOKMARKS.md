@@ -20,4 +20,5 @@
 # JS
 - https://mrale.ph/blog/2012/06/03/explaining-js-vms-in-js-inline-caches.html
 - https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/
-
+- https://www.youtube.com/watch?v=8aGhZQkoFbQ
+- http://latentflip.com/

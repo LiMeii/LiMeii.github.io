@@ -7,13 +7,19 @@
 - angular change detection strategy: observable onpush immutable [done]
 
 # Angular series:
+- ng eject(angluar<6.0), then config webpack [done]
+- angular6+, angular-builders to config customize webpack configuration [done]
+- how to make your angular app fast: onpush strategy [done]
 - ngzone
+  - how to make your angular app fast: NgZone.runOutsideAngular()
+  - https://blog.angularindepth.com/i-reverse-engineered-zones-zone-js-and-here-is-what-ive-found-1f48dc87659b
+  - https://blog.angularindepth.com/do-you-still-think-that-ngzone-zone-js-is-required-for-change-detection-in-angular-16f7a575afef
 - Ivy renderer 
 - https://github.com/mgechev/angular-performance-checklist#lazy-loading-of-resources
 - AOT (ahead-of-time compilation)
   - https://blog.mgechev.com/2016/08/14/ahead-of-time-compilation-angular-offline-precompilation/
   - https://blog.jiayihu.net/angular-aot-compilation-with-webpack/
-- how to make your angular app fast: onpush strategy / simple ngFor / ChangeDetectorRef.detach() / NgZone.runOutsideAngular()
+- how to make your angular app fast:  simple ngFor / ChangeDetectorRef.detach() 
 - ngrx
 - angular material
 - router

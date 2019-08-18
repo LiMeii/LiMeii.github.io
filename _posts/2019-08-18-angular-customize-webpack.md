@@ -45,7 +45,7 @@ Error: No module factory available for dependency type: ContextElementDependency
 因为我们想要，在用angular-cli的前提下，可以把我们自己新加的客户化webpack配置加进去，可以实现效果：
 
 
-**运行命令行ng server或者ng build的时候，可以根据新加的客户化webpack配置进行打包编译。**
+**运行命令行ng server或者ng build的时候，可以结合已有内置webpack配置和新加的客户化webpack配置进行打包编译。**
 
 
 所以需要更改angular.json中的配置，比如我们需要把客户化的webpack配置，加在运行（serve）和编译（build）命令里，那么关键的配置如下：

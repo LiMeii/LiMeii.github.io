@@ -1,24 +1,26 @@
 ---
-title: Angular lazy loading和preloading
+title: Angular:lazy loading和preloading
 tags: Angular
 layout: post
 ---
 
-## lazy loading 和 preloading
+## lazy loading和preloading
 
-在打开浏览器访问某一个网站的时候，要从服务器下载 bundle/chunk 等文件。如果文件过大或过多，会导致网站响应过慢。
+在打开浏览器访问某一个网站的时候，要从服务器下载 bundle/chunk 等文件。如果文件过大或过多，会导致网站响应过慢。在angular项目中可以通过配置lazy loading和preloading来提高性能。
 
-**lazy loading**，翻译到中文就是懒加载，其实就是按需加载。
+### lazy loading
+翻译到中文就是懒加载，其实就是按需加载。
 
-最开始访问某一个网站index页面的时候，只下载跟index/核心代码相关的 bundle/chunk 等文件。之后路由到新的页面，再按需下载新页面需要的文件，大大的提高了首页访问的性能，但是访问新页面的时候还是需要时间下载新文件。
+最开始访问某一个网站index页面的时候，只下载跟index/核心代码相关的 bundle/chunk 等文件。之后路由到新的页面，再按需下载新页面需要的文件，大大的提高了首页访问的性能。
 
 这样就防止在访问大型网站首页的时候，下载文件过大或过多，导致网站首页响应时间过长，降低用户体验。
 
-可以参考如下动图：
+比如访问index首页的时候，业务模块只加载了dashboard相关的文件（2.chunk.js），在用户点击Settings路由到相应页面，再下载settingis相关的文件（0.chunk.js），在用户点击Report路由到reports相应页面，再下载reports相关的文件（1.chunk.js）。动图如下：
 
 ![angular lazy loading](https://limeii.github.io/assets/images/posts/angular/angular-lazy-loading.gif){:height="100%" width="100%"}
 
-**preloading**，翻译到中文是预加载，这种方式的意思，一旦网站被访问，会去下载所有的文件。
+### preloading
+翻译到中文是预加载，这种方式的意思，一旦网站被访问，会去下载所有的文件。
 
 不同的是，用户访问网站的时候，最先加载网站所需要的初始化的文件，然后再后台下载其他JS文件。
 
@@ -42,6 +44,21 @@ preloading这种方式在用户切换模块也就是访问新页面之前就把�
 
 ## 如何在angular中实现lazy loading
 在angular中，lazy loading是跟路由一起实现的。也就是在代码打包过程中，把每个路由对应的模块都打包成独立的chunk文件，最终就可以实现用户点击导航到新页面的时候按需加载对应的chunk文件。
+
+<blockquote>
+<p>
+这篇文章是基于：
+</p>
+<p>
+angular@5.0.0
+</p>
+<p>
+webpack@3.10.0
+</p>
+<p>
+在用angular cli创建这个项目之后，再用‘ne eject’把angular内置的webpack配置文件弹出来，然后重写了webpack配置文件。
+</p>
+</blockquote>
 
 ### 第一步，在webpack中配置代码切割
 

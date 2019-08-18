@@ -11,6 +11,10 @@ layout: post
 - [Angular Change Detection：变化检测策略](https://limeii.github.io/2019/06/angular-changeDetectionStrategy-OnPush/)
 - [Angular：ngDoCheck执行时机](https://limeii.github.io/2019/06/angular-ngdocheck-onpush-strategy/)
 
+**Angular提高性能系列：**
+- [ Angular:lazy loading和preloading](https://limeii.github.io/2018/09/angular-lazy-loading/)
+
+
 **Webpack系列：**
 - [webpack：打包后的bundle文件里到底有什么](https://limeii.github.io/2018/10/webpack-what-in-bundle/)
 - [webpack：代码切割](https://limeii.github.io/2018/10/webpack-code-splitting/)
@@ -26,11 +30,6 @@ layout: post
 - [RxJS：如何通过RxJS实现缓存](https://limeii.github.io/2019/08/rxjs-caching/)
 - [RxJS：如何通过RxJS实现简单的消息通知机制](https://limeii.github.io/2019/08/rxjs-notification/)
 - [RxJS：所有订阅都需要调用unsubscribe取消订阅？](https://limeii.github.io/2019/08/rxjs-unsubscribe/)
-
-
-**Angular系列：**
-- [Angular lazy loading和preloading](https://limeii.github.io/2018/09/angular-lazy-loading/)
-
 
 **其他**
 - [在Win10里安装Ruby和Jekyll遇到的问题](https://limeii.github.io/2019/06/issues-setup-rubyjekyll-windows/)

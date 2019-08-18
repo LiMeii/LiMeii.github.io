@@ -3,6 +3,14 @@ title: Angular:lazy loading和preloading
 tags: Angular
 layout: post
 ---
+在这篇文章中会介绍以下内容：
+- 什么是lazy loading和preloading
+
+- 如何在angular项目中实现lazy loading
+
+- 如何在angular项目中实现preloading
+
+- 如何在angular项目中结合使用preloading和lazy loading
 
 ## lazy loading和preloading
 
@@ -15,7 +23,7 @@ layout: post
 
 这样就防止在访问大型网站首页的时候，下载文件过大或过多，导致网站首页响应时间过长，降低用户体验。
 
-比如访问index首页的时候，业务模块只加载了dashboard相关的文件（2.chunk.js），在用户点击Settings路由到相应页面，再下载settingis相关的文件（0.chunk.js），在用户点击Report路由到reports相应页面，再下载reports相关的文件（1.chunk.js）。动图如下：
+比如访问index首页的时候，业务模块只加载了dashboard相关的文件（2.chunk.js），在用户点击Settings路由到相应页面，再下载settings相关的文件（0.chunk.js），在用户点击Report路由到reports相应页面，再下载reports相关的文件（1.chunk.js）。动图如下：
 
 ![angular lazy loading](https://limeii.github.io/assets/images/posts/angular/angular-lazy-loading.gif){:height="100%" width="100%"}
 
@@ -59,6 +67,8 @@ webpack@3.10.0
 在用angular cli创建这个项目之后，再用‘ne eject’把angular内置的webpack配置文件弹出来，然后重写了webpack配置文件。
 </p>
 </blockquote>
+
+完整代码可以在 [angular-seed-project](https://github.com/LiMeii/angular-seed-project) 中查看，在源码中把路由代码单独提取到app-routing.module.ts文件中了。
 
 ### 第一步，在webpack中配置代码切割
 
@@ -146,9 +156,6 @@ webpack@3.10.0
 </p>
 </blockquote>
 
-
-完整代码可以在 [angular-seed-project](https://github.com/LiMeii/angular-seed-project) 中查看，在源码中把路由代码单独提取到app-routing.module.ts文件中了。
-
 ## 如何在angular中实现preloading
 
 在angular中，[PreloadAllModules](https://angular.io/api/router/PreloadAllModules)这个功能可以用来实现预加载所有的文件，一旦访问网页就会下载所有的文件。
@@ -174,6 +181,7 @@ webpack@3.10.0
 
 ```
 在文章最开始就提到，一般我们不需要所有文件都预加载，而是最核心的文件预加载以后，在按需加载业务模块代码。
+这就要求在项目中结合使用preloading和lazy loading。
 
 ## 如何在angular中结合使用preloading和lazy loading
 angular中默认只有PreloadAllModules这个选择，如果需要预加载一部分代码，就需要自己写代码来实现。
@@ -215,4 +223,4 @@ angular中默认只有PreloadAllModules这个选择，如果需要预加载一�
     })
     export class AppModule {}
 ```
-这就表示dashboard会预加载，而其他两个模块会按需加载。
+这就表示dashboard会预加载（preloading），而其他两个模块会按需加载（lazy loading）。

@@ -16,6 +16,7 @@ layout: post
 
 **Angular应用系列：**
 - [Angular：如何用Angular(<6.0)和Webpack搭建项目](https://limeii.github.io/2018/09/angular-webpack/)
+- [Angular：如何在Angular(8.0)中配置Webpack](https://limeii.github.io/2018/09/angular-customize-webpack/)
 - [Angular：动态创建Form表单](https://limeii.github.io/2019/05/angular-dynamic-form/)
 
 **Webpack系列：**

@@ -18,7 +18,7 @@ Cold | Hot | Hot | Hot | Hot
 
 ## Cold vs Hot
 
-在文章[RxJS：Cold vs Hot Observables](https://limeii.github.io/2019/07/rxjs-coldhot-observable/)里详细介绍了Cold Observables与Hot Observables的区别，除了Observable之外，这四种Subject都是Hot Observables。
+在文章【[RxJS：Cold vs Hot Observables](https://limeii.github.io/2019/07/rxjs-coldhot-observable/)】里详细介绍了Cold Observables与Hot Observables的区别，除了Observable之外，这四种Subject都是Hot Observables。
 
 ## 数据生产者 vs 数据消费者
 

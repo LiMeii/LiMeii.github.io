@@ -269,4 +269,4 @@ a、b、c 文件同时引用了d文件，
 入口文件为a、b、c, 那么d就会被重复打包到a.bundle.js、b.bundle.js、c.bundle.js ，会有代码冗余。
 </p>
 </blockquote>
-[webpack 代码切割](/2018/10/webpack-code-splitting)这篇文章介绍了如何解决上述问题。
+【[webpack 代码切割](/2018/10/webpack-code-splitting)】这篇文章介绍了如何解决上述问题。

@@ -15,7 +15,7 @@ layout: post
 
 ## HttpClient返回的Observables是Cold Observable
 
-在Angular2.0以上的版本，都是通过HttpClient跟后端API交互；所有的Http请求方法，比如get，post，put，delete都是返回一个Observable。在文章[RxJS：Cold vs Hot Observables](https://limeii.github.io/2019/07/rxjs-coldhot-observable/)里详细介绍了Cold Observables与Hot Observables的区别。
+在Angular2.0以上的版本，都是通过HttpClient跟后端API交互；所有的Http请求方法，比如get，post，put，delete都是返回一个Observable。在文章【[RxJS：Cold vs Hot Observables](https://limeii.github.io/2019/07/rxjs-coldhot-observable/)】里详细介绍了Cold Observables与Hot Observables的区别。
 
 
 那么在Angular中通过HttpClient执行Http Request返回的Observables是Hot Observables还是Cold Observables？我们先来写段代码测试下：在页面里显示30个Github user的基本信息，测试代码中用到的API在这里：[Github API](https://developer.github.com/v3/users/#get-all-users)。
@@ -156,7 +156,7 @@ F12打开浏览器的DevTools，当前页面会调用两次GET API（https://api
 
 ## 通过RxJS实现缓存效果
 
-在文章[RxJS：四种Subject的用法和区别](https://limeii.github.io/2019/07/rxjs-subject/)中详细介绍了ReplaySubject，用ReplaySubject(size)可以发送之前的旧值给新的订阅者，size是定义发送具体多少个旧值给新的订阅者。那么在示例代码中可以用ReplaySubject实现缓存效果。
+在文章【[RxJS：四种Subject的用法和区别](https://limeii.github.io/2019/07/rxjs-subject/)】中详细介绍了ReplaySubject，用ReplaySubject(size)可以发送之前的旧值给新的订阅者，size是定义发送具体多少个旧值给新的订阅者。那么在示例代码中可以用ReplaySubject实现缓存效果。
 
 
 shareReplay这个操作符会自动创建一个ReplaySubject，一旦http request执行一次以后，就会在后续的订阅和源头Observable之间建立一个ReplaySubject，ReplaySubject是一个多播的Hot Observable，后续订阅都是从这个中间ReplaySubject拿到最后一个值，从而达到缓存效果。

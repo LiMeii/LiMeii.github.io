@@ -19,7 +19,7 @@ layout: post
 
 第二点很好理解，第一点到底是什么意思呢？
 
-在[Angular Change Detection:变化检测策略](https://limeii.github.io/2019/06/angular-changeDetectionStrategy-OnPush/)这篇文章中解释过：某一个组件中设置angular变化检测策略为OnPush，如果没有以下四种情况，angular是不会为这个组件或者它的子组件执行变化检测。
+在【[Angular Change Detection:变化检测策略](https://limeii.github.io/2019/06/angular-changeDetectionStrategy-OnPush/)】这篇文章中解释过：某一个组件中设置angular变化检测策略为OnPush，如果没有以下四种情况，angular是不会为这个组件或者它的子组件执行变化检测。
 
 1. 组件的@Input()引用发生变化。
 
@@ -95,7 +95,7 @@ export class CComponent implements OnChanges, DoCheck {
 在这种情况下没有```@Input```绑定，所以```ngOnChanges```不会被触发，那为什么组件B和C的```ngDoCheck```分别执行了两遍？
 
 
-其实在[Angular：单向数据流](https://limeii.github.io/2019/06/angular-unidirectional-data-flow/)这篇文章中解释过：整个变化检测和组件生命周期钩子函数的执行顺序之间的关系。对于组件A B C实际整个变化检测流程为：
+其实在【[Angular：单向数据流](https://limeii.github.io/2019/06/angular-unidirectional-data-flow/)】这篇文章中解释过：整个变化检测和组件生命周期钩子函数的执行顺序之间的关系。对于组件A B C实际整个变化检测流程为：
 
 ```
 Checking A component:

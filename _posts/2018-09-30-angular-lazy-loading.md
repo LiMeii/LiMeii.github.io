@@ -48,7 +48,7 @@ preloading这种方式在用户切换模块也就是访问新页面之前就把�
 怎么实现代码切割？什么时候做代码切割？
 
 
-可以参考文章 [webpack：代码切割](/2018/10/webpack-code-splitting) 
+可以参考文章【[webpack：代码切割](/2018/10/webpack-code-splitting)】
 
 ## 如何在angular中实现lazy loading
 在angular中，lazy loading是跟路由一起实现的。也就是在代码打包过程中，把每个路由对应的模块都打包成独立的chunk文件，最终就可以实现用户点击导航到新页面的时候按需加载对应的chunk文件。

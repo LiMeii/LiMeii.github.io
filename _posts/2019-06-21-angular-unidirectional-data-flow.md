@@ -144,6 +144,6 @@ function checkAndUpdateView(view, ...) {
 4. 触发child component中的AfterViewInit和theAfterViewChecked。
 
 
-在[Angular Change Detection:变化检测机制](https://limeii.github.io/2019/06/angular-changedetection/)这篇文章里介绍了变化检测机制。
+在【[Angular Change Detection:变化检测机制](https://limeii.github.io/2019/06/angular-changedetection/)】这篇文章里介绍了变化检测机制。
 
 本文中用到的示例代码在这里：[angular-change-detection](https://github.com/LiMeii/angular-change-detection)

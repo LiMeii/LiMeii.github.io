@@ -5,7 +5,7 @@ layout: post
 ---
 
 
-在[Angular Change Detection:变化检测机制](https://limeii.github.io/2019/06/angular-changedetection/)这篇文章里介绍了angular的变化检测机制，也提到了异步事件都会触发整个angular应用的变化检测。
+在【[Angular Change Detection:变化检测机制](https://limeii.github.io/2019/06/angular-changedetection/)】这篇文章里介绍了angular的变化检测机制，也提到了异步事件都会触发整个angular应用的变化检测。
 
 
 angular默认的变化检测机制是```ChangeDetectionStrategy.Default```：异步事件callback结束后，NgZone会触发整个组件树至上而下做变化检测，如下所示：

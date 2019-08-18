@@ -4,7 +4,7 @@ tags: 问题
 layout: post
 ---
 
-在文章 [浏览器缓存问题](/2018/09/issues-cache-busting) 有提到浏览器缓存的原理和利弊。
+在文章【[浏览器缓存问题](/2018/09/issues-cache-busting)】 有提到浏览器缓存的原理和利弊。
 
 
 接下来就介绍怎么在webpack中解决浏览器缓存问题。
@@ -143,4 +143,4 @@ vendor.0d5cad4949ab26faaa39.bundle.js
 那么如何解决这个问题呢？
 
 
-在[webpack：优化打包CSS文件](/2018/10/webpack-css-extract) 文章中会结合ExtractTextPlugin和CSS介绍更全面的解决缓存问题方案。
+在【[webpack：优化打包CSS文件](/2018/10/webpack-css-extract)】文章中会结合ExtractTextPlugin和CSS介绍更全面的解决缓存问题方案。

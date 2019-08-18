@@ -1,5 +1,5 @@
 ---
-title: 怎么用Angular和Webpack搭建项目
+title: Angular：如何用Angular(<6.0)和Webpack搭建项目
 tags: Angular
 layout: post
 ---
@@ -13,9 +13,11 @@ layout: post
 
 源码可以在 [angular-seed-project](https://github.com/LiMeii/angular-seed-project) 查看。
 
-```
+<blockquote>
+<p>
 我现在用的angular-cli的版本是1.6.0，angular是5.0.0
-```
+</p>
+</blockquote>
 然后直接跑'ng serve'就把项目跑起来了，用angluar-cli是不是很方便直接，对初学者也很友好，这个过程中都不需要配置webpack。
 
 其实angular-cli打包这一块的代码，里面源码用的也是webpack，它把webpack包了一下，按照官方的说法是为了让初学者快速入门，因为有些初学者可能没用过webpack，再让他们一开始既要学习angular又要熟悉webpack，这增加了学习曲线。
@@ -26,10 +28,12 @@ layout: post
 
 ![angular eject]( https://limeii.github.io/assets/images/posts/angular/angular-seedproject-eject.png){:height="100%" width="100%"}
 
-```
-需要注意的是 Angular6 以上版本目前不支持ng eject，官方文档说是后续会再开放。
-把angular-cli eject 以后就不能再用ng的命令了，需要在package.json中的script配置你自己的命令。
-```
+<blockquote>
+<p>
+需要注意的是 Angular6 以上版本目前不支持ng eject。
+再'ng eject'以后就不能再用ng的命令了，需要在package.json中的script配置你自己的命令。
+</p>
+</blockquote>
 
 执行eject命令以后，会在根目录下新加 webpack.config.js 文件，这个是angular-cli默认的一个webpack配置，大致的内容如下：
 

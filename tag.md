@@ -12,12 +12,14 @@ layout: post
 - [Angular：ngDoCheck执行时机](https://limeii.github.io/2019/06/angular-ngdocheck-onpush-strategy/)
 
 **Angular性能系列：**
-- [ Angular：lazy loading和preloading](https://limeii.github.io/2018/09/angular-lazy-loading/)
+- [Angular：lazy loading和preloading](https://limeii.github.io/2018/09/angular-lazy-loading/)
+- [Angular Change Detection：变化检测策略](https://limeii.github.io/2019/06/angular-changeDetectionStrategy-OnPush/)
 
 **Angular应用系列：**
 - [Angular：如何用Angular(<6.0)和Webpack搭建项目](https://limeii.github.io/2018/09/angular-webpack/)
 - [Angular：如何在Angular(8.0)中配置Webpack](https://limeii.github.io/2019/08/angular-customize-webpack/)
 - [Angular：动态创建Form表单](https://limeii.github.io/2019/05/angular-dynamic-form/)
+- [Angular5：如何在多个组件之间通](https://limeii.github.io/2019/02/angular-sharing-data-methods/)
 
 **Webpack系列：**
 - [webpack：打包后的bundle文件里到底有什么](https://limeii.github.io/2018/10/webpack-what-in-bundle/)

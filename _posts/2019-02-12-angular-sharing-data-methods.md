@@ -1,5 +1,5 @@
 ---
-title: Angular5：如何在多个组件之间通信
+title: Angular：如何在多个组件之间通信
 tags: Angular
 layout: post
 ---

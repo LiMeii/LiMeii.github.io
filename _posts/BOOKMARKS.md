@@ -1,7 +1,8 @@
 # Angular
-- https://blog.thoughtram.io/ [angular]
-- https://blog.angularindepth.com/@maxim.koretskyi [angular]
-- https://github.com/just-jeb/angular-builders/tree/master/packages/custom-webpack [angular6+]
+- https://blog.thoughtram.io/
+- https://coryrylan.com/
+- https://blog.angularindepth.com/@maxim.koretskyi
+- https://github.com/just-jeb/angular-builders/tree/master/packages/custom-webpack
 - https://github.com/mgechev/angular-performance-checklist#lazy-loading-of-resources
 
 # Zone
@@ -11,11 +12,11 @@
 - https://blog.thoughtram.io/angular/2017/02/21/using-zones-in-angular-for-better-performance.html
 
 # RxJS
-- https://staltz.com/ [rxjs]
-- https://medium.com/@benlesh [rxjs]
+- https://staltz.com/
+- https://medium.com/@benlesh
 
 # CSS
-- https://www.zhangxinxu.com/wordpress/2019/01/ [css]
+- https://www.zhangxinxu.com/wordpress/2019/01/
 
 # JS
 - https://mrale.ph/blog/2012/06/03/explaining-js-vms-in-js-inline-caches.html

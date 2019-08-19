@@ -121,4 +121,7 @@ angular-cli内置的webpack配置，我们通过```ng build --aot=true``` 或者
 1. 开发人员可以用最少的时间和精力，同时兼顾性能（AoT/tree-shaking）和项目特殊loader/plugin需求。
 2. 不需要额外用awesome-typescript-loader来编译typescript
 3. 不需要额外用angular-router-loader来实现lazy loading
-4. 等等.....
+4. 默认是Production mode
+5. 默认是Minification
+6. 默认是Uglification
+7. 等等.....

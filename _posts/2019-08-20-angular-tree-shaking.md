@@ -10,6 +10,8 @@ layout: post
 
 - 如何让angular(6.0+)的Service实现Tree Shaking。
 
+- 在webpack4的项目中，怎么实现Tree Shaking。
+
 
 在文章【[Angular：如何在Angular(8.0)中配置Webpack](https://limeii.github.io/2019/08/angular-customize-webpack/)】提到了Angular内置的编译打包方式会执行Tree Shaking，可以提高angular应用的性能。那我们先看下什么是Tree Shaking。
 
@@ -188,3 +190,85 @@ export class CService {
 
 搜索：CService，可以看到CService用```providedIn: "root"```，在AppModule不需要```import { CService }```，但是没有被调用，有Tree Shaking，不会被打包进最后的bundle文件。
 ![angular-tree-shaking](https://limeii.github.io/assets/images/posts/angular/angular-tree-shaking04.png){:height="100%" width="100%"}
+
+## 在webpack4的项目中，怎么实现Tree Shaking
+
+如果不用angular内置的打包方式做Tree Shaking，那么在webpack4怎么实现Tree Shaking？在webpack官方文档：【[Webpack Tree Shaking](https://webpack.js.org/guides/tree-shaking/)】有介绍结合 ```"sideEffects": false```和 ```mode: "production"```实现Tree Shaking，我尝试用当前最新的webpack版本：```webpack@4.39.2```搭了一个项目，尝试在webpack4中使用Tree Shaking，发现跟官方文档介绍还是有点出入。
+
+
+首先用```npm init```初始化了一个项目，源码在这里：【[webpack4-practice](https://github.com/LiMeii/webpack4-practice)】，然后安装webpack/webpack-cli等等包。配置好webpack config文件。具体如下：
+
+【[webpack4-practice/config/webpack.common.config.js](https://github.com/LiMeii/webpack4-practice/blob/master/config/webpack.common.config.js)】
+
+
+【[webpack4-practice/config/webpack.dev.config.js](https://github.com/LiMeii/webpack4-practice/blob/master/config/webpack.dev.config.js)】
+
+
+【[webpack4-practice/config/webpack.prod.config.js](https://github.com/LiMeii/webpack4-practice/blob/master/config/webpack.prod.config.js)】
+
+在根目录下，创建如下文件：
+
+```
+|----scr
+      |----index.html
+      |----main.js
+      |----shared
+           |----common-utility.js
+
+```
+
+common-utility.js 代码如下：
+
+```js
+export function square(x) {
+    console.log("this is square function in commonutility");
+    return x * x;
+}
+
+export function cube(x) {
+    console.log("this is cube function in commonutility");
+    return x * x * x;
+}
+```
+
+在main.js中调用cube方法，具体代码如下：
+
+```js
+import { cube } from "./shared/common-utility";
+
+console.log("the result for cube(5) is " + cube(5));
+```
+<blockquote>
+<p>
+此时并没有按官方文档介绍的那样在package.json文件中设置"sideEffects": false。只是对dev和prod的mode分别设置mode:"development"和mode:"production"。
+</p>
+</blockquote>
+
+运行```npm run build:dev```，在打包出来的bundle 文件：main.07bdac8643ee4eaf7a5d.js中可以看到```square```方法虽然没有调用，但还是被打包进来了，说明```mode:"development"```模式下不会Tree Shaking，
+
+
+运行```npm run build:prod```，在打包出来的bundle文件：main.a60a09c27b85b5bcc81f.js中只能看到```cube```方法被打包，说明```mode:"production"```模式下，webpack4默认做Tree Shaking。
+
+
+接着按官方文档的介绍，在package.json文件中设置sideEffects：
+
+```json
+"name": "webpack4-practice",
+"sideEffects": false
+```
+或者是：
+
+```json
+"name": "webpack4-practice",
+  "sideEffects": [
+    "./src/shared/common-utility.js"
+  ]
+```
+
+最后编译的结果跟上面不用sideEffects的效果一模一样，说明至少在```webpack@4.39.2```版本中，只要设置了```mode:"production"```模式就可以执行Tree Shaking，跟```sideEffects```没什么关系。
+
+<blockquote>
+<p>
+需要注意的是，Webpack内置的Tree Shaking值对ES6 module语法有用，对那些用Babel把ES6 modules编译成CommonJS modules不起作用。
+</p>
+</blockquote>

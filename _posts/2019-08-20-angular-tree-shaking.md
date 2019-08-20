@@ -10,14 +10,12 @@ layout: post
 
 - 如何让angular(6.0+)的Service实现Tree Shaking。
 
-- 在不用angular内置打包编译方式的时候，怎么结合webpack实现Tree Shaking。
-
 
 在文章【[Angular：如何在Angular(8.0)中配置Webpack](https://limeii.github.io/2019/08/angular-customize-webpack/)】提到了Angular内置的编译打包方式会执行Tree Shaking，可以提高angular应用的性能。那我们先看下什么是Tree Shaking。
 
 ## Tree Shaking
 
-Tree Shaking是指在编译打包过程中，会把那些定义好的代码但是又没有被调用的代码去掉，不把这些没用到的代码打包到最后的bundle文件里，从而可以减小bundle文件的体积。可以把整个应用想象成一棵树，function/component/service/lib好比是树叶，而那些定义但又没有被调用的function/component/service/lib好比是枯树叶，Tree Shaking就是把那些枯树叶从树上摇下去。
+Tree Shaking是指在编译打包过程中，会把那些定义好的代码但是又没有被调用的代码去掉，不把这些没用到的代码打包到最后的bundle文件里，从而可以减小bundle文件的体积，提高应用性能。可以把整个应用想象成一棵树，function/component/service/lib好比是树叶，而那些定义但又没有被调用的function/component/service/lib好比是枯树叶，Tree Shaking就是把那些枯树叶从树上摇下去。
 
 
 angular内置的打包方式在```ng build --prod```会启用Tree Shaking，在```ng build```开发模式下编译不会用Tree Shaking。我们可以对比angular项目的开发和生产编译结果，来看看Tree Shaking的效果，具体代码可以在【[angular-performance](https://github.com/LiMeii/angular-performance)】查看。
@@ -190,6 +188,3 @@ export class CService {
 
 搜索：CService，可以看到CService用```providedIn: "root"```，在AppModule不需要```import { CService }```，但是没有被调用，有Tree Shaking，不会被打包进最后的bundle文件。
 ![angular-tree-shaking](https://limeii.github.io/assets/images/posts/angular/angular-tree-shaking04.png){:height="100%" width="100%"}
-
-
-**未完待续**

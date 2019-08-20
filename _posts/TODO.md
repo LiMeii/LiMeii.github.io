@@ -10,7 +10,7 @@
 - ng eject(angluar<6.0), then config webpack [done]
 - angular6+, angular-builders to config customize webpack configuration [done]
 - how to make your angular app faster: onpush strategy [done]
-- how to make your angular app faster: tree shaking
+- how to make your angular app faster: tree shaking [done]
 - ngzone introduce
   - how to make your angular app faster: NgZone.runOutsideAngular()
   - https://blog.angularindepth.com/i-reverse-engineered-zones-zone-js-and-here-is-what-ive-found-1f48dc87659b

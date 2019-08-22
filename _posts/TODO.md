@@ -24,7 +24,7 @@
   - https://blog.jiayihu.net/angular-aot-compilation-with-webpack/
 
 
-# Angular userful directive
+# Angular userful directive/component
 - searchable dropdown
 - numberic
 - numberic with no start 0

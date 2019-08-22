@@ -30,7 +30,7 @@
 
 # RxJS series
 - RxJS intorduce [done]
-- RxJS code vs hot: 
+- RxJS code vs hot: [done]
   - .publish().refCount() [done]
   - .publish() connect [done]
   - .share() [done]

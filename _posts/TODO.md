@@ -10,7 +10,7 @@
 - https://github.com/mgechev/angular-performance-checklist#lazy-loading-of-resources
 - how to make your angular app faster: onpush strategy [done]
 - how to make your angular app faster: tree shaking [done]
-- - how to make your angular app faster:  simple ngFor / ChangeDetectorRef.detach() 
+- how to make your angular app faster:  simple ngFor / ChangeDetectorRef.detach() 
 
 - ngzone introduce
   - how to make your angular app faster: NgZone.runOutsideAngular()

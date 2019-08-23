@@ -12,11 +12,11 @@ layout: post
 
 我们来实现一个搜索github用户的功能，页面上有一个输入框，在输入框中输入github用户名，然后把搜索结果显示在页面上：
 
-![rxjs-searchable-input](https://limeii.github.io/assets/images/posts/angular/rxjs-searchinput01.png){:height="100%" width="100%"}
+![rxjs-searchable-input](https://limeii.github.io/assets/images/posts/rxjs/rxjs-searchinput01.png){:height="100%" width="100%"}
 
 如果没有匹配的用户，显示如下：
 
-![rxjs-searchable-input](https://limeii.github.io/assets/images/posts/angular/rxjs-searchinput02.png){:height="100%" width="100%"}
+![rxjs-searchable-input](https://limeii.github.io/assets/images/posts/rxjs/rxjs-searchinput02.png){:height="100%" width="100%"}
 
 我们先来定义一个Service如下：
 

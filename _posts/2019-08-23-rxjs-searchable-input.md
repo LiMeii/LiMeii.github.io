@@ -4,7 +4,7 @@ tags: RxJS
 layout: post
 ---
 
-在项目中，经常会碰到这样的需求：用户在输入框输入数据，需要实时调用后端API，拿到结果显示在页面上。如果用传统方式一般实现方式是在输入框上绑定一个keydown或者keyup事件，然后每次输入值以后都调用一次后端API，拿到返回数据。这样会有一个问题，比如我输入“limei”，“l”，“li”，“lim”，“lime”，“limei”这五次keydown/keyup分别会调用一次API。这五个API有五个Response，我最后想要“limei”的结果，由于这五个API的response顺序不可控，可能最后返回"li"的结果。这种方法不仅效率低而且结果正确性没办法保证。
+在项目中，经常会碰到这样的需求：用户在输入框输入数据，需要实时调用后端API，拿到结果显示在页面上。如果用传统方式一般实现方式是在输入框上绑定一个keydown或者keyup事件，然后每次输入值以后都调用一次后端API，拿到返回数据。这样会有一个问题，比如我输入'limei'，```l``` ```li``` ```lim``` ```lime``` ```limei```这五次keydown/keyup分别会调用一次API。这五个API有五个Response，我最后想要'limei'的结果，由于这五个API的response顺序不可控，可能最后返回'li'的结果。这种方法不仅效率低而且结果正确性没办法保证。
 
 
 这篇文章会介绍如何在RxJS中结合操作符```debounceTime``` ```map```  ```filter```  ```distinctUntilChanged``` 和```switchMap```实现：输入完“limei”之后只调用一次API，最后拿到这个API返回的输入显示在页面上。

@@ -111,10 +111,10 @@ component对应的html文件如下：
 在componet中先定义一个onSearchUser$ subject，然后在input上绑定一个keyup事件```(keyup)="onSearchUser$.next($event)"```，每次输入框有输入变化的时候，onSearchUser$都会发送当前输入框的值。
 
 
-然后在component中定义两个Observable：validSearch$和emptySearch$，validSearch$是每隔1秒拿到input框中的非空值，并且是本次拿到的值和上次的值不一样的情况下调用searchUser API把搜索结合显示在页面上。emptySearch$是每隔1秒拿到input框中的空值，并不调用API，直接返回一个空的用户列表。
+然后在component中定义两个Observable：validSearch$和emptySearch$，validSearch$是每隔1秒拿到input框中的非空值，并且是本次拿到的值和上次的值不一样的情况下调用searchUser API把搜索结合显示在页面上。emptySearch$是每隔1秒拿到input框中的空值，并不调用API，直接返回一个空的用户列表。在validSearch$中用switchMap的原因是：本次调用API的时候，上一次的API如果还没有返回，switchMap会取消上一次的API，这样就可以保证每次API返回的结果是正确的。
 
 
-在用merge把emptySearch$，validSearch$两个Observable合并。
+最后再用merge把emptySearch$，validSearch$两个Observable合并。
 
 
 用RxJS实现这个功能，代码是不是非常简洁！

@@ -23,3 +23,6 @@
 - https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/
 - https://www.youtube.com/watch?v=8aGhZQkoFbQ
 - http://latentflip.com/
+
+# Git API
+- https://developer.github.com/v3/search/#search-users

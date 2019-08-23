@@ -16,6 +16,7 @@
   - how to make your angular app faster: NgZone.runOutsideAngular()
   - https://blog.angularindepth.com/i-reverse-engineered-zones-zone-js-and-here-is-what-ive-found-1f48dc87659b
   - https://blog.angularindepth.com/do-you-still-think-that-ngzone-zone-js-is-required-for-change-detection-in-angular-16f7a575afef
+
 - Ivy renderer 
 
 - AOT (ahead-of-time compilation)
@@ -67,7 +68,7 @@
 - RxJS call multiple http request
   - forkjoin
 
-- RxJS input search with debounce
+- RxJS input search with debounce [done]
 - RxJS scheduler
 - RxJS VS Promise VS Generator
 - RxJS marble diagrams

@@ -65,8 +65,9 @@
 - how to debug RxJS
   - https://staltz.com/how-to-debug-rxjs-code.html 
 
-- RxJS call multiple http request
-  - forkjoin
+- forkjoin zip combineLatest withLastFrom
+
+- RxJS map mergeMap switchMap contactMap flatMap
 
 - RxJS input search with debounce [done]
 - RxJS scheduler
@@ -81,6 +82,10 @@
   - retryWhen
   - delayed retry
   
+
+# webpack
+- code spliting in webpack4
+
 # nodejs
 
 # react/vue

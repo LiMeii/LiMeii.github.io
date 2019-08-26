@@ -12,7 +12,7 @@ layout: post
 - [Angular：ngDoCheck执行时机](https://limeii.github.io/2019/06/angular-ngdocheck-onpush-strategy/)
 
 **Angular性能系列：**
-- [Angular：Tree Shaking](https://limeii.github.io/2019/08/angular-tree-shaking/)
+- [Angular性能优化：Tree Shaking](https://limeii.github.io/2019/08/angular-tree-shaking/)
 - [Angular：lazy loading和preloading](https://limeii.github.io/2018/09/angular-lazy-loading/)
 - [Angular Change Detection：变化检测策略](https://limeii.github.io/2019/06/angular-changeDetectionStrategy-OnPush/)
 

@@ -10,7 +10,12 @@
 - https://github.com/mgechev/angular-performance-checklist#lazy-loading-of-resources
 - how to make your angular app faster: onpush strategy [done]
 - how to make your angular app faster: tree shaking [done]
-- how to make your angular app faster:  simple ngFor / ChangeDetectorRef.detach() 
+- how to make your angular app faster:  simple ngFor / ChangeDetectorRef.detach()
+- angular service work 
+
+- how to make your angular app faster: AoT (ahead-of-time compilation)
+  - https://blog.mgechev.com/2016/08/14/ahead-of-time-compilation-angular-offline-precompilation/
+  - https://blog.jiayihu.net/angular-aot-compilation-with-webpack/
 
 - ngzone introduce
   - how to make your angular app faster: NgZone.runOutsideAngular()
@@ -18,11 +23,6 @@
   - https://blog.angularindepth.com/do-you-still-think-that-ngzone-zone-js-is-required-for-change-detection-in-angular-16f7a575afef
 
 - Ivy renderer 
-
-- AOT (ahead-of-time compilation)
-  - how AOT make angular app faster.
-  - https://blog.mgechev.com/2016/08/14/ahead-of-time-compilation-angular-offline-precompilation/
-  - https://blog.jiayihu.net/angular-aot-compilation-with-webpack/
 
 
 # Angular userful directive/component

@@ -16,6 +16,8 @@
 - how to make your angular app faster: AoT (ahead-of-time compilation)
   - https://blog.mgechev.com/2016/08/14/ahead-of-time-compilation-angular-offline-precompilation/
   - https://blog.jiayihu.net/angular-aot-compilation-with-webpack/
+  - https://segmentfault.com/a/1190000011562077
+  - https://blog.angularindepth.com/a-deep-deep-deep-deep-deep-dive-into-the-angular-compiler-5379171ffb7a
 
 - ngzone introduce
   - how to make your angular app faster: NgZone.runOutsideAngular()

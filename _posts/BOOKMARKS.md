@@ -1,4 +1,5 @@
 # Angular
+- https://indepth.dev/
 - https://blog.thoughtram.io/
 - https://coryrylan.com/
 - https://blog.angularindepth.com/@maxim.koretskyi
@@ -20,10 +21,22 @@
 - https://www.zhangxinxu.com/wordpress/2019/01/
 
 # JS
+- http://dr-axel.de/
+- http://speakingjs.com/es5/index.html
+- https://github.com/getify/You-Dont-Know-JS#you-dont-know-js-book-series
+- https://github.com/MostlyAdequate/mostly-adequate-guide
 - https://mrale.ph/blog/2012/06/03/explaining-js-vms-in-js-inline-caches.html
 - https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/
 - https://www.youtube.com/watch?v=8aGhZQkoFbQ
 - http://latentflip.com/
+
+# V8
+- https://medium.com/dailyjs/how-do-i-get-started-with-v8-development-17e976ebe4af
+- https://v8.dev/
+- https://benediktmeurer.de
+
+# design patterns
+- https://addyosmani.com/resources/essentialjsdesignpatterns/book/
 
 # HTTP/2
 - https://http2.github.io/faq/#whats-the-benefit-of-server-push
@@ -34,3 +47,18 @@
 
 # Git API
 - https://developer.github.com/v3/search/#search-users
+
+# awsome learning resources
+- https://github.com/csr632/awesome-learning-resources
+
+# interviewmap
+- https://github.com/InterviewMap/CS-Interview-Knowledge-Map
+
+# What happens when you type google.com into your browser and press enter
+- https://github.com/alex/what-happens-when
+
+# howbrowserswork
+- https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/
+
+# 快捷键
+- http://mykeys.sinaapp.com/index.php

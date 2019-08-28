@@ -21,7 +21,7 @@ Angular是基于TypeScript，编译打包的时候会用tsc将TypeScript编译�
 
 ## Angular编译机制：JiT vs AoT
 
-Angular的编译器有两种执行机制：JiT和AoT，默认运行```ng build```和```ng serve```的时候是JiT的编译方式，```ng build --prod``` ```ng build --aot``` 或者```ng serve --aot```都是AoT的编译方式。一句话概括两者的区别：Angular编译器（ngc）执行的时机不一样，JiT是浏览器在渲染页面的时候先把Angular编译器下载到本地，然后把HTML模板编译成浏览器可识别运行的es5代码；AoT是项目在打包的时候就把HTML模板编译成浏览器可识别运行的es5代码，在浏览器渲染时不需要下载Angular编译器也不需要编译，直接运行这些代码就可以了。整个流程如下：
+Angular的编译器有两种执行机制：JiT和AoT，```ng build```和```ng serve```是JiT的编译方式，```ng build --prod``` ```ng build --aot``` 或者```ng serve --aot```是AoT的编译方式。一句话概括两者的区别：Angular编译器（ngc）执行的时机不一样，JiT是浏览器在渲染页面的时候先把Angular编译器下载到本地，然后把HTML模板编译成浏览器可识别运行的es5代码；AoT是项目在打包的时候就把HTML模板编译成浏览器可识别运行的es5代码，在浏览器渲染时不需要下载Angular编译器也不需要编译，直接运行这些代码就可以了。整个流程如下：
 
 ### JiT
 ```
@@ -33,9 +33,9 @@ Angular的编译器有两种执行机制：JiT和AoT，默认运行```ng build``
 
 当用户访问这个网站的时候：
 
-- 下载相关的静态资源文件，包括Angular编译器（ngc）
+- 下载相关的静态资源文件，包括Angular编译器（@angular/compiler）
 - 启动Angular
-- Angular编译器执行编译
+- Angular编译器执行编译（ngc）
 - 页面渲染
 
 ```
@@ -43,7 +43,7 @@ Angular的编译器有两种执行机制：JiT和AoT，默认运行```ng build``
 ### AoT
 ```
 - 基于TypeScript开发Angular项目
-- 用ngc编译Angular项目
+- 编译Angular项目
   - 先把模板和component编译成TypeScript/es6（ngc）
   - 再把TypeScript编译成es5 (tsc)
 - 打包
@@ -52,12 +52,12 @@ Angular的编译器有两种执行机制：JiT和AoT，默认运行```ng build``
 
 当用户访问网站的时候：
 
-- 下载相关的静态资源文件，不需要下载Angular编译器（ngc）
+- 下载相关的静态资源文件，不需要下载Angular编译器（@angular/compiler）
 - 启动Angular
 - 页面渲染
 ```
 
-从上面的流程可以看出，用AoT编译方式打包，在页面渲染的时候不需要下载Angular编译器代码，也不需要执行编译，而是直接渲染页面。从性能上来说，AoT要胜过JiT。除了编译时机不同，我们还可以通过代码来看看两种编译方式最后的文件有什么区别。创建一个Angular项目，然后运行```ng build``` ```ng build --prod```来看看最后编译文件有什么不同。
+从上面的流程可以看出，用AoT编译方式打包，在页面渲染的时候不需要下载Angular编译器代码，也不需要执行编译，而是直接渲染页面。从性能上来说，AoT要胜过JiT。除了编译时机不同，我们还可以通过代码来看看两种编译方式的bundle文件有什么区别。创建一个Angular项目，然后运行```ng build``` ```ng build --prod```来看看最后编译文件有什么不同。
 
 
 示例源码在这里：【[angular-performance](https://github.com/LiMeii/angular-performance)】
@@ -130,7 +130,7 @@ npx source-map-explorer dist/angular-performance/vendor-es5.js
 vendor-es5.js文件结构如下;
 ![angular-compiler](/assets/images/posts/angular/angular-compiler02.png){:height="100%" width="100%"}
 
-我们可以看到因为JiT是在页面渲染的时候编译模板文件，所以需要打包compiler源码，compiler源码就有1.32M！DeepUnderstandingComponent在JiT编译完对应的bundle文件是：modules-deep-understanding-aot-deep-understanding-aot-module-es5.js，我们来看看文件内容：
+我们可以看到因为JiT是在页面渲染的时候编译模板文件，所以需要打包compiler源码，compiler源码就有1.32M！DeepUnderstandingComponent对应的bundle文件(JiT)是：modules-deep-understanding-aot-deep-understanding-aot-module-es5.js，我们来看看文件内容：
 
 ![angular-compiler](/assets/images/posts/angular/angular-compiler05.png){:height="100%" width="100%"}
 
@@ -173,7 +173,7 @@ npx source-map-explorer dist/angular-performance/main-es5.241e3ea4617330a70446.j
 main的文件结构如下：
 ![angular-compiler](/assets/images/posts/angular/angular-compiler04.png){:height="100%" width="100%"}
 
-我们可以看到由于AoT在打包的时候编译模板文件，所以不需要把打包compiler源码，bundle文件明显减小了很多！DeepUnderstandingComponent在AoT编译完对应的bundle文件是4-es5.4c969b6ad4c13630ad20.js，我们来看看里面的内容：
+我们可以看到由于AoT在打包的时候编译模板文件，所以不需要把打包compiler源码，bundle文件明显减小了很多！DeepUnderstandingComponent对应的bundle文件(AoT)是4-es5.4c969b6ad4c13630ad20.js，我们来看看里面的内容：
 
 ![angular-compiler](/assets/images/posts/angular/angular-compiler06.png){:height="100%" width="100%"}
 
@@ -181,9 +181,9 @@ main的文件结构如下：
 
 
 来总结一下JiT和AoT的主要区别：
-- 编译执行的时机不一样，JiT是在浏览器里执行，AoT是在打包的时候执行。
 - 打包之后的文件大小不一样，最大的区别是JiT需要把compiler源码打包进bundle文件，而AoT不需要。
 - bundle文件的内容也有很大区别：JiT把HTML模板直接内联进bundle文件不做任何处理，AoT会把HTML模板文件编译es5文件。
+- 编译执行的时机不一样，JiT是在浏览器里执行，需要内联的HTML文件编译成es5代码；AoT是在编译打包的时候就把HTML文件编译成es5代码。
 
 接下来看看，AoT是如何把模板文件编译成es5文件的。
 
@@ -193,7 +193,7 @@ AoT编译实际分了两个步骤：
 - 第一步：用ngc把模板和component编译成es6（或者是TypeScript代码，可以在tsconfig.json里配置）。
 - 第二步：用tsc把这些TypeScript编译成es5。
 
-```ng build --prod```只能看到最后的es5文件，那么有没有办法看到第一步：用ngc把模板和component编译成TypeScript的文件呢？当然有的，我们在```package.json```的scripts节点里加上如下命令：
+```ng build --prod```只能看到第二步的es5文件，那么有没有办法看到第一步的es6文件呢？当然有的，可以运行ngc命令，我们在```package.json```的scripts节点里加上如下命令：
 
 ```
   "scripts": {
@@ -224,7 +224,7 @@ AoT编译实际分了两个步骤：
 ngc编译的输出文件目录结构和真正的项目目录结构一样，在对应的文件夹下会有以下文件：
 - ```*.metadata.json```：把.ts(component/NgModule)文件里的decorator信息和constructor的依赖注入信息用json的形式记录下来，下次在二次编译的时候不需要再从.ts文件里拿了。二次编译是指在自己项目中引用第三方库，在编译自己项目的时候需要对第三方库进行二次编译打包。如果我们自己项目要用AoT编译，那么第三方库必须要提供.metadata.json文件。
 
-- ```*.ngfactory.js```：里面包含了创建组件、渲染组件(涉及DOM操作)、执行变化检测(获取oldValue和newValue对比)、销毁组件。
+- ```*.ngfactory.js```：里面包含了创建组件、渲染组件(涉及DOM操作)、执行变化检测(获取oldValue和newValue对比)、销毁组件的代码。
 
 - ```*.js```：是.ts(component/NgModule)文件里除decorator和constructor之外的内容，编译成了es6代码。
 
@@ -290,4 +290,10 @@ export { DeepUnderstandingComponentNgFactory as DeepUnderstandingComponentNgFact
 在View_DeepUnderstandingComponent_0的视图创建和变化检测代码如下：
 ![angular-compiler](/assets/images/posts/angular/angular-compiler08.png){:height="100%" width="100%"}
 
-总结来说：HTML模板文件会被编译成一个视图(es6)，在这个视图里会把页面元素(div h1 h2)都渲染出来，并且生成绑定和变化检测代码，同时也host component的信息。
+总结来说：AoT之后，HTML模板文件会被编译成一个视图(es6)，在这个视图里会把页面元素(div h1 h2)都渲染出来，并且生成绑定和变化检测代码，同时也host component的信息。
+
+## AoT对性能的影响
+不管是JiT还是AoT，最终的结果文件是一样的。JiT编译的bundle文件，在浏览器渲染之前需要下载compiler源码，然后compiler源码对JiT的bundle文件进行编译，也会在本地生成```*.ngfactory.js```文件，最后进行渲染。在浏览器里先编译再渲染肯定没有AoT直接在浏览器里渲染性能高。
+
+
+除此之外，还有一点好处是，AoT把模板文件编译成es6文件，可以做Tree-Shaking，也会提高性能。

@@ -12,10 +12,7 @@ layout: post
 - [Angular：ngDoCheck执行时机](https://limeii.github.io/2019/06/angular-ngdocheck-onpush-strategy/)
 
 **Angular性能系列：**
-- [Angular：深入理解Angular编译机制](https://limeii.github.io/2019/08/angular-compiler/)
-- [Angular性能优化：Tree Shaking](https://limeii.github.io/2019/08/angular-tree-shaking/)
-- [Angular：lazy loading和preloading](https://limeii.github.io/2018/09/angular-lazy-loading/)
-- [Angular Change Detection：变化检测策略](https://limeii.github.io/2019/06/angular-changeDetectionStrategy-OnPush/)
+- [Angular：性能优化清单](https://limeii.github.io/2019/08/angular-performance-checklists/)
 
 **Angular应用系列：**
 - [Angular：如何用Angular(<6.0)和Webpack搭建项目](https://limeii.github.io/2018/09/angular-webpack/)

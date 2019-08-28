@@ -25,7 +25,7 @@ layout: post
 
 **Webpack系列：**
 - [webpack：打包后的bundle文件里到底有什么](https://limeii.github.io/2018/10/webpack-what-in-bundle/)
-- [webpack：代码切割](https://limeii.github.io/2018/10/webpack-code-splitting/)
+- [webpack(3)：代码切割](https://limeii.github.io/2018/10/webpack-code-splitting/)
 - [webpack：如何解决浏览器缓存问题](https://limeii.github.io/2018/10/webpack-caching/)
 - [webpack：优化打包CSS文件](https://limeii.github.io/2018/10/webpack-css-extract/)
 - [webpack：分析和优化webpack bundle文件](https://limeii.github.io/2018/09/webpack-bundle-analyzer/)

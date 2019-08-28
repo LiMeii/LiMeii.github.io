@@ -64,7 +64,7 @@ angular@5.0.0
 webpack@3.10.0
 </p>
 <p>
-在用angular cli创建这个项目之后，再用‘ne eject’把angular内置的webpack配置文件弹出来，然后重写了webpack配置文件。
+在用angular cli创建这个项目之后，再用‘ne eject’把angular内置的webpack配置文件弹出来，然后重写了webpack配置文件。如果用Angular自带的编译方式，Angular Router本身就实现了lazy loading。
 </p>
 </blockquote>
 

@@ -47,7 +47,7 @@ Angular默认的变化检测机制是：异步事件callback结束后，NgZone�
 ### 用RxJS实现缓存效果
 Angular中通过HttpClient执行Http Request返回的Observables是Cold Observable，这导致每次调用API，都会生成一个新的Observable实例，有订阅之后才开始发送值，这也符合现在前端开发要求。但是实际开发过程中，有时候后端会有提供一些公用的常量API，不同页面都需要用这些常量，按现在的调用API的方式，会导致常量API在不同的页面重复多次被调用，这种方式显然性能不好。
 
-可以通过ReplaySubject实现缓存效果，第一次调用常量API之后，之后又同样的API调用http request可以直接在ReplaySubject拿到值，不用每次都调用后端API。具体实现可以参考文章【[RxJS：如何通过RxJS实现缓存](https://limeii.github.io/2019/08/rxjs-caching/)】
+可以通过ReplaySubject实现缓存效果，第一次调用常量API之后把这些常量缓存起来，之后调用同样的API就可以直接在ReplaySubject拿到值，不用每次都调用后端API。具体实现可以参考文章【[RxJS：如何通过RxJS实现缓存](https://limeii.github.io/2019/08/rxjs-caching/)】
 
 ### 通过Service Worker缓存
 

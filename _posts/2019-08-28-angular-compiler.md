@@ -224,7 +224,7 @@ AoT编译实际分了两个步骤：
 ngc编译的输出文件目录结构和真正的项目目录结构一样，在对应的文件夹下会有以下文件：
 - ```*.metadata.json```：把.ts(component/NgModule)文件里的decorator信息和constructor的依赖注入信息用json的形式记录下来，下次在二次编译的时候不需要再从.ts文件里拿了。二次编译是指在自己项目中引用第三方库，在编译自己项目的时候需要对第三方库进行二次编译打包。如果我们自己项目要用AoT编译，那么第三方库必须要提供.metadata.json文件。
 
-- ```*.ngfactory.js```：里面包含了创建组件、渲染组件(涉及DOM操作)、执行变化检测(获取oldValue和newValue对比)、销毁组件的代码。
+- ```*.ngfactory.js```：里面包含了创建组件、渲染组件(涉及DOM操作)、执行变化检测(获取oldValue和newValue对比)、销毁组件的代码，也就是我们说的component view。
 
 - ```*.js```：是.ts(component/NgModule)文件里除decorator和constructor之外的内容，编译成了es6代码。
 
@@ -284,7 +284,7 @@ export { DeepUnderstandingComponentNgFactory as DeepUnderstandingComponentNgFact
 我们可以看到在ngfactory文件里有:
 - ```View_{COMPONENT}{COUNTER}```(View_DeepUnderstandingComponent_0) 是：the internal component，负责(根据template)渲染出组件的视图，和进行变化检测。
 
-- ```View_{COMPONENT}_Host{COUNTER}```(View_DeepUnderstandingComponent_Host_0) 是：the internal host component，负责渲染出宿主元素<app-deepunderstand-compiler></app-deepunderstand-compiler>，并且使用"the internal component"管理组件的内部视图。
+- ```View_{COMPONENT}_Host{COUNTER}```(View_DeepUnderstandingComponent_Host_0) 是：the internal host component，负责渲染出宿主元素 < app-deepunderstand-compiler > < / app-deepunderstand-compiler > ，并且使用"the internal component"管理组件的内部视图，也是通过这个构建整个组件树。
 
 
 在View_DeepUnderstandingComponent_0的视图创建和变化检测代码如下：

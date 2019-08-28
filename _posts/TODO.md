@@ -13,7 +13,7 @@
 - how to make your angular app faster:  simple ngFor / ChangeDetectorRef.detach()
 - angular service work 
 
-- how to make your angular app faster: AoT (ahead-of-time compilation)
+- how to make your angular app faster: AoT (ahead-of-time compilation) [done!!!!!!!]
   - https://blog.mgechev.com/2016/08/14/ahead-of-time-compilation-angular-offline-precompilation/
   - https://blog.jiayihu.net/angular-aot-compilation-with-webpack/
   - https://segmentfault.com/a/1190000011562077

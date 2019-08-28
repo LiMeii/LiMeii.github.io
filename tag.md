@@ -35,7 +35,7 @@ layout: post
 - [RxJS：如何通过RxJS实现缓存](https://limeii.github.io/2019/08/rxjs-caching/)
 - [RxJS：如何通过RxJS实现简单的消息通知机制](https://limeii.github.io/2019/08/rxjs-notification/)
 - [RxJS：所有订阅都需要调用unsubscribe取消订阅？](https://limeii.github.io/2019/08/rxjs-unsubscribe/)
-- [RxJS：如何用RxJS实现高效的搜索功能](https://limeii.github.io/2019/08/rxjs-searchable-input/)
+- [RxJS：如何用RxJS实现高效的HTTP请求](https://limeii.github.io/2019/08/rxjs-searchable-input/)
 
 **其他**
 - [在Win10里安装Ruby和Jekyll遇到的问题](https://limeii.github.io/2019/06/issues-setup-rubyjekyll-windows/)

@@ -6,6 +6,7 @@ layout: post
 
 在深入理解和学习Angular过程中，发现在搭建Angular项目、实际项目应用、打包、合理使用变化检测策略、缓存，各个方面都可以优化项目性能。因为都写在不同的文章里，比较分散，为了方便查阅，在这篇文章集中把性能优化相关的文章都列出来了。
 
+
 ## 推荐用Angular自带的编译方式打包
 
 Angular内置了webpack打包方式，很多人在搭建Angular(< 6.0)项目的时候，发现Angular内置的webpack并不能满足实际项目打包的一些需求，所以通过```ng eject```把内置的webpack.config文件暴露出来，然后根据自己项目需求重写整个webpack.config配置，可以参考这篇文章【[Angular：如何用Angular(<6.0)和Webpack搭建项目](https://limeii.github.io/2018/09/angular-webpack/)】
@@ -16,6 +17,7 @@ Angular内置了webpack打包方式，很多人在搭建Angular(< 6.0)项目的�
 
 如何结合内置的打包方式和我们自己的webpack配置文件编译打包整个项目，可以参考文章：
 - 【[Angular：如何在Angular(8.0)中配置Webpack](https://limeii.github.io/2019/08/angular-customize-webpack/)】
+
 
 ## 使用AoT编译
 
@@ -28,6 +30,7 @@ Angular内置了webpack打包方式，很多人在搭建Angular(< 6.0)项目的�
 关于深入理解Angular编译，可以参考这篇文章：
 - 【[Angular：深入理解Angular编译机制](https://limeii.github.io/2019/08/angular-compiler/)】
 
+
 ## Tree Shaking
 
 如果项目中有一些代码(方法、文件)，在项目里完全没有被用到，这种代码称为Dead Code。大量Dead Code如果编译打包进bundle文件，会导致bundle文件过大，页面渲染下载bundle文件的时候会浪费带宽，也会影响性能。
@@ -39,13 +42,16 @@ Tree Shaking就是用来解决这种问题，它是指在编译打包过程中�
 关于更多Tree Shaking的理解和应用可以参考这篇文章：
 - [Angular性能优化：Tree Shaking](https://limeii.github.io/2019/08/angular-tree-shaking/)
 
+
 ## lazy loading和preloading bundle文件
 如果把一个大项目所有文件都打包进一个bundle文件，用户打开浏览器访问这个网站的时候，首先要从服务器下载这个超大的bundle文件，加上还需要时间做一些解析，会导致网站响应过慢。在Angular项目中可以通过配置lazy loading和preloading来提高性能。关于lazy loading和preloading在Angular项目中的理解和应用可以参考这篇文章：
 - 【[Angular：lazy loading和preloading](https://limeii.github.io/2018/09/angular-lazy-loading/)】
 
+
 ## webpack Code Splitting
 在项目中经常会有一些公用代码，被多个module或者component引用，如果在打包的时候直接把公用代码重复打包进不同的bundle文件，会造成代码冗余，也会影响应用性能。我们可以通过webpack Code Splitting做代码切割，把公用的代码单独提取出来放在chunk文件里，用户访问页面的时候只需要下载一次这个chunk文件就可以了。具体可以参考这篇文章：
 - [webpack(3)：代码切割](https://limeii.github.io/2018/10/webpack-code-splitting/)
+
 
 ## 使用ChangeDetectionStrategy.OnPush策略
 Angular默认的变化检测机制是：异步事件callback结束后，NgZone会触发整个组件树至上而下做变化检测，也就是说页面一个小小的Click事件就会触发所有组件的变化检测。虽然Angular变化检测本身性能已经很好了，在毫秒内可以做成百上千次变化检测。但是随着项目越来越大，其实很多不必要的变化检测还是会在一定程度上影响性能。在Angular中可以通过OnPush来跳过一些不必要的变化检测，从而优化整个应用的性能。更多关于OnPush策略的理解和应用可以参考这篇文章：

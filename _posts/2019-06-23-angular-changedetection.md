@@ -91,7 +91,7 @@ export { CDParentComponentNgFactory as CDParentComponentNgFactory };
 各段代码的作用如下：
 ![angular-change-detection](/assets/images/posts/angular/angular-change-detection06.png){:height="100%" width="100%"}
 
-- View_CDParentComponent_0(**internal component**)：是CDParentComponent，里面有每个DOM节点引用，并且给每个节点做数据绑定；还有两个change detection方法，分别对应 { { data.name } } 和  { { data.address } }。
+- View_CDParentComponent_0(**internal component**)：是CDParentComponent，里面有每个DOM节点引用，并且给每个节点做数据绑定；还有两个change detection方法，分别对应 ```[data]="data"``` ```{ { data.name } }``` 和  ```{ { data.address } }```。
 
 - View_CDParentComponent_Host_0(**internal host component**)：负责渲染出宿主元素 < CDParentComponent > < / CDParentComponent > ，并且使用"internal component"管理组件的内部视图，也是通过这个构建整个组件树。
 

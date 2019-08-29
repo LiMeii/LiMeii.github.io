@@ -290,6 +290,10 @@ export { DeepUnderstandingComponentNgFactory as DeepUnderstandingComponentNgFact
 在View_DeepUnderstandingComponent_0的视图创建和变化检测代码如下：
 ![angular-compiler](/assets/images/posts/angular/angular-compiler08.png){:height="100%" width="100%"}
 
+关系图如下：
+![angular-compiler](/assets/images/posts/angular/angular-compiler09.png){:height="100%" width="100%"}
+
+
 总结来说：AoT之后，HTML模板文件会被编译成一个视图(es6)，在这个视图里会把页面元素(div h1 h2)都渲染出来，并且生成绑定和变化检测代码，同时也host component的信息。
 
 ## AoT对性能的影响

@@ -12,6 +12,9 @@
 - how to make your angular app faster: tree shaking [done]
 - how to make your angular app faster:  simple ngFor / ChangeDetectorRef.detach()
 - angular service work 
+  - https://angular.io/guide/service-worker-intro
+- Use pure pipes
+- *ngFor directive Use trackBy option
 
 - how to make your angular app faster: AoT (ahead-of-time compilation) [done!!!!!!!]
   - https://blog.mgechev.com/2016/08/14/ahead-of-time-compilation-angular-offline-precompilation/
@@ -23,6 +26,13 @@
   - how to make your angular app faster: NgZone.runOutsideAngular()
   - https://blog.angularindepth.com/i-reverse-engineered-zones-zone-js-and-here-is-what-ive-found-1f48dc87659b
   - https://blog.angularindepth.com/do-you-still-think-that-ngzone-zone-js-is-required-for-change-detection-in-angular-16f7a575afef
+
+- Server-Side Rendering
+  - Angular Universal
+  - Preboot
+
+
+- Web Workers 
 
 - Ivy renderer 
 

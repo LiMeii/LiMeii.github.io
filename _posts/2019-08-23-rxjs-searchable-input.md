@@ -60,8 +60,8 @@ export class RxjsSearchableInputComponent implements OnInit, OnDestroy {
             .pipe(
                 debounceTime(1000),
                 map(event => (<HTMLInputElement>event.target).value),
-                filter(input => input !== ""),
                 distinctUntilChanged(),
+                filter(input => input !== ""),
                 switchMap(data => this.rxjsSearchableInputService.searchUser(data))
             )
 

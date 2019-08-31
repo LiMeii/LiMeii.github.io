@@ -65,6 +65,5 @@ Angular中通过HttpClient执行Http Request返回的Observables是Cold Observab
 可以通过ReplaySubject实现缓存效果，第一次调用常量API之后把这些常量缓存起来，之后调用同样的API就可以直接在ReplaySubject拿到值，不用每次都调用后端API。具体实现可以参考文章：
 - 【[RxJS：如何通过RxJS实现缓存](https://limeii.github.io/2019/08/rxjs-caching/)】
 
-### 通过Service Worker缓存
 
 **未完待续**

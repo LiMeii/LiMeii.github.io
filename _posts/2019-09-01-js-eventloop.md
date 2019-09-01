@@ -1,5 +1,5 @@
 ---
-title: JS：详解Event Loop，以及microtasks和macrotask的执行顺序
+title: JS：详解Event Loop运行机制，以及microtasks和macrotask的执行顺序
 tags: JS
 layout: post
 ---

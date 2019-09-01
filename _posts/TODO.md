@@ -98,6 +98,20 @@
 # webpack
 - code spliting in webpack4
 
+# JS
+- event loop task miscrotask/job
+- js 原型到原型链
+- 词法作用域和动态作用域
+- 执行上下文栈
+- 变量对象
+- 作用域链
+- 从ECMAScript规范解读this
+- 闭包
+- 深浅拷贝
+
+# ES6
+-  let 和 const
+
 # nodejs
 
 # react/vue

@@ -21,6 +21,8 @@
 - https://www.zhangxinxu.com/wordpress/2019/01/
 
 # JS
+- https://blog.sessionstack.com/tagged/tutorial
+- http://dmitrysoshnikov.com/ecmascript/javascript-the-core-2nd-edition/
 - http://dr-axel.de/
 - http://speakingjs.com/es5/index.html
 - https://github.com/getify/You-Dont-Know-JS#you-dont-know-js-book-series

@@ -99,7 +99,7 @@
 - code spliting in webpack4
 
 # JS
-- event loop task miscrotask/job
+- event loop task miscrotask/job [done]
 - js 原型到原型链
 - 词法作用域和动态作用域
 - 执行上下文栈

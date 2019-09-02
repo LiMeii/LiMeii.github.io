@@ -100,7 +100,14 @@
 
 # JS
 - event loop task miscrotask/job [done]
-- js 原型到原型链
+- 原型到原型链
+- 词法环境(Lexical Environments)
+- 运行上下文(Execution Context)
+- 函数创建
+- 函数的运行
+- this
+- 作用域链
+- 闭包
 - 词法作用域和动态作用域
 - 执行上下文栈
 - 变量对象

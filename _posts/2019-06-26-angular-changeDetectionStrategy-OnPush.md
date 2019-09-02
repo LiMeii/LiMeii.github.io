@@ -127,7 +127,7 @@ data是一个对象，在```changeInfo```方法里通过如上方式改变email�
 
 这时候点击Change Info按钮，触发了变化检测，页面的email被更新了：
 
-![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy05.gif){:height="70%" width="70%"}
+![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy05.gif){:height="100%" width="100%"}
 
 <blockquote>
 <p>
@@ -202,7 +202,7 @@ export class CDChildComponent implements OnChanges {
 </blockquote>
 效果如下：
 
-![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy08.gif){:height="70%" width="70%"}
+![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy08.gif){:height="100%" width="100%"}
 
 <blockquote> <p> 
 <font color="#BF1827">注意：这两个示例代码都是在@Input data引用没有发生变化的前提下运行的！</font>
@@ -244,7 +244,7 @@ export class CDChildComponent implements OnInit, OnChanges {
 
 这时候页面的会每隔一秒更新一次：
 
-![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy10.gif){:height="70%" width="70%"}
+![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy10.gif){:height="100%" width="100%"}
 
 
 ## 4. 手动触发
@@ -287,7 +287,7 @@ export class CDChildComponent implements OnInit, OnChanges {
 
 每隔一秒，counter自动加五，在OnPush策略下，组件会触发策略检测，页面每隔一秒会自动更新：
 
-![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy12.gif){:height="70%" width="70%"}
+![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection-strategy12.gif){:height="100%" width="100%"}
 
 
 ### 4.2：ChangeDetectorRef.markForCheck()

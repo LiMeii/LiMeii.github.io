@@ -64,7 +64,7 @@ export class GrandChildComponent implements  OnInit {
 **1. GrandChild组件，在ngOnInit函数中改变了ChildAComponent的msgFromGrandChild属性的值**
 
 效果如下：message能正常显示也没有error：
-![angular-unidirectional-data-flow](https://limeii.github.io/assets/images/posts/angular/angular-unidirectional-data-flow3.png){:height="70%" width="70%"}
+![angular-unidirectional-data-flow](https://limeii.github.io/assets/images/posts/angular/angular-unidirectional-data-flow3.png){:height="100%" width="100%"}
 
 <blockquote>
 <p>
@@ -88,7 +88,7 @@ export class GrandChildComponent implements AfterViewInit {
 
 这个时候会发现在console里会有```ExpressionChangedAfterItHasBeenCheckedError```，具体如下：
 
-![angular-unidirectional-data-flow](https://limeii.github.io/assets/images/posts/angular/angular-unidirectional-data-flow5.png){:height="70%" width="70%"}
+![angular-unidirectional-data-flow](https://limeii.github.io/assets/images/posts/angular/angular-unidirectional-data-flow5.png){:height="100%" width="100%"}
 
 <blockquote>
 <p>
@@ -103,7 +103,7 @@ export class GrandChildComponent implements AfterViewInit {
 
 我们来调试一下他的core.js源代码，具体调试方法如下：
 
-![angular-unidirectional-data-flow](https://limeii.github.io/assets/images/posts/angular/angular-unidirectional-data-flow06.gif){:height="70%" width="70%"}
+![angular-unidirectional-data-flow](https://limeii.github.io/assets/images/posts/angular/angular-unidirectional-data-flow06.gif){:height="100%" width="100%"}
 
 把```checkAndUpdateView```方法简化一下：
 
@@ -133,7 +133,7 @@ function checkAndUpdateView(view, ...) {
 
 最后来总结一下，在angular整个页面渲染的过程：
 
-![angular-unidirectional-data-flow](https://limeii.github.io/assets/images/posts/angular/angular-unidirectional-data-flow7.png){:height="70%" width="70%"}
+![angular-unidirectional-data-flow](https://limeii.github.io/assets/images/posts/angular/angular-unidirectional-data-flow7.png){:height="100%" width="100%"}
 
 1. 更新child component的input bindings，然后会触发child component中OnInit、DoCheck、OnChanges函数，如果页面有ng-content，相应也会触发ngAfterContentInit和ngAfterContentChecked。
 

@@ -32,7 +32,7 @@ layout: post
 
 我们来看一个例子，有一个组件树结构如下：
 
-![angular-onpush-ngdocheck](https://limeii.github.io/assets/images/posts/angular/angular-ngdocheck-onpush-strategy01.png){:height="70%" width="70%"}
+![angular-onpush-ngdocheck](https://limeii.github.io/assets/images/posts/angular/angular-ngdocheck-onpush-strategy01.png){:height="100%" width="100%"}
 
 这三个组件代码如下：
 
@@ -90,7 +90,7 @@ export class CComponent implements OnChanges, DoCheck {
 
 没有```@Input```绑定、没有DOM事件、没有```Observable```、没有手动触发变化检测，页面运行起来以后，效果如下：
 
-![angular-onpush-ngdocheck](https://limeii.github.io/assets/images/posts/angular/angular-ngdocheck-onpush-strategy02.png){:height="70%" width="70%"}
+![angular-onpush-ngdocheck](https://limeii.github.io/assets/images/posts/angular/angular-ngdocheck-onpush-strategy02.png){:height="100%" width="100%"}
 
 在这种情况下没有```@Input```绑定，所以```ngOnChanges```不会被触发，那为什么组件B和C的```ngDoCheck```分别执行了两遍？
 
@@ -142,7 +142,7 @@ export class BComponent implements OnChanges, DoCheck {
 
 页面运行起来后效果如下：
 
-![angular-onpush-ngdocheck](https://limeii.github.io/assets/images/posts/angular/angular-ngdocheck-onpush-strategy03.png){:height="70%" width="70%"}
+![angular-onpush-ngdocheck](https://limeii.github.io/assets/images/posts/angular/angular-ngdocheck-onpush-strategy03.png){:height="100%" width="100%"}
 
 很奇怪对不对！！本来说好的组件B和C不会执行变化检测，怎么```NgDoCheck```还是触发了？组件B中的```ngDoCheck```执行了两遍！！
 

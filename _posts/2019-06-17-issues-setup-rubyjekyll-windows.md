@@ -8,7 +8,7 @@ layout: post
 
 之前在搭自己的github.io的时候，需要在Win10里把整个Jekyll的环境搭起来，按照官网的步骤（如图所示）：
 
-![rubyJekyll-win10-setup.png]( https://limeii.github.io/assets/images/posts/issues/rubyJekyll-win10-setup.png){:height="70%" width="70%"}
+![rubyJekyll-win10-setup.png]( https://limeii.github.io/assets/images/posts/issues/rubyJekyll-win10-setup.png){:height="100%" width="100%"}
 
 
 ruby装成功以后，按照官网步骤跑命令行：gem install jekyll bundler， 会报如下错误：

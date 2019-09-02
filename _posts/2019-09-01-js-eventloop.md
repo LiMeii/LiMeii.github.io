@@ -5,13 +5,13 @@ layout: post
 ---
 
 在这篇文章中会介绍以下内容：
-- engine runtime 和 call stack简介（以V8引擎为例）
+- engine runtime和call stack简介（以V8引擎为例）
 
 - Event Loop运行机制的详解
 
-- microtasks 和 macrotask的执行顺序
+- microtasks和macrotask的执行顺序
 
-## engine runtime 和 call stack简介
+## engine runtime和call stack简介
 
 在chrome浏览器和nodejs里都是用V8引擎解析和运行JS代码，我们先来看下V8引擎的简化图：
 
@@ -107,7 +107,7 @@ setTimeout
 
 总结来说就是，JS是单线程的，只有一个Call Stack，浏览器是多线程的，并且DOM事件、AJAX(XMLHttpRequest)、setTimeout都是有单独的线程处理。在这些异步事件结束，runtime会把它们的callback按顺序放到Callback Queue里，Event Loop会检测Call Stack，一旦它为空，就会把Callback Queue里的回调函数依次放到Call Stack里执行，直到Callback Queue为空。
 
-## microtasks 和 macrotask的执行顺序
+## microtasks和macrotask的执行顺序
 
 刚才用setTimeout为例，解释了JS中Event Loop机制是怎么运行的，也提到过runtime会把回调函数依次按时间先后顺序放到Callback Queue里，然后Event Loop再依次把这些回调函数放到Call Stack里运行。但实际上异步事件之间并不相同，它们的优先级也有区别。比如说异步事件cb1比cb2先结束，在Callback Queue排序是cb1然后cb2，之后cb1也比cb2先被拿到Call Stack里执行；但是也有些事件回调优先级比较高，虽然cb2按时间顺序应该要排在cb1之后，但是由于cb2优先级要高，在Call Stack为空时，cb2会立马被拿到Call Stack里运行，不仅仅在cb1之前运行，而是在所有Callback Queue里回调事件之前执行。
 

@@ -118,7 +118,7 @@ Callback Queue里的回调事件称为macrotask，每次异步事件结束后，
 microtasks是指异步事件结束后，回调函数不会放到Callback Queue，而是放到一个微任务队列里，在Call Stack为空时，Event Loop会先查看微任务队列里是否有任务，如果有就会先执行微任务队列里的回调事件；如果没有，才会到Callback Queue执行回到事件。比如：```new Promise()```就是microtasks。
 
 
-也就说同时有 seTimeout promise的时候，promise要比setTimeout先执行。我们可以在cosole运行如下代码：
+也就说同时有 seTimeout promise的时候，promise要比setTimeout先执行。我们可以在console运行如下代码：
 
 ```js
 console.log('script start');

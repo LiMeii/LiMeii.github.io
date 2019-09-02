@@ -107,7 +107,7 @@ export class DeepUnderstandingComponent implements OnInit {
 <!-- deep-understanding-aot.component.html -->
 <div class="margin-large">
     <h1>{{title}}</h1>
-    <h2>here is current time: {{ time | date: 'hh:mm:ss a' }}</h2>
+    <h2>here is current time:  { {  time | date: 'hh:mm:ss a'  } } </h2>
 </div>
 ```
 
@@ -282,9 +282,9 @@ export { DeepUnderstandingComponentNgFactory as DeepUnderstandingComponentNgFact
 ```
 
 我们可以看到在ngfactory文件里有:
-- ```View_{COMPONENT}{COUNTER}```(View_DeepUnderstandingComponent_0) 是：the internal component，负责(根据template)渲染出组件的视图，和进行变化检测。
+- ```View_{COMPONENT}{COUNTER}```(View_DeepUnderstandingComponent_0) 是：the internal component，负责(根据template)渲染出组件的视图和进行变化检测。
 
-- ```View_{COMPONENT}_Host{COUNTER}```(View_DeepUnderstandingComponent_Host_0) 是：the internal host component，负责渲染出宿主元素 < app-deepunderstand-compiler > < / app-deepunderstand-compiler > ，并且使用"the internal component"管理组件的内部视图，也是通过这个构建整个组件树。
+- ```View_{COMPONENT}_Host{COUNTER}```(View_DeepUnderstandingComponent_Host_0) 是：the internal host component，负责渲染出宿主元素 < app-compiler > < / app-compiler > ，并且使用"the internal component"管理组件的内部视图，也是通过这个构建整个组件树。
 
 
 在View_DeepUnderstandingComponent_0的视图创建和变化检测代码如下：

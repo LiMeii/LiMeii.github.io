@@ -107,19 +107,120 @@
 - 函数的运行
 - this
 - 作用域链
-- 闭包
-- 词法作用域和动态作用域
-- 执行上下文栈
-- 变量对象
-- 作用域链
-- 从ECMAScript规范解读this
+
+- 内置类型
+- Typeof
+- 类型转换
+  - 转Boolean
+  - 对象转基本类型
+  - 四则预算符
+  - == 操作符
+  - 比较运算符
+
+- 原型
+- new
+- instanceof
+- this
+- 执行上下文
 - 闭包
 - 深浅拷贝
+- 模块化
+  - CommonJS
+  - AMD
+- 防抖
+- 节流
+- 继承
+- call applay bind区别
+  - 模拟实现call和apply
+- promise实现
+- Generator实现
+- Map FlatMap和Reduce
+- async和await
+- proxy
+- 为什么 0.1+0.2！==0.3
+- 正则表达式
+  - 元字符
+  - 修饰语
+  - 字符简写
+- V8下的垃圾回收机制
+
 
 # ES6
 -  let 和 const
 
 # nodejs
+
+# Http
+
+# 算法
+
+
+# 浏览器
+- 事件机制
+  - 事件触发三阶段
+  - 注册事件
+  - 事件代理
+
+- 跨域
+  - JSONP
+  - CORS
+  - document.domain
+  - postMessage
+
+- Event Loop
+  - Node 中的Event Loop
+  - timer
+  - I/O
+  - idle prepare
+  - poll
+  - check
+  - close callbacks
+
+- 存储
+  - cookie localStorage
+  - sessionStorage indexDB
+  - Service Worker
+
+- 渲染机制
+  - load和DOMContentLoaded 区别
+  - 图层
+  - 重绘（repaint）和回流（reflow）
+  - 减少重绘和回流
+
+
+# 性能
+- 网络相关
+  - DNS预解析
+  - 缓存
+  - 强缓存
+  - 协商缓存
+  - 选择合适的缓存策略
+  - 使用HTTP/2.0
+  - 预加载
+  - 预渲染
+- 优化渲染过程
+  - 懒执行
+  - 懒加载
+- 文件优化
+  - 图片优化
+  - 计算图片大小
+  - 图片加载优化
+  - 其他文件优化
+  - CDN
+- 其他
+  - 使用webpack优化项目
+  - 监控
+
+# 安全
+- XSS
+  - 如何攻击
+  - 如何防御
+  - CSP
+- CSRF
+  - 如何攻击
+  - 如何防御
+- 密码安全
+  -加盐
 
 # react/vue
 

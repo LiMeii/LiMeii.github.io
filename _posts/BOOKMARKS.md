@@ -21,11 +21,12 @@
 - https://www.zhangxinxu.com/wordpress/2019/01/
 
 # JS
+- https://juejin.im/user/5757d748207703006fd9deb2/posts
+- https://github.com/getify/You-Dont-Know-JS#you-dont-know-js-book-series
 - https://blog.sessionstack.com/tagged/tutorial
 - http://dmitrysoshnikov.com/ecmascript/javascript-the-core-2nd-edition/
 - http://dr-axel.de/
 - http://speakingjs.com/es5/index.html
-- https://github.com/getify/You-Dont-Know-JS#you-dont-know-js-book-series
 - https://github.com/MostlyAdequate/mostly-adequate-guide
 - https://mrale.ph/blog/2012/06/03/explaining-js-vms-in-js-inline-caches.html
 - https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/

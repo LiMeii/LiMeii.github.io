@@ -109,28 +109,19 @@ setTimeout
 
 ## microtasks和macrotask的执行顺序
 
-刚才用setTimeout为例，解释了JS中Event Loop机制是怎么运行的，也提到过runtime会把回调函数依次按时间先后顺序放到Callback Queue里，然后Event Loop再依次把这些回调函数放到Call Stack里运行。但实际上异步事件之间并不相同，它们的优先级也有区别。比如说异步事件cb1比cb2先结束，在Callback Queue排序是cb1然后cb2，之后cb1也比cb2先被拿到Call Stack里执行；但是也有些事件回调优先级比较高，虽然cb2按时间顺序应该要排在cb1之后，但是由于cb2优先级要高，在Call Stack为空时，cb2会立马被拿到Call Stack里运行，不仅仅在cb1之前运行，而是在所有Callback Queue里回调事件之前执行。
-
-
-Callback Queue里的回调事件称为macrotask，每次异步事件结束后，它们的回调函数会依次按时间顺序放在Callback Queue里，等待Event Loop依次把它们放到Call Stack里执行。比如：```setInterval()``` ```setTimeout()```就是macrotask。
-
-
-microtasks是指异步事件结束后，回调函数不会放到Callback Queue，而是放到一个微任务队列里，在Call Stack为空时，Event Loop会先查看微任务队列里是否有任务，如果有就会先执行微任务队列里的回调事件；如果没有，才会到Callback Queue执行回到事件。比如：```new Promise()```就是microtasks。
-
-
-也就说同时有 seTimeout promise的时候，promise要比setTimeout先执行。我们可以在console运行如下代码：
+刚才用setTimeout为例，解释了JS中Event Loop机制是怎么运行的，也提到过runtime会把回调函数依次按时间先后顺序放到Callback Queue里，然后Event Loop再依次把这些回调函数放到Call Stack里运行。我们在浏览器Console运行以下代码，看下结果：
 
 ```js
 console.log('script start');
 
-setTimeout(function() {
-  console.log('setTimeout');
+setTimeout(function () {
+    console.log('setTimeout');
 }, 0);
 
-Promise.resolve().then(function() {
-  console.log('promise1');
-}).then(function() {
-  console.log('promise2');
+Promise.resolve().then(function () {
+    console.log('promise1');
+}).then(function () {
+    console.log('promise2');
 });
 
 console.log('script end');
@@ -144,22 +135,53 @@ promise1
 promise2
 setTimeout
 ```
+<blockquote>
+<p>
+上述代码虽然setTimeout延时为0，其实还是异步的。因为H5标准规定setTimeout函数的第二个参数不能小于4毫秒，不足会自动增加。
+</p>
+</blockquote>
 
-如果我们在Promise里多加一个setTimeout，代码如下：
+setTimeout和promise都是异步事件，而且setTimeout写在promise之前，为什么setTimeout的回调要比promise后执行呢？那是因为promise属于微任务（microtasks）而setTimeout属于宏任务（macrotask），微任务（microtasks）的优先级要高于宏任务（macrotask）。
+
+
+整个Event Lopp的执行顺序如下：
+- 1：执行同步代码，这属于宏任务
+- 2：执行栈（Call Stack）为空，查询是否有微任务需要执行
+- 3：执行所有的微任务
+- 4：必要的话渲染UI
+- 5： 然后开始下一轮Event Loop，执行宏任务中的异步回调代码
+
+
+Callback Queue里的回调事件称为macrotask，每次异步事件结束后，它们的回调函数会依次按时间顺序放在Callback Queue里，等待Event Loop依次把它们放到Call Stack里执行。比如：```setInterval``` ```setTimeout``` ```script``` ```setImmediate``` ```I/O``` ```UI rendering```就是macrotask。
+
+
+microtasks是指异步事件结束后，回调函数不会放到Callback Queue，而是放到一个微任务队列里，在Call Stack为空时，Event Loop会先查看微任务队列里是否有任务，如果有就会先执行微任务队列里的回调事件；如果没有微任务，才会到Callback Queue执行回到事件。比如：```promise``` ```process.netTick``` ```Object.observe``` ```MutationObserver```就是microtasks。
+
+<blockquote>
+<p>
+在 ES6 规范中，microtask 称为 jobs，macrotask 称为 task。
+</p>
+</blockquote>
+
+
+我们再把代码改一下，在创建promise的时候，加一行```console.log('Promise')```，而且在第一个promise resolve的时候再加一个setTimeout，代码如下：
 ```js
 console.log('script start');
 
-setTimeout(function() {
-  console.log('setTimeout');
+setTimeout(function () {
+    console.log('setTimeout');
 }, 0);
 
-Promise.resolve().then(function() {
-  setTimeout(function() {
-  console.log('setTimeout in promise1');
-    }, 0);  
-  console.log('promise1');
-}).then(function() {
-  console.log('promise2');
+new Promise(resolve => {
+    console.log('Promise');
+    resolve();
+}).then(function () {
+    setTimeout(function () {
+        console.log('setTimeout in promise1');
+    }, 0);
+    console.log('promise1');
+}).then(function () {
+    console.log('promise2');
 });
 
 console.log('script end');
@@ -168,12 +190,14 @@ console.log('script end');
 
 ```
 script start
+Promise
 script end
 promise1
 promise2
 setTimeout
 setTimeout in promise1
 ```
-也就是在microtasks里有macrotask，macrotask还是会依次被放到Callback Queue等待执行。
+
+```console.log('Promise')```在这里是微任务，```console.log('script end')```是宏任务，所以```Promise```在```script end```前面，而且在微任务（microtasks）里有宏任务（macrotask），macrotask还是会依次被放到Callback Queue等待执行。
 
 

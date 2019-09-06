@@ -144,7 +144,7 @@ setTimeout
 setTimeout和promise都是异步事件，而且setTimeout写在promise之前，为什么setTimeout的回调要比promise后执行呢？那是因为promise属于微任务（microtasks）而setTimeout属于宏任务（macrotask），微任务（microtasks）的优先级要高于宏任务（macrotask）。
 
 
-整个Event Lopp的执行顺序如下：
+整个Event Loop的执行顺序如下：
 - 1：执行同步代码，这属于宏任务
 - 2：执行栈（Call Stack）为空，查询是否有微任务需要执行
 - 3：执行所有的微任务

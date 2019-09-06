@@ -1,5 +1,5 @@
 ---
-title: JS：深入理解Lexical Environment
+title: JS：深入理解JavaScript(Lexical Environment)
 tags: JS
 layout: post
 ---

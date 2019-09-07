@@ -51,58 +51,58 @@ setTimeout
 
 1，代码没有运行之前，```Call Stack``` ```Callback Queue```都是空的 
 
-![js-eventloop](/assets/images/posts/js/js-eventloop03.png){:height="80%" width="80%"}
+![js-eventloop](/assets/images/posts/js/js-eventloop03.png){:height="50%" width="50%"}
 
 
 2，把```console.log('script start')```加到Call Stack
 
-![js-eventloop](/assets/images/posts/js/js-eventloop04.png){:height="80%" width="80%"}
+![js-eventloop](/assets/images/posts/js/js-eventloop04.png){:height="50%" width="50%"}
 
 3，执行```console.log('script start')```，在console里打印出```script start```，执行结束后把它移出Call Stack
 
-![js-eventloop](/assets/images/posts/js/js-eventloop05.png){:height="80%" width="80%"}
+![js-eventloop](/assets/images/posts/js/js-eventloop05.png){:height="50%" width="50%"}
 
 4，把setTimeout放到Call Stack
 
-![js-eventloop](/assets/images/posts/js/js-eventloop06.png){:height="80%" width="80%"}
+![js-eventloop](/assets/images/posts/js/js-eventloop06.png){:height="50%" width="50%"}
 
 5, 执行setTimeout，用setTimout线程执行timeout时间，Call Stack中setTimeout执行结束，把它移出Call Stack
 
-![js-eventloop](/assets/images/posts/js/js-eventloop07.png){:height="80%" width="80%"}
+![js-eventloop](/assets/images/posts/js/js-eventloop07.png){:height="50%" width="50%"}
 
 6, 把```console.log('script end')```加到Call Stack
 
-![js-eventloop](/assets/images/posts/js/js-eventloop08.png){:height="80%" width="80%"}
+![js-eventloop](/assets/images/posts/js/js-eventloop08.png){:height="50%" width="50%"}
 
 7，执行```console.log('script end')```，在console里打印出```script end```
 
-![js-eventloop](/assets/images/posts/js/js-eventloop09.png){:height="80%" width="80%"}
+![js-eventloop](/assets/images/posts/js/js-eventloop09.png){:height="50%" width="50%"}
 
 
 8，```console.log('script end')```执行结束，把它移出Call Stack
 
 
-![js-eventloop](/assets/images/posts/js/js-eventloop10.png){:height="80%" width="80%"}
+![js-eventloop](/assets/images/posts/js/js-eventloop10.png){:height="50%" width="50%"}
 
 9，1000毫秒以后，计时结束，把callback```cb1```函数放到Callback Queue里
 
-![js-eventloop](/assets/images/posts/js/js-eventloop11.png){:height="80%" width="80%"}
+![js-eventloop](/assets/images/posts/js/js-eventloop11.png){:height="50%" width="50%"}
 
 10，此时Callback Stack是空的，Event Loop把cb1拿到Callback Stack里
 
-![js-eventloop](/assets/images/posts/js/js-eventloop12.png){:height="80%" width="80%"}
+![js-eventloop](/assets/images/posts/js/js-eventloop12.png){:height="50%" width="50%"}
 
 11，执行cb1，cb1里有```console.log('setTimeout')```，把```console.log('setTimeout')```放到Call Stack里
 
-![js-eventloop](/assets/images/posts/js/js-eventloop13.png){:height="80%" width="80%"}
+![js-eventloop](/assets/images/posts/js/js-eventloop13.png){:height="50%" width="50%"}
 
 12，执行```console.log('setTimeout')```，在console里打印出```setTimeout```，```console.log('setTimeout')```执行结束，把它移出Call Stack
 
-![js-eventloop](/assets/images/posts/js/js-eventloop14.png){:height="80%" width="80%"}
+![js-eventloop](/assets/images/posts/js/js-eventloop14.png){:height="50%" width="50%"}
 
 13，```cb1```执行结束，把它移出Call Stack
 
-![js-eventloop](/assets/images/posts/js/js-eventloop15.png){:height="80%" width="80%"}
+![js-eventloop](/assets/images/posts/js/js-eventloop15.png){:height="50%" width="50%"}
 
 
 总结来说就是，JS是单线程的，只有一个Call Stack，浏览器是多线程的，并且DOM事件、AJAX(XMLHttpRequest)、setTimeout都是有单独的线程处理。在这些异步事件结束，runtime会把它们的callback按顺序放到Callback Queue里，Event Loop会检测Call Stack，一旦它为空，就会把Callback Queue里的回调函数依次放到Call Stack里执行，直到Callback Queue为空。

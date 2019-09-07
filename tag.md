@@ -38,8 +38,8 @@ layout: post
 - [RxJS：如何用RxJS实现高效的HTTP请求](https://limeii.github.io/2019/08/rxjs-searchable-input/)
 
 **JS系列**
-- [JS：详解Event Loop运行机制，以及microtasks和macrotask的执行顺序](https://limeii.github.io/2019/09/js-eventloop/)
-- [JS：深入理解JavaScript-词法环境](https://limeii.github.io/2019/09/js-lexical-environment/)
+- [JS：详解Event Loop运行机制，以及microtasks和macrotask的执行顺序](https://limeii.github.io/2019/05/js-eventloop/)
+- [JS：深入理解JavaScript-词法环境](https://limeii.github.io/2019/05/js-lexical-environment/)
 
 **其他**
 - [在Win10里安装Ruby和Jekyll遇到的问题](https://limeii.github.io/2019/06/issues-setup-rubyjekyll-windows/)

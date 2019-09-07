@@ -101,12 +101,13 @@
 # JS
 - event loop task miscrotask/job [done]
 - 原型到原型链
-- 词法环境(Lexical Environments)
-- 运行上下文(Execution Context)
+- 词法环境(Lexical Environments) [done]
+- 运行上下文(Execution Context) [done]
+- 闭包
 - 函数创建
 - 函数的运行
 - this
-- 作用域链
+- 作用域链 [done]
 
 - 内置类型
 - Typeof

@@ -4,45 +4,8 @@ tags: JS
 layout: post
 ---
 
-在文章【[JS：详解Event Loop运行机制，以及microtasks和macrotask的执行顺序](https://limeii.github.io/2019/05/js-eventloop/)】这篇文章中简单介绍了Call Stack（调用栈），在JS中所有代码都是在调用栈中执行的，遵循后进先出的原则。比如有如下代码：
+在文章【[JS：详解Event Loop运行机制，以及microtasks和macrotask的执行顺序](https://limeii.github.io/2019/05/js-eventloop/)】这篇文章中简单介绍了Call Stack（调用栈），在JS中所有代码都是在调用栈中执行的，遵循后进先出的原则。
 
-```js
-function foo() {
-    console.log("hi, i am foo");
-}
-
-function bar() {
-    foo();
-}
-
-function baz() {
-    bar();
-}
-
-baz();
-```
-调用栈如下：
-
-![js-lexical-environment](/assets/images/posts/js/js-lexical-environment01.png){:height="100%" width="100%"}
-
-调用栈的内存是有限的，比如下面的代码：
-
-```js
-function foo() {
-    foo();
-}
-
-foo();
-```
-调用栈如下：
-![js-lexical-environment](/assets/images/posts/js/js-lexical-environment02.png){:height="100%" width="100%"}
-
-可以看到如果超过调用栈的最大内存，会报内存溢出的错误：
-<blockquote>
-<p>
-<font color="red">Uncaught RangeError: Maximum call stack size exceeded</font>
-</p>
-</blockquote>
 
 再了解Event Loop和调用栈的运行机制之后，仔细想了一下又觉得很疑惑:
 - 只有function可以被压入调用栈执行吗？
@@ -51,7 +14,7 @@ foo();
 - 每个蓝色方块之间可以通信交流吗？如果可以，又是怎么做到的呢？
 - 方法里每行代码到底是怎么执行的呢？
 
-然后google查了下，发现上图执行栈中的每个蓝色方块有个专业名称叫```执行上下文(Execution Context)```，紧接着就是一大串的名词：```Lexical Environment``` ```Execution Context``` ```变量对象``` ```作用域链``` ```原型链``` ```this``` ```闭包```等等。刚开始有点懵，在彻底把这些弄清楚以后，发现简直打开了新世界大门，所有的知识点就像拼图一样，一小块一小块的，突然之间就串起来了。 
+然后google查了下，发现执行栈中的每个蓝色方块有个专业名称叫```执行上下文(Execution Context)```，紧接着就是一大串的名词：```Lexical Environment``` ```Execution Context``` ```变量对象``` ```作用域链``` ```原型链``` ```this``` ```闭包```等等。刚开始有点懵，在彻底把这些弄清楚以后，发现简直打开了新世界大门，所有的知识点就像拼图一样，一小块一小块的，突然之间就串起来了。 
 
 
 这篇文章先来介绍```Lexical Environment```到底是什么。
@@ -203,7 +166,10 @@ functionDec();
 
 ![js-lexical-environment](/assets/images/posts/js/js-lexical-environment04.png){:height="100%" width="100%"}
 
-从上面的例子我们可以看到，变量定义没有赋值，之后变量调用在赋值之前，拿到变量的值为undefined。如果整个变量就没有定义，如下：
+从上面的例子我们可以看到，变量实例化但是没有初始化，那么在执行变量赋值语句之前，拿到变量的值都为undefined，这就是我们说的**暂时性死区**。
+
+
+如果整个变量就没有定义，如下：
 
 ```js
 function functionDec() {

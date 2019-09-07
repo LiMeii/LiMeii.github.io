@@ -40,6 +40,7 @@ layout: post
 **JS系列**
 - [JS：详解Event Loop运行机制，以及microtasks和macrotask的执行顺序](https://limeii.github.io/2019/05/js-eventloop/)
 - [JS：深入理解JavaScript-词法环境](https://limeii.github.io/2019/05/js-lexical-environment/)
+- [JS：深入理解JavaScript-执行上下文](https://limeii.github.io/2019/05/js-execution-context/)
 
 **其他**
 - [在Win10里安装Ruby和Jekyll遇到的问题](https://limeii.github.io/2019/06/issues-setup-rubyjekyll-windows/)

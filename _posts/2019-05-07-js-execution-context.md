@@ -60,6 +60,11 @@ JS引擎是按照可执行代码来执行代码的，每次执行步骤如下：
 
 前面的代码在执行完1-4步以后，整个环境看起来是这样的：
 ![js-execution-context](/assets/images/posts/js/js-execution-context02.png){:height="100%" width="100%"}
+<blockquote>
+<p>
+每个function都会新创建一个词法环境，function的词法环境中的scope，就是词法环境中的outer，作用域链就是沿着outer往上一层的词法环境里找变量/方法。
+</p>
+</blockquote>
 
 执行第五步，会先给变量```a```赋值，然后执行```console.log(a)```:
 ![js-execution-context](/assets/images/posts/js/js-execution-context03.png){:height="100%" width="100%"}
@@ -88,4 +93,4 @@ JS引擎是按照可执行代码来执行代码的，每次执行步骤如下：
 </p>
 </blockquote>
 
-在这篇文章里介绍了执行上下文，它有三部分组成：LexicalEnvironment、VariableEnvironment和ThisBinding，并详细介绍了LexicalEnvironment和VariableEnvironment，在下一篇文章中【[]()】会详细介绍this。
+在这篇文章里介绍了执行上下文，它由三部分组成：LexicalEnvironment、VariableEnvironment和ThisBinding，并详细介绍了LexicalEnvironment和VariableEnvironment，在下一篇文章中【[JS：深入理解JavaScript-this](https://limeii.github.io/2019/05/js-this/)】会详细介绍this。

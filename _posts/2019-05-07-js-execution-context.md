@@ -58,7 +58,7 @@ JS引擎是按照可执行代码来执行代码的，每次执行步骤如下：
 - 5：执行代码
 - 6：执行结束后，把这个执行上下文弹出执行栈
 
-在执行完1-4步以后，整个环境看起来是这样的：
+前面的代码在执行完1-4步以后，整个环境看起来是这样的：
 ![js-execution-context](/assets/images/posts/js/js-execution-context02.png){:height="100%" width="100%"}
 
 执行第五步，会先给变量```a```赋值，然后执行```console.log(a)```:
@@ -74,7 +74,7 @@ JS引擎是按照可执行代码来执行代码的，每次执行步骤如下：
 
 在ES6之前都没有块级作用域，ES6之后我们可以用```let``` ```const```来声明块级作用域，有这两个词法环境是为了实现块级作用域的同时不影响```var```变量声明和函数声明，具体如下：
 
-- 1：首先在一个正在运行的执行上下文内，词法环境由LexicalEnvironment和VariableEnvironment构成，用来灯检机所有的变量声明。
+- 1：首先在一个正在运行的执行上下文内，词法环境由LexicalEnvironment和VariableEnvironment构成，用来登记所有的变量声明。
 - 2：当执行到块级代码时候，会先LexicalEnvironment记录下来，记录为oldEnv。
 - 3：创建一个新的LexicalEnvironment（outer指向oldEnv），记录为newEnv，并将newEnv设置为正在执行上下文的LexicalEnvironment。
 - 4：块级代码内的```let``` ```const```会登记在newEnv里面，但是```var```声明和函数声明还是登记在原来的VariableEnvironment里。

@@ -102,11 +102,9 @@
 - event loop task miscrotask/job [done]
 - 原型到原型链
 - 词法环境(Lexical Environments) [done]
-- 运行上下文(Execution Context) [done]
-- 闭包
-- 函数创建
-- 函数的运行
-- this
+- 运行上下文(Execution Context)、函数创建、函数的运行 [done]
+- 闭包 [done]
+- this [done]
 - 作用域链 [done]
 
 - 内置类型
@@ -121,9 +119,9 @@
 - 原型
 - new
 - instanceof
-- this
-- 执行上下文
-- 闭包
+- this [done]
+- 执行上下文 [done]
+- 闭包 [done]
 - 深浅拷贝
 - 模块化
   - CommonJS

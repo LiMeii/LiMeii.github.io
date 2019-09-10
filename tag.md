@@ -42,6 +42,7 @@ layout: post
 - [JS：深入理解JavaScript-词法环境](https://limeii.github.io/2019/05/js-lexical-environment/)
 - [JS：深入理解JavaScript-执行上下文](https://limeii.github.io/2019/05/js-execution-context/)
 - [JS：深入理解JavaScript-this](https://limeii.github.io/2019/05/js-this/)
+- [JS：深入理解JavaScript-函数](https://limeii.github.io/2019/05/js-function/)
 - [JS：深入理解JavaScript-闭包](https://limeii.github.io/2019/05/js-closures/)
 
 **其他**

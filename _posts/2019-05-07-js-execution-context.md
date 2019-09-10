@@ -93,4 +93,4 @@ JS引擎是按照可执行代码来执行代码的，每次执行步骤如下：
 </p>
 </blockquote>
 
-在这篇文章里介绍了执行上下文，它由三部分组成：LexicalEnvironment、VariableEnvironment和ThisBinding，并详细介绍了LexicalEnvironment和VariableEnvironment，在下一篇文章中【[JS：深入理解JavaScript-this](https://limeii.github.io/2019/05/js-this/)】会详细介绍this。
+在这篇文章里介绍了执行上下文，它由三部分组成：LexicalEnvironment、VariableEnvironment和ThisBinding，并详细介绍了LexicalEnvironment和VariableEnvironment，在文章【[JS：深入理解JavaScript-this](https://limeii.github.io/2019/05/js-this/)】会详细介绍this。

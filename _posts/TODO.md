@@ -100,13 +100,18 @@
 
 # JS
 - event loop task miscrotask/job [done]
-- 原型到原型链 [done]
-- 继承
 - 词法环境(Lexical Environments) [done]
 - 运行上下文(Execution Context)、函数创建、函数的运行 [done]
 - 闭包 [done]
 - this [done]
 - 作用域链 [done]
+- 原型到原型链 [done]
+- 对象创建
+- 继承
+- 模块化
+- promise 
+- generator
+- async await
 
 - 内置类型
 - Typeof

@@ -166,8 +166,6 @@ functionDec();
 
 ![js-lexical-environment](/assets/images/posts/js/js-lexical-environment04.png){:height="100%" width="100%"}
 
-从上面的例子我们可以看到，变量实例化但是没有初始化，那么在执行变量赋值语句之前，拿到变量的值都为undefined，这就是我们说的**暂时性死区**。
-
 
 如果整个变量就没有定义，如下：
 

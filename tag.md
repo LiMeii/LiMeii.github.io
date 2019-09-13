@@ -45,6 +45,7 @@ layout: post
 - [JS：深入理解JavaScript-函数](https://limeii.github.io/2019/05/js-function/)
 - [JS：深入理解JavaScript-闭包](https://limeii.github.io/2019/05/js-closures/)
 - [JS：深入理解JavaScript-原型](https://limeii.github.io/2019/05/js-prototype/)
+- [JS：let和const](https://limeii.github.io/2019/05/js-let-const/)
 
 **其他**
 - [在Win10里安装Ruby和Jekyll遇到的问题](https://limeii.github.io/2019/06/issues-setup-rubyjekyll-windows/)

@@ -128,7 +128,7 @@
 - this [done]
 - 执行上下文 [done]
 - 闭包 [done]
-- 深浅拷贝
+- 深浅拷贝 [done]
 - 模块化
   - CommonJS
   - AMD
@@ -152,7 +152,7 @@
 
 
 # ES6
--  let 和 const
+-  let 和 const [done]
 
 # nodejs
 

@@ -135,8 +135,8 @@
 - 防抖
 - 节流
 - 继承
-- call applay bind区别
-  - 模拟实现call和apply
+- call applay bind区别 [done]
+  - 模拟实现call和apply [done]
 - promise实现
 - Generator实现
 - Map FlatMap和Reduce

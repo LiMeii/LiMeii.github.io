@@ -47,6 +47,7 @@ layout: post
 - [JS：深入理解JavaScript-原型](https://limeii.github.io/2019/05/js-prototype/)
 - [JS：let和const](https://limeii.github.io/2019/05/js-let-const/)
 - [JS：深浅拷贝](https://limeii.github.io/2019/06/js-deepshallowcopy/)
+- [JS：模拟实现call apply和bind方法](https://limeii.github.io/2019/06/js-applycallbind-implemented/)
 
 **其他**
 - [在Win10里安装Ruby和Jekyll遇到的问题](https://limeii.github.io/2019/06/issues-setup-rubyjekyll-windows/)

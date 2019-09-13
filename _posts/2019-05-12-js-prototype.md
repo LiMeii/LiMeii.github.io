@@ -85,9 +85,31 @@ console.log(Foo.prototype.__proto__ );
 
 ![js-prototype](/assets/images/posts/js/js-prototype02.png){:height="80%" width="80%"}
 
+我们经常在写代码时候会直接用```toString()```方法，就是定义在Object.prototype里。```hasOwnProperty```是用来判断一个对象是否包含自定义属性而不是原型链上的属性，它是JavaScript中唯一一个处理属性但是不查找原型链的函数。
+
 构造函数、实例对象、原型和原型的原型的关系图如下：
 ![js-prototype](/assets/images/posts/js/js-prototype03.png){:height="100%" width="100%"}
 
 原型链就是下图中红色这条线：
 ![js-prototype](/assets/images/posts/js/js-prototype04.png){:height="100%" width="100%"}
+
+原型链的用处就是，如果在当前对象里找不到某个属性或者方法，会沿着原型链向上找，一直找到Object.prototype为止，找到第一个匹配的就停止，如果找不到就返回undefined。JavaScript中的原型继承就是基于原型和原型链实现的。比如在f1和f2中访问name属性，就是从它的上一层Foo中拿到的，而age在原型Foo和Object里都没有，就返回undefined：
+
+```js
+
+function Foo() {
+
+}
+
+Foo.prototype.name = "mei";
+
+var f1 = new Foo();
+var f2 = new Foo();
+
+console.log(f1.name); //mei
+console.log(f2.name); //mei
+console.log(f1.age);//undefined
+
+```
+
 

@@ -1,3 +1,6 @@
+# Algorithm
+- https://leetcode.com/
+
 # Angular
 - https://indepth.dev/
 - https://blog.thoughtram.io/

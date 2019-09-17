@@ -74,3 +74,19 @@ function unique(array) {
 var arr = [1, 2, 1, '1', '1'];
 console.log(unique(arr));//[1,2,'1']
 ```
+
+## 数组去除指定的值
+数组元素都是数字，去除指定的数字，这个算法里不能创建新的数组。比如数组为[2,2,3,3]，指定的数字为2，需要返回的数组为[3,3]。
+
+```js
+function removeElement(nums, val) {
+    for (var i = nums.length - 1; i >= 0; i--) {
+        if (nums[i] === val) {
+            nums.splice(i, 1);
+        }
+    }
+    return nums;
+}
+
+removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2);//[0, 1, 3, 0, 4]
+```

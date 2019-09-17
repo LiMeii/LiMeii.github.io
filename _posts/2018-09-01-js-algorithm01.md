@@ -90,3 +90,30 @@ function removeElement(nums, val) {
 
 removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2);//[0, 1, 3, 0, 4]
 ```
+
+## string数组匹配
+有一个stirng数组：words和一个string：chars，找出words中所有的string，这些string的每个字符都能在chars中匹配（chars中的每个字符只能匹配一次），计算出words中符合上述条件string的长度之和。
+
+
+比如：words = ["cat","bt","hat","tree"]，chars = "atach"，words中符合条件的string为：cat 和hat，所以长度值和为6
+
+
+ words = ["hello","world","leetcode"]，chars = "welldonehoneyr"，words中符合条件的string为：hello world，所以长度之和为10
+
+```js
+    return words.filter(ele => {
+        let charsArr = Array.from(chars);
+        let wordArr = Array.from(ele);
+        let isMatch = true;
+        wordArr.forEach(item => {
+            if (!isMatch) return;
+            var index = charsArr.indexOf(item);
+            if (index > -1) {
+                charsArr.splice(index, 1);
+            } else {
+                isMatch = false;
+            }
+        });
+        return isMatch;
+    }).join('').length;
+```

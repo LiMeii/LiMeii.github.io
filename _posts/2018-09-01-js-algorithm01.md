@@ -117,3 +117,29 @@ removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2);//[0, 1, 3, 0, 4]
         return isMatch;
     }).join('').length;
 ```
+
+## 找出给定数字在数组中的位置
+有一个升序的数字数组nums，给定一个数字target，找出target数字在数组nums中的索引位置。
+比如：nums = [1,3,5,6]，target = 5， 那么返回的结果为2
+
+
+nums = [1,3,5,6]，target = 2，那么返回结果为1，2在数组中没有找到，所以返回它本应该在的索引位置。
+
+```js
+var searchInsert = function (nums, target) {
+    var _index;
+    var result;
+    _index = nums.findIndex(function (ele) {
+        return ele >= target;
+    });
+    if (_index === -1) {
+        target > nums[nums.length - 1] ? result = nums.length : result = 0;
+    } else {
+        result = _index;
+    }
+    return result;
+};
+searchInsert([1,3,5,6],5)//2
+searchInsert([1,3,5,6],0)//0
+searchInsert([1,3,5,6],7)//4
+```

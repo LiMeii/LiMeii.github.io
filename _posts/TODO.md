@@ -109,12 +109,14 @@
 - 对象创建
 - 继承
 - 模块化
-- promise 
-- generator
-- async await
+- promise [done]
+- generator [done]
+- async await [done]
+- Map Set
 
 - 内置类型
 - Typeof
+- instanceof
 - 类型转换
   - 转Boolean
   - 对象转基本类型
@@ -124,7 +126,6 @@
 
 - 原型 [done]
 - new
-- instanceof
 - this [done]
 - 执行上下文 [done]
 - 闭包 [done]
@@ -137,10 +138,7 @@
 - 继承
 - call applay bind区别 [done]
   - 模拟实现call和apply [done]
-- promise实现
-- Generator实现
 - Map FlatMap和Reduce
-- async和await
 - proxy
 - 为什么 0.1+0.2！==0.3
 - undefined vs null

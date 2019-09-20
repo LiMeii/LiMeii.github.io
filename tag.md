@@ -48,6 +48,7 @@ layout: post
 - [JS：let和const](https://limeii.github.io/2019/05/js-let-const/)
 - [JS：深浅拷贝](https://limeii.github.io/2019/06/js-deepshallowcopy/)
 - [JS：模拟实现call apply和bind方法](https://limeii.github.io/2019/06/js-applycallbind-implemented/)
+- [JS：回调函数 Promise Generator Async异步处理应用](https://limeii.github.io/2019/06/js-generator-async/)
 
 **其他**
 - [在Win10里安装Ruby和Jekyll遇到的问题](https://limeii.github.io/2019/06/issues-setup-rubyjekyll-windows/)

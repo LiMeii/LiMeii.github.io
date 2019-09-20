@@ -68,3 +68,6 @@
 
 # 快捷键
 - http://mykeys.sinaapp.com/index.php
+
+# cookie localstorage
+- https://zhuanlan.zhihu.com/p/22388743

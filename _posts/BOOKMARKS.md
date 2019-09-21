@@ -47,6 +47,7 @@
 # HTTP/2
 - https://http2.github.io/faq/#whats-the-benefit-of-server-push
 - https://medium.com/webpack/webpack-http-2-7083ec3f3ce6#.46idrz8kb
+- https://zhuanlan.zhihu.com/p/55623075
 
 # rollup
 - https://github.com/rollup/rollup

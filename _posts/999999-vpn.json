@@ -19,3 +19,6 @@ ssh -i /Users/limei/workspace/aws/mei.pem ubuntu@ec2-54-199-145-14.ap-northeast-
 
 ## start shadowsocks server
 ssserver -c shadowsocks.config 
+
+## openssl.py
+/usr/lib/python2.7/dist-packages/shadowsocks/crypto/openssl.py

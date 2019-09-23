@@ -1,3 +1,7 @@
+# AWS
+- https://ap-northeast-1.console.aws.amazon.com/ec2/home?region=ap-northeast-1#Instances:sort=instanceType
+- http://celerysoft.github.io/2016-01-15.html
+
 # Algorithm
 - https://leetcode.com/
 

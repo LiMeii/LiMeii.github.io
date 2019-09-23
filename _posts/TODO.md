@@ -100,6 +100,7 @@
 
 # JS
 - event loop task miscrotask/job [done]
+- 浏览器与Node的事件循环(Event Loop)有何区别?
 - 词法环境(Lexical Environments) [done]
 - 运行上下文(Execution Context)、函数创建、函数的运行 [done]
 - 闭包 [done]
@@ -123,6 +124,9 @@
   - 四则预算符
   - == 操作符
   - 比较运算符
+- JavaScript的数据类型及其检测
+- JavaScript数据类型转换
+- JavaScript常见的六种继承方式
 
 - 原型 [done]
 - new
@@ -181,8 +185,8 @@
   - close callbacks
 
 - 存储
-  - cookie localStorage
-  - sessionStorage indexDB
+  - cookie localStorage [done]
+  - sessionStorage indexDB [done]
   - Service Worker
 
 - 渲染机制
@@ -191,6 +195,11 @@
   - 重绘（repaint）和回流（reflow）
   - 减少重绘和回流
 
+- 深入理解浏览器的缓存机制
+- 从URL输入到页面展现到底发生什么？
+- 九种跨域方式实现原理（完整版）
+- 深入理解HTTPS工作原理
+- Ajax原理
 
 # 性能
 - 网络相关

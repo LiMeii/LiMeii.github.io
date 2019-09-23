@@ -1,0 +1,21 @@
+## shadowsocks.config:
+
+{
+    "server": "0.0.0.0",
+    "server_port": 8388,
+    "local_address": "127.0.0.1",
+    "local_port": 1080,
+    "password": "free.mei",
+    "timeout": 300,
+    "method": "aes-256-cfb",
+    "fast_open": false,
+    "works": 1
+}
+
+## stop 实例，在开启实例，拿到新的公有IP，把下面的连接的IP改一下
+
+## connect to aws command
+ssh -i /Users/limei/workspace/aws/mei.pem ubuntu@ec2-54-199-145-14.ap-northeast-1.compute.amazonaws.com
+
+## start shadowsocks server
+ssserver -c shadowsocks.config 

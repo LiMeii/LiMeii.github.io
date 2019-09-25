@@ -51,7 +51,8 @@
 # HTTP/2
 - https://http2.github.io/faq/#whats-the-benefit-of-server-push
 - https://medium.com/webpack/webpack-http-2-7083ec3f3ce6#.46idrz8kb
-- https://zhuanlan.zhihu.com/p/55623075
+- https://zhuanlan.zhihu.com/p/556230750
+- https://developers.google.com/web/tools/chrome-devtools/network/reference#timing-explanation
 
 # rollup
 - https://github.com/rollup/rollup
@@ -77,5 +78,9 @@
 # cookie localstorage
 - https://zhuanlan.zhihu.com/p/22388743
 
+# service worker
+- https://developers.google.com/web/fundamentals/primers/service-workers
+
 # blogs
 - https://github.com/ljianshu/Blog
+- https://github.com/amandakelake/blog/issues/43

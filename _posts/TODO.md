@@ -199,6 +199,7 @@
 - 从URL输入到页面展现到底发生什么？
 - 九种跨域方式实现原理（完整版）
 - 深入理解HTTPS工作原理
+  - why chrome will cancel https, when multiple http request send out at the same time.
 - Ajax原理
 
 # 性能

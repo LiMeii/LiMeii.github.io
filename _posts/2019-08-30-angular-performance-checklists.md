@@ -69,5 +69,9 @@ Angular中通过HttpClient执行Http Request返回的Observables是Cold Observab
 对于一些不经常改的静态资源，可以缓存在浏览器端，合理的缓存策略可以减少延迟，在重复利用缓存的资源文件同时，可以减少带宽和降低网络负荷，从而大大提高了性能。缓存机制可以参考文章：
 - 【[浏览器缓存机制：强缓存和协商缓存](https://limeii.github.io/2018/11/web-cache/)】
 
+### 合理的利用浏览器数据存储
+对于一些常用的数据，可以存在浏览器里，这样可以减少延迟和带宽，从而可以提高性能，浏览器数据存储方式有：Cookies、SessionStorage、LocalStorage、IndexedDB。对于这些存储方式的用法和区别可以参考文章：
+- 【[浏览器数据存储方式](https://limeii.github.io/2018/11/web-storage/)】
+
 
 **未完待续**

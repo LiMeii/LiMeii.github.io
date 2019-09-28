@@ -54,6 +54,12 @@
 - https://zhuanlan.zhihu.com/p/556230750
 - https://developers.google.com/web/tools/chrome-devtools/network/reference#timing-explanation
 
+## how https works
+- https://strongarm.io/blog/how-https-works/
+- https://github.com/ljianshu/Blog/issues/50
+- https://tiptopsecurity.com/how-does-https-work-rsa-encryption-explained/
+- https://stackoverflow.com/questions/6241991/how-exactly-https-ssl-works
+
 # rollup
 - https://github.com/rollup/rollup
 
@@ -88,3 +94,6 @@
 # Tools
 - UI切图、标注工具
     - https://github.com/jawil/blog/issues/11
+
+- vscode 插件
+    - https://blog.fundebug.com/2018/11/20/10-must-have-vs-code-extensions-for-javascript-developers/

@@ -119,7 +119,7 @@
 - 内置类型
 - Typeof
 - instanceof
-- 类型转换
+- 类型转换 https://github.com/jawil/blog/issues/1
   - 转Boolean
   - 对象转基本类型
   - 四则预算符
@@ -160,11 +160,12 @@
 # nodejs
 
 # Http
-
+-三次握手四次挥手： https://github.com/jawil/blog/issues/14
 # 算法
 
 
 # 浏览器
+- 工作原理： https://juejin.im/post/5a6547d0f265da3e283a1df7
 - 事件机制
   - 事件触发三阶段
   - 注册事件
@@ -273,6 +274,7 @@
 - 二分查找的时间复杂度怎么求，是多少
 - XSS是什么，攻击原理，怎么预防。
 - 白板写代码，用最简洁的代码实现数组去重。
+- https://mp.weixin.qq.com/s/OUeoshYYui9EsB8SC3D6MA
 # react/vue
 
 # 微信小程序开发

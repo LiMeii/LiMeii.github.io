@@ -84,3 +84,7 @@
 # blogs
 - https://github.com/ljianshu/Blog
 - https://github.com/amandakelake/blog/issues/43
+
+# Tools
+- UI切图、标注工具
+    - https://github.com/jawil/blog/issues/11

@@ -50,6 +50,11 @@ layout: post
 - [JS：模拟实现call apply和bind方法](https://limeii.github.io/2019/06/js-applycallbind-implemented/)
 - [JS：回调函数 Promise Generator Async异步处理应用](https://limeii.github.io/2019/06/js-generator-async/)
 
+**WEB系列**
+- [浏览器数据存储方式](https://limeii.github.io/2018/11/web-storage/)
+- [浏览器缓存机制：强缓存和协商缓存](https://limeii.github.io/2018/11/web-cache/)
+- [深入理解HTTPS](https://limeii.github.io/2018/11/deep-understanding-https/)
+
 **其他**
 - [在Win10里安装Ruby和Jekyll遇到的问题](https://limeii.github.io/2019/06/issues-setup-rubyjekyll-windows/)
 - [常用的一些命令行](https://limeii.github.io/2019/03/tools-commoncmd/)

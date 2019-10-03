@@ -160,7 +160,9 @@
 # nodejs
 
 # Http
--三次握手四次挥手： https://github.com/jawil/blog/issues/14
+- 三次握手四次挥手： https://github.com/jawil/blog/issues/14
+- HTTPS工作原理 [done]
+
 # 算法
 
 

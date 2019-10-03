@@ -167,6 +167,8 @@
 
 
 # 浏览器
+- DNS 解析
+- 
 - 工作原理： https://juejin.im/post/5a6547d0f265da3e283a1df7
 - 事件机制
   - 事件触发三阶段

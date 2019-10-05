@@ -168,7 +168,7 @@
 
 # 浏览器
 - DNS 解析
-- 
+- 浏览器路由原理（history）
 - 工作原理： https://juejin.im/post/5a6547d0f265da3e283a1df7
 - 事件机制
   - 事件触发三阶段
@@ -204,8 +204,8 @@
 - 深入理解浏览器的缓存机制 [done]
 - 从URL输入到页面展现到底发生什么？
 - 九种跨域方式实现原理（完整版）
-- 深入理解HTTPS工作原理
-  - why chrome will cancel https, when multiple http request send out at the same time.
+- 深入理解HTTPS工作原理 [done]
+- why chrome will cancel https, when multiple http request send out at the same time.
 - Ajax原理
 
 # 性能

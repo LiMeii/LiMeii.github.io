@@ -38,6 +38,7 @@ layout: post
 - [RxJS：如何用RxJS实现高效的HTTP请求](https://limeii.github.io/2019/08/rxjs-searchable-input/)
 
 **JS系列**
+- [JS：核心基础知识点](/2019/04/js-common)
 - [JS：详解Event Loop运行机制，以及microtasks和macrotask的执行顺序](https://limeii.github.io/2019/05/js-eventloop/)
 - [JS：深入理解JavaScript-词法环境](https://limeii.github.io/2019/05/js-lexical-environment/)
 - [JS：深入理解JavaScript-执行上下文](https://limeii.github.io/2019/05/js-execution-context/)

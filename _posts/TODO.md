@@ -128,6 +128,7 @@
 - JavaScript的数据类型及其检测
 - JavaScript数据类型转换
 - JavaScript常见的六种继承方式
+- 如何判断相等性： https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Equality_comparisons_and_sameness
 
 - 原型 [done]
 - new

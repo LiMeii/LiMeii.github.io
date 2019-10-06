@@ -93,7 +93,7 @@ console.log(Foo.prototype.__proto__ );
 原型链就是下图中红色这条线：
 ![js-prototype](/assets/images/posts/js/js-prototype04.png){:height="100%" width="100%"}
 
-原型链的用处就是，如果在当前对象里找不到某个属性或者方法，会沿着原型链向上找，一直找到Object.prototype为止，找到第一个匹配的就停止，如果找不到就返回undefined。JavaScript中的原型继承就是基于原型和原型链实现的。比如在f1和f2中访问name属性，就是从它的上一层Foo中拿到的，而age在原型Foo和Object里都没有，就返回undefined：
+原型链的用处就是，如果在当前对象里找不到某个属性或者方法，会沿着原型链向上找，一直找到Object.prototype为止，找到第一个匹配的就停止，如果找不到就返回undefined。JavaScript中的原型继承就是基于原型和原型链实现的。比如在f1和f2中访问name属性，就是从它的上一层Foo.prototype中拿到的，而age在原型Foo.prototype和Object里都没有，就返回undefined：
 
 ```js
 

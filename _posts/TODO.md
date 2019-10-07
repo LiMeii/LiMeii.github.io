@@ -107,8 +107,8 @@
 - this [done]
 - 作用域链 [done]
 - 原型到原型链 [done]
-- 对象创建
-- 继承
+- 对象创建 [done]
+- 继承: 6种继承方式和优缺点，ES6中的class是怎么实现继承的。https://github.com/ljianshu/Blog/issues/20
 - 说一下原型链，对象，构造函数之间的一些联系 https://github.com/jawil/blog/issues/13
 - 模块化
 - promise [done]
@@ -127,7 +127,6 @@
   - 比较运算符
 - JavaScript的数据类型及其检测
 - JavaScript数据类型转换
-- JavaScript常见的六种继承方式
 - 如何判断相等性： https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Equality_comparisons_and_sameness
 
 - 原型 [done]

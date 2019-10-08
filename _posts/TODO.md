@@ -130,7 +130,7 @@
 - 如何判断相等性： https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Equality_comparisons_and_sameness
 
 - 原型 [done]
-- new
+- new [done]
 - this [done]
 - 执行上下文 [done]
 - 闭包 [done]

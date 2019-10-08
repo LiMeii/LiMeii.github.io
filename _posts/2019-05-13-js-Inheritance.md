@@ -42,7 +42,7 @@ console.log(cat1, cat2);
 ```
 ![js-inheritance](/assets/images/posts/js/js-inheritance01.png){:height="100%" width="100%"}
 
-这种方式把子类的原型指向了**父类的实例**，所以**子类的示例可以通过原型链访问到父类的实例```new Animial()```，然后通过原型链向上可以访问到```Animal.prototype``**，就可以实现子类实例可以继承和访问父类的属性和方法。
+这种方式把子类的原型指向了**父类的实例**，所以**子类的示例可以通过原型链访问到父类的实例```new Animial()```，然后通过原型链向上可以访问到```Animal.prototype```**，就可以实现子类实例可以继承和访问父类的属性和方法。
 
 
 这种方式的原型链如下：

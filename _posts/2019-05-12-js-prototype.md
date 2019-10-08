@@ -4,6 +4,12 @@ tags: JS
 layout: post
 ---
 
+在这篇文章里会介绍如下内容：
+- 什么是原型和原型链
+- ```prototype``` 和```__proto__```有什么区别
+- ```new``` 和```Object.create()```创建对象和实现继承的时候有什么区别。
+
+## 原型
 
 在JS中每个函数都有一个prototype属性，它实际指向的是一个prototype对象，比如有一个函数Foo，我们来看下Foo.prototype这个对象里到底有什么：
 
@@ -111,12 +117,151 @@ console.log(f2.name); //mei
 console.log(f1.age);//undefined
 
 ```
-## 总结
+### prototype总结
 - 所有对象都有一个 ```__proto__ ```指向一个对象，也就是原型
 - 每个对象的原型都可以通过```constructor```找到构造函数，构造函数也可以通过```prototyoe```找到原型
 - 所有函数都可以通过```__proto__ ```找到```Function```对象
 - 所有对象都可以通过```__proto__ ```找到```Object```对象
 - 对象之间通过```__proto__ ```连接起来，就是原型链。当前对象不存在的属性，通过原型链层层往上找，直到最上层```Object```对象
 
-关于```prototype```和```__prototype__```的区别，可以参考文章【[JS：核心基础知识点](/2019/04/js-common)】
+## ```prototype``` vs ```__proto__```
 
+- ```prototype```是```function```特有的，而且只有```class```（类）有prototype属性，函数实例没有prototype只有__proto__；
+
+- ```__proto__ ```实际就相当于方法Object.getPrototypeOf(), 是用于实例的。
+
+示例代码如下：
+```js
+function Foo() {
+    console.log("hi");
+}
+
+obj = {
+    a: 1
+}
+Foo.prototype.name = "mei";
+f1 = new Foo();
+console.log(Foo.prototype); //{name: "mei", constructor: ƒ Foo(), __proto__:Object}
+console.log(f1.__proto__); //{name: "mei", constructor: ƒ Foo(), __proto__:Object}
+console.log(f1.prototype); // undefined
+
+console.log(obj.prototype); //undefined
+console.log(obj.__proto__); // Object
+```
+
+两者之间关系图如下：
+![js-common](/assets/images/posts/js/js-common01.png){:height="80%" width="80%"}
+
+## ```new``` vs ```Object.create()```
+
+在JS中，继承是通过prototype实现的，JS中创建对象有两种方式```new``` 和 ```Object.create()```，我们来看看两者的区别，以及是如果通过prototype实现继承的。
+
+
+两者都是为了用来创建对象实现继承，需要注意的是```new function ()``` ```new Array()``` ```new Boolean()``` ```new Object()``` ```new Number()``` ```new String（）``` 都是可以的，但是```new {a:1}```是非法的，需要用```Object.create({a:1})``` 。
+
+两者最大的区别在于，```Object.create(proto[, propertiesObject])```可以用第一个参数指定新创建对象的原型，它的第二个参数是新对象的可枚举属性（可以省略，但不能为null）。
+
+
+先来看下用```new```创建对象:
+
+```js
+function Foo() {
+    console.log("hi");
+}
+
+Foo.prototype.name = "mei";
+
+f1 = new Foo();
+f2 = new Foo();
+
+console.log(f1.__proto__); //{name: "mei", constructor: ƒ Foo(), __proto__:Object}
+console.log(f2.__proto__); //{name: "mei", constructor: ƒ Foo(), __proto__:Object}
+
+console.log(f1.__proto__ === f2.__proto__); //true
+console.log(f1.__proto__ === Foo.prototype); //true
+
+console.log(Foo.prototype.__proto__); // Object.prototype
+console.log(Foo.prototype.__proto__.__proto__);//null
+
+console.log(f1==f2);//false
+```
+
+关系图如下：
+![js-common](/assets/images/posts/js/js-common02.png){:height="100%" width="100%"}
+
+**通过上图可以看出，f1和f2通过图中红色的原型链，可以继承```Foo.prototype```和```Object.prototype```的属性和方法，需要注意的是f1和f2是两个空的函数。如果在通过f1改变```Foo.prototype```的引用值，那么同时也会影响f2的这个引用值；如果通过f1改变```Foo.prototype```的原始值，不会影响f2的原始值**
+
+示例代码如下：
+
+```js
+function Foo() {
+    console.log("hi");
+}
+
+Foo.prototype.name = "mei";
+Foo.prototype.address = { country: "China", city: "shanghai" };
+
+f1 = new Foo();
+f2 = new Foo();
+
+f1.name = "mei li";
+f1.address.city = "beijing";
+
+console.log(Foo.prototype.name);//mei
+console.log(f1.name);//mei li
+console.log(f2.name);//mei
+
+console.log(Foo.prototype.address.city);//beijing
+console.log(f1.address.city);//beijing
+console.log(f2.address.city);//beijing
+```
+
+再来看下用```Object.create()```创建对象：
+```js
+obj = {
+    name: "mei"
+}
+
+obj1 = Object.create(obj);
+obj2 = Object.create(obj);
+
+console.log(obj.__proto__); // Object.prototype
+console.log(obj1.__proto__); // {name: "mei",  __proto__:Object}
+console.log(obj2.__proto__); //{name: "mei",  __proto__:Object}
+
+console.log(obj1.__proto__ === obj2.__proto__); // true
+console.log(obj.__proto__ === obj1.__proto__); // false
+
+console.log(obj.__proto__.__proto__); // null
+console.log(obj1==obj2); //false
+```
+
+对于obj1和obj2的原型直接是obj1对象，而不是```obj.__proto__```，关系图如下：
+![js-common](/assets/images/posts/js/js-common03.png){:height="100%" width="100%"}
+
+**通过上图可以看出，obj1和obj2可以通过红色的原型链继承```obj```和```Object.prototype```的属性和方法，需要注意的是obj1和obj2是两个空的对象。如果在通过obj1改变```obj```的引用值，那么同时也会影响obj2的这个引用值；如果通过obj1改变```obj```的原始值，不会影响obj2的原始值。**
+
+示例代码如下：
+```js
+obj = {
+    name: "mei",
+    address: {
+        country: "China",
+        city: "shanghai"
+    }
+}
+
+obj1 = Object.create(obj);
+obj2 = Object.create(obj);
+
+obj1.name = "mei li";
+obj1.address.city = "beijing";
+
+console.log(obj.name);//mei
+console.log(obj1.name);//mei li
+console.log(obj2.name);//mei
+
+console.log(obj.address.city);//beijing
+console.log(obj1.address.city);//beijing
+console.log(obj2.address.city);//beijing
+```

@@ -316,4 +316,3 @@ var cat1 = new Cat("kitty");
 console.log(cat1);
 ```
 
-封装一下：

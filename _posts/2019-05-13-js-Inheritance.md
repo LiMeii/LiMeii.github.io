@@ -42,7 +42,7 @@ console.log(cat1, cat2);
 ```
 ![js-inheritance](/assets/images/posts/js/js-inheritance01.png){:height="100%" width="100%"}
 
-这种方式把子类的原型指向了**父类的实例**，所以**子类的示例可以通过原型链访问到父类的实例```new Animial()```，然后通过原型链向上可以访问到```Animal.prototype```**，就可以实现子类实例可以继承和访问父类的属性和方法。
+这种方式把子类的原型指向了**父类的实例**，所以**子类的实例可以通过原型链访问到父类的实例```new Animial()```，然后通过原型链向上可以访问到```Animal.prototype```**，就可以实现子类实例可以继承和访问父类的属性和方法。
 
 
 这种方式的原型链如下：
@@ -66,7 +66,9 @@ console.log(cat2.breed.color);//white cat2的bredd属性也会跟着变化
 - 简单，易于实现
 
 缺点：
-- 无法实现多继承，cat1.breed.color改变，会同时导致cat2.breed.color变化
+- 无法实现多继承
 - 原型对象的所有属性都被多有实例共享，不管是私有还是公有属性
 - 创建子类实例，无法像父类构造函数传参
-- 想要为子类新增属性和方法，必须要在```Cat.prototype = new Animal()```之后执行，不能放在构造器中
+- 想要为子类原型新增属性和方法，必须要在```Cat.prototype = new Animal()```之后执行，不能放在构造器中
+
+## 2.借用构造函数继承

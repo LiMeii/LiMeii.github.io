@@ -188,7 +188,7 @@ console.log(cat1);
 这种方式的原型链关系和原型继承是一样的：
 ![js-inheritance](/assets/images/posts/js/js-inheritance02.png){:height="100%" width="100%"}
 
-与原型继承不同于：通过在子类构造函数通过call()调用父类的构造函数，可以向父类构造函数传递参数，并且不会共享父类中引用属性的值，如下：
+与原型继承不同在于：通过在子类构造函数通过call()调用父类的构造函数，可以向父类构造函数传递参数，并且不会共享父类中引用属性的值，如下：
 ```js
 var cat1 = new Cat("kitty");
 var cat2 = new Cat("hua");

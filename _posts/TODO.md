@@ -108,8 +108,9 @@
 - 作用域链 [done]
 - 原型到原型链 [done]
 - 对象创建 [done]
-- 继承: 6种继承方式和优缺点，ES6中的class是怎么实现继承的。https://github.com/ljianshu/Blog/issues/20
-- 说一下原型链，对象，构造函数之间的一些联系 https://github.com/jawil/blog/issues/13
+- 继承: 6种继承方式和优缺点，ES6中的class是怎么实现继承的。https://github.com/ljianshu/Blog/issues/20 [done]
+- 说一下原型链，对象，构造函数之间的一些联系 https://github.com/jawil/blog/issues/13 [done]
+- 对象创建的多种方式 https://github.com/mqyqingfeng/Blog/issues/15
 - 模块化
 - promise [done]
 - generator [done]
@@ -160,7 +161,8 @@
 # nodejs
 
 # Http
-- 三次握手四次挥手： https://github.com/jawil/blog/issues/14
+- TCP 三次握手四次挥手： https://github.com/jawil/blog/issues/14 [done]
+- SSL/TLS 四次握手 [done]
 - HTTPS工作原理 [done]
 
 # 算法
@@ -208,6 +210,7 @@
 - 深入理解HTTPS工作原理 [done]
 - why chrome will cancel https, when multiple http request send out at the same time.
 - Ajax原理
+- H5新特性
 
 
 

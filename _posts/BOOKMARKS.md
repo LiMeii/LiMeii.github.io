@@ -2,8 +2,9 @@
 - https://ap-northeast-1.console.aws.amazon.com/ec2/home?region=ap-northeast-1#Instances:sort=instanceType
 - http://celerysoft.github.io/2016-01-15.html
 
-# Algorithm
+# Algorithm and Practice
 - https://leetcode.com/
+- https://www.codewars.com/dashboard
 
 # Angular
 - https://indepth.dev/
@@ -90,6 +91,7 @@
 # blogs
 - https://github.com/ljianshu/Blog
 - https://github.com/amandakelake/blog/issues/43
+- https://segmentfault.com/a/1190000002606145
 
 # Tools
 - UI切图、标注工具

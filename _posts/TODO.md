@@ -286,3 +286,15 @@
 
 # 微信小程序开发
 
+
+# angularjs vs angular2
+- 变化检测不一样：
+   - anuglar2+ 通过ngzone捕获到所有的异步事件，然后触发整个组件树从上到下进行变化检测，可以通过onpush变化策略，减少组件的变化检测；
+   - angularjs的脏检查机制至少要跑两遍保证数据稳定，如果有变量a b，b依赖a的变化 a依赖b，angularjs的变化检测就死循环了，要跑十次变化检测才会停止，angular2+ 使用单向数据流，提高了脏检查机制性能
+   如有方法不再angularjs的脏检查机制fa
+- angularjs中的module其实并不是真正模块的概念，它的controller service才是真正模块，这也是在不同module里用了重名的service后面调用的service会覆盖前一个service而导致问题的原因；angular2+的module就是ES6的模块
+- angular2+ 有内置的编译器ngc
+- angular2+ 有tree-shaking   
+- angularjs 没有自己的路由lib，需要引用第三方的lib，没有实现lazy loading
+- angularjs 通过promise处理http callback； angular2+通过rxjs处理http callback
+

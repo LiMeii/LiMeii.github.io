@@ -24,26 +24,26 @@ layout: post
 
 a 和 c 都引用了b文件代码
 ```js
-    //a.js
-    var b = require('./b.js');
-    console.log('this is a.js file');
-    b.b();
+//a.js
+var b = require('./b.js');
+console.log('this is a.js file');
+b.b();
 ```
 ```js
-    //b.js
-    exports.b = function () {
-        console.log('this is b.js file')
-    };
+//b.js
+exports.b = function () {
+    console.log('this is b.js file')
+};
 ```
 
 ```js
-    //c.js
-    var b = require('./b.js');
-    console.log('this is c.js file');
-    b.b();
+//c.js
+var b = require('./b.js');
+console.log('this is c.js file');
+b.b();
 ```
 
-### 第一种方式，new webpack.optimize.CommonsChunkPlugin({ name: 'commons' })
+**第一种方式，```new webpack.optimize.CommonsChunkPlugin({name: 'commons'})```**
 
 ```js
 //webpack.bundle.js
@@ -65,57 +65,51 @@ module.exports = {
 最后生成三个bundle文件：a.bundle.js、c.bundle.js、commons.bundle.js，具体代码如下：
 
 ```js
-    //a.bundle.js
-    webpackJsonp([1],[
-    /* 0 */,
-    /* 1 */
-    /***/ (function(module, exports, __webpack_require__) {
+//a.bundle.js
+webpackJsonp([1], [
+        /* 0 */,
+        /* 1 */
+        (function (module, exports, __webpack_require__) {
 
-    // this is use to analyse what's in bundle file
+        // this is use to analyse what's in bundle file
 
-    var b = __webpack_require__(0);
+        var b = __webpack_require__(0);
 
-    console.log('this is a.js file');
+        console.log('this is a.js file');
 
-    b.b();
-
-    /***/ })
-    ],[1]);
+        b.b();
+})
+], [1]);
 ```
 ```js
-    //c.bundle.js
-    webpackJsonp([0],{
+//c.bundle.js
+webpackJsonp([2], {
+        /*2*/
+        (function (module, exports, __webpack_require__) {
 
-    /***/ 2:
-    /***/ (function(module, exports, __webpack_require__) {
+            var b = __webpack_require__(0);
 
-    var b = __webpack_require__(0);
+            console.log('this is c.js file');
 
-    console.log('this is c.js file');
+            b.b();
+})
 
-    b.b();
-
-    /***/ })
-
-    },[2]);
+}, [2]);
 ```
 ```js
-    //commons.bundle.js
-    /******/ (function(modules) { // webpackBootstrap
+//commons.bundle.js
+(function (modules) { // webpackBootstrap
     //在这里省略了webpack生成的代码
-    /******/ })
-    /************************************************************************/
-    /******/ ([
+})
+([
     /* 0 */
-    /***/ (function(module, exports) {
-
-    // this is use to analyse what's in bundle file
-    exports.b = function () {
-        console.log('this is b.js file')
-    };
-
-    /***/ })
-    /******/ ]);
+    (function (module, exports) {
+            // this is use to analyse what's in bundle file
+            exports.b = function () {
+                console.log('this is b.js file')
+            };
+        })
+]);
 ```
 
 从上面代码可以看出，common.bundle.js里面包含了b.js的代码并且module id 为0，a.bunlde.js c.bundle.js文件分别通过module id对b文件实现了加载。
@@ -125,55 +119,52 @@ module.exports = {
 CommonsChunkPlugin定义了公用代码需要放到commons.bundle.js文件中，在webpack打包过程中，发现没有commons这个bundle文件，会新创建这个文件，并且把入口文件a.js和c.j这个文件中共用代码（b.js）抽取出来放到commons.bundle.js文件中。a 和 c budnle文件中只保留自己的代码。
 </p>
 </blockquote>
-### 第二种方式，new webpack.optimize.CommonsChunkPlugin({ name: 'c' })
+
+**第二种方式，```new webpack.optimize.CommonsChunkPlugin({ name: 'c' })```**
 
 我们把commons换成c，最后生成两个bundle文件 a.bunlde.js、c.bundle.js
 
 ```js
-    //a.bundle.js
-    webpackJsonp([0],[
-    /* 0 */,
-    /* 1 */
-    /***/ (function(module, exports, __webpack_require__) {
+//a.bundle.js
+webpackJsonp([1], [
+        /* 0 */
+        (function (module, exports, __webpack_require__) {
 
-    // this is use to analyse what's in bundle file
+        // this is use to analyse what's in bundle file
 
-    var b = __webpack_require__(0);
+        var b = __webpack_require__(0);
 
-    console.log('this is a.js file');
+        console.log('this is a.js file');
 
-    b.b();
-
-    /***/ })
-    ],[1]);
+        b.b();
+})
+], [1]);
 ```
 
 ```js
-    //c.bundle.js
-    /******/ (function(modules) { // webpackBootstrap
-    /******/ 	// 这里省略webpack生成的代码
-    /******/ })
-    /************************************************************************/
-    /******/ ([
-    /* 0 */
-    /***/ (function(module, exports) {
-    // this is use to analyse what's in bundle file
-    exports.b = function () {
-        console.log('this is b.js file')
-    };
-    /***/ }),
-    /* 1 */,
-    /* 2 */
-    /***/ (function(module, exports, __webpack_require__) {
+//c.bundle.js
+(function (modules) { // webpackBootstrap
+    // 这里省略webpack生成的代码
+})
+    ([
+        /* 0 */
+        (function (module, exports) {
+            // this is use to analyse what's in bundle file
+            exports.b = function () {
+                console.log('this is b.js file')
+            };
+        }),
+        /* 2 */
+        (function (module, exports, __webpack_require__) {
 
-    var b = __webpack_require__(0);
+            var b = __webpack_require__(0);
 
-    console.log('this is c.js file');
+            console.log('this is c.js file');
 
-    b.b();
+            b.b();
 
-    /***/ })
-    /******/ ]);
+        })
+    ]);
 ```
 从上面的bundle文件代码可以看出，公用代码模块（b.js）被放到 c.bundle 文件中了。
 

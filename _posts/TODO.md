@@ -166,7 +166,7 @@
 # 算法
 
 
-# 浏览器
+# 浏览器 Web
 - DNS 解析
 - 浏览器路由原理（history）
 - 工作原理： https://juejin.im/post/5a6547d0f265da3e283a1df7
@@ -180,6 +180,7 @@
   - CORS
   - document.domain
   - postMessage
+  - nodejs proxy 跨域原理 和 IIS之间为什么不需要要配置跨域
 
 - Event Loop
   - Node 中的Event Loop
@@ -207,6 +208,8 @@
 - 深入理解HTTPS工作原理 [done]
 - why chrome will cancel https, when multiple http request send out at the same time.
 - Ajax原理
+
+
 
 # 性能
 - 网络相关

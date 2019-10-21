@@ -158,6 +158,8 @@
 # ES6
 -  let 和 const [done]
 
+# TypeScript
+
 # nodejs
 
 # Http
@@ -283,12 +285,15 @@
 - XSS是什么，攻击原理，怎么预防。
 - 白板写代码，用最简洁的代码实现数组去重。
 - https://mp.weixin.qq.com/s/OUeoshYYui9EsB8SC3D6MA
-# react/vue
 
-# 微信小程序开发
+## bytedance 算法： https://leetcode-cn.com/explore/interview/card/bytedance
 
+## 介绍项目，你做了什么？为什么要这么做。
 
-# angularjs vs angular2
+## 遇到过什么问题，解决方案是什么，学到了什么
+
+## angular框架类 js基础的知识点
+### angularjs vs angular2
 - 变化检测不一样：
    - anuglar2+ 通过ngzone捕获到所有的异步事件，然后触发整个组件树从上到下进行变化检测，可以通过onpush变化策略，减少组件的变化检测；
    - angularjs的脏检查机制至少要跑两遍保证数据稳定，如果有变量a b，b依赖a的变化 a依赖b，angularjs的变化检测就死循环了，要跑十次变化检测才会停止，angular2+ 使用单向数据流，提高了脏检查机制性能
@@ -298,4 +303,12 @@
 - angular2+ 有tree-shaking   
 - angularjs 没有自己的路由lib，需要引用第三方的lib，没有实现lazy loading
 - angularjs 通过promise处理http callback； angular2+通过rxjs处理http callback
+
+
+
+
+# react/vue
+
+# 微信小程序开发
+
 

@@ -187,7 +187,7 @@
   - 注册事件
   - 事件代理
 
-## 跨域
+# 跨域
   - ```<img src=XXXX> <link href=XXX> <script src=XXX>```去服务器下载，是允许跨域加载资源
   - 九种跨域方式实现原理（完整版）https://github.com/ljianshu/Blog/issues/55
 
@@ -265,59 +265,6 @@
   - 如何防御
 - 密码安全
   -加盐
-
-
-# interview
-- https://github.com/jawil/blog/issues/22
-- 说一下你了解CSS盒模型。
-- 说一下box-sizing的应用场景。
-- 说一下你了解的弹性FLEX布局.
-- 说一下一个未知宽高元素怎么上下左右垂直居中。
-- 说一下原型链，对象，构造函数之间的一些联系。
-- 说一下你项目中用到的技术栈，以及觉得得意和出色的点，以及让你头疼的点，怎么解决的
-- 有没有了解http2.0,websocket,https，说一下你的理解以及你所了解的特性。
-- webpack的入口文件怎么配置，多个入口怎么分割
-- 简历上看见你了解http协议。说一下200和304的理解和区别
-- DOM事件的绑定的几种方式
-- 有没有了解http2.0,websocket,https，说一下你的理解以及你所了解的特性
-- DOM事件中target和currentTarget的区别
-- 说一下你平时怎么解决跨域的。以及后续JSONP的原理和实现以及cors怎么设置。
-- 说一下深拷贝的实现原理。
-- 有没有去研究webpack的一些原理和机制，怎么实现的。
-- babel把ES6转成ES5或者ES3之类的原理是什么，有没有去研究。
-- 什么是函数柯里化？以及说一下JS的API有哪些应用到了函数柯里化的实现？
-- 说一下深拷贝的实现原理。
-- 有没有去研究webpack的一些原理和机制，怎么实现的。
-- ES6的箭头函数this问题，以及拓展运算符
-- JS模块化Commonjs,UMD,CMD规范的了解，以及ES6的模块化跟其他几种的区别，以及出现的意义
-- 怎么获取一个元素到视图顶部的距离。
-- getBoundingClientRect获取的top和offsetTop获取的top区别
-- 事件委托
-- 比如说百度的一个服务不想让阿里使用，如果识别到是阿里的请求，然后跳转到404或者拒绝服务之类的？
-- 二分查找的时间复杂度怎么求，是多少
-- XSS是什么，攻击原理，怎么预防。
-- 白板写代码，用最简洁的代码实现数组去重。
-- https://mp.weixin.qq.com/s/OUeoshYYui9EsB8SC3D6MA
-
-## bytedance 算法： https://leetcode-cn.com/explore/interview/card/bytedance
-
-## 介绍项目，你做了什么？为什么要这么做。
-
-## 遇到过什么问题，解决方案是什么，学到了什么
-
-## angular框架类 js基础的知识点
-### angularjs vs angular2
-- 变化检测不一样：
-   - anuglar2+ 通过ngzone捕获到所有的异步事件，然后触发整个组件树从上到下进行变化检测，可以通过onpush变化策略，减少组件的变化检测；
-   - angularjs的脏检查机制至少要跑两遍保证数据稳定，如果有变量a b，b依赖a的变化 a依赖b，angularjs的变化检测就死循环了，要跑十次变化检测才会停止，angular2+ 使用单向数据流，提高了脏检查机制性能
-   如有方法不再angularjs的脏检查机制fa
-- angularjs中的module其实并不是真正模块的概念，它的controller service才是真正模块，这也是在不同module里用了重名的service后面调用的service会覆盖前一个service而导致问题的原因；angular2+的module就是ES6的模块
-- angular2+ 有内置的编译器ngc
-- angular2+ 有tree-shaking   
-- angularjs 没有自己的路由lib，需要引用第三方的lib，没有实现lazy loading
-- angularjs 通过promise处理http callback； angular2+通过rxjs处理http callback
-
-
 
 
 # react/vue

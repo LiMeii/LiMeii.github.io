@@ -73,7 +73,7 @@
 
 
 # 安全
-- **XSS**
+- **XSS（跨站脚本攻击）**
   - 比如在页面，有一个输入框，用户A输入一段恶意的```<script></script>```，并保存在输入库，用户B访问该页面拿到这段恶意脚本，浏览器会执行该脚本，从而可以窃取用户的cookie等信息，或者让用户重定向到A写的恶意网站，或者下载一些恶意程序，从而进行一些非法操作，比如转账啊
   - 如何攻击
   - 如何防御
@@ -85,9 +85,28 @@
       --- 允许内容来自信任的域名以及子域名：```Content-Security-policy: default-src 'self' *.trusted.com```
     
 
-- **CSRF**
-  - 如何攻击
-  - 如何防御
+- **CSRF（跨站请求伪造）**
+  - **如何攻击**
+    - https://tech.meituan.com/2018/10/11/fe-security-csrf.html
+    - 受害者登入a.com，并保留了登录凭证（cookie）
+    - 攻击者引诱受害者访问了b.com
+    - b.com向a.com发送了一个请求：a.com/act=xx，浏览器会默认携带a.com的cookie
+    - a.com接收到请求后，对请求进行验证，并确认是受害者的凭证，误以为是受害者自己发送的请求
+    - a.com以受害者的名义执行了act=xx
+    - 攻击完成，攻击者在受害者不知情的情况下，冒充受害者，让a.com执行了自己定义的操作
+
+  - **如何防御** 利用CSRF token
+    - 在用户打开页面的时候，服务器端生产一个随机的token，然后通过JS遍历整个DOM数，对DOM中所有的a和form标签加入token。
+    - 页面提交的请求就会携带这个token
+    - 服务器验证token是否正确，会有一个算法，对比token和cookie的值。
+
+    ```html
+    <form action="/transfer.do" method="post">
+        <input type="hidden" name="CSRFToken"
+            value="OWY4NmQwODE4ODRjN2Q2NTlhMmZlYWEwYzU1YWQwMTVhM2JmNGYxYjJiMGI4MjJjZDE1ZDZMGYwMGEwOA==">
+            ...
+    </form> 
+    ```
 
 - **密码安全**
   -加盐

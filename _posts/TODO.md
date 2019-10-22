@@ -161,6 +161,14 @@
 # TypeScript
 
 # nodejs
+- Event Loop
+  - Node 中的Event Loop
+  - timer
+  - I/O
+  - idle prepare
+  - poll
+  - check
+  - close callbacks
 
 # Http
 - TCP 三次握手四次挥手： https://github.com/jawil/blog/issues/14 [done]
@@ -197,19 +205,12 @@
   - **nginx反向代理**，原理和proxy一样的：都是先把request发到中间代理，中间代理设置了cors，中间代理再把request转发给服务器，服务器的response发给中间代理，中间代理再把response发给前端。
 
   - **nodejs proxy** 
-  
+
   - IIS之间为什么不需要要配置跨域：首选跨域只是针对浏览器的同源策略，后端服务器之间是不存在跨域的问题；所有的前端请求都是先发到前端IIS server上，在前端IIS上配置了URL rewrite，会把相应的http请求发到不同的后端IIS服务上，IIS配置如下：
   ![js-prototype](/assets/images/posts/web/crossdomain-IIS.png){:height="100%" width="100%"}
 
 
-- Event Loop
-  - Node 中的Event Loop
-  - timer
-  - I/O
-  - idle prepare
-  - poll
-  - check
-  - close callbacks
+
 
 - 存储
   - cookie localStorage [done]
@@ -238,11 +239,11 @@
   - 选择合适的缓存策略 [done]
   - Service Worker
   - 使用HTTP/2.0 push
-  - 预加载
+  - 预加载 [done]
   - 预渲染
 - 优化渲染过程
   - 懒执行
-  - 懒加载
+  - 懒加载 [done]
 - 文件优化
   - 图片优化
   - 计算图片大小
@@ -266,9 +267,6 @@
   -加盐
 
 
-
-
-
 # interview
 - https://github.com/jawil/blog/issues/22
 - 说一下你了解CSS盒模型。
@@ -278,7 +276,7 @@
 - 说一下原型链，对象，构造函数之间的一些联系。
 - 说一下你项目中用到的技术栈，以及觉得得意和出色的点，以及让你头疼的点，怎么解决的
 - 有没有了解http2.0,websocket,https，说一下你的理解以及你所了解的特性。
-- webpack的入口文件怎么配置，多个入口怎么分割啥的
+- webpack的入口文件怎么配置，多个入口怎么分割
 - 简历上看见你了解http协议。说一下200和304的理解和区别
 - DOM事件的绑定的几种方式
 - 有没有了解http2.0,websocket,https，说一下你的理解以及你所了解的特性

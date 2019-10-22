@@ -180,11 +180,12 @@
   - 事件代理
 
 - 跨域
+  - 九种跨域方式实现原理（完整版）https://github.com/ljianshu/Blog/issues/55
   - JSONP
   - CORS
   - document.domain
   - postMessage
-  - nodejs proxy 跨域原理 和 IIS之间为什么不需要要配置跨域
+  - nodejs proxy 跨域原理 和 IIS之间为什么不需要要配置跨域：首选跨域只是针对浏览器的同源策略，后端服务器之间是不存在跨域的问题。所有的前端请求都是先发到前端IIS server上，在前端IIS上配置了URL rewrite，会把相应的http请求发到不同的后端IIS服务上。
 
 - Event Loop
   - Node 中的Event Loop
@@ -208,7 +209,6 @@
 
 - 深入理解浏览器的缓存机制 [done]
 - 从URL输入到页面展现到底发生什么？
-- 九种跨域方式实现原理（完整版）
 - 深入理解HTTPS工作原理 [done]
 - why chrome will cancel https, when multiple http request send out at the same time.
 - Ajax原理

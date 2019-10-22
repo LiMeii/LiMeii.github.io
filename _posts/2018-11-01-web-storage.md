@@ -4,7 +4,7 @@ tags: web
 layout: post
 ---
 
-前端浏览器数据存储方式有：Cookies、SessionStorage、LocalStorage、IndexedDB，这篇文章主要是比较这几种存储方式的区别。
+前端浏览器数据存储方式有：Cookies、SessionStorage、LocalStorage、IndexedDB，这篇文章主要是比较这几种存储方式的区别，需要注意的是这些存储方式都受同源策略的约束，跨域是不能访问。
 
 ## Cookies
 Cookies的出现并不是为了在浏览器里保存数据，而是为了保存HTTP状态的，因为HTTP协议是没有状态的，也就是服务器不知道用户上一次做了什么，有了Cookies，服务器可以设置或者读取Cookies中的信息，每次HTTP请求都会带上Cookies，从而可以维护用户跟服务器会话的状态。

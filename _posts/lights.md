@@ -4,37 +4,41 @@ interview juejin books
 
 # interview
 - https://github.com/jawil/blog/issues/22
-- 说一下你了解CSS盒模型。
-- 说一下box-sizing的应用场景。
-- 说一下你了解的弹性FLEX布局.
-- 说一下一个未知宽高元素怎么上下左右垂直居中。
+- 说一下你了解CSS盒模型。[TBD]
+- 说一下box-sizing的应用场景。[TBD]
+- 说一下你了解的弹性FLEX布局. [TBD]
+- 说一下一个未知宽高元素怎么上下左右垂直居中。[TBD]
 - 说一下原型链，对象，构造函数之间的一些联系。
-- 说一下你项目中用到的技术栈，以及觉得得意和出色的点，以及让你头疼的点，怎么解决的
-- 有没有了解http2.0,websocket,https，说一下你的理解以及你所了解的特性。
-- webpack的入口文件怎么配置，多个入口怎么分割
+- 说一下你项目中用到的技术栈，以及觉得得意和出色的点，以及让你头疼的点，怎么解决的 [TBD]
+- 有没有了解http2.0,websocket,https，说一下你的理解以及你所了解的特性。[TBD]
+- webpack的入口文件怎么配置，多个入口怎么分割 [TBD]
 - 简历上看见你了解http协议。说一下200和304的理解和区别
-- DOM事件的绑定的几种方式
+- DOM事件的绑定的几种方式 [TBD]
 - 有没有了解http2.0,websocket,https，说一下你的理解以及你所了解的特性
-- DOM事件中target和currentTarget的区别
+  - [强缓存-协商缓存-cookie(httponly/secure)-HttpVSHttps-xss(csp)]
+- DOM事件中target和currentTarget的区别 [TBD]
 - 说一下你平时怎么解决跨域的。以及后续JSONP的原理和实现以及cors怎么设置。
-- 说一下深拷贝的实现原理。
+  -[后面有详细介绍]
+- 说一下深拷贝的实现原理。[TBD]
 - 有没有去研究webpack的一些原理和机制，怎么实现的。
-- babel把ES6转成ES5或者ES3之类的原理是什么，有没有去研究。
-- 什么是函数柯里化？以及说一下JS的API有哪些应用到了函数柯里化的实现？
-- 说一下深拷贝的实现原理。
-- 有没有去研究webpack的一些原理和机制，怎么实现的。
-- ES6的箭头函数this问题，以及拓展运算符
+   -[立即执行函数+闭包，把入口文件代码作为IIFE的数组参数，数组index是模块的id，后续用webpackloader把通过moduleid从模块中加载出来执行]]
+- babel把ES6转成ES5或者ES3之类的原理是什么，有没有去研究。[TBD]
+- 什么是函数柯里化？以及说一下JS的API有哪些应用到了函数柯里化的实现？[TBD]
+- ES6的箭头函数this问题，以及拓展运算符 [TBD]
 - JS模块化Commonjs,UMD,CMD规范的了解，以及ES6的模块化跟其他几种的区别，以及出现的意义
-- 怎么获取一个元素到视图顶部的距离。
-- getBoundingClientRect获取的top和offsetTop获取的top区别
-- 事件委托
-- 比如说百度的一个服务不想让阿里使用，如果识别到是阿里的请求，然后跳转到404或者拒绝服务之类的？
-- 二分查找的时间复杂度怎么求，是多少
+  - [后面有介绍]
+- 怎么获取一个元素到视图顶部的距离。[TBD]
+- getBoundingClientRect获取的top和offsetTop获取的top区别 [TBD]
+- 事件委托 [TBD]
+- 比如说百度的一个服务不想让阿里使用，如果识别到是阿里的请求，然后跳转到404或者拒绝服务之类的？ [TBD]
+- 二分查找的时间复杂度怎么求，是多少 [TBD]
 - XSS是什么，攻击原理，怎么预防。
-- 白板写代码，用最简洁的代码实现数组去重。
+  - [后面有详细介绍]
+- 白板写代码，用最简洁的代码实现数组去重。[TBD]
 - https://mp.weixin.qq.com/s/OUeoshYYui9EsB8SC3D6MA
 
 - script下载执行和css渲染之间的顺序
+  -[script下载解析会阻塞DOM/CSSOM树/渲染树的生成]
 
 # 浏览器渲染原理 
 - 浏览器接收到HTML文件，从上到下从左到右，解析HTML文件，构建DOM树，将每个元素都看成一个节点，所有节点结合起来就是一个DOM树
@@ -141,6 +145,45 @@ interview juejin books
 
 
 # 模块化
+- 其实就是立即执行函数 + 闭包
+- 解决了命名冲突问题 （JS作用域是基于funtion，加上变量提升，导致很多变量和函数表达式都是全局变量，虽然放在了不同的JS文件里，还是会有命名冲突）
+- 代码复用 （模块化以后，把另一个模块作为立即执行函数的参数，就可以实现引用其他的模块里的方法和属性，实现代码复用）
+
+- MVVM的框架都是基于模块化
+- webpack打包方式其实也是基于 立即执行函数 + 闭包，把入口文件作为立即执行函数的参数，以数组的形式，数组的index就是模块的ID，在代码执行的时候，直接用webpack的模块加载器通过moduleID从内存中把对应的代码加载起来，从而可以在JS引擎里运行相应的代码。
+
+- 模块化的发展有，CommonJS AMD CMD， 之后才有了ES6中的module
+
+## 闭包
+- 函数执行完以后，直接从执行栈中pop出去了，完全处于失联状态，没有办法再访问它里面的任何变量，在内存中等着垃圾回收。闭包就是实现一个引用，虽然它已经不在执行栈上，但是还是可以通过这个引用访问这个函数里的变量。
+
+- 常用的实现方式是，在函数A里，定义一个函数B返回A里的变量或者方法，然后在返回B，因为在执行上下文中，函数B除了有词法记录和scope，其中scope指向了它上一层方法A的词法作用域。这样就是通过方法B可以访问到失联方法A的变量和方法。
+  ```js
+    function foo() {
+        var a = 123;
+
+        var bar = function (b) {
+            a = a + b;
+            console.log("this is the value in foo: " + a);
+        }
+
+        var baz = function () {
+            return {
+                a: a,
+                bar: bar
+            }
+        }
+        return baz;
+    }
+  ```
+- 还有一种方式是，把方法里的变量绑定到window对象上，这样方法执行完，从执行栈上pop出去，但还是可以通过window对象访问到方法内部的方法和变量
+  ```js
+    (function foo() {
+        var person = window.person = {
+            name: "frank",
+        }
+    })()
+  ```
 
 
 # 跨域
@@ -222,6 +265,16 @@ interview juejin books
   - HttpOnly = true，表示cookie只能在服务器端设置值，不能在浏览器通过```document.cookie```改变cookie值。
   - SameSite = true，表示不能跨域访问cookie
 
+
+# 协议
+- http vs https: https = http + TSL/SSL安全协议，通过散列算法实现数字签名保证请求的完整性，通过非对称密码实现握手建立安全通道（四次握手），通过对称加密实现数据传输
+  - http 基于传输层，https基于TLS/SSL安全协议
+  - http 明文传输不安全，https加密传输 保证数据安全和网站性
+  - http 标准端口是80，https标准端口是443
+- 200和304的理解和区别
+  - 强缓存失效以后，会带着```If-None-Match``` ```If-Modified-Since```发一个请求到服务器，服务对比这两个值，如果没有过期就返回一个304的response告诉客户端缓存还没有过期，可以直接用本地缓存，如果已经过期就会发一个200的response，新的资源返回给客户端。
+  - 强缓存是通过 expires 和 cache-control来控制，expires是http1.0的产物 cache-control是http1.1的产物，同时用这两个是为了兼容http1.0协议，cache-contorl的优先级要高
+  - 协商缓存是通过 last-modify 和 ETag来控制，在强缓存过期的情况下，会把这两个值分别以```If-Modified-Since``` ```If-None-Match``` 带到服务器端做检验
 
 # bytedance 
  - 算法： https://leetcode-cn.com/explore/interview/card/bytedance

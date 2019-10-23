@@ -33,6 +33,109 @@
 
 - script下载执行和css渲染之间的顺序
 
+# 浏览器渲染原理 
+- 浏览器接收到HTML文件，从上到下从左到右，解析HTML文件，构建DOM树，将每个元素都看成一个节点，所有节点结合起来就是一个DOM树
+
+- 当解析HTML文件的时候，浏览器会遇到CSS和JS文件，浏览器会去下载并解析这些文件
+
+- 解析CSS文件，并把CSS文件转换为CSSOM树，这个过程非常消耗资源，浏览器需要递归CSSOM树，确定具体的的元素是什么样式。向下面这种写法，第二种要比第一种效率更差，第一种直接给所有的span标签设置颜色，第二种需要先找到所有sapn标签，然后找到span标签上的a标签，最后要找到div标签，然后给符合这些条件的span设置颜色，这个递归过程就已经非常复杂了。**所以我们在写css的时候，尽可能的避免写过于具体的css选择器，对于HTML来说也尽量少的添加无意义的标签，保证层级扁平。**
+  ```html
+    <div>
+    <a> <span></span> </a>
+    </div>
+    <style>
+        span {
+            color: red;
+        }
+        div > a > span {
+            color: red;
+        }
+    </style>
+  ```
+- 在生成DOM和CSSOM树以后，会将这两棵树合为渲染树，在这个过程中并不是简单的合并，渲染树里只会包括需要显示的节点和样式信息，```display:none```的，就不会在渲染树里显示。生成渲染树以后，就会根据渲染树进行布局（也可以叫做回流），然后调用GPU绘制，合成图层，显示在屏幕上。
+
+   ![web-browser](/assets/images/posts/web/borwser-renderTree.png){:height="100%" width="100%"}
+
+
+- **为什么JS操作DOM性能很慢**，JS是JS引擎运行，DOM是渲染引擎，两个是不同的线程，JS操作DOM就意味着这两个线程之间需要通信，会有性能损耗。操作DOM次数越多，那么这两个线程之间的通信也就越多，也就会导致性能问题。
+
+- **插入几万个DOM，如何实现页面不卡顿**，通过```requestAnimationFrame```
+
+- **什么情况会阻塞渲染** 
+   - 渲染的前提是生成渲染树，所以HTML和CSS文件下载肯定会阻塞渲染。如果想要渲染的越快，降低渲染文件大小，扁平CSS层级，优化选择器。
+   - 浏览器在解析```script```标签的时候，会暂停DOM，script解析完以后，会继续构建DOM树，首屏加载的时候，按需加载，还就是就是把script标签放在body标签底部，或者是在标签里添加```defer``` 或者 ```async``` 属性。
+      - defer表示JS会并行下载，但是会放在HTML解析完以后顺序执行，所以可以把script标签放在任意位置。
+      - 对于没有任何依赖关系的JS可以加上async属性，表示JS文件下载和解析不会阻塞渲染。
+
+- **重绘（Repaint）和回流（Reflow）**，如果这两个在设置节点样式的时候频繁出现，同时也会在很大程度上影响性能
+   - 重绘是指在节点需要改外观但是不影响布局，比如改变color就要重绘
+   - 回流是布局或者几何属性需要改变
+   
+   - 回流一定会导致重绘，但是重绘不一定会导致回流，重绘和回流其实也和Eventloop有关
+     - 当Eventloop执行完Microtasks后，会判断document是否需要更新，因为浏览器是60Hz的刷新率，每16.6ms才会更新一次。
+     - 然后判断是否有```resize```或者```scroll```事件，有的话会触发事件，所以resize和scroll事件也是16.6ms才触发一次，并且自带节流功能
+     - 判断是否触发media query
+     - 更细动画平且发送事件
+     - 判断的是否有全屏操作事件
+     - 执行```requestAnimationFrame```回调
+     - 执行```IntersectionObserver ```回调，该方法用于判断元素是否可见，用于懒加载，但是兼容性不好
+     - 跟新页面
+     - 以上就是一帧中可能会做的事情。如果在一帧中有空闲时间，就会去执行```requestIdleCallback``` 回调。
+
+
+
+- **减少重绘和回流**
+  - 使用 transform 替代 top
+  ```html
+    <div class="test"></div>
+    <style>
+    .test {
+        position: absolute;
+        top: 10px;
+        width: 100px;
+        height: 100px;
+        background: red;
+    }
+    </style>
+    <script>
+    setTimeout(() => {
+        // 引起回流
+        document.querySelector('.test').style.top = '100px'
+    }, 1000)
+    </script>
+  ```
+
+  - 使用 visibility 替换 display:none，前者只会引起重绘，后者会引发回流（改变了布局）
+
+  - 不要把节点的属性放在一个循环里当成循环里的变量
+  ```js
+    for(let i = 0; i < 1000; i++) {
+        // 获取 offsetTop 会导致回流，因为需要去获取正确的值
+        console.log(document.querySelector('.test').style.offsetTop)
+    }
+  ```
+
+  - 不要使用 table 布局，可能很小的一个小改动会造成整个 table 的重新布局
+
+  - 动画实现数度选择，动画速度越快，回流次数越多，也可以选择使用 requestAnimationFrame
+
+  - CSS选择器**从右向左**匹配查找，避免节点层级过多
+
+  - 将频繁重绘或者回流的节点设置为图层，图层能够阻止该节点的渲染行为影响别的节点。比如对于 video 标签来说，浏览器会自动将节点变为图层
+   ![web-browser](/assets/images/posts/web/borwser-imglayer.png){:height="100%" width="100%"}
+    will-change / video / iframe标签都会生成新图层
+
+- **不考虑缓存和优化网络协议的前提下，可以通过哪些方式来最快的渲染页面**
+  - 如何测量到底有没有加快渲染速度呢？
+     ![web-browser](/assets/images/posts/web/borwser-domContentLoaded.png){:height="100%" width="100%"}
+     当 DOMContentLoaded 事件后，就会生成渲染树，生成渲染树就可以进行渲染了，这一过程更大程度上和硬件有关系了。
+  
+  - 提示如何加速：
+    - 从文件大小考虑
+    - 从 ```<script>``` 标签使用上考虑
+    - 从CSS HTML的代码书写上来考虑
+    - 从需要下载的内容是否需要在首屏使用上来考虑
+
 
 # 模块化
 

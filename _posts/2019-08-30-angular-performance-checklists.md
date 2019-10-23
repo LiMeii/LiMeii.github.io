@@ -73,5 +73,8 @@ Angular中通过HttpClient执行Http Request返回的Observables是Cold Observab
 对于一些常用的数据，可以存在浏览器里，这样可以减少延迟和带宽，从而可以提高性能，浏览器数据存储方式有：Cookies、SessionStorage、LocalStorage、IndexedDB。对于这些存储方式的用法和区别可以参考文章：
 - 【[浏览器数据存储方式](https://limeii.github.io/2018/11/web-storage/)】
 
+## 防抖
+超高频触发网路请求，不仅效率低而且没办法保证请求结果的正确性，我们可以结合RxJS中的操作符```debounceTime``` ```map```  ```filter```  ```distinctUntilChanged``` 和```switchMap```实现防抖。具体可以参考文章：
+- 【[RxJS：如何用RxJS实现高效的HTTP请求](https://limeii.github.io/2019/08/rxjs-searchable-input/)】
 
 **未完待续**

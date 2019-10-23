@@ -47,7 +47,7 @@
     -- 服务器接收到请求后，需要进行特殊的处理，把传递进来的函数名和它需要给你的数据拼接成一个字符串，传递进去的函数名是show，他准好的数据是show（"call back data"）
     -- 最后服务器把准备的数据通过HTTP协议返回给客户端，客户端再调用执行之前声明的回调函数（show），对方会的数据进行操作。
 
-- **CORS：**主要是服务器端在http header里设置 Access-Control-Allow-Origin，该属性表示哪些域名可以访问资源，如果设置通配符就表示所有网站都可以访问。复杂请求（非简单请求）需要先发一个option预检请求，然后再发真正的请求。简单请求是：同时满足 条件一 get head post；条件二 Content-Type = text/plain,multipart/form-data,application/x-www-form-urlencoded
+- **CORS：**主要是服务器端在http header里设置 ```Access-Control-Allow-Origin```，该属性表示哪些域名可以访问资源，如果设置通配符就表示所有网站都可以访问。复杂请求（非简单请求）需要先发一个option预检请求，然后再发真正的请求。简单请求是：同时满足 条件一 get head post；条件二 Content-Type = text/plain,multipart/form-data,application/x-www-form-urlencoded
   
 - **document.domain**
 - **postMessage**
@@ -57,7 +57,7 @@
 - **nodejs proxy** 
 
 - IIS之间为什么不需要要配置跨域：首选跨域只是针对浏览器的同源策略，后端服务器之间是不存在跨域的问题；所有的前端请求都是先发到前端IIS server上，在前端IIS上配置了URL rewrite，会把相应的http请求发到不同的后端IIS服务上，IIS配置如下：
-  ![js-prototype](/assets/images/posts/web/crossdomain-IIS.png){:height="100%" width="100%"}
+  ![web-cross-domain](/assets/images/posts/web/crossdomain-IIS.png){:height="100%" width="100%"}
 
 ## angular框架类 js基础的知识点
 ### angularjs vs angular2

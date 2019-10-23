@@ -207,7 +207,7 @@
   - **nodejs proxy** 
 
   - IIS之间为什么不需要要配置跨域：首选跨域只是针对浏览器的同源策略，后端服务器之间是不存在跨域的问题；所有的前端请求都是先发到前端IIS server上，在前端IIS上配置了URL rewrite，会把相应的http请求发到不同的后端IIS服务上，IIS配置如下：
-  ![js-prototype](/assets/images/posts/web/crossdomain-IIS.png){:height="100%" width="100%"}
+  ![web-cross-domain](/assets/images/posts/web/crossdomain-IIS.png){:height="100%" width="100%"}
 
 
 

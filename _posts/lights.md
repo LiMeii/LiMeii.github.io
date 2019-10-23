@@ -320,6 +320,61 @@ interview juejin books
 # bytedance 
  - 算法： https://leetcode-cn.com/explore/interview/card/bytedance
 
- - 介绍项目，你做了什么？为什么要这么做。
+ ## 介绍项目，你做了什么？为什么要这么做。
+   - **No.1 重构印度团队的构建代码**
+     - 介绍当时的angular项目代码是放在.NET MVC项目代理，本地开发首先需要在本地搭一个IIS，页面开发还是在Angular项目里做，写好以后，用webpack build生成bundle文件，把这些文件作为.NET MVC项目文件，放在本地IIS的目录下，然后再刷新页面，看到新加的页面。开发效率非常低。
+       - 从印度团队手里拿到这个项目以后，做了以下改动：
+         - 第一件事情，开发环境里，把前端Angular项目从.NET MVC里剥离出来，
+         - 重新写了一个开发环境webpack config文件
+         - 第二：在Angular项目里加上index.html文件，而不是用.NET的index.cshtml文件；
+         - 第三：在本地，用nodejs express框架搭了一个跨域proxy，调用后端API。之前的跨域方式是前端代码包在.NET MVC里面，本地开发和部署都是用IIS，在IIS服务上通过配置URL rewrite配置了路由重定向，通过路由匹配，把API转发到不同的后端server上。当我把前端代码从.NET里剥离出来以后，本地开发调用后端API跨域问题，通过node.js express和cors，把前端的API请求先发到这个node proxy上面（在header里设置了Access-Control-Allow-Origin），然后再把request转发到后端服务器上。
+
+     - **学到的知识点：**在这个过程中，把webpack基本的工作原理弄明白了，分析webpack打包以后的bundle文件可以知道，搞懂了bundle文件其实就是立即执行函数和闭包，把入口文件代码作为立即执行函数的参数，是一个数组参数，这个数组的index其实就是入口文件的modleID，然后把代码执行的时候有引用其他模块代码，通过用webpack自身的一个loader（```__webpack_require__```），最后会把这个模块代码再return形成闭包，根据这个modleID把代码加载执行，加载过的模块会放在cache里，下次再用到就直接从cache里拿。
+
+  - **No.2 解决了生成环境上的缓存问题**
+    - 之前印度团队发到生产环境的bundle文件，每次打包完以后，名字都是一样的，比如app.bundle.js；因为每次的文件名都一样，加上浏览器缓存，会导致每次新加的业务功能在部署以后，客户端必须每次清缓存才能看到这些新功能。通过在webpack中设置```chunkhash```给每个bundle文件名里加上一个hashcode，当入口文件对应的代码有改动的时候，编译时对应的bundle文件名中的hashcode也不一样，这样客户端就在缓存不过期的前提下，也会去下载有改动的bundle文件。
+       - hash：所有bundle文件名中的hashcode都一样，而且每build一次，所有bundle文件名中的hashcode都一起改，这样每次部署，不管文件有没有改动，所有bundle文件都需要重新下载
+       - chunkhash，跟入口文件相关，所有bundle文件名中的hashcode都不一样，只要入口文件中代码有改动，那么对应的bundle文件名的hashcode会改变，没有改动的入口文件，hashcode跟上一次编译一样。部署以后，客户端缓存没过期，只需要去下载有变化的bundle文件就可以。
+       - contenthash，是跟提取文件相关，我们会用到```ExtractTextPlugin```把css打包编译到单独的css文件，contenthash是给这个css文件计算hashcode的。
+
+    - **学到的知识点：**这这个过程，把hash chunkhash contenthash的区别弄明白了
+
+  - **No.3 解决了bundle文件里代码冗余的问题：**
+    - 之前印度团队的webpack打包的config文件里，并没有把公用的一些代码，当独提取出来生成chunk文件，而是直接重复打包进用到的bundle文件里。通过配置```CommonsChunkPlugin```进行代码切割：
+    ```js
+     plugins: [
+        new webpack.optimize.CommonsChunkPlugin({ name: 'commons' }),
+    ]
+    ```
+  - **No.4 重构一些细节代码**
+    - **angular http observable不需要unsubscribe**
+    - 在业务componet代码里发现，印度团队在没一个用到observable的地方都用了unsubscribe，实际上根本不需要。
+    - 只需要把 subject 、behaviorsubject、syncsubject、replaysubject这种hot observable才需要手动取消订阅
+    - http request返回的observable是不需要手动取消订阅，因为它是cold observable
+     - 验证方式，在页面里，同一个observable订阅两次，发现会调用两次API，生成了两observable 实例
+     - 通过查看源码，在angular httpclinet的源码里，看到httprequest成功以后会执行oncomplete，失败以后会执行onerror，这两个方法都会自动的取消订阅
  
- - 遇到过什么问题，解决方案是什么，学到了什么
+  - **No.5 解决高频调用HTTP性能问题**
+    - 在用户取钱的时候，需要根据用户输入的钱数，计算出他转账需要扣的费用，转到不同的卡扣费规则不一样，有些是由公司承担，有些是有用户承担，所以需要实时调用后台API计算费用，把费用详情显示在页面上。如果在input框里绑定一个keydown事件，比如用户输入 500块，就会调用三次API（5、50、500），效率非常低，而且有可能50的API最后返回，不能保证结果的正确性。通过用RxJS中的```debounceTime``` ```map```  ```filter```  ```distinctUntilChanged```实现高效HTTP请求。
+
+  - **No.6 解决了高频调用常量API的问题**
+    - 页面里需要调用一些常量API，比如美国的60多个州这样的，这些常量API在不同的页面重复被调用。
+    - 这就导致，如果用户在这几个页面来回切换的时候，这个常量API会重复不同的调用，但是返回的值一会都是一样的，感觉效率和性能都不好。
+    - 在不用浏览器缓存的情况下，结合RxJS的shareReplay操作符，可以实现缓存效果，也就是常量API只需要在第一次被调用的时候会发送请求到后端去取值，后续被调用的话直接从RxJS的ReplaySubject中拿值
+    - 原理是，ReplaySubject是一个hot observable，而且可以回放错过的值，所有的订阅都共享一个实例，可以保持常量API的response结果，后续再调用这个API的时候，RepalySubjet会直接发送常量给订阅者，而不需要多次重复调用同样的API取值。
+
+  - **No.7 解决了ExpressionChangedAfterItHasBeenCheckedError**  
+    - 在子组件里通过output改变父组件里的值，有时候会报```ExpressionChangedAfterItHasBeenCheckedError```，有时候又不会，在解决这个问题的时候，把Angular中的 单向数据流，变化检测，钩子函数之间的关系弄明白了
+
+  - **No.8 解决了JS有时候比CSS更先执行，导致页面结果不对的问题**
+    - 这个也是个历史遗留问题，问题出现的概率只有百分之三十左右。页面上有个可以切换状态的toggle button，用户点击这个toggle button的时候，状态会发生改变，同时在JS里会发送一个请求到后台把数据库中对应的状态进行更改。
+    - 问题出在代码实现上，第一步改变toggle button的css，第二步然后根据当前的css的名称判断需要更新的状态，然后把状态通过http请求更新数据里的值，最后把数据库的状态response回来跟新页面css。
+    - 只要js比css执行得更快，就会导致整个toggle button的css首先从inactive变成active，几毫秒之后有立马更新回来了。
+
+    - 原因是，执行JS和CSS是两个不同的线程，而且是互斥的。
+
+    - 解决方案，JS执行代码不依赖于css的变化，直接根据http response回来的结果再跟下页面css。
+
+    - **学到的知识点：**通过这个bug，把浏览器的JS代码执行和页面渲染的原理搞清楚了。
+
+ ## 遇到过什么问题，解决方案是什么，学到了什么

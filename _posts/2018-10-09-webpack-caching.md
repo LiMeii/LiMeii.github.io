@@ -4,10 +4,7 @@ tags: 问题
 layout: post
 ---
 
-在文章【[浏览器缓存问题](/2018/09/issues-cache-busting)】 有提到浏览器缓存的原理和利弊。
-
-
-接下来就介绍怎么在webpack中解决浏览器缓存问题。
+在这篇文章里会介绍怎么在webpack中解决浏览器缓存问题。
 
 <blockquote>
 <p>

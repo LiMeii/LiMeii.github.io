@@ -339,6 +339,8 @@ interview juejin books
 
     - **学到的知识点：**这这个过程，把hash chunkhash contenthash的区别弄明白了
 
+  - **通过lazy loading解决了首页加载性能问题**
+
   - **No.3 解决了bundle文件里代码冗余的问题：**
     - 之前印度团队的webpack打包的config文件里，并没有把公用的一些代码，当独提取出来生成chunk文件，而是直接重复打包进用到的bundle文件里。通过配置```CommonsChunkPlugin```进行代码切割：
     ```js

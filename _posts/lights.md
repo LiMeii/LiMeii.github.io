@@ -355,6 +355,10 @@ interview juejin books
     - http request返回的observable是不需要手动取消订阅，因为它是cold observable
      - 验证方式，在页面里，同一个observable订阅两次，发现会调用两次API，生成了两observable 实例
      - 通过查看源码，在angular httpclinet的源码里，看到httprequest成功以后会执行oncomplete，失败以后会执行onerror，这两个方法都会自动的取消订阅
+
+    - **业务出错以后，直接放回4××或者5××的http request，而且对response没有判空的代码** 
+      - 和后端同事，一起把对应的API成，业务出错返回200，但是会当上业务的detailcode，用来判断具体出错的原因
+      - 在前端，对response 都用接口对 对象 的结构进行定义，进而对对象进行判空
  
   - **No.5 解决高频调用HTTP性能问题**
     - 在用户取钱的时候，需要根据用户输入的钱数，计算出他转账需要扣的费用，转到不同的卡扣费规则不一样，有些是由公司承担，有些是有用户承担，所以需要实时调用后台API计算费用，把费用详情显示在页面上。如果在input框里绑定一个keydown事件，比如用户输入 500块，就会调用三次API（5、50、500），效率非常低，而且有可能50的API最后返回，不能保证结果的正确性。通过用RxJS中的```debounceTime``` ```map```  ```filter```  ```distinctUntilChanged```实现高效HTTP请求。

@@ -46,6 +46,7 @@ layout: post
 - [JS：深入理解JavaScript-函数](https://limeii.github.io/2019/05/js-function/)
 - [JS：深入理解JavaScript-闭包](https://limeii.github.io/2019/05/js-closures/)
 - [JS：深入理解JavaScript-原型](https://limeii.github.io/2019/05/js-prototype/)
+- [JS：深入理解JavaScript-继承](https://limeii.github.io/2019/05/js-Inheritance/)
 - [JS：let和const](https://limeii.github.io/2019/05/js-let-const/)
 - [JS：深浅拷贝](https://limeii.github.io/2019/06/js-deepshallowcopy/)
 - [JS：模拟实现call apply和bind方法](https://limeii.github.io/2019/06/js-applycallbind-implemented/)

@@ -4,15 +4,21 @@ interview juejin books
 
 # interview
 - https://github.com/jawil/blog/issues/22
-- 说一下你了解CSS盒模型。[TBD]
-- 说一下box-sizing的应用场景。[TBD]
-- 说一下你了解的弹性FLEX布局. [TBD]
-- 说一下一个未知宽高元素怎么上下左右垂直居中。[TBD]
+- 说一下你了解CSS盒模型。
+  - [后面有介绍]
+- 说一下box-sizing的应用场景。
+  - [后面有介绍]
+- 说一下你了解的弹性FLEX布局. 
+  - [后面有介绍]
+- 说一下一个未知宽高元素怎么上下左右垂直居中。
+  - [后面有介绍]
 - 说一下原型链，对象，构造函数之间的一些联系。
 - 说一下你项目中用到的技术栈，以及觉得得意和出色的点，以及让你头疼的点，怎么解决的 [TBD]
 - 有没有了解http2.0,websocket,https，说一下你的理解以及你所了解的特性。[TBD]
-- webpack的入口文件怎么配置，多个入口怎么分割 [TBD]
+- webpack的入口文件怎么配置，多个入口怎么分割 
+  - [打包以后的bundle文件，其实就是一个立即执行函数+闭包，这个立即执行函数里有一个数组参数，这个数组的值是入口文件代码，如果入口文件里有import其他模块，数组里就有多个值，在立即执行函数的最后会把入口文件中的代码以数组索引放回，在代码执行的时候，用到某个模块，就通过这个数组索引把对象模块代码加载出来，并且会放到缓存里，下次再用到直接通缓存里拿]
 - 简历上看见你了解http协议。说一下200和304的理解和区别
+  - [200从服务器请求数据，还有就是强缓存没过期从缓存里加载，chrome开发工具里也是显示200，304协商缓存没有过期]
 - DOM事件的绑定的几种方式 [TBD]
 - 有没有了解http2.0,websocket,https，说一下你的理解以及你所了解的特性
   - [强缓存-协商缓存-cookie(httponly/secure)-HttpVSHttps-xss(csp)]
@@ -327,6 +333,49 @@ interview juejin books
     - 501 not implemented，表示服务器不支持当前请求所需要的某个功能
     - 503 service unavailable，表示服务器暂时处于超负载或者正在停机维护，无法处理请求  
 
+
+# 盒子模型
+
+![css-box-model](/assets/images/posts/css/box-model.jpg){:height="100%" width="100%"}
+
+IE 和 W3C标准的区别就是，宽度计算的方式不一样，IE的计算方式是：```width=content+padding+border```，而W3C只是```width=content```。两者是通过```box-sizing```进行转换。
+
+```css
+*, *:before, *:after {
+　　-moz-box-sizing: border-box;
+  　-webkit-box-sizing: border-box;  /* border-box是指 width=content+padding+border； content-box: width=content；默认是content-box*/
+　　box-sizing: border-box;
+　　}
+```
+使用场景是，如果有好几个元素都设置宽度为100%，实际宽度有长有短，就加上```box-sizing：border-box```，就可以了。或者是本身是几个元素的宽度是一样的，其中一个设置border后导致宽度发生变化或者位置发生变化，就加上```box-sizing：border-box```也可以解决。
+
+
+# FLEX弹性布局
+- 水平垂直居中
+```html
+<style>
+    .container {
+        display: flex;
+        justify-content: center;  /* 水平居中 */
+        align-items: center; /* 垂直居中 */
+        width: 1000px;
+        height: 600px;
+        background-color: black;
+    }
+
+    .box {
+        width: 80px;
+        height: 80px;
+        background-color: red;
+    }
+</style>
+
+<div class="container">
+    <div class="box">
+    </div>
+</div>
+
+```
 
 # bytedance 
  - 算法： https://leetcode-cn.com/explore/interview/card/bytedance

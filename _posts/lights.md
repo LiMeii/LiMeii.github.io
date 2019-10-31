@@ -6,41 +6,72 @@ interview juejin books
 - https://github.com/jawil/blog/issues/22
 - 说一下你了解CSS盒模型。
   - [后面有介绍]
+
 - 说一下box-sizing的应用场景。
   - [后面有介绍]
+
 - 说一下你了解的弹性FLEX布局. 
   - [后面有介绍]
+
 - 说一下一个未知宽高元素怎么上下左右垂直居中。
   - [后面有介绍]
+
 - 说一下原型链，对象，构造函数之间的一些联系。
+
 - 说一下你项目中用到的技术栈，以及觉得得意和出色的点，以及让你头疼的点，怎么解决的 [TBD]
+
 - 有没有了解http2.0,websocket,https，说一下你的理解以及你所了解的特性。[TBD]
+
 - webpack的入口文件怎么配置，多个入口怎么分割 
   - [打包以后的bundle文件，其实就是一个立即执行函数+闭包，这个立即执行函数里有一个数组参数，这个数组的值是入口文件代码，如果入口文件里有import其他模块，数组里就有多个值，在立即执行函数的最后会把入口文件中的代码以数组索引放回，在代码执行的时候，用到某个模块，就通过这个数组索引把对象模块代码加载出来，并且会放到缓存里，下次再用到直接通缓存里拿]
+
 - 简历上看见你了解http协议。说一下200和304的理解和区别
   - [200从服务器请求数据，还有就是强缓存没过期从缓存里加载，chrome开发工具里也是显示200，304协商缓存没有过期]
+
 - DOM事件的绑定的几种方式 [TBD]
+
 - 有没有了解http2.0,websocket,https，说一下你的理解以及你所了解的特性
   - [强缓存-协商缓存-cookie(httponly/secure)-HttpVSHttps-xss(csp)]
+
 - DOM事件中target和currentTarget的区别 [TBD]
+
 - 说一下你平时怎么解决跨域的。以及后续JSONP的原理和实现以及cors怎么设置。
   -[后面有详细介绍]
 - 说一下深拷贝的实现原理。[TBD]
+
 - 有没有去研究webpack的一些原理和机制，怎么实现的。
-   -[立即执行函数+闭包，把入口文件代码作为IIFE的数组参数，数组index是模块的id，后续用webpackloader把通过moduleid从模块中加载出来执行]]
+   -[立即执行函数+闭包，把入口文件代码作为IIFE的数组参数，数组index是模块的id，后续用webpackloader把通过moduleid从模块中加载出来执行]
+
 - babel把ES6转成ES5或者ES3之类的原理是什么，有没有去研究。[TBD]
+
 - 什么是函数柯里化？以及说一下JS的API有哪些应用到了函数柯里化的实现？[TBD]
+
 - ES6的箭头函数this问题，以及拓展运算符 [TBD]
+
 - JS模块化Commonjs,UMD,CMD规范的了解，以及ES6的模块化跟其他几种的区别，以及出现的意义
   - [后面有介绍]
+
 - 怎么获取一个元素到视图顶部的距离。[TBD]
-- getBoundingClientRect获取的top和offsetTop获取的top区别 [TBD]
+  - [Element.getBoundingClientRect()方法返回元素的大小及其相对视口的位置]
+    ![web-getBoundingClientRect](/assets/images/posts/web/getBoundingClientRect.png){:height="100%" width="100%"}
+    这个方法的返回结果是DOMRect对象，它的属性值如下：
+    ![web-getBoundingClientRect](/assets/images/posts/web/getBoundingClientRect-result.png){:height="100%" width="100%"}
+    **需要注意的是，这个方法放回的是相对视图顶部的距离，如果需要获得相对网页左上角定位的属性值，那么就需要给top left属性值加上当前的滚动位置（window.pageXOffset 和 window.pageYOffset）**
+    
+- getBoundingClientRect获取的top和offsetTop获取的top区别 
+  - [一个是相对位置距离，一个是加上了滚动的距离]
+
 - 事件委托 [TBD]
+
 - 比如说百度的一个服务不想让阿里使用，如果识别到是阿里的请求，然后跳转到404或者拒绝服务之类的？ [TBD]
+
 - 二分查找的时间复杂度怎么求，是多少 [TBD]
+
 - XSS是什么，攻击原理，怎么预防。
   - [后面有详细介绍]
+
 - 白板写代码，用最简洁的代码实现数组去重。[TBD]
+
 - https://mp.weixin.qq.com/s/OUeoshYYui9EsB8SC3D6MA
 
 - script下载执行和css渲染之间的顺序

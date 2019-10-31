@@ -28,15 +28,47 @@ interview juejin books
 - 简历上看见你了解http协议。说一下200和304的理解和区别
   - [200从服务器请求数据，还有就是强缓存没过期从缓存里加载，chrome开发工具里也是显示200，304协商缓存没有过期]
 
-- DOM事件的绑定的几种方式 [TBD]
+- DOM事件的绑定的几种方式
+  - 直接在DOM中绑定：```<div id="btn" onclick="onClick()"></div>```
+  - 在JS中绑定：```getDocumentById("btn").onclick=function(){alert("hello")}```
+  - 绑定事件监听：```getDocumentById("btn").addEventListener(event,fn,useCapture);```
+  **区别是addEventListener可以绑定多个事件，且都会执行**
+  ```js
+    <div onclick="clickone()" onclick="clicktwo">click</div>
+    <script>
+        function clickone() {alert("hello")} // this one will be executed 
+
+        function clicktwo() { alert("world")} // will be ignored 
+
+    </script>
+
+
+    <div id="btn">点击</div>
+    <script>
+        document.getElementById("btn").onclick = function () { alert("hello")} // will be ignored 
+        document.getElementById("btn").onclick = function() {alert("world")} // this one will be executed
+    </script>
+
+
+    <div id="btn">点击</div>
+    <script>
+        document.getElementById("btn".addEventListener("click",clickone,false));
+        function clickone () { alert("hello")} // will be executed
+        
+        document.getElementById("btn".addEventListener("click",clicktwofalse));
+        function clicktwo() { alert("world")} // will be executed
+    </script>
+  ```
 
 - 有没有了解http2.0,websocket,https，说一下你的理解以及你所了解的特性
   - [强缓存-协商缓存-cookie(httponly/secure)-HttpVSHttps-xss(csp)]
 
-- DOM事件中target和currentTarget的区别 [TBD]
+- DOM事件中target和currentTarget的区别
+  - [这个两者跟事件冒泡、捕获、委托有关，target是指触发事件的对象，currentTarget是指添加事件的对象。比如有个<ul>下面有好几个<li>，事件绑定在<ul>上即委托，那么点击任意<li>都会触发事件，此时的<li>就是target，<ul>就是currentTarget]
 
 - 说一下你平时怎么解决跨域的。以及后续JSONP的原理和实现以及cors怎么设置。
   -[后面有详细介绍]
+
 - 说一下深拷贝的实现原理。[TBD]
 
 - 有没有去研究webpack的一些原理和机制，怎么实现的。
@@ -61,7 +93,7 @@ interview juejin books
 - getBoundingClientRect获取的top和offsetTop获取的top区别 
   - [getBoundingClientRect是相对位置距离随着scroll会发生改变，offsetTop是固定值，有scroll就需要加上了滚动的距离]
 
-- 事件委托 [TBD]
+- 事件委托 
   - JS的事件流分为三个阶段：捕获 目标 冒泡，从上到下传播（捕获），到达目标节点（目标），然后再在往上传播（冒泡）
    ![browser-event-flow](/assets/images/posts/web/browser-event-flow.jpg){:height="100%" width="100%"}
 
@@ -124,7 +156,7 @@ document.getElementsByTagName('span')[0].addEventListener('click',function(){
     console.log('span')
 },false)
  ```
- **运行结果是： li3 span wraper，因为捕获阶段是优先触发于冒泡阶段的**
+ **运行结果是： li3 span wraper，因为捕获阶段是优先触发于冒泡阶段的。事件委托是指，某一个wrapper下面所有元素都需要触发事件，可以把事件绑定到外层的wrapper上**
 
 - 比如说百度的一个服务不想让阿里使用，如果识别到是阿里的请求，然后跳转到404或者拒绝服务之类的？ [TBD]
 

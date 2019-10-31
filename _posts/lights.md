@@ -59,7 +59,7 @@ interview juejin books
     **需要注意的是，这个方法放回的是相对视图顶部的距离，如果需要获得相对网页左上角定位的属性值，那么就需要给top left属性值加上当前的滚动位置（window.pageXOffset 和 window.pageYOffset）**
     
 - getBoundingClientRect获取的top和offsetTop获取的top区别 
-  - [一个是相对位置距离，一个是加上了滚动的距离]
+  - [getBoundingClientRect是相对位置距离随着scroll会发生改变，offsetTop是固定值，有scroll就需要加上了滚动的距离]
 
 - 事件委托 [TBD]
 

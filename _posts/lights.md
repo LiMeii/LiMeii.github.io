@@ -62,6 +62,69 @@ interview juejin books
   - [getBoundingClientRect是相对位置距离随着scroll会发生改变，offsetTop是固定值，有scroll就需要加上了滚动的距离]
 
 - 事件委托 [TBD]
+  - JS的事件流分为三个阶段：捕获 目标 冒泡，从上到下传播（捕获），到达目标节点（目标），然后再在往上传播（冒泡）
+   ![browser-event-flow](/assets/images/posts/web/browser-event-flow.jpg){:height="100%" width="100%"}
+
+  - 事件绑定```element.addEventListener(event, function, useCapture)``` useCapture默认是为false
+
+   ```html
+    <div id='wraper'>
+        wraper
+        <ul>
+            <li>li1</li>
+            <li>li2</li>
+            <li id='li3'>
+                li3
+                <span>span</span>
+            </li>
+        </ul>
+    </div>
+   ```
+
+ ```js
+    document.getElementById('wraper').addEventListener('click',function(e){
+        console.log('wraper')
+    },false)
+
+    document.getElementById('li3').addEventListener('click',function(e){
+        console.log('li3')
+    },false)
+
+    document.getElementsByTagName('span')[0].addEventListener('click',function(){
+        console.log('span')
+    },false)
+ ```
+ **运行结果是： span li3 wraper**
+
+```js
+document.getElementById('wraper').addEventListener('click',function(e){
+    console.log('wraper')
+},true)
+
+document.getElementById('li3').addEventListener('click',function(e){
+    console.log('li3')
+},true)
+
+document.getElementsByTagName('span')[0].addEventListener('click',function(){
+    console.log('span')
+},true)
+```
+ **运行结果是： wraper li3 span**
+
+ ```js
+ document.getElementById('wraper').addEventListener('click',function(e){
+    console.log('wraper')
+},false)
+
+document.getElementById('li3').addEventListener('click',function(e){
+    console.log('li3')
+},true)
+
+document.getElementsByTagName('span')[0].addEventListener('click',function(){
+    console.log('span')
+},false)
+ ```
+ **运行结果是： li3 span wraper，因为捕获阶段是优先触发于冒泡阶段的**
 
 - 比如说百度的一个服务不想让阿里使用，如果识别到是阿里的请求，然后跳转到404或者拒绝服务之类的？ [TBD]
 

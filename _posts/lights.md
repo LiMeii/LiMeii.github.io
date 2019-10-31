@@ -93,12 +93,46 @@ interview juejin books
 
 - 什么是函数柯里化？以及说一下JS的API有哪些应用到了函数柯里化的实现？[TBD]
 
-- ES6的箭头函数this问题，以及拓展运算符 [TBD]
+- ES6的箭头函数this问题，以及拓展运算符 
+ - [箭头函数里没有this，它的this是到离它最近的词法环境里找。]
+
+ - [拓展运算符就是展开运算符（...）] 
+   - **等价于apply的方式**
+    ```js
+        function sum(x, y, z) {
+            return x + y + z;
+        }
+
+        console.log(sum(...[1,2,3])); // 6
+    ```
+    - **对两个数组操作，相当于Array.contact()**
+        ```js
+            var arr = [1, 2, 3];
+            var arr2 = [4, 5];
+
+            console.log([...arr, ...arr2]); // [1,2,3,4,5]
+        ```
+    - **相当于数组拷贝或者对象拷贝**
+      ```js
+        var arr3 = [7, 8, 9];
+        var arr4 = [...arr3];
+        arr3.push(10);
+        console.log(arr4); // [7,8,9]
+
+        var obj = { name: "mei", address: { city: "shanghai" } };
+        var obj1 = {...obj}
+
+        obj.name="li";
+        obj.address.city="beijing";
+
+        console.log(obj1); //{ name: "mei", address: { city: "beijing" } }; 浅拷贝
+      ```
+     
 
 - JS模块化Commonjs,UMD,CMD规范的了解，以及ES6的模块化跟其他几种的区别，以及出现的意义
   - [后面有介绍]
 
-- 怎么获取一个元素到视图顶部的距离。[TBD]
+- 怎么获取一个元素到视图顶部的距离。
   - [Element.getBoundingClientRect()方法返回元素的大小及其相对视口的位置]
     ![web-getBoundingClientRect](/assets/images/posts/web/getBoundingClientRect.png){:height="100%" width="100%"}
     这个方法的返回结果是DOMRect对象，它的属性值如下：

@@ -69,7 +69,22 @@ interview juejin books
 - 说一下你平时怎么解决跨域的。以及后续JSONP的原理和实现以及cors怎么设置。
   -[后面有详细介绍]
 
-- 说一下深拷贝的实现原理。[TBD]
+- 说一下深拷贝的实现原理。
+  - 数组可以通过 ```Array.slice() Array.contact()``` 对象可以通过```Object.Assign() {...obj}```来实现拷贝，但是只能浅拷贝，因为当数组里嵌套对象，对象里嵌套对象的时候只是拷贝引用。
+  - 可以通过 ```JSON.parse(JSON.Stringify(obj))```来实现深拷贝，但是不适用于函数
+  - 还可以通过递归实现对象和数组的深拷贝：
+  ```js
+    function deepClone(obj) {
+        if (typeof obj !== "object") return;
+        var newObj = obj instanceof Array ? [] : {};
+        for (var key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                newObj[key] = typeof obj[key] === "object" ? deepCone(obj[key]) : obj[key];
+            }
+        }
+        return newObj;
+    }
+  ```
 
 - 有没有去研究webpack的一些原理和机制，怎么实现的。
    -[立即执行函数+闭包，把入口文件代码作为IIFE的数组参数，数组index是模块的id，后续用webpackloader把通过moduleid从模块中加载出来执行]

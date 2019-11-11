@@ -45,6 +45,8 @@
 - https://www.youtube.com/watch?v=8aGhZQkoFbQ
 - http://latentflip.com/
 
+- https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/A_re-introduction_to_JavaScript
+
 # V8
 - https://medium.com/dailyjs/how-do-i-get-started-with-v8-development-17e976ebe4af
 - https://v8.dev/

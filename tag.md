@@ -51,6 +51,7 @@ layout: post
 - [JS：深浅拷贝](https://limeii.github.io/2019/06/js-deepshallowcopy/)
 - [JS：模拟实现call apply和bind方法](https://limeii.github.io/2019/06/js-applycallbind-implemented/)
 - [JS：回调函数 Promise Generator Async异步处理应用](https://limeii.github.io/2019/06/js-generator-async/)
+- [JS：箭头函数](https://limeii.github.io/2019/06/js-arrow-function/)
 
 **WEB系列**
 - [浏览器数据存储方式](https://limeii.github.io/2018/11/web-storage/)

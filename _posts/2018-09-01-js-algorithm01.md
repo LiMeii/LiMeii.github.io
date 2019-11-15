@@ -143,3 +143,23 @@ searchInsert([1,3,5,6],5)//2
 searchInsert([1,3,5,6],0)//0
 searchInsert([1,3,5,6],7)//4
 ```
+
+## 找到不重复子字符串的最大长度
+
+有一个字符串```pwwkew```, 不重复的字符串为```p``` ```pw``` ```wke``` ```kew``` 所以最大长度为3.
+
+```js
+  var start = 0, maxLen = 0;
+  var map = new Map(); // key为字符，value当前字符的索引。由于Map的key只能唯一，所以后面存进去的值会覆盖前面的值。
+
+  for(var i = 0; i < s.length; i++) {
+      var ch = s[i];
+    
+      if(map.get(ch) >= start) start = map.get(ch) + 1; // 如果可以找到key值，开始重复，那么start的值就需要从后一个字符开始算，
+      map.set(ch, i);
+    
+      if(i - start + 1 > maxLen) maxLen = i - start + 1; // 比较子字符串长度和当前最大长度。
+  }
+
+  return maxLen;
+```

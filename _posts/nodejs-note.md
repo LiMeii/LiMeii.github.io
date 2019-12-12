@@ -41,3 +41,9 @@ nodejs部分是由JavaScript编写的，底层还是由C/C++实现的。在javas
 - IP地址可以定位到服务器（电脑），端口可以定位到具体的应用。
 
 
+## nodejs是单线程的
+-浏览器中，JS和UI是共用一个线程，生成图成是GUI在做，但是最后的渲染绘制还是JS的现场在做，也就是为什么JS的运行对堵塞UI页面渲染。
+
+
+## Web Worker vs child_process
+

@@ -79,12 +79,20 @@ data = {};//报错：Uncaught TypeError: Assignment to constant variable
 ```
 
 ### 暂时性死区(Temporal Dead Zone)
-let和const什么的变量不会被提升到作用域顶部，如果在声明之前访问这些变量，会报错：
-```js
-console.log(a);//Uncaught ReferenceError: Cannot access 'a' before initialization
-let a = 1;
-```
+
 在JS引擎扫描代码发现变量声明时，遇到var声明就提升到作用域顶部，遇到let和const就把这些声明放在暂时性死区。对于let和const变量，如果在执行它们的声明语句之前访问会报错，只有执行完声明语句之后才会从暂时性死区移出。
+
+
+需要注意的是let const 会变量提升，但是在执行声明语句之前，是放在暂时性死区，提前调用就会报错；想象一下如果let const没有变量提升的话，在声明之前调用let const变量，就会当成var处理了。
+
+```js
+function  saySomething() {
+    greeting = "halo"; // Uncaught ReferenceError: Cannot access 'greeting' before initialization
+    let greeting;    
+    console.log(greeting);
+}
+saySomething();
+```
 
 ### 循环中的块级作用域
 之前有代码：
@@ -165,7 +173,7 @@ for (let i = 0; i < 5; i++) {
     result[4]= function () { console.log(4) };
 }
 ```
-但是在上面代码里不能用const，虽然我们每次创建了一个新的变量，但是我们尝试修改const的值，所以会报错。
+但是在上面代码里不能用const，虽然我们每次创建了一个新的变量，但是我们尝试修改const的值，所以会报错
 
 ## 总结
 - 在开发过程中，默认推荐使用const，只有当确定变量的值会发生改变使用let。

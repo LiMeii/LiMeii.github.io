@@ -83,7 +83,7 @@ data = {};//报错：Uncaught TypeError: Assignment to constant variable
 在JS引擎扫描代码发现变量声明时，遇到var声明就提升到作用域顶部，遇到let和const就把这些声明放在暂时性死区。对于let和const变量，如果在执行它们的声明语句之前访问会报错，只有执行完声明语句之后才会从暂时性死区移出。
 
 
-需要注意的是let const 会变量提升，但是在执行声明语句之前，是放在暂时性死区，提前调用就会报错；想象一下如果let const没有变量提升的话，在声明之前调用let const变量，就会当成var处理了。
+需要注意的是let const 会变量提升，但是在执行声明语句之前，是放在暂时性死区，提前调用就会报错；想象一下如果let const没有变量提升的话，在声明之前调用let const变量，就会当成```var = halo```处理了。
 
 ```js
 function  saySomething() {

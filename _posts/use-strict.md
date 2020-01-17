@@ -20,3 +20,40 @@ console.log(greeting);
 ```
 在```use strict```模式下，没有声明变量，直接用该变量会报错。
 
+
+- ```var```不是块级变量
+
+```js
+function something() {
+    var special = "JavaScript";
+    {
+        let special = 42;   // totally fine shadowing
+        // ..
+    }
+}
+
+function another() {
+    // ..
+    {
+        let special = "JavaScript";
+        {
+            var special = "JavaScript";   // Syntax Error， 因为不是块级变量，相当于在another这个方法作用域里重复定义。
+            // ..
+        }
+    }
+}
+```
+
+```js
+function another() {
+    // ..
+    {
+        let special = "JavaScript";
+
+        whatever(function callback(){
+            var special = "JavaScript";   // totally fine shadowing,回调函数在这里是全局变量。
+            // ..
+        });
+    }
+}
+```

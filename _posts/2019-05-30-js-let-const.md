@@ -51,7 +51,7 @@ var a = 1;
 let a = 2; //Uncaught SyntaxError: Identifier 'a' has already been declared
 ```
 ### 3. 不绑定全局作用域
-在全局作用就里使用```var```声明变量或者 ```function```，这个变量会作为全局对象的属性。
+在全局作用就里使用```var```声明变量或者 ```function```(只用这两种形式)，这个变量会作为全局对象的属性。
 ```js
 var a = 1;
 console.log(window.a);//1

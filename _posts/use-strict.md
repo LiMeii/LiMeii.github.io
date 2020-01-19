@@ -115,7 +115,7 @@ askQuestion();
 - arrow function
 arrow function 是一种特殊的匿名函数，它和function一样，会有自己的scope，唯一有区别的是它没有this，它的this是离他最近的this。
 
-- function hoisting 方法提升
+- function hoisting 方法提升 (只有函数声明会提升)
 
 ```js
 greeting();
@@ -134,3 +134,121 @@ var greeting = function () {
 
 }
 ```
+<blockquote>
+<p>
+注意这边不是报ReferenceError，ReferenceError表示当前变量不存在，在这里greeting在内存里存在的，并且值为undefined，undefined不是一个方法，所以第一行会报错，这个时候报的是uncaught TypeError。
+</p>
+</blockquote>
+
+<blockquote>
+<p>
+TypeError 和 syntaxError的区别在于：TypeError发生在代码执行阶段，syntaxError发生在代码解析阶段。
+</p>
+</blockquote>
+
+- 闭包的应用
+  外层的scope可以访问里面作用的变量，也就是执行上下文执行完后，它还保留了一个引用，其他的执行上下文可以通过这个引用访问它内部的变量。
+
+
+  **第一种:**
+     ```js
+        function foo() {
+        var a = 2;
+
+        function bar() {
+            console.log( a );
+        }
+
+        return bar;
+        }
+
+        var baz = foo();
+
+        baz(); // 2 -- Whoa, closure was just observed, man.
+     ```
+
+  **第二种:**
+     ```js
+        function foo() {
+        var a = 2;
+
+        function baz() {
+            console.log( a ); // 2
+        }
+
+        bar( baz );
+        }
+
+        function bar(fn) {
+            fn(); // look ma, I saw closure!
+        }
+     ```
+
+  **第三种:**
+     ```js
+        var fn;
+
+        function foo() {
+            var a = 2;
+
+            function baz() {
+                console.log( a );
+            }
+
+            fn = baz; // assign `baz` to global variable
+        }
+
+        function bar() {
+            fn(); // look ma, I saw closure!
+        }
+
+        foo();
+
+        bar(); // 2
+     ```
+
+     
+  **第四种:回调**
+  ```js
+    function wait(message) {
+
+        setTimeout( function timer(){
+            console.log( message );
+        }, 1000 );
+
+    }
+
+    wait( "Hello, closure!" ); // 打印出 hello closure！ 回调函数的message是wait方法作用域的值。
+  ```
+
+  需要注意的是，如果代码写成下面的样子：
+  
+  ```js
+    function wait(message) {
+
+        setTimeout( function timer(){
+            console.log( this.message );
+        }, 1000 );
+
+    }
+
+    wait( "Hello, closure!" ); // undefined, 回调函数的this值的是全局变量，全局变量没有这个值，所以是undefined。
+  ```
+
+  **第五种：模块**
+
+  ```js
+    var obj = (function foo() {
+        var a = 2;
+
+        function baz() {
+            console.log(a); // 2
+        }
+
+        return {
+            baz: baz()
+        };
+    })();
+
+    obj.baz;
+  ```

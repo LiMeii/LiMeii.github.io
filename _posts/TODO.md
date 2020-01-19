@@ -33,7 +33,18 @@
 
 
 - Web Workers 
+  - web workder是浏览器中单独的一个线程，独立于JS主线程，与JS主线程不共享Global Scope，不可以操作DOM，不像JS主线程的全局变量叫window，它的全局变量叫self，它还是有JS引擎控制。
 
+  ```js
+  var studentName = "limeii";
+  let studentID = 24;
+
+  function hello() {
+    console.log(`Hello, ${ self.studentName }!`)
+  }
+  self.hello();// hello, limeii!
+  self.studentID; // undefined.
+  ```
 - Ivy renderer 
 
 

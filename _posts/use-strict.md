@@ -21,7 +21,9 @@ console.log(greeting);
 在```use strict```模式下，没有声明变量，直接用该变量会报错。
 
 
-- ```var```不是块级变量
+- shadowing
+
+```var```不是块级变量，shadowing会不起作用。
 
 ```js
 function something() {
@@ -45,6 +47,15 @@ function another() {
 ```
 
 ```js
+
+window.something = 24;
+
+let something = "limeii";
+
+console.log(something); // limeii, 这个是合法的。
+```
+
+```js
 function another() {
     // ..
     {
@@ -55,5 +66,71 @@ function another() {
             // ..
         });
     }
+}
+```
+
+
+- anonymous function expressions  vs named function expressions
+
+函数声明和函数表达式的主要区别：函数声明有变量提升，函数表达式不会有变量提升。
+
+**anonymous function express:**
+```js
+  // askQuestion 是个全局变量，在函数执行之前，被赋值为undefined
+  var askQuestion = function (){
+    // ..
+};
+```
+
+**named function express:**
+```js
+// askQuestion是个全局变量， ofTheTeacher是function内部的变量，而且是read-only
+  var askQuestion = function ofTheTeacher(){
+    // ..
+};
+```
+
+```js
+var askQuestion = function ofTheTeacher(){
+    console.log(ofTheTeacher);
+}
+
+askQuestion();//function ofTheTeacher();
+
+console.log(ofTheTeacher);// ReferenceError: "ofTheTeacher" is not defined
+```
+
+```js
+var askQuestion = function ofTheTeacher() {
+    "use strict";
+    ofTheTeacher = 42;   // this assignment fails, it's readonly
+
+    //..
+};
+
+askQuestion();
+// TypeError
+```
+
+- arrow function
+arrow function 是一种特殊的匿名函数，它和function一样，会有自己的scope，唯一有区别的是它没有this，它的this是离他最近的this。
+
+- function hoisting 方法提升
+
+```js
+greeting();
+// Hello!
+
+function greeting() {
+    console.log("Hello!");
+}
+```
+
+```js
+greeting();//uncaught TypeError: greeting is not a funtion
+
+var greeting = function () {
+    console.log('hello');
+
 }
 ```

@@ -69,4 +69,90 @@ baz();
 **闭包**就是指：执行完的```执行上下文```被弹出执行栈，它的词法环境处于失联状态，后续的执行上下文没办法直接访问这个失联的词法环境。在这种情况下还保留了对那个词法环境的```引用```，从而可以通过这个```引用```去访问失联的词法环境，这个```引用```就是闭包。
 
 
-其实我们每天写的代码，基本会用到闭包，JS也有很多闭包的应用，比如模块、函数的柯里化等等。
+其实我们每天写的代码，基本会用到闭包，JS也有很多闭包的应用有以下几种方式：
+
+- 第一种：
+     ```js
+        function foo() {
+        var a = 2;
+
+        function bar() {
+            console.log( a );
+        }
+
+        return bar;
+        }
+
+        var baz = foo();
+
+        baz(); // closure!
+     ```
+
+- 第二种：
+     ```js
+        function foo() {
+        var a = 2;
+
+        function baz() {
+            console.log( a ); // 2
+        }
+
+        bar( baz );
+        }
+
+        function bar(fn) {
+            fn(); // closure!
+        }
+     ```
+
+- 第三种：
+     ```js
+        var fn;
+
+        function foo() {
+            var a = 2;
+
+            function baz() {
+                console.log( a );
+            }
+
+            fn = baz; // assign `baz` to global variable
+        }
+
+        function bar() {
+            fn(); // closure!
+        }
+
+        foo();
+
+        bar(); // 2
+     ```
+
+- 第四种：
+  ```js
+    function wait(message) {
+
+        setTimeout( function timer(){
+            console.log( message );
+        }, 1000 );
+
+    }
+
+    wait( "Hello, closure!" ); // 打印出 hello closure！ 回调函数的message是wait方法作用域的值。
+  ```
+
+  需要注意的是，如果代码写成这样：
+
+    ```js
+    function wait(message) {
+
+        setTimeout( function timer(){
+            console.log( this.message );
+        }, 1000 );
+
+    }
+
+    wait( "Hello, closure!" ); // 打印出undefined, 回调函数的this值的是全局变量，全局变量没有这个值，所以是undefined。
+   ```
+   
+ - 第五种是模块化

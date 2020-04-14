@@ -125,3 +125,9 @@ angular-cli内置的webpack配置，我们通过```ng build --aot=true``` 或者
 5. 默认是Minification
 6. 默认是Uglification
 7. 等等.....
+
+<blockquote>
+<p>
+对于Angular6以上的版本， typescript编译（tsc）、Sass/Less编译成CSS、bundle打包JavaScript/CSS 、Code splitting、根据路由切割代码到不同的chunk文件，这些功能都是在 @ngtools/webpack里实现的，@ngtools/webpack的代码一般放在@angular/cli里。
+</p>
+</blockquote>

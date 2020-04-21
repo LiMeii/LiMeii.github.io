@@ -296,6 +296,8 @@ export { DeepUnderstandingComponentNgFactory as DeepUnderstandingComponentNgFact
 
 总结来说：AoT之后，HTML模板文件会被编译成一个视图(es6)，在这个视图里会把页面元素(div h1 h2)都渲染出来，并且生成绑定和变化检测代码，同时也host component的信息。
 
+其实ngfactory就是Component View。在```*.ngfactory.js```过程中，ngc会把所有可能发生变化的```DOM Nodes/Elements```都找出来，然后给这些```DOM Nodes/Elements```生成```Bindings```，这些```Bindings```里会记录```Element Name/Expression/OldValue```，一旦有异步事件发生（Click事件或者是HttpRequest）就会被```ngZone```捕获到，然后触发```Change Detection```，也就是会从```Root Component```开始，从上到下检查所有组件的```Bindings```也就是前面提到的```Component View```，对比```NewVaule```和```OldValue```，如果不一致就会把新值更新到页面，同时把新值更新为旧值（这也就是我们经常提到的脏检查机制```Dirty Checking```）
+
 ## AoT对性能的影响
 不管是JiT还是AoT，最终的结果文件是一样的。JiT编译的bundle文件，在浏览器渲染之前需要下载compiler源码，然后compiler源码对JiT的bundle文件进行编译，也会在本地生成```*.ngfactory.js```文件，最后进行渲染。在浏览器里先编译再渲染肯定没有AoT直接在浏览器里渲染性能高。
 

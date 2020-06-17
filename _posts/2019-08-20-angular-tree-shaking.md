@@ -272,3 +272,9 @@ console.log("the result for cube(5) is " + cube(5));
 需要注意的是，Webpack内置的Tree Shaking只对ES6 module语法有用，对那些用Babel把ES6 modules编译成CommonJS modules不起作用。
 </p>
 </blockquote>
+
+
+## 其他 Tree Shaking 工具
+
+- [Rollup](https://github.com/rollup/rollup)
+- [Google Closure Compiler](https://github.com/google/closure-compiler)

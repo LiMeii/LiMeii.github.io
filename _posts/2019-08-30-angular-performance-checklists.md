@@ -34,6 +34,7 @@ layout: post
 - Cache
 - lazy loading 和 preloading
 - 如果是用了前端框架，部署的时候用 AoT 的编译方式
+- service worker
 
 
 页面渲染，在正常情况下浏览器是60Hz的刷新率，每16.6ms会刷新一次页面，渲染页面的操作需要在这16.6ms内完成，否则就会导致页面失帧，那么提高页面渲染的性能，可以从以下几方面考虑：
@@ -49,6 +50,7 @@ layout: post
    - JS 阻塞构建 DOM CSSOM 树，从而会阻塞构建渲染树，而且同时还会阻塞其他静态资源（图片）的下载，所以要把```<script>```标签放到body最后，或者是在标签里添加```defer``` 或者 ```async``` 属性。
    - CSS 文件下载解析，不会阻塞 HTML 文件解析，不会阻塞 DOM 树的构建，但是会阻塞 CSSOM 树，从而会阻塞渲染树的构建，所以 CSS 文件的连接可以放在 head 里，不影响
    - CSS 文件下载不会阻塞其他文件下载，但是会阻塞JS的文件执行
+- web worker
 
 ## 网络性能
 
@@ -114,5 +116,8 @@ Angular 中通过 HttpClient 执行 Http Request 返回的 Observables 是 Cold 
 **防抖**
 
 超高频触发网路请求，不仅效率低而且没办法保证请求结果的正确性，我们可以结合 RxJS 中的操作符```debounceTime``` ```map```  ```filter```  ```distinctUntilChanged``` 和```switchMap```实现防抖。具体可以参考文章：【[RxJS：如何用RxJS实现高效的HTTP请求](https://limeii.github.io/2019/08/rxjs-searchable-input/)】
+
+**service worker**
+
 
 **未完待续**

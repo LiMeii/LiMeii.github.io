@@ -34,7 +34,7 @@ layout: post
 - Cache
 - lazy loading 和 preloading
 - 如果是用了前端框架，部署的时候用 AoT 的编译方式
-- service worker
+- Service Worker
 
 
 页面渲染，在正常情况下浏览器是60Hz的刷新率，每16.6ms会刷新一次页面，渲染页面的操作需要在这16.6ms内完成，否则就会导致页面失帧，提高页面渲染的性能，可以从以下几方面考虑：
@@ -117,7 +117,9 @@ Angular 中通过 HttpClient 执行 Http Request 返回的 Observables 是 Cold 
 
 超高频触发网路请求，不仅效率低而且没办法保证请求结果的正确性，我们可以结合 RxJS 中的操作符```debounceTime``` ```map```  ```filter```  ```distinctUntilChanged``` 和```switchMap```实现防抖。具体可以参考文章：【[RxJS：如何用RxJS实现高效的HTTP请求](https://limeii.github.io/2019/08/rxjs-searchable-input/)】
 
-**service worker**
+**Service Worker**
+
+Service Worker 可以理解为客户端和服务器端中间的一个代理服务器，它是独立于主线程的一个线程，在主线程运行的同时，它在后台运行，两者之间互不干扰。它可以拦截所有客户端的请求，也可以向服务器端发送请求，可以离线缓存资源，也可以后台同步。Service Worker 可以使你的应用先访问本地缓存资源，所以在离线状态时，在没有通过网络接收到更多的数据前，仍可以提供基本的功能，毫无疑问，Service Worker 也可以大大的提高页面性能。关于 Service Worker 的理解和应用，可以参考文章：【[The offline cookbook](https://jakearchibald.com/2014/offline-cookbook/)】
 
 ## 页面渲染
 

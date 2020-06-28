@@ -122,6 +122,6 @@ Angular 中通过 HttpClient 执行 Http Request 返回的 Observables 是 Cold 
 **浏览器工作原理**
 
 
-在正常情况下浏览器是60Hz的刷新率，每16.6ms会刷新一次页面，渲染页面的操作需要在这16.6ms内完成，否则就会导致页面失帧。关于浏览器是如何解析运行 HTML CSS JS，可以参考参考文章：【[How Browsers Work: Behind the scenes of modern web browsers](https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/)】
+在正常情况下浏览器是60Hz的刷新率，每16.6ms会刷新一次页面，渲染页面的操作需要在这16.6ms内完成，否则就会导致页面失帧。关于浏览器是如何解析运行 HTML CSS JS，浏览器的工作原理，可以参考参考文章：【[How Browsers Work: Behind the scenes of modern web browsers](https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/)】
 
 **未完待续**

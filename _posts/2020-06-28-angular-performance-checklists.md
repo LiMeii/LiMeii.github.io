@@ -97,11 +97,6 @@ Tree Shaking 就是用来解决这种问题，它是指在编译打包过程中�
 在项目中经常会有一些公用代码，被多个 module 或者 component 引用，如果在打包的时候直接把公用代码重复打包进不同的 bundle 文件，会造成代码冗余，也会影响应用性能。我们可以通过 webpack Code Splitting 做代码切割，把公用的代码单独提取出来放在 chunk 文件里，用户访问页面的时候只需要下载一次这个 chunk 文件就可以了。具体可以参考这篇文章：[webpack(3)：代码切割](https://limeii.github.io/2018/10/webpack-code-splitting/)
 
 
-**使用 ChangeDetectionStrategy.OnPush 策略**
-
-Angular 默认的变化检测机制是：异步事件 callback 结束后，NgZone 会触发整个组件树至上而下做变化检测，也就是说页面一个小小的 Click 事件就会触发所有组件的变化检测。虽然 Angular 变化检测本身性能已经很好了，在毫秒内可以做成百上千次变化检测。但是随着项目越来越大，其实很多不必要的变化检测还是会在一定程度上影响性能。在 Angular 中可以通过 OnPush 来跳过一些不必要的变化检测，从而优化整个应用的性能。更多关于 OnPush 策略的理解和应用可以参考这篇文章：【 [Angular Change Detection：变化检测策略](https://limeii.github.io/2019/06/angular-changeDetectionStrategy-OnPush/)】
-
-
 **缓存**
 
 - 用 RxJS 实现缓存效果
@@ -137,4 +132,7 @@ JS 是单线程的，并且是全阻塞的，全阻塞的意思是指：在浏�
 
 在 H5 中引入了 Web Worker，它的作用就是为 JS 创造多线程环境，允许主线程创建 Worker 线程，将一些任务分配给 Worker 线程。在主线程运行的同时，Worker 线程在后台运行，两者互不干扰，它的意义在于可以将一些耗时的数据处理操作（复杂耗时的计算，大文本分析上传，图像处理，canvas图像绘制等等）从主线程中剥离，让主线程专注于页面的渲染和交互，从而提高页面性能。关于 Web Worker 的具体用法可以参考文章：【[使用 Web Workers](https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API/Using_web_workers)】
 
-**未完待续**
+
+**使用 ChangeDetectionStrategy.OnPush 策略**
+
+Angular 默认的变化检测机制是：异步事件 callback 结束后，NgZone 会触发整个组件树至上而下做变化检测，也就是说页面一个小小的 Click 事件就会触发所有组件的变化检测。虽然 Angular 变化检测本身性能已经很好了，在毫秒内可以做成百上千次变化检测。但是随着项目越来越大，其实很多不必要的变化检测还是会在一定程度上影响性能。在 Angular 中可以通过 OnPush 来跳过一些不必要的变化检测，从而优化整个应用的性能。更多关于 OnPush 策略的理解和应用可以参考这篇文章：【 [Angular Change Detection：变化检测策略](https://limeii.github.io/2019/06/angular-changeDetectionStrategy-OnPush/)】

@@ -50,7 +50,7 @@ layout: post
    - JS 阻塞构建 DOM CSSOM 树，从而会阻塞构建渲染树，而且同时还会阻塞其他静态资源（图片）的下载，所以要把```<script>```标签放到body最后，或者是在标签里添加```defer``` 或者 ```async``` 属性。
    - CSS 文件下载解析，不会阻塞 HTML 文件解析，不会阻塞 DOM 树的构建，但是会阻塞 CSSOM 树，从而会阻塞渲染树的构建，所以 CSS 文件的连接可以放在 head 里，不影响
    - CSS 文件下载不会阻塞其他文件下载，但是会阻塞JS的文件执行
-- web worker
+- Web Worker
 
 ## 网络性能
 
@@ -119,9 +119,20 @@ Angular 中通过 HttpClient 执行 Http Request 返回的 Observables 是 Cold 
 
 **service worker**
 
+## 页面渲染
+
 **浏览器工作原理**
 
 
 在正常情况下浏览器是60Hz的刷新率，每16.6ms会刷新一次页面，渲染页面的操作需要在这16.6ms内完成，否则就会导致页面失帧。关于浏览器是如何解析运行 HTML CSS JS，浏览器的工作原理，可以参考参考文章：【[How Browsers Work: Behind the scenes of modern web browsers](https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/)】
+
+
+**Web Worker**
+
+
+JS 是单线程的，并且是全阻塞的，全阻塞的意思是指：在浏览器中，只要 JS 引擎在执行 JS 代码，那么就会阻塞 HTML CSS 的解析执行，从而会阻塞页面渲染和交互，如果 JS 代码执行时间比较长，那么会导致页面卡顿，影响用户体验。
+
+
+在 H5 中引入了 Web Worker，它的作用就是为 JS 创造多线程环境，允许主线程创建 Worker 线程，将一些任务分配给 Worker 线程。在主线程运行的同时，Worker 线程在后台运行，两者互不干扰，它的意义在于可以将一些耗时的数据处理操作（复杂耗时的计算，大文本分析上传，图像处理，canvas图像绘制等等）从主线程中剥离，让主线程专注于页面的渲染和交互，从而提高页面性能。关于 Web Worker 的具体用法可以参考文章：【[使用 Web Workers](https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API/Using_web_workers)】
 
 **未完待续**

@@ -5,7 +5,7 @@ layout: post
 ---
 
 
-在【[Angular Change Detection:变化检测机制](https://limeii.github.io/2019/06/angular-changedetection/)】这篇文章里介绍了 Angular 的变化检测机制，也提到了异步事件都会触发整个angular应用的变化检测。
+在【[Angular Change Detection:变化检测机制](https://limeii.github.io/2019/06/angular-changedetection/)】这篇文章里介绍了 Angular 的变化检测机制，也提到了异步事件都会触发整个 Angular 应用的变化检测。
 
 
 Angular 默认的变化检测机制是```ChangeDetectionStrategy.Default```：异步事件 callback 结束后，NgZone 会触发整个组件树至上而下做变化检测，如下所示：
@@ -96,13 +96,13 @@ export class CDChildComponent implements OnChanges {
 
 ## 1. 组件的 @Input 引用发生变化
 
-必须是 @Input 的引用发生改变才会触发变化检测，并且仅限于 @Input 的变化检测，在 OnPush 策略下，会触发组件的变化检测。在这里先解释一下JS中的数据类型，在JS中有七种数据类型，其中包括六中原始类型（primitive values）和 Object。
+必须是 @Input 的引用发生改变才会触发变化检测，并且仅限于 @Input 的变化检测，在 OnPush 策略下，会触发组件的变化检测。在这里先解释一下 JS 中的数据类型，在 JS 中有七种数据类型，其中包括六中原始类型（primitive values）和 Object。
 
 
 六种原始类型分别为：Boolean、Null、Undefined、Number、String、Symbol (ECMAScript 6 新定义)。
 
 
-除了 Object 以外的所有类型（即原始类型）都是不可变的（Immutable），是通过值传递的，每次对它们的改动都会在内存里生成一个新的值。而Object是通过引用传递的，每次对Object改动，引用不会改变。
+除了 Object 以外的所有类型（即原始类型）都是不可变的（Immutable），是通过值传递的，每次对它们的改动都会在内存里生成一个新的值。而 Object 是通过引用传递的，每次对 Object 改动，引用不会改变。
 
 
 在上面的示例代码CDParentComponent中的```changeInfo```方法如下：
@@ -115,7 +115,7 @@ export class CDChildComponent implements OnChanges {
     }
 
 ```
-data 是一个对象，在```changeInfo```方法里通过如上方式改变 email 的值。同时在 CDChildComponent 设置了 OnPush，虽然```@Input data```的属性eamil发生变化但是 data 对象的引用并没有改变，并不会触发 CDChildComponent 中的变化检测，页面的 eamil 也不会发生变化。
+data 是一个对象，在```changeInfo```方法里通过如上方式改变 email 的值。同时在 CDChildComponent 设置了 OnPush，虽然```@Input data```的属性 eamil 发生变化但是 data 对象的引用并没有改变，并不会触发 CDChildComponent 中的变化检测，页面的 eamil 也不会发生变化。
 
 
 如果把 CDParentComponent 中的```changeInfo```方法改成下面这样：

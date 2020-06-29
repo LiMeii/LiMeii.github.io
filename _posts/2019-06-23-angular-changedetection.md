@@ -6,11 +6,11 @@ layout: post
 
 <blockquote>
 <p>
-angular中的变化检测机制是当component状态有变化的时候，angular都能检测到这些变化，并且能够将这些变化反应到页面上。
+Angular 中的变化检测机制是当 component 状态有变化的时候，Angular 都能检测到这些变化，并且能够将这些变化反应到页面上。
 </p>
 </blockquote>
 
-比如有这样一个component，代码如下：
+比如有这样一个 component，代码如下：
 
 ```ts
 @Component({
@@ -21,19 +21,19 @@ export class CDParentComponent {
 }
 ```
 
-当把cdParentComponent中```data.name```的值改成limeii，页面会直接把meii更新成limeii，看似很简单的一个改动，其实在angular内部涉及到很多复杂的操作，包括```变化检测``` ```脏数据检查``` ```数据绑定``` ```单向数据流``` ```更新DOM``` ```NgZone```等等。
+当把 cdParentComponent 中```data.name```的值改成 limeii，页面会直接把 meii 更新成 limeii，看似很简单的一个改动，其实在 Angular 内部涉及到很多复杂的操作，包括```变化检测``` ```脏数据检查``` ```数据绑定``` ```单向数据流``` ```更新DOM``` ```NgZone```等等。
 
 
-单向数据流在这篇【[Angular：单向数据流](https://limeii.github.io/2019/06/angular-unidirectional-data-flow/)】文章有详细介绍，也提到angular 应用其实就是组件树，变化检测都是沿着组件树从root component开始至上而下执行的。我们都知道在angular里，每个component都有一个html模板，在angular内部，编译器在component和模板之间会生成一个component view。数据绑定、脏数据检查和更新DOM都是由这个component view实现的。变化检测机制也可以说就是沿着component view的树状结构从上到下执行的。
+单向数据流在这篇【[Angular：单向数据流](https://limeii.github.io/2019/06/angular-unidirectional-data-flow/)】文章有详细介绍，也提到 Angular 应用其实就是组件树，变化检测都是沿着组件树从 root component 开始至上而下执行的。我们都知道在Angular 里，每个 component 都有一个 html 模板，在 Angular 内部，编译器在 component 和模板之间会生成一个 component view。数据绑定、脏数据检查和更新 DOM 都是由这个 component view 实现的。变化检测机制也可以说就是沿着 component view 的树状结构从上到下执行的。
 
 
-## Component View到底是什么？
+## Component View 到底是什么？
 
 
-把```data.name```值改成limeii，会触发变化检测，同时angular会做数据脏检查，也就是对比当前值（limeii）和之前的值（oldvalue：meii）是否一样，如果发现两者不一致，会把当前的值（limeii）更新到页面上。同时也会把当前的值保持为oldvalue。
+把```data.name```值改成 limeii，会触发变化检测，同时 Angular 会做数据脏检查，也就是对比当前值（limeii）和之前的值（oldvalue：meii）是否一样，如果发现两者不一致，会把当前的值（limeii）更新到页面上。同时也会把当前的值保持为 oldvalue。
 
 
-在文章【[Angular：深入理解Angular编译机制](https://limeii.github.io/2019/08/angular-compiler/)】中介绍了AoT和ngc，提到过ngc会生成```*.ngfactory.js```，其实ngfactory就是Component View。在```*.ngfactory.js```过程中，ngc会把所有可能发生变化的```DOM Nodes/Elements```都找出来，然后给这些```DOM Nodes/Elements```生成```Bindings```，这些```Bindings```里会记录```Element Name/Expression/OldValue```，一旦有异步事件发生（Click事件或者是HttpRequest）就会被```ngZone```捕获到，然后触发```Change Detection```，也就是会从```Root Component```开始，从上到下检查所有组件的```Bindings```也就是前面提到的```Component View```，对比```NewVaule```和```OldValue```，如果不一致就会把新值更新到页面，同时把新值更新为旧值（这也就是我们经常提到的脏检查机制```Dirty Checking```）。我们来看下CDParentComponent通过ngc编译以后的cd-parent.component.ngfactory.js文件里有什么：
+在文章【[Angular：深入理解Angular编译机制](https://limeii.github.io/2019/08/angular-compiler/)】中介绍了 AoT 和 ngc，提到过 ngc 会生成```*.ngfactory.js```，其实 ngfactory 就是 Component View。在```*.ngfactory.js```过程中，ngc 会把所有可能发生变化的```DOM Nodes/Elements```都找出来，然后给这些```DOM Nodes/Elements```生成```Bindings```，这些```Bindings```里会记录```Element Name/Expression/OldValue```，一旦有异步事件发生（Click事件或者是HttpRequest）就会被```ngZone```捕获到，然后触发```Change Detection```，也就是会从```Root Component```开始，从上到下检查所有组件的```Bindings```也就是前面提到的```Component View```，对比```NewVaule```和```OldValue```，如果不一致就会把新值更新到页面，同时把新值更新为旧值（这也就是我们经常提到的脏检查机制```Dirty Checking```）。我们来看下 CDParentComponent 通过 ngc 编译以后的 cd-parent.component.ngfactory.js 文件里有什么：
 
 ```js
 /**
@@ -91,15 +91,15 @@ export { CDParentComponentNgFactory as CDParentComponentNgFactory };
 各段代码的作用如下：
 ![angular-change-detection](/assets/images/posts/angular/angular-change-detection06.png){:height="100%" width="100%"}
 
-- View_CDParentComponent_0(**internal component**)：是CDParentComponent，里面有每个DOM节点引用，并且给每个节点做数据绑定；还有两个change detection方法，分别对应 ```[data]="data"``` ```{ { data.name } }``` 和  ```{ { data.address } }```。
+- View_CDParentComponent_0(**internal component**)：是 CDParentComponent，里面有每个 DOM 节点引用，并且给每个节点做数据绑定；还有两个 change detection 方法，分别对应 ```[data]="data"``` ```{ { data.name } }``` 和  ```{ { data.address } }```。
 
-- View_CDParentComponent_Host_0(**internal host component**)：负责渲染出宿主元素 < CDParentComponent > < / CDParentComponent > ，并且使用"internal component"管理组件的内部视图，也是通过这个构建整个组件树。
-
-
-当编译器分析组件模板的时候，知道每次变化检测有可能需要更新页面上DOM元素属性的值，对于这些属性，编译器都会给它创建绑定，绑定里至少有这个属性名称和取值的表达式。
+- View_CDParentComponent_Host_0(**internal host component**)：负责渲染出宿主元素 < CDParentComponent > < / CDParentComponent > ，并且使用 "internal component" 管理组件的内部视图，也是通过这个构建整个组件树。
 
 
-有了component view、绑定、脏数据检查，组件状态变化就可以触发变化检测从而更新页面DOM属性的值。
+当编译器分析组件模板的时候，知道每次变化检测有可能需要更新页面上 DOM 元素属性的值，对于这些属性，编译器都会给它创建绑定，绑定里至少有这个属性名称和取值的表达式。
+
+
+有了 component view、绑定、脏数据检查，组件状态变化就可以触发变化检测从而更新页面 DOM 属性的值。
 
 
 ## 那什么会触发组件状态的变化？
@@ -120,7 +120,7 @@ export class CDParentComponent {
 }
 ```
 
-还有一种常见的方式是，通过http request拿到data的值，如下：
+还有一种常见的方式是，通过 http request 拿到 data 的值，如下：
 
 ```ts
   ngOnInit() {
@@ -138,16 +138,16 @@ export class CDParentComponent {
 3. Timers：setTimeout()、setInterval()
 
 
-## angular又怎么通知各个组件做变化检测？
+## Angular 又怎么通知各个组件做变化检测？
 
 
-前面那三种方式会导致angular状态变化，那又是谁知道状态已经发生改变，需要通知angular触发变化检测从而更新页面DOM呢？```NgZone（zone.js）```充当了这个角色。
+前面那三种方式会导致 Angular 状态变化，那又是谁知道状态已经发生改变，需要通知 Angular 触发变化检测从而更新页面 DOM 呢？```NgZone（zone.js）```充当了这个角色。
 
 
-NgZone可以简单的理解为是一个异步事件拦截器，它能够hook到异步任务的执行上下文，然后就可以来处理一些操作，比如每个异步任务callback以后就会去通知angular做变化检测。
+NgZone 可以简单的理解为是一个异步事件拦截器，它能够 hook 到异步任务的执行上下文，然后就可以来处理一些操作，比如每个异步任务 callback 以后就会去通知 Angular 做变化检测。
 
 
-angular源码中有一个```ApplicationRef```，可以监听NgZones ```onTurnDone```事件，每当```onTurnDone```被触发后，它会立马执行```tick()```方法，```tick()```会从上到下沿着组件树触发变化检测。```ApplicationRef```简洁版代码如下：
+Angular 源码中有一个```ApplicationRef```，可以监听 NgZones ```onTurnDone```事件，每当```onTurnDone```被触发后，它会立马执行```tick()```方法，```tick()```会从上到下沿着组件树触发变化检测。```ApplicationRef```简洁版代码如下：
 
 ```ts
 // very simplified version of actual source
@@ -167,12 +167,12 @@ class ApplicationRef {
 ```
 
 
-每个component都有自己的变化检测器，负责检查它们各自的绑定，结构如下：
+每个 component 都有自己的变化检测器，负责检查它们各自的绑定，结构如下：
 
 ![angular-change-detection](https://limeii.github.io/assets/images/posts/angular/angular-change-detection05.png){:height="100%" width="100%"}
 
 
-有了NgZone上述三种异步事件都会导致整个angular应用发生变化检测，虽然angular变化检测本身性能已经很好了，在毫秒内可以做成百上千次变化检测。但是随着项目越来越大，其实很多不必要的变化检测还是会在一定程度上影响性能。
+有了 NgZone 上述三种异步事件都会导致整个 Angular 应用发生变化检测，虽然 Angular 变化检测本身性能已经很好了，在毫秒内可以做成百上千次变化检测。但是随着项目越来越大，其实很多不必要的变化检测还是会在一定程度上影响性能。
 
 
-在这篇文章【[Angular Change Detection:变化检测策略](https://limeii.github.io/2019/06/angular-changeDetectionStrategy-OnPush/)】介绍了如何通过OnPush来跳过一些不必要的变化检测，从而优化整个应用的性能。
+在这篇文章【[Angular Change Detection:变化检测策略](https://limeii.github.io/2019/06/angular-changeDetectionStrategy-OnPush/)】介绍了如何通过 OnPush 来跳过一些不必要的变化检测，从而优化整个应用的性能。

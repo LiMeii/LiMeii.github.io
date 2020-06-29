@@ -137,3 +137,11 @@ JS 是单线程的，并且是全阻塞的，全阻塞的意思是指：在浏�
 **使用 ChangeDetectionStrategy.OnPush 策略**
 
 Angular 默认的变化检测机制是：异步事件 callback 结束后，NgZone 会触发整个组件树至上而下做变化检测，也就是说页面一个小小的 Click 事件就会触发所有组件的变化检测。虽然 Angular 变化检测本身性能已经很好了，在毫秒内可以做成百上千次变化检测。但是随着项目越来越大，其实很多不必要的变化检测还是会在一定程度上影响性能。在 Angular 中可以通过 OnPush 来跳过一些不必要的变化检测，从而优化整个应用的性能。更多关于 OnPush 策略的理解和应用可以参考这篇文章：【 [Angular Change Detection：变化检测策略](https://limeii.github.io/2019/06/angular-changeDetectionStrategy-OnPush/)】
+
+
+**服务器端渲染（Server Rendering）**
+
+
+一般来说，像 Angular 框架搭出来的 SPA 应用，都是客户端渲染（client-side rendering）。当路由到这个页面的时候，从服务器端下载相应的 bundle/chunk 文件，在这个文件里一般只是只包含了 DOM 结构代码和 JS 代码，不是 HTML 文件。浏览器拿到这些代码，需要构建 DOM 树 / CSSOM 树 / 渲染树 / 解析执行 JS 代码，最后才是页面渲染后跟用户进行交互，如果这其中某一个步骤耗时较长，就会导致用户只能看到空白页面一直在加载，显然性能和用户体验都不好。服务器端渲染就可以用来解决这个问题，当路由到某一个页面的时候，request 发到服务器端，在服务器端会构建好这个页面（HTML文件），再把这个 HTML 文件直接发回给客户端，这样用户在一开始就能立马看到带有内容的页面，不用等浏览器构建页面、执行 JS 代码，大大提高了性能，有更好的用户体验。
+
+在 Angular 中，可以用 Angular Universal 来实现服务器端渲染，关于服务器端渲染和 Angular Universal 的文章可以参考：【[Rendering on the Web](https://developers.google.com/web/updates/2019/02/rendering-on-the-web)】【[Angular Universal: a Complete Practical Guide](https://blog.angular-university.io/angular-universal/)】

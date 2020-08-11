@@ -13,11 +13,11 @@ layout: post
 </blockquote>
 
 
-在 HTTP/1.X 连接有三种方式：短链接，长连接和 HTTP 流水线。
+在 HTTP/1.X 连接有三种方式：短连接，长连接和 HTTP 流水线。
 
 ![angular-performance](/assets/images/posts/angular/angular-performance01.png){:height="80%" width="80%"}
 
-短链接是 HTTP/1.0 的默认模型，它每发一个请求时都会创建见一个新的 TCP 连接，收到 response 的时候就立马关闭连接，每次创建一个 TCP 连接都相当耗费资源，可想而知这种方式的性能很差，现在基本不用这种方式。
+短连接是 HTTP/1.0 的默认模型，它每发一个请求时都会创建见一个新的 TCP 连接，收到 response 的时候就立马关闭连接，每次创建一个 TCP 连接都相当耗费资源，可想而知这种方式的性能很差，现在基本不用这种方式。
 
 
 在 HTTP/1.1 以后就有了长连接和流水线，长连接是指创建一个 TCP 连接后，可以保持连接完成多次连续的请求，减少了打开 TCP 连接的次数，在 HTTP/1.1 以后的版本是默认的长连接的模式，长连接的缺点是，就算在空闲状态，它还是会消耗服务器资源。长连接是通过 ```Keep-Alive```消息头来控制。
@@ -34,10 +34,10 @@ layout: post
 - Cache
 - lazy loading 和 preloading
 - 如果是用了前端框架，部署的时候用 AoT 的编译方式
-- service worker
+- Service Worker
 
 
-页面渲染，在正常情况下浏览器是60Hz的刷新率，每16.6ms会刷新一次页面，渲染页面的操作需要在这16.6ms内完成，否则就会导致页面失帧，那么提高页面渲染的性能，可以从以下几方面考虑：
+页面渲染，在正常情况下浏览器是60Hz的刷新率，每16.6ms会刷新一次页面，渲染页面的操作需要在这16.6ms内完成，否则就会导致页面失帧，提高页面渲染的性能，可以从以下几方面考虑：
 - 减少页面重排和重绘，尽量避免以下会导致页面重排和重绘的操作：
    - 在 JS 代码中操作页面 DOM
    - 在页面 layout 稳定以后，增加和改变 CSS 样式
@@ -50,7 +50,8 @@ layout: post
    - JS 阻塞构建 DOM CSSOM 树，从而会阻塞构建渲染树，而且同时还会阻塞其他静态资源（图片）的下载，所以要把```<script>```标签放到body最后，或者是在标签里添加```defer``` 或者 ```async``` 属性。
    - CSS 文件下载解析，不会阻塞 HTML 文件解析，不会阻塞 DOM 树的构建，但是会阻塞 CSSOM 树，从而会阻塞渲染树的构建，所以 CSS 文件的连接可以放在 head 里，不影响
    - CSS 文件下载不会阻塞其他文件下载，但是会阻塞JS的文件执行
-- web worker
+- Web Worker
+- 服务器端渲染
 
 ## 网络性能
 
@@ -97,11 +98,6 @@ Tree Shaking 就是用来解决这种问题，它是指在编译打包过程中�
 在项目中经常会有一些公用代码，被多个 module 或者 component 引用，如果在打包的时候直接把公用代码重复打包进不同的 bundle 文件，会造成代码冗余，也会影响应用性能。我们可以通过 webpack Code Splitting 做代码切割，把公用的代码单独提取出来放在 chunk 文件里，用户访问页面的时候只需要下载一次这个 chunk 文件就可以了。具体可以参考这篇文章：[webpack(3)：代码切割](https://limeii.github.io/2018/10/webpack-code-splitting/)
 
 
-**使用 ChangeDetectionStrategy.OnPush 策略**
-
-Angular 默认的变化检测机制是：异步事件 callback 结束后，NgZone 会触发整个组件树至上而下做变化检测，也就是说页面一个小小的 Click 事件就会触发所有组件的变化检测。虽然 Angular 变化检测本身性能已经很好了，在毫秒内可以做成百上千次变化检测。但是随着项目越来越大，其实很多不必要的变化检测还是会在一定程度上影响性能。在 Angular 中可以通过 OnPush 来跳过一些不必要的变化检测，从而优化整个应用的性能。更多关于 OnPush 策略的理解和应用可以参考这篇文章：【 [Angular Change Detection：变化检测策略](https://limeii.github.io/2019/06/angular-changeDetectionStrategy-OnPush/)】
-
-
 **缓存**
 
 - 用 RxJS 实现缓存效果
@@ -117,7 +113,35 @@ Angular 中通过 HttpClient 执行 Http Request 返回的 Observables 是 Cold 
 
 超高频触发网路请求，不仅效率低而且没办法保证请求结果的正确性，我们可以结合 RxJS 中的操作符```debounceTime``` ```map```  ```filter```  ```distinctUntilChanged``` 和```switchMap```实现防抖。具体可以参考文章：【[RxJS：如何用RxJS实现高效的HTTP请求](https://limeii.github.io/2019/08/rxjs-searchable-input/)】
 
-**service worker**
+**Service Worker**
+
+Service Worker 可以理解为客户端和服务器端中间的一个代理服务器，它是独立于主线程的一个线程，在主线程运行的同时，它在后台运行，两者之间互不干扰。它可以拦截所有客户端的请求，也可以向服务器端发送请求，可以离线缓存资源，也可以后台同步。Service Worker 可以使你的应用先访问本地缓存资源，所以在离线状态时，在没有通过网络接收到更多的数据前，仍可以提供基本的功能，毫无疑问，Service Worker 也可以大大的提高页面性能。关于 Service Worker 的理解和应用，可以参考文章：【[The offline cookbook](https://jakearchibald.com/2014/offline-cookbook/)】
+
+## 页面渲染
+
+**浏览器工作原理**
 
 
-**未完待续**
+在正常情况下浏览器是60Hz的刷新率，每16.6ms会刷新一次页面，渲染页面的操作需要在这16.6ms内完成，否则就会导致页面失帧。关于浏览器是如何解析运行 HTML CSS JS，浏览器的工作原理，可以参考参考文章：【[How Browsers Work: Behind the scenes of modern web browsers](https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/)】
+
+
+**Web Worker**
+
+
+JS 是单线程的，并且是全阻塞的，全阻塞的意思是指：在浏览器中，只要 JS 引擎在执行 JS 代码，那么就会阻塞 HTML CSS 的解析执行，从而会阻塞页面渲染和交互，如果 JS 代码执行时间比较长，那么会导致页面卡顿，影响用户体验。
+
+
+在 H5 中引入了 Web Worker，它的作用就是为 JS 创造多线程环境，允许主线程创建 Worker 线程，将一些任务分配给 Worker 线程。在主线程运行的同时，Worker 线程在后台运行，两者互不干扰，它的意义在于可以将一些耗时的数据处理操作（复杂耗时的计算，大文本分析上传，图像处理，canvas图像绘制等等）从主线程中剥离，让主线程专注于页面的渲染和交互，从而提高页面性能。关于 Web Worker 的具体用法可以参考文章：【[使用 Web Workers](https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API/Using_web_workers)】
+
+
+**使用 ChangeDetectionStrategy.OnPush 策略**
+
+Angular 默认的变化检测机制是：异步事件 callback 结束后，NgZone 会触发整个组件树至上而下做变化检测，也就是说页面一个小小的 Click 事件就会触发所有组件的变化检测。虽然 Angular 变化检测本身性能已经很好了，在毫秒内可以做成百上千次变化检测。但是随着项目越来越大，其实很多不必要的变化检测还是会在一定程度上影响性能。在 Angular 中可以通过 OnPush 来跳过一些不必要的变化检测，从而优化整个应用的性能。更多关于 OnPush 策略的理解和应用可以参考这篇文章：【 [Angular Change Detection：变化检测策略](https://limeii.github.io/2019/06/angular-changeDetectionStrategy-OnPush/)】
+
+
+**服务器端渲染（Server Rendering）**
+
+
+一般来说，像 Angular 框架搭出来的 SPA 应用，都是客户端渲染（client-side rendering）。当路由到这个页面的时候，从服务器端下载相应的 bundle/chunk 文件，在这个文件里一般只是只包含了 DOM 结构代码和 JS 代码，不是 HTML 文件。浏览器拿到这些代码，需要构建 DOM 树 / CSSOM 树 / 渲染树 / 解析执行 JS 代码，最后才是页面渲染后跟用户进行交互，如果这其中某一个步骤耗时较长，就会导致用户只能看到空白页面一直在加载，显然性能和用户体验都不好。服务器端渲染就可以用来解决这个问题，当路由到某一个页面的时候，request 发到服务器端，在服务器端会构建好这个页面（HTML文件），再把这个 HTML 文件直接发回给客户端，这样用户在一开始就能立马看到带有内容的页面，不用等浏览器构建页面、执行 JS 代码，大大提高了性能，有更好的用户体验。
+
+在 Angular 中，可以用 Angular Universal 来实现服务器端渲染，关于服务器端渲染和 Angular Universal 的文章可以参考：【[Rendering on the Web](https://developers.google.com/web/updates/2019/02/rendering-on-the-web)】【[Angular Universal: a Complete Practical Guide](https://blog.angular-university.io/angular-universal/)】

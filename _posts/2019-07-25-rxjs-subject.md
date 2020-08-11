@@ -1,13 +1,13 @@
 ---
-title: RxJS：四种Subject的用法和区别
+title: RxJS：四种 Subject 的用法和区别
 tags: RxJS
 layout: post
 ---
 
-在RxJS中有四种Subject分别是：Subject，BehaviorSubject，AsyncSubject，ReplaySubject；这四种Subject都是特殊的Observable。
+在 RxJS 中有四种 Subject 分别是：Subject，BehaviorSubject，AsyncSubject，ReplaySubject；这四种 Subject 都是特殊的 Observable。
 
 
-在介绍它们之前，我们先来看下这四种Subject与普通Observable的区别：
+在介绍它们之前，我们先来看下这四种 Subject 与普通 Observable 的区别：
 
 Observable | Subject | BehaviorSubject | AsyncSubject | ReplaySubject
 :-------: | :-------: | :-------:  | :-------:  | :-------: 
@@ -18,17 +18,17 @@ Cold | Hot | Hot | Hot | Hot
 
 ## Cold vs Hot
 
-在文章【[RxJS：Cold vs Hot Observables](https://limeii.github.io/2019/07/rxjs-coldhot-observable/)】里详细介绍了Cold Observables与Hot Observables的区别，除了Observable之外，这四种Subject都是Hot Observables。
+在文章【[RxJS：Cold vs Hot Observables](https://limeii.github.io/2019/07/rxjs-coldhot-observable/)】里详细介绍了 Cold Observables 与 Hot Observables 的区别，除了 Observable 之外，这四种 Subject 都是 Hot Observables。
 
 ## 数据生产者 vs 数据消费者
 
-- **数据生产者**是指Observable(可观察对象)，产生数据的一方。
+- **数据生产者**是指 Observable(可观察对象)，产生数据的一方。
 
 
-- **数据消费者**是指Observers(观察者)，接收数据的一方。
+- **数据消费者**是指 Observers(观察者)，接收数据的一方。
 
 
-普通的Observable只是数据生产者，发送数据。而Subject，BehaviorSubject，AsyncSubject和ReplaySubject即是生产者又是消费者。比如在angular项目中，我们经常用Subject在多个component中共享数据：
+普通的 Observable 只是数据生产者，发送数据。而 Subject，BehaviorSubject，AsyncSubject 和 ReplaySubject 即是生产者又是消费者。比如在 Angular项目中，我们经常用 Subject 在多个 component 中共享数据：
 
 ```ts
 // messageService.ts
@@ -58,11 +58,11 @@ this.subscription = this.messageService.getData()
         console.log(val);
     });
 ```
-在这两个component中通过定义在messageService的Subject共享数据，通过next()方法使得Subject是数据生产者（可观察对象），通过asObservable()使得Subject是数据消费者（Observers）。
+在这两个 component 中通过定义在 messageService 的 Subject 共享数据，通过 next() 方法使得 Subject 是数据生产者（可观察对象），通过 asObservable() 使得 Subject 是数据消费者（Observers）。
 
 ## 单播 vs 多播
 
-在上面的代码例子中，不仅是在component c可以订阅拿到数据，在其他component中也可以订阅拿到数据。比如在RxjsSubjectAComponent中定义如下代码：
+在上面的代码例子中，不仅是在 component c 可以订阅拿到数据，在其他 component 中也可以订阅拿到数据。比如在 RxjsSubjectAComponent 中定义如下代码：
 
 ```ts
 // RxjsSubjectAComponent
@@ -72,20 +72,20 @@ this.subscription = this.messageService.getData()
         console.log("this is in componet A and " + val);
     })
 ```
-从RxjsSubjectBComponent发出值，在RxjsSubjectCComponent和RxjsSubjectAComponent能拿到同样的值，这个就是多播。
+从 RxjsSubjectBComponent 发出值，在 RxjsSubjectCComponent 和 RxjsSubjectAComponent 能拿到同样的值，这个就是多播。
 
 
-普通的Observables是Cold Observables并且是单播的，其他四种Subject是Hot Observables并且是多播的。
+普通的 Observables 是 Cold Observables 并且是单播的，其他四种 Subject 是 Hot Observables 并且是多播的。
 
 
-单播的意思是，每个普通的Observables实例都只能被一个观察者订阅，当它被其他观察者订阅的时候会产生一个新的实例。也就是普通Observables被不同的观察者订阅的时候，会有多个实例，不管观察者是从何时开始订阅，每个实例都是从头开始把值发给对应的观察者。
+单播的意思是，每个普通的 Observables 实例都只能被一个观察者订阅，当它被其他观察者订阅的时候会产生一个新的实例。也就是普通 Observables 被不同的观察者订阅的时候，会有多个实例，不管观察者是从何时开始订阅，每个实例都是从头开始把值发给对应的观察者。
 
 ## BehaviorSubject
 
-Subject其中的一个变体就是BehaviorSubject，它有一个“当前值”的概念。它保存了发送给消费者的最新值，当有新的观察者订阅时，会立即从BehaviorSubject那接收到“当前值”，在定义一个BehaviorSubject时需要有初始值。
+Subject 其中的一个变体就是 BehaviorSubject，它有一个“当前值”的概念。它保存了发送给消费者的最新值，当有新的观察者订阅时，会立即从 BehaviorSubject 那接收到“当前值”，在定义一个 BehaviorSubject 时需要有初始值。
 
 
-在messageService定义一个BehaviorSubject，初始值是1，updateBehaviorSubject方法把值更新为2，代码如下：
+在 messageService 定义一个 BehaviorSubject，初始值是1，updateBehaviorSubject 方法把值更新为2，代码如下：
 ```ts
 //messageService.ts
 private behaviorSubject: BehaviorSubject<number> = new BehaviorSubject<number>(1);
@@ -94,12 +94,12 @@ updateBehaviorSubject() {
     this.behaviorSubject.next(2);
 }
 ```
-并在RxjsSubjectBComponent中调用执行updateBehaviorSubject方法，代码如下：
+并在 RxjsSubjectBComponent 中调用执行 updateBehaviorSubject 方法，代码如下：
 ```ts
 //RxjsSubjectBComponent
 this.messageService.updateBehaviorSubject();
 ```
-在RxjsSubjectAComponent中订阅behaviorSubject的值，代码如下：
+在 RxjsSubjectAComponent 中订阅 behaviorSubject 的值，代码如下：
 
 ```ts
 let subscription1 = this.messageService.currentBehaviorSubject
@@ -110,7 +110,7 @@ let subscription1 = this.messageService.currentBehaviorSubject
 this.subscription.add(subscription1);
 ```
 
-在RxjsSubjectCComponent中，等5秒以后在订阅behaviorSubject的值，代码如下：
+在 RxjsSubjectCComponent 中，等5秒以后在订阅 behaviorSubject 的值，代码如下：
 
 ```ts
 setTimeout(() => {
@@ -123,7 +123,7 @@ setTimeout(() => {
 
 ```
 
-运行效果：在RxjsSubjectAComponent中会拿到1和2两个值，在RxjsSubjectCComponent中会拿到2这个值。
+运行效果：在 RxjsSubjectAComponent 中会拿到1和2两个值，在 RxjsSubjectCComponent 中会拿到2这个值。
 
 ```
 this is in RxjsSubjectAComponent and Current behavior subject value is  1
@@ -132,13 +132,13 @@ this is in RxjsSubjectCComponent and Current behavior subject value is  2
 ```
 
 
-如果是正常的Hot Observable在5秒之后，拿不到任何值，因为在五秒内已经把值1和2都发送完了，五秒以后观察者再订阅，没有任何值可以发送了。但是用BehaviorSubject保存了发送给消费者的最新值，当有新的观察者订阅时，会立即从BehaviorSubject那接收到“当前值”，所以RxjsSubjectCComponent的订阅者会拿到2这个值。
+如果是正常的 Hot Observable 在5秒之后，拿不到任何值，因为在五秒内已经把值1和2都发送完了，五秒以后观察者再订阅，没有任何值可以发送了。但是用 BehaviorSubject 保存了发送给消费者的最新值，当有新的观察者订阅时，会立即从 BehaviorSubject 那接收到“当前值”，所以 RxjsSubjectCComponent 的订阅者会拿到2这个值。
 
 ## ReplaySubject
 
-类似于BehaviorSubject，可以发送旧值给新的订阅者，但是不仅是‘当前值’，还可以是之前的旧值。
+类似于 BehaviorSubject，可以发送旧值给新的订阅者，但是不仅是‘当前值’，还可以是之前的旧值。
 
-在messageService定义一个ReplaySubject，为新的订阅者缓冲3个值，sendReplaySubject方法把1 2 3 4 5五个值发给订阅者，代码如下：
+在 messageService 定义一个 ReplaySubject，为新的订阅者缓冲3个值，sendReplaySubject 方法把1 2 3 4 5五个值发给订阅者，代码如下：
 
 ```ts
 //messageService.ts
@@ -157,13 +157,13 @@ getReplaySubject(): Observable<any> {
 
 ```
 
-在RxjsSubjectBComponent中，调用sendReplaySubject方法：
+在 RxjsSubjectBComponent 中，调用 sendReplaySubject 方法：
 
 ```ts
 this.messageService.sendReplaySubject();
 ```
 
-在RxjsSubjectAComponent中，订阅replaySubject的值，代码如下：
+在 RxjsSubjectAComponent 中，订阅 replaySubject 的值，代码如下：
 
 ```ts
 let subscription2 = this.messageService.getReplaySubject()
@@ -174,7 +174,7 @@ let subscription2 = this.messageService.getReplaySubject()
 this.subscription.add(subscription2);
 ```
 
-在RxjsSubjectCComponent中，等5秒以后在订阅replaySubject的值，代码如下：
+在 RxjsSubjectCComponent 中，等5秒以后在订阅 replaySubject 的值，代码如下：
 
 ```ts
 setTimeout(() => {
@@ -207,7 +207,7 @@ this is in RxjsSubjectCComponent and Current repaly subject value is  5
 只有当 Observable 执行完成时(执行 complete())，它才会将执行的最后一个值发送给观察者。
 
 
-在messageService定义一个AsyncSubject，sendAsyncSubject方法把10001 10002 10003 三个值发给订阅者，代码如下：
+在 messageService 定义一个 AsyncSubject，sendAsyncSubject 方法把10001 10002 10003 三个值发给订阅者，代码如下：
 
 ```ts
 private asyncSubject: AsyncSubject<number> = new AsyncSubject<number>();
@@ -224,13 +224,13 @@ getAsyncSubject() {
 ```
 
 
-在RxjsSubjectBComponent中，调用sendAsyncSubject方法：
+在 RxjsSubjectBComponent 中，调用 sendAsyncSubject 方法：
 
 ```ts
 this.messageService.sendAsyncSubject();
 ```
 
-在RxjsSubjectAComponent中，订阅asyncSubject的值，代码如下：
+在 RxjsSubjectAComponent 中，订阅 asyncSubject 的值，代码如下：
 
 ```ts
 let subscription3 = this.messageService.getAsyncSubject()
@@ -241,7 +241,7 @@ let subscription3 = this.messageService.getAsyncSubject()
 this.subscription.add(subscription3);
 ```
 
-在RxjsSubjectCComponent中，等5秒以后在订阅asyncSubject的值，代码如下：
+在 RxjsSubjectCComponent 中，等5秒以后在订阅 asyncSubject 的值，代码如下：
 
 ```ts
 setTimeout(() => {

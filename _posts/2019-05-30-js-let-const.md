@@ -82,6 +82,21 @@ data = {};//报错：Uncaught TypeError: Assignment to constant variable
 
 在JS引擎扫描代码发现变量声明时，遇到var声明就提升到作用域顶部，遇到let和const就把这些声明放在暂时性死区。对于let和const变量，如果在执行它们的声明语句之前访问会报错，只有执行完声明语句之后才会从暂时性死区移出。
 
+<blockquote>
+<p>
+The time between entering the scope of a variable and executing its declaration is called the temporal dead zone (TDZ) of that variable.
+</p>
+<p>
+During this time, the variable is considered to be uninitialized (as if that were a special value it has).
+</p>
+<p>
+If you access an uninitialized variable, you get a ReferenceError.
+</p>
+<p>
+Once you reach a variable declaration, the variable is set to either the value of the initializer (specified via the assignment symbol) or undefined – if there is no initializer.
+</p>
+</blockquote>
+
 
 需要注意的是let const 会变量提升，但是在执行声明语句之前，是放在暂时性死区，提前调用就会报错；想象一下如果let const没有变量提升的话，在声明之前调用let const变量，就会当成```var = halo```处理了。
 
@@ -176,8 +191,9 @@ for (let i = 0; i < 5; i++) {
 但是在上面代码里不能用const，虽然我们每次创建了一个新的变量，但是我们尝试修改const的值，所以会报错
 
 ## 总结
-- 在开发过程中，默认推荐使用const，只有当确定变量的值会发生改变使用let。
+- 在开发过程中，默认推荐使用const，只有当确定变量的值会发生改变使用let
 - 函数提升优先于变量提升，函数提升会把整个函数挪到作用域顶部，变量提升只会把声明挪到作用域顶部
 - var 存在提升，我们能在声明之前使用。let、const 因为暂时性死区的原因，不能在声明前使用
 - var 在全局作用域下声明变量会导致变量挂载在 window 上，其他两者不会
 - let 和 const 作用基本一致，但是后者声明的变量不能再次赋值
+- 只有 var 函数 有变量提升，其他的 class let const import 都没有变量提升， 如果函数表达式是 let const 也不会变量提升

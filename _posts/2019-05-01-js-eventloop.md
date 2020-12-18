@@ -411,3 +411,7 @@ promise3
 setTimeout
 **/
 ```
+
+参考资料：
+- [“Event loops”, section in HTML5 spec.](https://html.spec.whatwg.org/multipage/webappapis.html#event-loops)
+- [“Help, I’m stuck in an event-loop” by Philip Roberts (video).](https://vimeo.com/96425312)

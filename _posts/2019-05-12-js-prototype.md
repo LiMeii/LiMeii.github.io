@@ -126,9 +126,9 @@ console.log(f1.age);//undefined
 
 ## ```prototype``` vs ```__proto__```
 
-- ```prototype```是```function```特有的，而且只有```class```（类）有prototype属性，函数实例没有prototype只有__proto__；
+- ```prototype``` 是构造函数的属性
 
-- ```__proto__ ```实际就相当于方法Object.getPrototypeOf(), 是用于实例的。
+- ```__proto__ ``` 是实例的属性
 
 示例代码如下：
 ```js

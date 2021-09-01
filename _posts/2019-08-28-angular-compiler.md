@@ -308,3 +308,6 @@ export { DeepUnderstandingComponentNgFactory as DeepUnderstandingComponentNgFact
 
 
 除此之外，还有一点好处是，AoT 把模板文件编译成 es6 文件，可以做 Tree-Shaking，也会提高性能。
+
+
+但是需要注意的是在 Angular9 之前的版本，用的是 View Engine 模板引擎，是没办法做 Tree-Shaking。在 Angular9 版本之前虽然 AOT 编译对性能和缩小 bundle 文件的大小有很大的提升，但是 HTML 模板这块，性能优化并不大。在 Angular9 之后的版本默认使用 Ivy 模板引擎才在 HTML 模板性能这块有了非常大的提升。

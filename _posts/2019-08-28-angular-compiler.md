@@ -10,6 +10,15 @@ layout: post
 - AoT 的工作原理（ngc）。
 - AoT 对性能的影响。
 
+<blockquote>
+<p>
+这篇文件是基于 Angular8，这个版本的 Angular 的模板引擎还是 View Engine（Angular4 ~ Angular8 模板引擎是 View Engine），这篇文章的编译机制也是基于模板引擎 View Engine，也就是说这篇文章的编译机制适用于 Angular4 ~ Angular8。
+</p>
+
+<p>
+Angular9 以后，模板引擎从 View Engine 升级到了 Ivy，Angular 的编译机制也基于 Ivy 重写升级，后续会有新的文章介绍 Ivy。
+</p>
+</blockquote>
 
 ## 为什么 Angular 需要编译
 

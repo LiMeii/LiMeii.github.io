@@ -24,6 +24,7 @@ Ivy 是完全重写了 Angular 的编译器 和 runtime，Ivy 有以下优势：
 - 大大减少了编译时间
 - 大大减少了编译以后 bundle 文件的大小
 - html 文件也可以 做 tree shaking
+- locality
 
 在【[Angular：深入理解Angular编译机制](https://limeii.github.io/2019/08/angular-compiler/)】介绍了 Angular 的编译机制（基于 View Engine），可以先来看看 View Engine 和 Ivy 编译机制有哪些区别。
 
@@ -100,9 +101,5 @@ AppComponent.ɵcmp = /*@__PURE__*/ i0.ɵɵdefineComponent({ type: AppComponent, 
 在 Anuglar9 之前的模板引擎是 View Engine，Angular9 默认使用 Ivy，Ivy 重写了整个编译器，但是我们实际在写代码的时候，并没有太大的影响，比如：代码语法没有改变；从 Angular8 升级到 Angular12，业务逻辑代码语法不需要改动，可以直接运行。对于开发人员来说，从 View Engine 升级到 Ivy，并没有什么痛苦，可以说是没什么感觉，这是因为有 ngc 在中间帮我们这部分工作都做好了。
 
 
-<<<<<<< Updated upstream
-ngc 是一个 ‘compatibility compiler’，这个 ngc 编译器就负责一个任务：在编译的过程的中，会去检查```node_modules```，如果有 Angular 的 lib，会去读取这个 lib 的```metadata.json```文件和 JS 代码，会把这些代码编译成 Ivy 可以识别的代码。这个编译过程直接写在了 Angular CLI 里面，并不需要我们手动触发，在第一次跑```ng serve``` ```ng build```，会发现编译的时间要长一些。因为在第一次编译的时候，ngc 会把基于 View Engine 写的代码编译成兼容 Ivy 的代码，这个编译只是在第一次跑 ```ng serve``` ```ng build```的时候会做，但是如果你加了新的 Angular lib，会触发 ngc 编译。
-=======
 ngc 是一个 ‘compatibility compiler’，这个 ngc 编译器就负责一个任务：在编译的过程的中，会去检查```node_modules```，如果有 Angular 的 lib，会去读取这个 lib 的```metadata.json```文件和 JS 代码，会把这些代码编译成 Ivy 可以识别的代码。这个编译过程直接写在了 Angular CLI 里面，并不需要我们手动触发，在第一次跑```ng serve``` ```ng build```，会发现编译的时间要长一些。因为在第一次编译的时候，ngc 会把基于 View Engine 写的代码编译成兼容 Ivy 的代码，这个编译只是在第一次跑 ```ng serve``` ```ng build```的时候会做，如果你加了新的 Angular lib，会重新触发 ngc 编译。
->>>>>>> Stashed changes
 

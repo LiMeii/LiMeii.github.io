@@ -120,7 +120,7 @@ ngcc 是一个 ‘compatibility compiler’，这个 ngcc 编译器就负责一�
 Ivy 完全重写了 Angular 的编译器 和 runtime，Ivy 有以下优势：
 - 模板文件也可以 做 Tree Shaking，大大减少了 bundle 文件的大小
 - bundle 文件更小，那么整个应用启动时间也会相应的减少
-- 内容占用更小
+- 内存占用更小
 
 
 View Engine 的编译机制可以参考文章：【[Angular：深入理解Angular编译机制](https://limeii.github.io/2019/08/angular-compiler/)】

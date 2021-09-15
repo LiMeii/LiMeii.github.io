@@ -19,8 +19,6 @@ layout: post
 
 ## Angular 引入 Ivy 以后，编译机制有哪些改变
 
-可以先来看看 View Engine 和 Ivy 编译机制有哪些区别, View Engine 的编译机制可以参考文章：【[Angular：深入理解Angular编译机制](https://limeii.github.io/2019/08/angular-compiler/)】
-
 ### 局部性
 局部性指的是，Ivy 只允许读取定义在组件内部的信息，View Engine 需要全局分析整个项目里的代码。
 
@@ -93,7 +91,7 @@ Incremental DOM 有以下两个优势：
 - 渲染引擎自己是 Tree Shakable，大大的减小 bundle 文件的大小
 - Incremental DOM 只会给新加/删除的节点分配内存，内存分配大大减少了
 
-当我们用 Incremental DOM，指令不需要框架来解析编译，指令本身就是渲染引擎，那么在生成这些指令的时候（也就是编译的时候），用不到的指令当然不会打包到最终的 bundle 文件里。Virtual DOM 是需要解析编译运行的，需要哪些指令编译的时候并不知道，是在真正运行的时候才知道需要哪些指令，所以打包的时候，会把所有的指令都打包到 bundle 文件里。
+当我们用 Incremental DOM，指令不需要框架来解析编译，指令本身就是渲染引擎，那么在生成这些指令的时候（也就是编译过程中），用不到的指令不会打包到最终的 bundle 文件里。Virtual DOM 是需要解析编译运行的，在真正运行的时候才知道需要哪些指令，所以打包的时候，会把所有的指令都打包到 bundle 文件里。
 
 Incremental DOM 并不需要内存来生成 DOM Tree，它根本不会去更改 DOM Tree，只是在新加/删除节点的时候分配内存。
 
@@ -102,13 +100,10 @@ Change Detection 还是跟原来的类似，当有异步操作的时候，ngZone
 
 ### 编译文件
 View Engine 编译以后会有以下四个文件（详细介绍可以参考【[Angular：深入理解Angular编译机制](https://limeii.github.io/2019/08/angular-compiler/)】）：
-- ```*.metadata.json```：把 .ts(component/NgModule) 文件里的 decorator 信息和 constructor 的依赖注入信息用 json 的形式记录下来，下次在二次编译的时候不需要再从 .ts 文件里拿了。二次编译是指在自己项目中引用第三方库，在编译自己项目的时候需要对第三方库进行二次编译打包。如果我们自己项目要用 AoT 编译，那么第三方库必须要提供 .metadata.json 文件。
-
-- ```*.ngfactory.js```：里面包含了创建组件、渲染组件(涉及 DOM 操作)、执行变化检测(获取 oldValue 和 newValue 对比)、销毁组件的代码，也就是我们说的 component view。
-
-- ```*.js```：是 .ts(component/NgModule) 文件里除 decorator 和 constructor 之外的内容，编译成了 es6 代码。
-
-- ```*.ngsummary.json```：包含了 .metadata.json 中所有的信息，因此如果使用了 ngsummary.json，就不需要 .metadata.json了。
+- ```*.metadata.json```
+- ```*.ngfactory.js```
+- ```*.js```
+- ```*.ngsummary.json```
 
 Ivy 编译之后只有一个文件：
 - 不会生成```*.ngfactory.js``` ```*.medadata.json``` ```*.ngsummary.json```文件
@@ -125,3 +120,7 @@ ngcc 是一个 ‘compatibility compiler’，这个 ngcc 编译器就负责一�
 Ivy 完全重写了 Angular 的编译器 和 runtime，Ivy 有以下优势：
 - 模板文件也可以 做 Tree Shaking，大大减少了 bundle 文件的大小
 - bundle 文件更小，那么整个应用启动时间也会相应的减少
+- 内容占用更小
+
+
+View Engine 的编译机制可以参考文章：【[Angular：深入理解Angular编译机制](https://limeii.github.io/2019/08/angular-compiler/)】

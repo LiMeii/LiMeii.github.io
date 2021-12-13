@@ -192,6 +192,79 @@ var foo = 1;
 
 这是因为在进入执行上下文的时候，首先会处理函数声明，其次会处理变量声明，**如果变量名称已经跟已经声明的形式参数或函数相同，则变量声明不会干扰已经存在的这类属性。**
 
+```js
+function foo() {
+    // 函数声明，必须要有函数名字
+    console.log('this is function declaration');
+    console.log(foo); // [function foo]
+    foo = 20;
+    console.log(foo); // 20
+    console.log(window.foo); // 20
+}
+foo();
+
+
+var foo = 10;
+(function foo() {
+    console.log(foo); // [function foo]
+    // 内部作用域，会先去查找是已有变量foo的声明，有就直接赋值20，确实有了呀，发现了具名函数，拿此foo做赋值
+    // IIFE的函数无法进行赋值（内部机制，类似const定义的常量）所以无效
+    foo = 20;
+    console.log(foo); // [function foo]
+    console.log(window.foo)//10
+})()
+
+// 所以严格模式下能看到错误：uncaught typeerror: assignment to constant variable
+var foo = 10;
+(function foo() {
+    'use strict'
+    console.log(foo); 
+    foo = 20; // uncauth typerror: assignment to constant variable
+    console.log(foo); 
+    console.log(window.foo)
+})()
+
+
+var b = 10;
+(
+    function b() {
+        window.b = 20;
+        console.log(b); //【function b】
+        console.log(window.b) // 20;
+    }
+)()
+
+var b =10;
+(function b(){
+    var b = 20; // IIFE内部变量
+    console.log(b); //20
+    console.log(window.b) //10
+})
+
+
+var a = 10;
+(function () {
+    console.log(a) // undefined
+    a = 5
+    console.log(a) // 5
+    console.log(window.a) //  10
+    var a = 20;
+    console.log(a) //20
+})()
+// var a = 20, 这个 a 会有变量提升，所以在 IIFE 内部，会先有 a 的声明并赋值为undefined
+
+//如果把 var a = 20，这段去掉，那么就只能去拿外部a的值了
+var a = 10;
+(function () {
+    console.log(a) // 10
+    a = 5
+    console.log(a) // 5
+    console.log(window.a) //  5
+})()
+
+
+```
+
 ## 总结
 
 - 函数声明，会有变量提升，函数初始化是发生在函数创建时运行上下文的词法环境里。

@@ -144,4 +144,11 @@ Angular 默认的变化检测机制是：异步事件 callback 结束后，NgZon
 
 一般来说，像 Angular 框架搭出来的 SPA 应用，都是客户端渲染（client-side rendering）。当路由到这个页面的时候，从服务器端下载相应的 bundle/chunk 文件，在这个文件里一般只是只包含了 DOM 结构代码和 JS 代码，不是 HTML 文件。浏览器拿到这些代码，需要构建 DOM 树 / CSSOM 树 / 渲染树 / 解析执行 JS 代码，最后才是页面渲染后跟用户进行交互，如果这其中某一个步骤耗时较长，就会导致用户只能看到空白页面一直在加载，显然性能和用户体验都不好。服务器端渲染就可以用来解决这个问题，当路由到某一个页面的时候，request 发到服务器端，在服务器端会构建好这个页面（HTML文件），再把这个 HTML 文件直接发回给客户端，这样用户在一开始就能立马看到带有内容的页面，不用等浏览器构建页面、执行 JS 代码，大大提高了性能，有更好的用户体验。
 
+
+**域名拆分**
+
+
+我们知道，在 HTTP1.1 中，浏览器对同一域名的 TCP 连接数量有限制，一般是 6 到 8 个，超过这个数量之后，就会阻塞后续的请求。有些网站为了提高性能，并行的去服务端请求更多的资源，会把资源分布到不同的域名商去，让浏览器利用更多的 TCP socket 连接。
+
+
 在 Angular 中，可以用 Angular Universal 来实现服务器端渲染，关于服务器端渲染和 Angular Universal 的文章可以参考：【[Rendering on the Web](https://developers.google.com/web/updates/2019/02/rendering-on-the-web)】【[Angular Universal: a Complete Practical Guide](https://blog.angular-university.io/angular-universal/)】

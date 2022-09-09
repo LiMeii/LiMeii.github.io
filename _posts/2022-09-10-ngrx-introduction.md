@@ -26,3 +26,5 @@ NgRx 其实就是 state management library，是一个状态管理包，你也�
 
 
 NgRx 是通过：```actions``` ```effects``` ```reducers``` ```selector``` 管理 state，下面这张图里显示了这几个之间的关系：
+
+![state management](/assets/images/posts/ngrx/state-management.png)

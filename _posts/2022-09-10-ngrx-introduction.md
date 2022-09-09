@@ -17,7 +17,7 @@ NgRx 其实就是 state management library，是一个状态管理包，你也�
 
 
 在真正开始解释什么是 NgRx 以及它的用法，先来看一个很简单的例子：就是有个搜索页面，在搜索框里输入关键字，可以查询到 Github 里相关的用户，并把这些用户显示在搜索结果页面，整体的效果如下：
-![demo](https://github.com/LiMeii/angular-ngrx/blob/master/src/assets/imgs/demo.gif)
+![demo](/assets/images/posts/ngrx/demo.gif)
 
 这个 Demo 的代码在这里：【[LiMeii/angular-ngrx](https://github.com/LiMeii/angular-ngrx)】
 

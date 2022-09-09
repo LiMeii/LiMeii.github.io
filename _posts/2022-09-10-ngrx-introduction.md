@@ -22,7 +22,7 @@ NgRx 其实就是 state management library，是一个状态管理包，你也�
 这个 Demo 的代码在这里：【[LiMeii/angular-ngrx](https://github.com/LiMeii/angular-ngrx)】
 
 
-如果 NgRx 是一个 state 管理包，那什么是 state 呢，其实就是一个 JS 对象。以上面这个 Demo 为例两说，在输入关键字后，用户按下 Enter 键，会触发 Github User 的 API， 把 Github 用户名字里有这个关键字的所有用户的信息返回给前端，显示在页面上，那么这里的用户信息其实就是状态，它就是一个纯 JS 对象。
+如果 NgRx 是一个 state 管理包，那什么是 state 呢，其实 state 就是一个 JS 对象。以上面这个 Demo 为例两说，在输入关键字后，用户按下 Enter 键，会触发 Github User 的 API， 把 Github 用户名字里有这个关键字的所有用户的信息返回给前端，显示在页面上，那么这里的用户信息其实就是状态，它就是一个纯 JS 对象。
 
 
-NgRx 是一个管理 state 对象的包，那它是怎么管理 state 对象的呢？从这里就要开始介绍 NgRx 里其他的核心概念：```actions``` ```effects``` ```reducers``` ```selector```
+NgRx 是通过：```actions``` ```effects``` ```reducers``` ```selector``` 管理 state，下面这张图里显示了这几个之间的关系：

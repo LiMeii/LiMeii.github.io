@@ -4,7 +4,7 @@ tags: Angular
 layout: post
 ---
 
-最近在项目组里做了一个 session 分享怎么用 NgRx，以及 NgRx 的优势是什么。顺带写篇文章记录下这次的分享内容。
+最近在项目组里做了一个 session 分享怎么用 NgRx，以及 NgRx 的优势是什么。大家反馈很不错，顺带写篇文章记录下这次的分享内容。
 
 
 在这篇文件里会介绍以下内容：
@@ -22,14 +22,27 @@ NgRx 是 state management library，是一个状态管理包，你也可以理�
 这个 Demo 的代码在这里：【[LiMeii/angular-ngrx](https://github.com/LiMeii/angular-ngrx)】
 
 
-如果 NgRx 是一个 state 管理包，那什么是 state 呢？state 是一个 JS 对象。以上面这个 Demo 为例两说，在输入关键字后，用户按下 Enter 键，会触发 Github User 的 API， 把 Github 用户名字里有这个关键字的所有用户的信息返回给前端，显示在页面上，那么这里的用户信息其实就是状态，它就是一个纯 JS 对象。
+如果 NgRx 是一个 state 管理包，那什么是 state 呢？state 是一个 JS 对象。以上面这个 Demo 为例，在输入关键字后，用户按下 Enter 键，会触发 Github User 的 API， 把 Github 用户名字里有这个关键字的所有用户的信息返回给前端，显示在页面上，那么这里的用户信息其实就是状态，它就是一个纯 JS 对象。
 
 
 NgRx 的核心是 state（即 JS 对象），那怎么管理 state 对象呢？NgRx 是通过：```actions``` ```effects``` ```reducers``` ```selector``` 管理 state，下面这张图里显示了这几个之间的关系：
 
 ![state management](/assets/images/posts/ngrx/state-management.png)
 
-从上图中我们可以看到：如果需要读取 state 里的数据，并把这些数据显示到页面上（component view），必须要通过 ```selector``` 这个函数；如果需要更新 state 这个对象的值，那就必须通过 ```reducer``` 这个函数；那怎么触发```reducer```这个函数执行呢？必须要通过```Action```触发```reducer```函数执行；如果有异步事件要更新 state 的值呢？比如我们这个 demo 例子中，是通过 call GitHub 的 user API 拿到相关用户信息，那这些异步事件（API call）就可以写在 effects 里，在 API response 回来以后，再触发 ```Action```，从而触发```reducer```函数去更新 state 的值；```Action```是谁来触发的呢？有两种方式：一种是用户的交互操作，比如上面这个例子里，用户输入关键字后，按下 Enter 键，触发一个 search action；还有一种方式是在 effects 里，在异步事件 callback 回来以后，触发一个 search success action；
+从上图中我们可以看到：
+- 如果需要读取 state 里的数据，并把这些数据显示到页面上（component view），必须要通过 ```selector``` 这个函数；
+
+
+- 如果需要更新 state 这个对象的值，那就必须通过 ```reducer``` 这个函数；
+
+
+- 那怎么触发```reducer```这个函数执行呢？必须要通过```Action```触发```reducer```函数执行；
+
+
+- 如果有异步事件要更新 state 的值呢？比如我们这个 demo 例子中，是通过 call GitHub 的 user API 拿到相关用户信息，那这些异步事件（API call）就可以写在 effects 里，在 API response 回来以后，再触发 ```Action```，从而触发```reducer```函数去更新 state 的值；
+
+
+- 那```Action```是谁来触发的呢？有两种方式：一种是用户的交互操作，比如上面这个例子里，用户输入关键字后，按下 Enter 键，触发一个 search action；还有一种方式是在 effects 里，在异步事件 callback 回来以后，触发一个 search success action；
 
 
 再详细介绍什么是 ```actions``` ```effects``` ```reducers``` ```selector```之前， 我们先来总结下整个事件执行的流程：用户在 search input 里输入关键字，按下 Enter 键，会触发一个 search action，在 effects 里去 call GitHub user API，这个 API response 回来以后，触发一个 search success action，这个 action 会触发 reducer 函数执行更新 state 的值，state 更新以后，会把更新后的值，通过 selector 这个函数，推送给页面（component view），component 拿到最新的 state 值后，把这些值更新显示在页面上。
@@ -95,4 +108,63 @@ html 页面代码如下：
 其实也很简单，一行代码就可以``` this.store.dispatch(searchUserActions.search({ userName: this.searchVal?.trim() }))```
 
 # NgRx 的优势
-看完上面如何用 NgRx 实现一个简单的 search GitHub 用户信息功能的代码，大家有没有觉得，用这种方式写代码，很繁琐，要定义很多文件，而且大部分都是把业务代码套用在 NgRx 的模板代码里，
+看完上面如何用 NgRx 实现一个简单的 search GitHub 用户信息功能的代码，大家有没有觉得，用这种方式写代码，很繁琐，要定义很多文件，而且大部分都是把业务代码套用在 NgRx 的模板代码里。为什么一定要用```actions``` ```effects``` ```reducers``` ```selector```去管理 state，代码这么繁琐，为什么大家都在力荐使用 state 这种模式开发，它为什么要这么写，又有什么优势呢？
+
+
+NgRx 是一个 state manage library，整个包的编程思路都是基于函数编程写的；要理解 NgRx 的优势，可以从函数编程这个角度来看，搞清楚函数编程之后，就能理解为什么要这么写代码，以及这么写代码的优势是什么。
+
+## 函数编程
+函数编程（functional programming）是一个很大的话题，完全讲清楚函数编程并不在我们这篇文章的范围里，在这篇文章里就简单介绍下函数编程的三个核心概念，让大家理解下什么是函数，以及它的优势是什么。
+
+函数编程是一种编程思维，它有三个核心概念：纯函数（Pure Function）、不可更改的 state（Immutable State）、副作用（Side Effect）
+
+### Pure Function
+什么是纯函数呢，为什么要用纯函数，它的优势是什么呢？
+
+
+官方的对纯函数的解释是：如果一个函数，在入参一致的情况下，不管这个函数调用多少次，返回结果永远一样，那么这个函数就是纯函数。这么一看，是不是感觉一头雾水，解释了跟没解释一样，我们来看下具体的例子：
+```js
+//Pure function
+function add(a,b){
+	return a + b;
+}
+
+//Impure function
+function random(){
+	return Math.random();
+}
+
+//Impure function 
+function sayHello(name){
+	console.log("Hello " + name);
+}
+```
+以上有三个函数，第一个是纯函数，另外两个不是。
+
+
+先来看第一个函数，如果 ```a=1, b=1```, 那么不管是调用这个函数多少次，永远返回 ```1+1``` 等于2，不可能会返回其他值，这个函数是纯函数。
+
+
+第二个函数，返回值是随机的，不符合纯函数的定义，它不是纯函数。
+
+
+第三个函数，在函数里调用了 I/O 操作```console.log``，它也不是纯函数，不仅如此，如果在函数内部调用了 I/O，或者调用了 API，或者在当前函数里改了函数作用域外面的值，都不是纯函数。
+
+
+纯函数有什么优势呢？
+
+#### 1. 可读性好
+纯函数不会调用 I/O，不会调用 API，也不会改作用域外的值，那么代码就容易读懂，可读性好
+
+#### 2. 易维护
+同上，因为不会调用 I/O，不会调用 API，也不会改作用域外的值，那么也容易维护
+
+### 3. 缓存功能
+可以有缓存的功能，这个要怎么理解呢？假如一个纯函数用来做计算，返回计算结果，如果计算逻辑非常非常复杂，代码执行完这些计算逻辑都要一分钟。假如有这样一种情形，每次调用这个复杂计算函数的入参都是一样的，每次都执行一分钟才能拿到计算结果，是不是有点性能浪费，那么在这种情况下，我们可以在第一次执行这个复杂计算函数的时候，就把计算结果缓存起来，后面同样入参调用这个复杂计算函数就可以直接从缓存里读取结果，而不需要每次都去执行这个复杂函数，这样就大大提升了代码的性能。
+
+
+这跟我们 NgRx 有什么关系呢？前面说过 NgRx 是函数编程的实现，它的 ```reducer``` ```selector``` 都是纯函数。我们现在这个搜索 GitHub 用户的例子，业务逻辑比较简单，看 selector 代码都是直接读取 state 里面变量的值。但是大家可以现象下，如果有个业务需要非常复杂的计算，拿到某个 state 变量以后，需要执行一个非常复杂的计算，然后再返回这个计算结果，推送给页面显示。那么这个情况下，就可以用缓存的优势，因为 selector 这个纯函数入参是一样的，那么第一次执行 selector 纯函数的时候，把这个复杂计算结果缓存起来，后续其他页面要用到这个计算结果的时候，就可以直接从缓存里读取这个值，不需要每次都去执行这个复杂计算逻辑了，从而可以提高性能。
+
+
+### Immutable State
+不可更改的 state，之前看 reducer 代码，明明都是一旦有 action 发生的时候

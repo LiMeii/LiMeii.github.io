@@ -41,4 +41,58 @@ NgRx 的核心是 state（即 JS 对象），那怎么管理 state 对象呢？N
 简单来说，NgRx 是一个通过 ```actions``` ```effects``` ```reducers``` ```selector``` 这些事件函数来管理（更新、读取）state 对象的 library。
 
 
-# 如何用 NgRx 来管理 state
+# 如何使用 NgRx 来管理 state
+了解什么是 NgRx 以后，怎么用它呢？具体代码是如何写的呢？我们还是以上面的 demo 为例，来看看怎么用 NgRx 实现一个简单的 GitHub 用户搜索功能。
+
+## state
+我们之前讲过，state 实际就是一个 JS 对象，那么我们来看看具体代码是怎么定义和初始化 state：
+![state management](/assets/images/posts/ngrx/ngrx-state.png)
+
+很简单，先定义一个 state 的结构（interface）然后初始化一下就可以。
+
+## selector
+定义好 state 后，假设这个 state 里有值，怎么把这个 state 里的 searchResult（用户信息）显示到页面上呢？我们必须通过 selector 这个纯函数，读取 state 对象的值，拿到 searchResult 后，把这个数据推送给页面，我们来看下如果定义这个 selector：
+
+![state management](/assets/images/posts/ngrx/ngrx-selector.png)
+
+isLoading searchedKeywords 这两个我们先不看，主要看下 searchResult 相关的，其实也很简单，通过```createFeatureSelector<searchStates.State>(featurekey)``` 拿到整个对象的值，因为真正的用户信息是在 ```state.searchResult.items``` 这个对象结构里，所以通过```createSelector(featureStateSelector, (fs) => fs.searchResult);``` 拿到 searchResult 对象，然后通过```createSelector(searchResult, (data) => data?.items)``` 拿到 用户信息 list。
+
+## 如何把用户信息推送给页面
+定义好 selector 函数读取用户信息 list，怎么把这些数据推送给页面呢？其实也很简单，在页面里 订阅用户信息就可以了，之前有讲过 NgRx 是基于 RxJS 的，所有的数据操作都是 Observable，页面代码如下：
+
+component 代码如下：
+![state management](/assets/images/posts/ngrx/ngrx-component.png)
+
+html 页面代码如下：
+![state management](/assets/images/posts/ngrx/ngrx-component-view.png)
+
+在 compoent 里，```this.store.select(searchedGitUserLists);```是订阅用户信息 Observable，在 html 页面里 通过 ```*ngFor="let user of userLists$ | async"``` async pipe 读取 ```userLists$``` 并把用户信息循环显示在页面上。
+
+## action
+我们之前介绍过，如果想要更新 state 对象的值，必须由用户交互操作触发 action 或者 effects 的异步操作 callback 之后触发 action，再由 action 去触发 reducer 函数更新 state 的值。
+
+那什么是 action 呢？ action 是所有可以改变 state 的操作。比如以我们这个 demo 为例，用户输入关键字以后，按下 Enter 键，这个操作会改变 state 的值，我们可以把这个操作定义为 ```search action```; API callback 回来以后，需要把 API response 回来的值更新到 state 里，我们可以把这个操作定义为```search success action```；如果 API call 失败，我们要把错误信息更新到 state 里，可以把这个操作定义为 ```search failed action```。具体代码如下：
+
+![state management](/assets/images/posts/ngrx/ngrx-action.png)
+
+
+## effects
+所有的异步操作，比如常用的 API call，需要放在 effects 里，我们来看下具体代码写法：
+
+![state management](/assets/images/posts/ngrx/ngrx-effects.png)
+
+代码```this.actions$.pipe( ofType(searchUserActions.search) ```表示监听所有 action 事件，如果是 search action 就触发 API call，如果 API call success，触发 search success action：```searchUserActions.searchSuccess```；如果 API call failed，触发 search failed action：```searchUserActions.searchFailed```.
+
+## reducer
+有了 action 和 effects，那么如何执行 reducer 去更新 state 呢？代码如下：
+![state management](/assets/images/posts/ngrx/ngrx-reducer.png)
+
+从代码里可以看到，通过监听所有的 action，一旦 action 发生，通过 ES6 的两个语法（展开和解构）返回一个新的 state 对象。
+
+## 用户交互如何触发 action
+我们知道用户操作可以触发 action，那再用户按下 Enter 后，怎么来触发 search action 呢？
+![state management](/assets/images/posts/ngrx/ngrx-action-trigger.png)
+其实也很简单，一行代码就可以``` this.store.dispatch(searchUserActions.search({ userName: this.searchVal?.trim() }))```
+
+# NgRx 的优势
+看完上面如何用 NgRx 实现一个简单的 search GitHub 用户信息功能的代码，大家有没有觉得，用这种方式写代码，很繁琐，要定义很多文件，而且大部分都是把业务代码套用在 NgRx 的模板代码里，

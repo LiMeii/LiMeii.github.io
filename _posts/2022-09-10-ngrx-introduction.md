@@ -1,5 +1,5 @@
 ---
-title: Angular：深入了解 NgRx 的优势
+title: Angular:深入了解NgRx的优势
 tags: Angular
 layout: post
 ---
@@ -12,7 +12,7 @@ layout: post
 - 结合 Demo 代码，介绍 NgRX 的基本用法
 - 从函数编程的角度来看，NgRx 的优势是什么
 
-# 什么是 NgRx
+# 什么是NgRx
 NgRx 是 state management library，是一个状态管理包，你也可以理解它是 RxJS 和 Redux 的结合体。
 
 
@@ -54,7 +54,7 @@ NgRx 的核心是 state（即 JS 对象），那怎么管理 state 对象呢？N
 简单来说，NgRx 是一个通过 ```actions``` ```effects``` ```reducers``` ```selector``` 这些事件函数来管理（更新、读取）state 对象的 library。
 
 
-# 如何使用 NgRx 来管理 state
+# 如何使用NgRx来管理state
 了解什么是 NgRx 以后，怎么用它呢？具体代码是如何写的呢？我们还是以上面的 demo 为例，来看看怎么用 NgRx 实现一个简单的 GitHub 用户搜索功能。
 
 ## state
@@ -102,12 +102,12 @@ html 页面代码如下：
 
 从代码里可以看到，通过监听所有的 action，一旦 action 发生，通过 ES6 的两个语法（展开和解构）返回一个新的 state 对象。
 
-## 用户交互如何触发 action
+## 用户交互如何触发action
 我们知道用户操作可以触发 action，那再用户按下 Enter 后，怎么来触发 search action 呢？
 ![state management](/assets/images/posts/ngrx/ngrx-action-trigger.png)
 其实也很简单，一行代码就可以``` this.store.dispatch(searchUserActions.search({ userName: this.searchVal?.trim() }))```
 
-# NgRx 的优势
+# NgRx的优势
 看完上面如何用 NgRx 实现一个简单的 search GitHub 用户信息功能的代码，大家有没有觉得，用这种方式写代码，很繁琐，要定义很多文件，而且大部分都是把业务代码套用在 NgRx 的模板代码里。为什么一定要用```actions``` ```effects``` ```reducers``` ```selector```去管理 state，代码这么繁琐，为什么大家都在力荐使用 state 这种模式开发，它为什么要这么写，又有什么优势呢？
 
 
@@ -208,7 +208,7 @@ Immutable State 除了这个性能优势之外，还有个优势是，因为每�
 
 把 API call 从页面 component 代码里解耦出来，页面 component 只负责数据的呈现，不需要去关心这个数据是从哪里来的，以及怎么处理这些数据，那么页面 component 代码就简单很多了，不需要注入 service，只负责数据呈现，代码可读性就高，而且 Unit Test 就简单很多，不需要 mock 每个依赖注入的 service。
 
-### NgRx 优势
+### NgRx优势
 NgRx 是函数编程的一种实现，理解了函数编程的优势以后，就能理解 NgRx 的优势了：
 - 共享 state：state 是共享的且唯一，不同的页面都是从一个 state 对象里读取值，这样可以保证 state 对象的准确性和唯一性。
 

@@ -26,7 +26,7 @@ Before checkin this yml file, need config several variable: ```app-name``` ```pu
 ![azure-app-service-name](/assets/images/posts/github-actions/azure-app-service-name.png)
 
 
-```publish-profile``` download from Azure Portal:
+Download ```publish-profile``` from Azure Portal:
 ![azure-app-service-publish-profile](/assets/images/posts/github-actions/azure-app-service-publish-profile.png)
 
 
@@ -34,7 +34,7 @@ Get these two variables and put them into GitHub Secrets:
 ![github-actions-secrets](/assets/images/posts/github-actions/github-actions-secrets.png)
 
 
-In the above yml file, I set trigger the workflow whenever code is push into master branch. For more workflow syntax can refer: 【[Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions)】
+In the above yml file, I set trigger the workflow whenever code is pushed into master branch. For more workflow syntax can refer: 【[Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions)】
 
 Now, checkin this yml file into master branch, and you can find the workflow under GitHub Actions:
 ![github-actions-workflow](/assets/images/posts/github-actions/github-actions-workflow.png)
@@ -58,7 +58,9 @@ Click into ```App Service Editor (Preview)```:
 ![auzre-portal-check-deployed-file2](/assets/images/posts/github-actions/auzre-portal-check-deployed-file2.png)
 
 
+By following the steps above, you can build a GitHub Actions workflow that automates process CI/CD whenever there is code pushed into the master branch.
 
-In real projects, We usually need to deploy on multiple environments , eg: ```Dev ``` ```Staging``` and ```Production```. How can we accomplish this? You can find the details in this article: 
+
+In real projects, We usually need to deploy on multiple environments , eg: ```Dev ``` ```Staging``` and ```Production```. How can we accomplish this? Find more details in this article: 
 
 

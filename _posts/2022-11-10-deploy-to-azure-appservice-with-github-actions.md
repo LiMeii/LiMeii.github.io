@@ -1,5 +1,5 @@
 ---
-title: Deploy Web Application to Azure App Service with GitHub Actions
+title: Deploy to Azure with GitHub Actions
 tags: Azure, GitHub Actions
 layout: post
 ---

@@ -45,10 +45,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node.js ${{ env.NODE_VERSION }}
+    - name: Use Node.js ${ { env.NODE_VERSION } }
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ env.NODE_VERSION }}
+        node-version: ${ { env.NODE_VERSION } }
         cache: "npm"
         cache-dependency-path: package-lock.json
         
@@ -76,7 +76,7 @@ jobs:
     needs: build
     environment:
       name: "Development"
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+      url: ${ {  steps.deploy-to-webapp.outputs.webapp-url  } }
 
     steps:
       - name: Download artifact from build job
@@ -91,10 +91,10 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: ${{ secrets.AZURE_WEBAPP_SERVICE_NAME }}
+          app-name: ${ { secrets.AZURE_WEBAPP_SERVICE_NAME  } }
           slot-name: "production"
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          publish-profile: ${ {  secrets.AZURE_WEBAPP_PUBLISH_PROFILE } } 
+          package: ${ { env.AZURE_WEBAPP_PACKAGE_PATH  } }
 ```
 
 
@@ -204,10 +204,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node.js ${{ env.NODE_VERSION }}
+    - name: Use Node.js ${ { env.NODE_VERSION } }
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ env.NODE_VERSION }}
+        node-version: ${ { env.NODE_VERSION } }
         cache: "npm"
         cache-dependency-path: package-lock.json
         
@@ -235,7 +235,7 @@ jobs:
     needs: build
     environment:
       name: "Development"
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+      url: ${ { steps.deploy-to-webapp.outputs.webapp-url } }
 
     steps:
       - name: Download artifact from build job
@@ -250,10 +250,10 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: ${{ secrets.AZURE_WEBAPP_SERVICE_NAME }}
+          app-name: ${ {  secrets.AZURE_WEBAPP_SERVICE_NAME  } }
           slot-name: "production"
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          publish-profile: $ { { secrets.AZURE_WEBAPP_PUBLISH_PROFILE  } }
+          package: ${ { env.AZURE_WEBAPP_PACKAGE_PATH } }
 
 ```
 
@@ -275,6 +275,6 @@ Click ```Run workflow``` button, a workflow will run:
 
 
 
-In real projects, We usually need to deploy on multiple environments , eg: ```Dev ``` ```Staging``` and ```Production```. How can we accomplish this? Find more details in my next article: 
+In real projects, we usually need to deploy on multiple environments , eg: ```Dev ``` ```Staging``` and ```Production```. How can we accomplish this? Find more details in my next article: 
 
 

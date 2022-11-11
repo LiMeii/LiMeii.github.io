@@ -4,7 +4,7 @@ tags: Azure, GitHub Actions
 layout: post
 ---
 
-This article is going to introduce how to deploy an Angular Web application to Azure App Service with GitHub Actions.
+This article is going to introduce how to deploy an Angular Web application to Azure App Service with GitHub Actions, and how to manual trigger GitHub workflow with workflow_dispatch.
 
 
 Prerequisites
@@ -16,12 +16,12 @@ Prerequisites
 I use one of my public repo 【[demo repo](https://github.com/LiMeii/angular-ngrx)】 to demo how to deploy Angular web application to Azure App Service with GitHub Actions.
 
 
-The first step is create one yml file under ```.github/workflows```:
+The first step is create one YML file under ```.github/workflows```:
 
 <details>
-  <summary>Here is yml file</summary>
+    <summary><em>Click here to see YML file 👇</em></summary>
 
-```yml
+```yaml
 name: Build and deploy Angular app to an Azure Web App
 
 on:
@@ -91,13 +91,18 @@ jobs:
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 ```
-</details>
+
+
+</details> 
 
 
 
 
 
 Before checkin this yml file, need config several variable: ```app-name``` ```publish-profile```, these two variables are for Azure.
+
+
+Open【[Azure Portal](https://portal.azure.com/)】, go to the ```Resouce Group``` and find the ```App Service```
 
 
 ```app-name``` means Azure App Service name: 
@@ -139,7 +144,118 @@ Click into ```App Service Editor (Preview)```:
 ![auzre-portal-check-deployed-file2](/assets/images/posts/github-actions/auzre-portal-check-deployed-file2.png)
 
 
-By following the steps above, you can build a GitHub Actions workflow that automates process CI/CD whenever there is code pushed into the master branch.
+
+## Manual trigger GitHub workflow with workflow_dispatch
+
+By following the steps above, you can build a GitHub Actions workflow that automates process CI/CD whenever there is code pushed into the master branch. We also can manual trigger the workflow with ```workflow_dispatch```
+
+
+<details>
+    <summary><em>Click here to see YML file 👇</em></summary>
+
+```yaml
+
+name: Build and deploy Angular app to an Azure Web App
+
+on:
+  push:
+    branches:
+      - master
+
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: choice
+        options:
+        - info
+        - warning
+        - debug
+      tags:
+        description: 'Test scenario tags'
+        required: false
+        type: boolean
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
+        required: true
+
+env:
+  AZURE_WEBAPP_NAME: my-app-name  # set this to your application's name
+  AZURE_WEBAPP_PACKAGE_PATH: '.' # set this to the path to your web app project, defaults to the repository root
+  NODE_VERSION: '16.x'           # set this to the node version to use
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ env.NODE_VERSION }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: "npm"
+        cache-dependency-path: package-lock.json
+        
+    - name: npm install, build, and test
+      run: |
+        npm install
+        npm run build --if-present
+    
+    - name: Zip artifact for deployment
+      run: |
+        cd dist
+        zip release.zip ./* -r
+
+    - name: Upload artifact for deployment job
+      uses: actions/upload-artifact@v3
+      with:
+        name: node-app
+        path: ./dist/release.zip
+
+  deployDev:
+    name: Deploy to Dev
+    permissions:
+      contents: none
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: "Development"
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v3
+        with:
+          name: node-app
+
+      - name: unzip artifact for deployment
+        run: unzip release.zip
+
+      - name: "Deploy to Azure WebApp"
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ secrets.AZURE_WEBAPP_SERVICE_NAME }}
+          slot-name: "production"
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+```
+
+
+</details> 
+
+
+Checkin this change into master, and you can see the Manual trigger button:
+![github-actions-worflow-manual-trigger](/assets/images/posts/github-actions/github-actions-worflow-manual-trigger.png)
+
+
+Click ```Run workflow``` button, a workflow will run:
+![github-actions-worflow-manual-trigger2](/assets/images/posts/github-actions/github-actions-worflow-manual-trigger2.png)
+
 
 
 In real projects, We usually need to deploy on multiple environments , eg: ```Dev ``` ```Staging``` and ```Production```. How can we accomplish this? Find more details in this article: 

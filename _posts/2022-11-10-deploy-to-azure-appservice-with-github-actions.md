@@ -17,6 +17,10 @@ I use one of my public repo 【[demo repo](https://github.com/LiMeii/angular-ngr
 
 
 The first step is create one yml file under ```.github/workflows```:
+
+<details>
+  <summary>Here is yml file</summary>
+
 ```yml
 name: Build and deploy Angular app to an Azure Web App
 
@@ -26,9 +30,9 @@ on:
       - master
 
 env:
-  AZURE_WEBAPP_NAME: my-app-name   # set this to your application's name
-  AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
-  NODE_VERSION: '16.x'                # set this to the node version to use
+  AZURE_WEBAPP_NAME: my-app-name # set this to your application's name
+  AZURE_WEBAPP_PACKAGE_PATH: '.' # set this to the path to your web app project, defaults to the repository root
+  NODE_VERSION: '16.x'    # set this to the node version to use
 
 jobs:
   build:
@@ -87,8 +91,13 @@ jobs:
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 ```
+</details>
 
-Before checkin this yml file, need config several variable: ```app-name``` ```publish-profile```(lines 66 and 68 of the code), these two variables are for Azure.
+
+
+
+
+Before checkin this yml file, need config several variable: ```app-name``` ```publish-profile```, these two variables are for Azure.
 
 
 ```app-name``` means Azure App Service name: 
@@ -105,12 +114,14 @@ Get these two variables and put them into GitHub Secrets:
 
 In the above yml file, I set trigger the workflow whenever code is pushed into master branch. For more workflow syntax can refer: 【[Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions)】
 
+
 Now, checkin this yml file into master branch, and you can find the workflow under GitHub Actions:
 ![github-actions-workflow](/assets/images/posts/github-actions/github-actions-workflow.png)
 
 
 Click into the workflow, you can see the two jobs: ```Build``` ```Deploy to Dev```
 ![github-actions-workflow-detail1](/assets/images/posts/github-actions/github-actions-workflow-detail1.png)
+
 
 Click into the Job, you can see the detail steps:
 ![github-actions-workflow-detail-step](/assets/images/posts/github-actions/github-actions-workflow-detail-step.png)
@@ -122,6 +133,7 @@ Go to Azure Portal, you can browser the web application from here:
 
 You also can check the deployed bundle file from here:
 ![auzre-portal-check-deployed-file](/assets/images/posts/github-actions/auzre-portal-check-deployed-file.png)
+
 
 Click into ```App Service Editor (Preview)```:
 ![auzre-portal-check-deployed-file2](/assets/images/posts/github-actions/auzre-portal-check-deployed-file2.png)

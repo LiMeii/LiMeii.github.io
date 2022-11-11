@@ -17,7 +17,76 @@ I use one of my public repo 【[demo repo](https://github.com/LiMeii/angular-ngr
 
 
 The first step is create one yml file under ```.github/workflows```:
-![github-actions-workflow1](/assets/images/posts/github-actions/github-actions-workflow1.png)
+```yml
+name: Build and deploy Angular app to an Azure Web App
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  AZURE_WEBAPP_NAME: my-app-name   # set this to your application's name
+  AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
+  NODE_VERSION: '16.x'                # set this to the node version to use
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ env.NODE_VERSION }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: "npm"
+        cache-dependency-path: package-lock.json
+        
+    - name: npm install, build, and test
+      run: |
+        npm install
+        npm run build --if-present
+    
+    - name: Zip artifact for deployment
+      run: |
+        cd dist
+        zip release.zip ./* -r
+
+    - name: Upload artifact for deployment job
+      uses: actions/upload-artifact@v3
+      with:
+        name: node-app
+        path: ./dist/release.zip
+
+  deployDev:
+    name: Deploy to Dev
+    permissions:
+      contents: none
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: "Development"
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v3
+        with:
+          name: node-app
+
+      - name: unzip artifact for deployment
+        run: unzip release.zip
+
+      - name: "Deploy to Azure WebApp"
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ secrets.AZURE_WEBAPP_SERVICE_NAME }}
+          slot-name: "production"
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+```
 
 Before checkin this yml file, need config several variable: ```app-name``` ```publish-profile```(lines 66 and 68 of the code), these two variables are for Azure.
 

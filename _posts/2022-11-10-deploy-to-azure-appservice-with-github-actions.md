@@ -18,6 +18,10 @@ I use one of my public repo 【[demo repo](https://github.com/LiMeii/angular-ngr
 
 The first step is create one YML file under ```.github/workflows```:
 
+
+{::options parse_block_html="true" /}
+
+
 <details>
     <summary><em>Click here to see YML file 👇</em></summary>
 
@@ -95,7 +99,10 @@ jobs:
 
 </details> 
 
+<br/>
 
+
+{::options parse_block_html="false" /}
 
 
 
@@ -154,7 +161,6 @@ By following the steps above, you can build a GitHub Actions workflow that autom
     <summary><em>Click here to see YML file 👇</em></summary>
 
 ```yaml
-
 name: Build and deploy Angular app to an Azure Web App
 
 on:
@@ -243,6 +249,7 @@ jobs:
           slot-name: "production"
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+
 ```
 
 
@@ -258,6 +265,6 @@ Click ```Run workflow``` button, a workflow will run:
 
 
 
-In real projects, We usually need to deploy on multiple environments , eg: ```Dev ``` ```Staging``` and ```Production```. How can we accomplish this? Find more details in this article: 
+In real projects, We usually need to deploy on multiple environments , eg: ```Dev ``` ```Staging``` and ```Production```. How can we accomplish this? Find more details in my next article: 
 
 

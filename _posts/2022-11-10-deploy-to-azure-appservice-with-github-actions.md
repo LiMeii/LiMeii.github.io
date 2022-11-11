@@ -22,8 +22,7 @@ The first step is create one YML file under ```.github/workflows```:
 {::options parse_block_html="true" /}
 
 
-<summary><em>Click here to see YML file 👇</em></summary>
-
+<strong>Click here to see YML file 👇</strong>
 
 <details>
 
@@ -159,8 +158,12 @@ Click into ```App Service Editor (Preview)```:
 By following the steps above, you can build a GitHub Actions workflow that automates process CI/CD whenever there is code pushed into the master branch. We also can manual trigger the workflow with ```workflow_dispatch```
 
 
+{::options parse_block_html="true" /}
+
+
+<strong>Click here to see YML file 👇</strong>
+
 <details>
-    <summary><em>Click here to see YML file 👇</em></summary>
 
 ```yaml
 name: Build and deploy Angular app to an Azure Web App
@@ -256,6 +259,11 @@ jobs:
 
 
 </details> 
+
+<br/>
+
+
+{::options parse_block_html="false" /}
 
 
 Checkin this change into master, and you can see the Manual trigger button:

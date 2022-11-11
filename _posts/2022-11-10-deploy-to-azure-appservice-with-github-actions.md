@@ -275,6 +275,6 @@ Click ```Run workflow``` button, a workflow will run:
 
 
 
-In real projects, we usually need to deploy on multiple environments , eg: ```Dev ``` ```Staging``` and ```Production```. How can we accomplish this? Find more details in my next article: 
+In real projects, we usually need to deploy on multiple environments , eg: ```Dev ``` ```Staging``` and ```Production```. How can we accomplish this? Find more details in my next article: 【[Deploy on multiple environment with GitHub Actions](https://limeii.github.io/2022/11/deploy-on-multiple-environment-with-github-actions/)】
 
 

@@ -17,7 +17,7 @@ Prerequisites
 
 ## Deploy on multiple environment with GitHub Actons
 
-In the previous article【[Deploy to Azure with GitHub Actions](https://limeii.github.io/2022/11/deploy-to-azure-appservice-with-github-actions/)】have introduced how to deploy web application to Azure App Service with GitHub Actions. Now what? In this article I'm going to introduce how to deploy on multiple environment with GitHub Actions.
+In the previous article【[Deploy to Azure with GitHub Actions](https://limeii.github.io/2022/11/deploy-to-azure-appservice-with-github-actions/)】have introduced how to deploy web application to Azure App Service with GitHub Actions. Now what? In this article I am going to introduce how to deploy on multiple environment with GitHub Actions.
 
 
 In our real projects, we usually need deploy on multiple environment, eg: ```Development``` ```Staging``` ```Production```, actually this is quite simple, just add two more jobs in the YML file, once the build job is complete, deploy the artifacts to different environment(App Service).
@@ -168,7 +168,7 @@ We also can see the manual trigger, can choose different environment:
 ![github-actions-workflow-deploy-on-multi-env2](/assets/images/posts/github-actions/github-actions-workflow-deploy-on-multi-env2.png)
 
 
-# Add reviewers approve a workflow deploying
+## Add reviewers approve a workflow deploying
 
 By following the steps above, you may notice that every time we checkin code into master, workflow triggered, and this will automatically deploy to both ```Devlopment``` and ```Production```. 
 
@@ -177,9 +177,9 @@ Generally, we don't deploy every checkin to  ```Production```, we may need to co
 
 
 There two ways can achieve this:
-- create two different worflow: one is for ```Development```, in this workflow YML file, listen to push code to **master** branch, every checkin to master, trigger this workflow deploy to ```Development```; the other one is for ```Production```, in this workflow YML file, listern to push code to **release** branch, every checkin to release, trigger this workflow deploy to ```Production```
+- Create two different worflow: one is for ```Development```, in this workflow YML file, listen to push code to **master** branch, every checkin to master, trigger this workflow deploy to ```Development```; the other one is for ```Production```, in this workflow YML file, listern to push code to **release** branch, every checkin to release, trigger this workflow deploy to ```Production```
 
-- use the same YML file with above, in the workflow listen to push code to **master** barnch, but we neeed to add reviewers for Production job, that means every checkin to master, it will automatically tirgger workflow build and deploy to ```Development```, but need reviewer to approve production deploying.
+- Use the same YML file with above, in the workflow listen to push code to **master** barnch, but we need to add reviewers for Production job, that means every checkin to master, it will automatically tirgger workflow build and deploy to ```Development```, but need reviewer to approve production deploying.
 
 In this article, I use the second solution, add reviewers approve a workflow deploying. Go to the GitHub repo settings, add one new environment: Production
 
@@ -196,7 +196,7 @@ Add required reviewers and save protection rules:
 ![github-actions-workflow-deploy-production3](/assets/images/posts/github-actions/github-actions-workflow-deploy-production3.png)
 
 
-Manual triggr a workflow run and you will see ```Deploy to Production``` job pening on the approval from reviewers:
+Manual triggr a workflow run and you will see ```Deploy to Production``` job pending on the approval from reviewers:
 ![github-actions-workflow-deploy-production7](/assets/images/posts/github-actions/github-actions-workflow-deploy-production7.png)
 
 
@@ -210,7 +210,7 @@ Reviewers click ```Approve and deploy``` will trigger the Production deployment
 
 ## Reuse workflow
 
-By fowllowing the steps above, you may notice, the deployment job is kind of duplicated, in this demo code, we only deploy to two environment. In real Projects, there may has 4 environemts, if follow above steps, all these 4 deployment job will be duplicated. From the best practice prespective, we need extract the duplicated deployment job into one invidual YML file, and reuse this deploy YML workflow.
+By fowllowing the steps above, you may notice, the deployment job is kind of duplicated, in this demo code, we only deploy to two environment. In real Projects, there may have 4 environemts, if follow above steps, all these 4 deployment job will be duplicated. From the best practice prespective, we need extract the duplicated deployment job into one invidual YML file, and reuse this deploy YML workflow.
 
 
 We can use ```strategy``` to create a reuseable matrix job for deployment.

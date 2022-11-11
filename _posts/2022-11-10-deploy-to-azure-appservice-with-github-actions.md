@@ -19,15 +19,13 @@ I use one of my public repo 【[demo repo](https://github.com/LiMeii/angular-ngr
 The first step is create one YML file under ```.github/workflows```:
 
 
+{::options parse_block_html="true" /}
 
+
+<summary><em>Click here to see YML file 👇</em></summary>
 
 
 <details>
-    <summary><em>Click here to see YML file 👇</em></summary>
-
-
-{::options parse_block_html="true" /}
-
 
 ```yaml
 name: Build and deploy Angular app to an Azure Web App
@@ -100,12 +98,14 @@ jobs:
           package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 ```
 
-{::options parse_block_html="false" /}
-
 
 </details> 
 
 <br/>
+
+
+{::options parse_block_html="false" /}
+
 
 
 Before checkin this yml file, need config several variable: ```app-name``` ```publish-profile```, these two variables are for Azure.

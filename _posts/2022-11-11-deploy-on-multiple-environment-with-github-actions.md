@@ -1,5 +1,5 @@
 ---
-title: Deploy on multiple environment with GitHub Actions
+title: Deploy on multiple env with GitHub Actions
 tags: Azure, GitHub Actions
 layout: post
 ---
@@ -424,3 +424,4 @@ Reviewer approve production deploying:
 
 In production deploying job, the ```Deploy to Development``` job skipped:
 ![githhub-workflow-reuse5](/assets/images/posts/github-actions/githhub-workflow-reuse5.png)
+
